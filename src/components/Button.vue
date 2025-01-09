@@ -1,9 +1,12 @@
+<template>
+	<div>
+		Button
+	</div>
+</template>
+<script>
+	export default {
+		data: () => ({})
+	};
 
-            <template></template>
-            <script>
-              export default {
-                data: () => ({})
-              }
-            </script>
-            <style scoped></style>
-          
+</script>
+<style scoped></style>
