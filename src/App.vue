@@ -1,21 +1,23 @@
 <template>
-	<div>
-		<Button
-			icon="--menu-svg"
-			:style="{
+	<div style="width:488px;height:107px;position:relative;top:174px;left:285px">
+		<div>
+			<Toggle
+				icon="--menu-svg"
+				:style="{
 				width: iconSize
 			}"
-		/>
-		<slot>
-			Buttons comes here
-		</slot>
+			/>
+			<slot>
+				Buttons comes here
+			</slot>
+		</div>
 	</div>
 </template>
 <script>
-	import Button from '@/components/Button.vue';
+	import Toggle from '@/components/Toggle.vue';
 	export default {
 		components: {
-			Button: Button
+			Toggle: Toggle
 		},
 		props: {
 			icon: {
