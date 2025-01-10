@@ -1,7 +1,11 @@
 <template>
 	<div>
 		<slot>
-			<Button icon="url(@/assets/volleyball.svg)"></Button>
+			<Button icon="--volleyball-svg"></Button><img
+				src="@/assets/volleyball.svg"
+				width="100"
+				height="100"
+			/>
 		</slot>
 	</div>
 </template>
@@ -23,3 +27,9 @@
 
 </script>
 <style></style>
+<style scoped>
+	* {
+		--volleyball-svg: url(@/assets/volleyball.svg);
+	}
+
+</style>
