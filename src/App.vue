@@ -1,6 +1,8 @@
 <template>
 	<div>
-		<slot><Button></Button></slot>
+		<slot>
+			<Button icon="url(@/assets/volleyball.svg)"></Button>
+		</slot>
 	</div>
 </template>
 <script>
@@ -8,6 +10,13 @@
 	export default {
 		components: {
 			Button: Button
+		},
+		props: {
+			icon: {
+				type: String,
+				control: 'media',
+				default: ''
+			}
 		},
 		data: () => ({})
 	};
