@@ -1,5 +1,5 @@
 <template>
-	<div style="width:488px;height:107px;position:relative;top:174px;left:285px">
+	<div style="position:relative">
 		<div>
 			<Toggle
 				icon="--menu-svg"
