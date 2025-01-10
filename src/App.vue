@@ -1,11 +1,13 @@
 <template>
 	<div>
+		<Button
+			icon="--menu-svg"
+			:style="{
+				width: iconSize
+			}"
+		/>
 		<slot>
-			<Button icon="--volleyball-svg"></Button><img
-				src="@/assets/volleyball.svg"
-				width="100"
-				height="100"
-			/>
+			Buttons comes here
 		</slot>
 	</div>
 </template>
@@ -20,6 +22,12 @@
 				type: String,
 				control: 'media',
 				default: ''
+			},
+			iconSize: {
+				type: String,
+				control: 'slider',
+				unit: 'px',
+				default: '40px'
 			}
 		},
 		data: () => ({})
@@ -30,6 +38,7 @@
 <style scoped>
 	* {
 		--volleyball-svg: url(@/assets/volleyball.svg);
+		--menu-svg: url(@/assets/menu.svg);
 	}
 
 </style>

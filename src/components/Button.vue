@@ -1,6 +1,10 @@
 <template>
-	<div>
-		Button
+	<div
+		:style="{
+		'background-image': $icon
+	}"
+		style="background-size:contain;background-repeat:no-repeat;width:100%;aspect-ratio:1/1"
+	>
 	</div>
 </template>
 <script>
@@ -9,11 +13,25 @@
 			icon: {
 				type: String,
 				control: 'media',
-				default: ''
+				default: '--vp-nav-default-icon'
 			}
 		},
-		data: () => ({})
+		data: () => ({}),
+		computed: {
+			$icon() {
+				if (this.icon?.startsWith('--')) {
+					return `var(${this.icon})`;
+				} else {
+					return `url(${this.icon})`;
+				}
+			}
+		}
 	};
 
 </script>
-<style scoped></style>
+<style scoped>
+	* {
+		--vp-nav-default-icon: url(@/assets/menu.svg);
+	}
+
+</style>
