@@ -1,27 +1,29 @@
 <template>
-	<router-link
-		v-if="!external"
-		:to="route"
-		:target="target"
-	>
-		{{ title }}
-	</router-link> <a
-		v-else-if="external"
-		:href="route"
-		:target="target"
-	>
-		{{ title }}
-	</a>
-	<div
-		:style="{
-			'background-image': $icon
-		}"
-		style="background-size:contain;background-repeat:no-repeat;width:100%;aspect-ratio:1/1"
-	/>
 	<div>
-		<slot>
-			Slot
-		</slot>
+		<router-link
+			v-if="!external"
+			:to="route"
+			:target="target"
+		>
+			{{ title }}
+		</router-link> <a
+			v-else-if="external"
+			:href="route"
+			:target="target"
+		>
+			{{ title }}
+		</a>
+		<div
+			:style="{
+				'background-image': $icon
+			}"
+			style="background-size:contain;background-repeat:no-repeat;width:100%;aspect-ratio:1/1"
+		/>
+		<div>
+			<slot>
+				Slot
+			</slot>
+		</div>
 	</div>
 </template>
 <script>
