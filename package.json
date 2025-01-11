@@ -10,7 +10,9 @@
     },
     "dependencies": {
         "vue": "^3.4.19",
-        "vue-router": "^4.2.5"
+        "vue-router": "^4.2.5",
+        "@vueplayio/row": "https://manager.vueplay.io/row@^0.1.0",
+        "@vueplayio/column": "https://manager.vueplay.io/column@^0.1.0"
     },
     "devDependencies": {
         "@rollup/plugin-data-uri": "^1.0.3",

@@ -1,5 +1,8 @@
 <template>
-	<Demo iconSize="145px">
+	<Demo
+		iconSize="45px"
+		direction="Row"
+	>
 		<NavItem></NavItem>
 		<NavItem>
 			<NavItem></NavItem>

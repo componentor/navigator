@@ -1,24 +1,23 @@
 <template>
-	<div style="position:relative">
-		<div>
-			<Toggle
-				icon="--menu-svg"
-				:style="{
+	<div>
+		<Toggle
+			icon="--menu-svg"
+			:style="{
 				width: iconSize
 			}"
-			/>
+		/>
+		<component :is="direction">
 			<slot>
 				Buttons comes here
 			</slot>
-		</div>
+		</component>
 	</div>
 </template>
 <script>
+	import Column from '@vueplayio/column';
+	import Row from '@vueplayio/row';
 	import Toggle from '@/components/Toggle.vue';
 	export default {
-		components: {
-			Toggle: Toggle
-		},
 		props: {
 			icon: {
 				type: String,
@@ -30,7 +29,23 @@
 				control: 'slider',
 				unit: 'px',
 				default: '40px'
+			},
+			direction: {
+				type: String,
+				default: 'horizontal',
+				options: [{
+					key: 'Horizontal',
+					value: 'Column'
+				}, {
+					key: 'Vertical',
+					value: 'Row'
+				}]
 			}
+		},
+		components: {
+			Column: Column,
+			Row: Row,
+			Toggle: Toggle
 		},
 		data: () => ({})
 	};
