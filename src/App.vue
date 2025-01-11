@@ -1,14 +1,18 @@
 <template>
-	<div>
+	<div class="vp-navigator">
 		<Toggle
 			icon="--menu-svg"
 			:style="{
 				width: iconSize
 			}"
+			class="vp-toggle"
 		/>
-		<component :is="direction">
+		<component
+			:is="direction"
+			class="vp-nav-items"
+		>
 			<slot>
-				Buttons comes here
+				Drop Navigator Items Here
 			</slot>
 		</component>
 	</div>
@@ -56,6 +60,14 @@
 	* {
 		--volleyball-svg: url(@/assets/volleyball.svg);
 		--menu-svg: url(@/assets/menu.svg);
+	}
+
+	.vp-nav-items {
+		display: inline-block;
+	}
+
+	.vp-toggle {
+		display: none;
 	}
 
 </style>
