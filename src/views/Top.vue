@@ -9,7 +9,8 @@
 			<NavItem></NavItem>
 			<NavItem></NavItem>
 		</NavItem>
-		<NavItem></NavItem>
+		<NavItem>
+		</NavItem>
 		<NavItem></NavItem>
 	</Demo>
 </template>

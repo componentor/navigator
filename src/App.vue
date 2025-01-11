@@ -35,10 +35,10 @@
 				default: 'horizontal',
 				options: [{
 					key: 'Horizontal',
-					value: 'Column'
+					value: 'Row'
 				}, {
 					key: 'Vertical',
-					value: 'Row'
+					value: 'Column'
 				}]
 			}
 		},
