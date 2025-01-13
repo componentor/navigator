@@ -3,7 +3,8 @@
 		iconSize="45px"
 		direction="Row"
 	>
-		<NavItem></NavItem>
+		<NavItem>
+		</NavItem>
 		<NavItem>
 			<NavItem></NavItem>
 			<NavItem></NavItem>

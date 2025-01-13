@@ -9,10 +9,11 @@
 				width: iconSize
 			}"
 			class="vp-toggle"
-		/>
-		<slot>
-			Drop Navigator Items Here
-		</slot>
+		/><template>
+			<slot>
+				Drop Navigator Items Here
+			</slot>
+		</template>
 	</component>
 </template>
 <script>
