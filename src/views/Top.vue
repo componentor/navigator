@@ -1,7 +1,8 @@
 <template>
 	<Demo
 		iconSize="45px"
-		direction="Row"
+		direction="Column"
+		itemIconsReverse="true"
 	>
 		<NavItem title="A">
 		</NavItem>

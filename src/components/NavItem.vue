@@ -2,7 +2,6 @@
 	<component
 		:is="horizontal ? 'Row' : 'Column'"
 		:class="rootClass"
-		:reverse="iconReverse === '' ? reverseIcon : (iconReverse === 'true')"
 		:expand="expand"
 		ref="navitem"
 		class="vp-navigator-item"
@@ -17,7 +16,8 @@
 			:href="route"
 			:target="target"
 			:style="{
-				padding: '10px'
+				padding: '10px',
+				'flex-direction': (iconReverse === '' ? reverseIcon : (iconReverse === 'true')) ? 'row-reverse' : 'row'
 			}"
 			style="display:flex;justify-content: space-between; border-bottom: 1px solid blue;align-items:center"
 		>
