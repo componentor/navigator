@@ -22,7 +22,10 @@
 					title="BBC"
 					icon="--menu-svg"
 				></NavItem>
-				<NavItem title="BB">
+				<NavItem
+					title="BB"
+					icon="--menu-svg"
+				>
 					<NavItem title="BBA">
 					</NavItem>
 					<NavItem title="BBC"></NavItem>
