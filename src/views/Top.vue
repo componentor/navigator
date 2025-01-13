@@ -1,7 +1,7 @@
 <template>
 	<Demo
 		iconSize="45px"
-		direction="Column"
+		direction="Row"
 	>
 		<NavItem title="A">
 		</NavItem>
