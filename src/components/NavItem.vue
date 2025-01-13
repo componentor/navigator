@@ -19,11 +19,18 @@
 				padding: '10px',
 				'flex-direction': (iconReverse === '' ? reverseIcon : (iconReverse === 'true')) ? 'row-reverse' : 'row'
 			}"
-			style="display:flex;justify-content: space-between; border-bottom: 1px solid blue;align-items:center"
+			style="flex-grow: 1;display:flex;justify-content: space-between; border-bottom: 1px solid blue;align-items:center"
 		>
 			<div
 				:style="{
 					'background-image': $icon,
+					'width': icon ? '20px' : '0px'
+				}"
+				style="flex-shrink:0;background-size:contain;background-repeat:no-repeat;aspect-ratio:1/1"
+			/>
+			<div
+				:style="{
+					'background-image': '--vp-nav-arrow-icon',
 					'width': '20px'
 				}"
 				style="flex-shrink:0;background-size:contain;background-repeat:no-repeat;aspect-ratio:1/1"
@@ -62,7 +69,7 @@
 			icon: {
 				type: String,
 				control: 'media',
-				default: '--vp-nav-default-icon'
+				default: ''
 			},
 			iconReverse: {
 				type: String,
@@ -147,6 +154,7 @@
 <style scoped>
 	* {
 		--vp-nav-default-icon: url(@/assets/menu.svg);
+		--vp-nav-arrow-icon: url(@/assets/arrow.svg);
 	}
 	.vp-navigator-item {
 		position: relative;

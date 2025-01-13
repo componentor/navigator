@@ -1,17 +1,27 @@
 <template>
 	<Demo
 		iconSize="45px"
-		direction="Row"
+		direction="Column"
 	>
 		<NavItem title="A">
 		</NavItem>
-		<NavItem title="B">
+		<NavItem
+			title="B"
+			icon="--menu-svg"
+		>
 			<NavItem title="BA">
 			</NavItem>
 			<NavItem title="BB">
-				<NavItem title="BBA">
+				<NavItem
+					title="BBA"
+					icon="--close-svg"
+					iconReverse="true"
+				>
 				</NavItem>
-				<NavItem title="BBC"></NavItem>
+				<NavItem
+					title="BBC"
+					icon="--menu-svg"
+				></NavItem>
 				<NavItem title="BB">
 					<NavItem title="BBA">
 					</NavItem>
@@ -40,4 +50,10 @@
 	};
 
 </script>
-<style scoped></style>
+<style scoped>
+	* {
+		--menu-svg: url(@/assets/menu.svg);
+		--close-svg: url(@/assets/close.svg);
+	}
+
+</style>
