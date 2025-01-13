@@ -1,15 +1,18 @@
 <template>
 	<component
 		:is="direction"
-		class="vp-nav-items"
+		class="vp-navigator"
+		:class="{
+			'vp-navigator--small': small
+		}"
 	>
 		<Toggle
+			v-if="small"
 			icon="--menu-svg"
 			:style="{
 				width: iconSize
 			}"
-			class="vp-toggle"
-		/><template>
+		/> <template v-else-if="!small">
 			<slot>
 				Drop Navigator Items Here
 			</slot>
@@ -43,30 +46,44 @@
 					key: 'Vertical',
 					value: 'Column'
 				}]
+			},
+			breakpoint: {
+				type: String,
+				control: 'slider',
+				unit: '',
+				default: '480'
 			}
 		},
 		components: {
-			Column: Column,
-			Row: Row,
-			Toggle: Toggle
+			Column,
+			Row,
+			Toggle
 		},
-		data: () => ({})
+		data: () => ({
+			screenWidth: window.innerWidth
+		}),
+		computed: {
+			small() {
+				return this.screenWidth <= this.breakpoint;
+			}
+		},
+		created() {
+			window.addEventListener('resize', this.handleResize);
+		},
+		beforeUnmount() {
+			window.removeEventListener('resize', this.handleResize);
+		},
+		methods: {
+			handleResize() {
+				this.screenWidth = window.innerWidth;
+			}
+		}
 	};
 
 </script>
-<style></style>
 <style scoped>
 	* {
-		--volleyball-svg: url(@/assets/volleyball.svg);
 		--menu-svg: url(@/assets/menu.svg);
-	}
-
-	.vp-nav-items {
-		display: inline-block;
-	}
-
-	.vp-toggle {
-		display: none;
 	}
 
 </style>
