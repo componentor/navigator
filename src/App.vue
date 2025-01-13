@@ -32,6 +32,7 @@
 			return {
 				open: computed(() => this.open),
 				small: computed(() => this.small),
+				direction: computed(() => this.direction),
 			}
 		},
 		props: {
@@ -48,7 +49,7 @@
 			},
 			direction: {
 				type: String,
-				default: 'horizontal',
+				default: 'Row',
 				options: [{
 					key: 'Horizontal',
 					value: 'Row'

@@ -2,9 +2,10 @@
 	<Row
 		ref="navitem"
 		:class="{ 'vp-navigator-item--small': small }"
-		@mouseenter="show=true"
-		@mouseleave="show=false"
-		@click="show=true"
+		@mouseenter="horizontal ? show=true : ''"
+		@mouseleave="horizontal ? show=false : ''"
+		@click.stop="show=!show"
+		style="background: rgb(200, 0, 0, 0.1); border-bottom: 1px solid blue"
 	>
 		<template v-if="$slots.default && show">
 			<div class="wrapper">
@@ -38,7 +39,7 @@
 	import { computed } from 'vue'
 	import Row from '@vueplayio/row';
 	export default {
-		inject: ['small', 'open'],
+		inject: ['small', 'open', 'direction'],
 		provide() {
 			return {
 				open: computed(() => this.show)
@@ -73,10 +74,23 @@
 			show: false
 		}),
 		mounted() {
-			document.addEventListener('click', this.handleClickOutside)
+			if (this.horizontal) {
+				document.addEventListener('click', this.handleClickOutside)
+			}
 		},
 		beforeUnmount() {
-			document.removeEventListener('click', this.handleClickOutside)
+			if (this.horizontal) {
+				document.removeEventListener('click', this.handleClickOutside)
+			}
+		},
+		watch: {
+			horizontal(horizontal) {
+				if (horizontal) {
+					document.addEventListener('click', this.handleClickOutside)
+				} else {
+					document.removeEventListener('click', this.handleClickOutside)
+				}
+			}
 		},
 		computed: {
 			$icon() {
@@ -85,6 +99,9 @@
 				} else {
 					return `url(${this.icon})`;
 				}
+			},
+			horizontal() {
+				return this.direction === 'Row'
 			}
 		},
 		methods: {
