@@ -27,11 +27,13 @@
 					'background-image': $icon,
 					'background-size': '50%',
 					'background-position': 'center',
-					'height': $slots.default ? '40px' : '0px',
+					'height': icon ? '40px' : '0px',
 				}"
 				style="position:relative;flex-shrink:0;background-repeat:no-repeat;aspect-ratio:1/1"
 			/>
-			<div style="justify-content: space-between;flex-grow: 1;display:flex;">
+			<div style="justify-content: space-between;flex-grow: 1;display:flex;" :style="{
+				'flex-direction': (iconReverse === '' ? reverseIcon : (iconReverse === 'true')) ? 'row-reverse' : 'row'
+			}">
 				<div style="display: flex;padding: 10px">
 					{{ title }}
 				</div>
@@ -148,6 +150,7 @@
 					'vp-navigator-item--vertical': !this.horizontal,
 					'vp-navigator-item--show': this.show,
 					'vp-navigator-item--hide': !this.show,
+					'vp-navigator-item--reverse': (this.iconReverse === '' ? this.reverseIcon : (this.iconReverse === 'true'))
 				}
 				const level = this.level || 0
 				rootClass[`vp-navigator-item--level-${level}`] = true
@@ -184,11 +187,20 @@
 	.vp-navigator-item--vertical.vp-navigator-item--hide .vp-navigator-item--arrow {
 		transform: rotate(0deg);
 	}
+	.vp-navigator-item--reverse.vp-navigator-item--vertical.vp-navigator-item--hide .vp-navigator-item--arrow {
+		transform: rotate(-180deg);
+	}
 	.vp-navigator-item--horizontal.vp-navigator-item--level-0 .vp-navigator-item--arrow {
+		transform: rotate(90deg);
+	}
+	.vp-navigator-item--reverse.vp-navigator-item--horizontal.vp-navigator-item--level-0 .vp-navigator-item--arrow {
 		transform: rotate(90deg);
 	}
 	.vp-navigator-item--horizontal.vp-navigator-item--level-1 .vp-navigator-item--arrow {
 		transform: rotate(0deg);
+	}
+	.vp-navigator-item--reverse.vp-navigator-item--horizontal.vp-navigator-item--level-1 .vp-navigator-item--arrow {
+		transform: rotate(-180deg);
 	}
 	.vp-navigator-item--horizontal.vp-navigator-item--level-0 .wrapper {
 		position: absolute;
@@ -211,5 +223,7 @@
 	}
 	.vp-navigator-item--link:hover {
 		background-color: rgb(0, 0, 0, 0.1)
+	}
+	.vp-navigator-item--reverse {
 	}
 </style>

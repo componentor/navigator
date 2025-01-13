@@ -2,6 +2,7 @@
 	<Demo
 		iconSize="45px"
 		direction="Column"
+		itemIconsReverse="true"
 	>
 		<NavItem title="A">
 		</NavItem>
@@ -33,10 +34,16 @@
 				</NavItem>
 				<NavItem title="BBD"></NavItem>
 			</NavItem>
-			<NavItem title="BC"></NavItem>
+			<NavItem
+				title="BC"
+				icon="--menu-svg"
+			></NavItem>
 			<NavItem title="BD"></NavItem>
 		</NavItem>
-		<NavItem title="C">
+		<NavItem
+			title="C"
+			icon="--close-svg"
+		>
 		</NavItem>
 		<NavItem title="D"></NavItem>
 	</Demo>
@@ -57,6 +64,7 @@
 	* {
 		--menu-svg: url(@/assets/menu.svg);
 		--close-svg: url(@/assets/close.svg);
+		--arrow-svg: url(@/assets/arrow.svg);
 	}
 
 </style>
