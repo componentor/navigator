@@ -1,7 +1,12 @@
 <template>
-	<Row :class="{ 'vp-navigator-item--small': small }">
-		{{ small ? 'small' : 'big'}}
-		<template v-if="$slots.default">
+	<Row
+		ref="navitem"
+		:class="{ 'vp-navigator-item--small': small }"
+		@mouseenter="show=true"
+		@mouseleave="show=false"
+		@click="show=true"
+	>
+		<template v-if="$slots.default && show">
 			<div class="wrapper">
 				<slot/>
 			</div>
@@ -21,17 +26,24 @@
 		</a>
 		<div
 			:style="{
-				'background-image': $icon
+				'background-image': $icon,
+				'width': '40px'
 			}"
-			style="background-size:contain;background-repeat:no-repeat;width:100%;aspect-ratio:1/1"
+			style="flex-shrink:0;background-size:contain;background-repeat:no-repeat;aspect-ratio:1/1"
 		/>
 		
 	</Row>
 </template>
 <script>
+	import { computed } from 'vue'
 	import Row from '@vueplayio/row';
 	export default {
-		inject: ['small'],
+		inject: ['small', 'open'],
+		provide() {
+			return {
+				open: computed(() => this.show)
+			}
+		},
 		props: {
 			title: {
 				type: String,
@@ -57,9 +69,14 @@
 		components: {
 			Row: Row
 		},
-		data: () => ({}),
+		data: () => ({
+			show: false
+		}),
 		mounted() {
-			console.log('small', this.small)
+			document.addEventListener('click', this.handleClickOutside)
+		},
+		beforeUnmount() {
+			document.removeEventListener('click', this.handleClickOutside)
 		},
 		computed: {
 			$icon() {
@@ -67,6 +84,13 @@
 					return `var(${this.icon})`;
 				} else {
 					return `url(${this.icon})`;
+				}
+			}
+		},
+		methods: {
+			handleClickOutside(event) {
+				if (this.show && this.$refs.navitem && !this.$refs.navitem.$el.contains(event.target)) {
+					this.show = false
 				}
 			}
 		}
@@ -78,6 +102,6 @@
 		--vp-nav-default-icon: url(@/assets/menu.svg);
 	}
 	.vp-navigator-item--small {
-		background: blue
+		background: transparent
 	}
 </style>

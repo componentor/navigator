@@ -3,17 +3,23 @@
 		iconSize="45px"
 		direction="Row"
 	>
-		<NavItem>
+		<NavItem title="A">
 		</NavItem>
-		<NavItem>
-			<NavItem>
+		<NavItem title="B">
+			<NavItem title="BA">
 			</NavItem>
-			<NavItem></NavItem>
-			<NavItem></NavItem>
+			<NavItem title="BB">
+				<NavItem title="BBA">
+				</NavItem>
+				<NavItem title="BBC"></NavItem>
+				<NavItem title="BBD"></NavItem>
+			</NavItem>
+			<NavItem title="BC"></NavItem>
+			<NavItem title="BD"></NavItem>
 		</NavItem>
-		<NavItem>
+		<NavItem title="C">
 		</NavItem>
-		<NavItem></NavItem>
+		<NavItem title="D"></NavItem>
 	</Demo>
 </template>
 <script>

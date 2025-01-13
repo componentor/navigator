@@ -1,19 +1,20 @@
 <template>
 	<component
 		:is="direction"
-		class="vp-navigator"
 		:class="{
 			'vp-navigator--small': small
 		}"
+		class="vp-navigator"
 	>
 		<Toggle
 			v-if="small"
 			@click="open=!open"
-			icon="--menu-svg"
+			:open="open"
 			:style="{
 				width: iconSize
 			}"
 			style="flex-shrink: 0"
+			icon="--menu-svg"
 		/> <template v-if="!small || open">
 			<slot>
 				Drop Navigator Items Here
@@ -29,6 +30,7 @@
 	export default {
 		provide() {
 			return {
+				open: computed(() => this.open),
 				small: computed(() => this.small),
 			}
 		},
@@ -85,6 +87,7 @@
 		methods: {
 			handleResize() {
 				this.screenWidth = window.innerWidth;
+				this.open = false
 			}
 		}
 	};
@@ -94,5 +97,4 @@
 	* {
 		--menu-svg: url(@/assets/menu.svg);
 	}
-
 </style>
