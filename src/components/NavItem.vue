@@ -79,6 +79,14 @@
 			route: {
 				type: String
 			},
+			external: {
+				type: Boolean,
+				default: false
+			},
+			target: {
+				type: String,
+				default: ''
+			},
 			icon: {
 				type: String,
 				control: 'media',
@@ -96,14 +104,6 @@
 			expand: {
 				type: Boolean,
 				default: null
-			},
-			external: {
-				type: Boolean,
-				default: false
-			},
-			target: {
-				type: String,
-				default: ''
 			}
 		},
 		components: {

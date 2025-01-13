@@ -17,13 +17,17 @@
 			icon="--menu-svg"
 		/> <template v-if="!small || open">
 			<slot>
-				Drop Navigator Items Here
+				<div style="padding:10px">
+					Drop Navigator Items Here
+				</div>
 			</slot>
 		</template>
 	</component>
 </template>
 <script>
-	import { computed } from 'vue'
+	import {
+		computed
+	} from 'vue';
 	import Column from '@vueplayio/column';
 	import Row from '@vueplayio/row';
 	import Toggle from '@/components/Toggle.vue';
@@ -34,7 +38,7 @@
 				small: computed(() => this.small),
 				direction: computed(() => this.direction),
 				reverseIcon: computed(() => this.itemIconsReverse)
-			}
+			};
 		},
 		props: {
 			icon: {
@@ -93,7 +97,7 @@
 		methods: {
 			handleResize() {
 				this.screenWidth = window.innerWidth;
-				this.open = false
+				this.open = false;
 			}
 		}
 	};
@@ -103,8 +107,10 @@
 	* {
 		--menu-svg: url(@/assets/menu.svg);
 	}
+
 	.vp-navigator {
 		padding: 0px;
 		overflow: visible;
 	}
+
 </style>
