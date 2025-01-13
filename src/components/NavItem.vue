@@ -1,5 +1,11 @@
 <template>
-	<div>
+	<Row :class="{ 'vp-navigator-item--small': small }">
+		{{ small ? 'small' : 'big'}}
+		<template v-if="$slots.default">
+			<div class="wrapper">
+				<slot/>
+			</div>
+		</template>
 		<router-link
 			v-if="!external"
 			:to="route"
@@ -19,15 +25,13 @@
 			}"
 			style="background-size:contain;background-repeat:no-repeat;width:100%;aspect-ratio:1/1"
 		/>
-		<div>
-			<slot>
-				Slot
-			</slot>
-		</div>
-	</div>
+		
+	</Row>
 </template>
 <script>
+	import Row from '@vueplayio/row';
 	export default {
+		inject: ['small'],
 		props: {
 			title: {
 				type: String,
@@ -50,7 +54,13 @@
 				default: ''
 			}
 		},
+		components: {
+			Row: Row
+		},
 		data: () => ({}),
+		mounted() {
+			console.log('small', this.small)
+		},
 		computed: {
 			$icon() {
 				if (this.icon?.startsWith('--')) {
@@ -67,5 +77,7 @@
 	* {
 		--vp-nav-default-icon: url(@/assets/menu.svg);
 	}
-
+	.vp-navigator-item--small {
+		background: blue
+	}
 </style>

@@ -8,11 +8,13 @@
 	>
 		<Toggle
 			v-if="small"
+			@click="open=!open"
 			icon="--menu-svg"
 			:style="{
 				width: iconSize
 			}"
-		/> <template v-else-if="!small">
+			style="flex-shrink: 0"
+		/> <template v-if="!small || open">
 			<slot>
 				Drop Navigator Items Here
 			</slot>
@@ -20,10 +22,16 @@
 	</component>
 </template>
 <script>
+	import { computed } from 'vue'
 	import Column from '@vueplayio/column';
 	import Row from '@vueplayio/row';
 	import Toggle from '@/components/Toggle.vue';
 	export default {
+		provide() {
+			return {
+				small: computed(() => this.small),
+			}
+		},
 		props: {
 			icon: {
 				type: String,
@@ -60,6 +68,7 @@
 			Toggle
 		},
 		data: () => ({
+			open: false,
 			screenWidth: window.innerWidth
 		}),
 		computed: {

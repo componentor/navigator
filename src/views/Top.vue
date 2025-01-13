@@ -6,7 +6,8 @@
 		<NavItem>
 		</NavItem>
 		<NavItem>
-			<NavItem></NavItem>
+			<NavItem>
+			</NavItem>
 			<NavItem></NavItem>
 			<NavItem></NavItem>
 		</NavItem>
