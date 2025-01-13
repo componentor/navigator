@@ -1,48 +1,54 @@
 <template>
-	<Row
+	<component
+		:is="horizontal ? 'Row' : 'Column'"
+		:class="rootClass"
+		:reverse="iconReverse === '' ? reverseIcon : (iconReverse === 'true')"
+		:expand="expand"
 		ref="navitem"
-		:class="{ 'vp-navigator-item--small': small }"
+		class="vp-navigator-item"
+		style="padding: 0"
 		@mouseenter="horizontal ? show=true : ''"
 		@mouseleave="horizontal ? show=false : ''"
 		@click.stop="show=!show"
-		style="background: rgb(200, 0, 0, 0.1); border-bottom: 1px solid blue"
 	>
+		<component
+			:is="external ? 'a' : 'router-link'"
+			:to="route"
+			:href="route"
+			:target="target"
+			:style="{
+				padding: '10px'
+			}"
+			style="display:flex;justify-content: space-between; border-bottom: 1px solid blue;align-items:center"
+		>
+			<div
+				:style="{
+					'background-image': $icon,
+					'width': '20px'
+				}"
+				style="flex-shrink:0;background-size:contain;background-repeat:no-repeat;aspect-ratio:1/1"
+			/>
+			{{ title }}
+		</component>
 		<template v-if="$slots.default && show">
 			<div class="wrapper">
 				<slot/>
 			</div>
 		</template>
-		<router-link
-			v-if="!external"
-			:to="route"
-			:target="target"
-		>
-			{{ title }}
-		</router-link> <a
-			v-else-if="external"
-			:href="route"
-			:target="target"
-		>
-			{{ title }}
-		</a>
-		<div
-			:style="{
-				'background-image': $icon,
-				'width': '40px'
-			}"
-			style="flex-shrink:0;background-size:contain;background-repeat:no-repeat;aspect-ratio:1/1"
-		/>
-		
-	</Row>
+	</component>
 </template>
 <script>
 	import { computed } from 'vue'
 	import Row from '@vueplayio/row';
+	import Column from '@vueplayio/column';
 	export default {
-		inject: ['small', 'open', 'direction'],
+		inject: ['small', 'open', 'direction', 'level', 'order', 'reverseIcon'],
 		provide() {
 			return {
-				open: computed(() => this.show)
+				open: computed(() => this.show),
+				level: this.level ? this.level + 1 : 1,
+				order: this.order === 'odd' ? 'even' : 'odd',
+				reverseIcon: computed(() => this.iconReverse === '' ? this.reverseIcon : (this.iconReverse === 'true'))
 			}
 		},
 		props: {
@@ -58,6 +64,19 @@
 				control: 'media',
 				default: '--vp-nav-default-icon'
 			},
+			iconReverse: {
+				type: String,
+				default: '',
+				options: [
+					{ key: 'Default', value: '' },
+					{ key: 'Yes', value: 'true' },
+					{ key: 'No', value: 'false' },
+				]
+			},
+			expand: {
+				type: Boolean,
+				default: null
+			},
 			external: {
 				type: Boolean,
 				default: false
@@ -68,7 +87,8 @@
 			}
 		},
 		components: {
-			Row: Row
+			Row: Row,
+			Column: Column
 		},
 		data: () => ({
 			show: false
@@ -102,6 +122,16 @@
 			},
 			horizontal() {
 				return this.direction === 'Row'
+			},
+			rootClass() {
+				const rootClass = {
+					'vp-navigator-item--small': this.small,
+					'vp-navigator-item--horizontal': this.horizontal,
+				}
+				const level = this.level || 0
+				rootClass[`vp-navigator-item--level-${level}`] = true
+				rootClass[`vp-navigator-item--${this.order}`] = true
+				return rootClass
 			}
 		},
 		methods: {
@@ -118,7 +148,30 @@
 	* {
 		--vp-nav-default-icon: url(@/assets/menu.svg);
 	}
+	.vp-navigator-item {
+		position: relative;
+		background: rgb(200, 0, 0, 0.1);
+		overflow: visible
+	}
 	.vp-navigator-item--small {
-		background: transparent
+		background: transparent;
+	}
+	.vp-navigator-item--level-0 {
+		background: yellow
+	}
+	.vp-navigator-item--horizontal.vp-navigator-item--level-0 .wrapper {
+		position: absolute;
+		top: 100%;
+	}
+	.vp-navigator-item--horizontal:not(.vp-navigator-item--level-0) .wrapper {
+		position: absolute;
+		top: 0%;
+		left: 100%;
+	}
+	.vp-navigator-item--odd {
+		background: yellow
+	}
+	.vp-navigator-item--even {
+		background: yellow
 	}
 </style>

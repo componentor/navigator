@@ -33,6 +33,7 @@
 				open: computed(() => this.open),
 				small: computed(() => this.small),
 				direction: computed(() => this.direction),
+				reverseIcon: computed(() => this.itemIconsReverse)
 			}
 		},
 		props: {
@@ -46,6 +47,10 @@
 				control: 'slider',
 				unit: 'px',
 				default: '40px'
+			},
+			itemIconsReverse: {
+				type: Boolean,
+				default: false
 			},
 			direction: {
 				type: String,
@@ -97,5 +102,9 @@
 <style scoped>
 	* {
 		--menu-svg: url(@/assets/menu.svg);
+	}
+	.vp-navigator {
+		padding: 0px;
+		overflow: visible;
 	}
 </style>
