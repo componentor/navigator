@@ -1,5 +1,8 @@
 <template>
-	<div class="vp-navigator">
+	<component
+		:is="direction"
+		class="vp-nav-items"
+	>
 		<Toggle
 			icon="--menu-svg"
 			:style="{
@@ -7,15 +10,10 @@
 			}"
 			class="vp-toggle"
 		/>
-		<component
-			:is="direction"
-			class="vp-nav-items"
-		>
-			<slot>
-				Drop Navigator Items Here
-			</slot>
-		</component>
-	</div>
+		<slot>
+			Drop Navigator Items Here
+		</slot>
+	</component>
 </template>
 <script>
 	import Column from '@vueplayio/column';
