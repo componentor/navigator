@@ -4,6 +4,7 @@
 		iconSize="40px"
 		orientation="Row"
 		forceOpen="true"
+		iconsReverse="true"
 	>
 		<NavItem title="A">
 		</NavItem>
