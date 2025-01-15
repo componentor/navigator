@@ -1,6 +1,6 @@
 <template>
 	<component
-		:is="direction"
+		:is="small ? 'Column' : orientation"
 		:class="{
 			'vp-navigator--small': small
 		}"
@@ -11,10 +11,10 @@
 			@click="open=!open"
 			:open="open"
 			:style="{
-				width: iconSize
+				width: toggleSize
 			}"
 			style="flex-shrink: 0"
-			icon="--menu-svg"
+			:icon="toggle"
 		/> <template v-if="!small || open">
 			<slot>
 				<div style="padding:10px">
@@ -35,28 +35,51 @@
 		provide() {
 			return {
 				open: computed(() => this.open),
+				forceOpenProvider: computed(() => this.forceOpen),
 				small: computed(() => this.small),
+				orientation: computed(() => this.small ? 'Column' : this.orientation),
 				direction: computed(() => this.direction),
-				reverseIcon: computed(() => this.itemIconsReverse)
+				drop: computed(() => this.drop),
+				reverseIcon: computed(() => this.iconsReverse),
+				childrenIconSizeProvider: computed(() => this.childrenIconSize),
+				childrenCaretProvider: computed(() => this.childrenCaret),
+				childrenCaretSizeProvider: computed(() => this.childrenCaretSize),
 			};
 		},
 		props: {
-			icon: {
+			toggle: {
 				type: String,
 				control: 'media',
-				default: ''
+				default: '--menu-svg'
 			},
-			iconSize: {
+			toggleSize: {
 				type: String,
 				control: 'slider',
 				unit: 'px',
 				default: '40px'
 			},
-			itemIconsReverse: {
+			iconsReverse: {
 				type: Boolean,
 				default: false
 			},
-			direction: {
+			childrenIconSize: {
+				type: String,
+				default: '',
+				unit: 'px',
+				control: 'slider'
+			},
+			childrenCaret: {
+				type: String,
+				control: 'media',
+				default: ''
+			},
+			childrenCaretSize: {
+				type: String,
+				default: '',
+				unit: 'px',
+				control: 'slider'
+			},
+			orientation: {
 				type: String,
 				default: 'Row',
 				options: [{
@@ -67,11 +90,37 @@
 					value: 'Column'
 				}]
 			},
+			direction: {
+				type: String,
+				default: 'right',
+				options: [{
+					key: 'Right',
+					value: 'right'
+				}, {
+					key: 'Left',
+					value: 'left'
+				}]
+			},
+			drop: {
+				type: String,
+				default: 'down',
+				options: [{
+					key: 'Downwards',
+					value: 'down'
+				}, {
+					key: 'Upwards',
+					value: 'up'
+				}]
+			},
 			breakpoint: {
 				type: String,
 				control: 'slider',
 				unit: '',
 				default: '480'
+			},
+			forceOpen: {
+				type: Boolean,
+				default: false
 			}
 		},
 		components: {

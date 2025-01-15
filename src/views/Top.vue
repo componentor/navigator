@@ -1,7 +1,8 @@
 <template>
-	<Demo
-		iconSize="45px"
-		direction="Row"
+	<Navigator
+		direction="right"
+		iconSize="40px"
+		orientation="Column"
 	>
 		<NavItem title="A">
 		</NavItem>
@@ -45,15 +46,15 @@
 		>
 		</NavItem>
 		<NavItem title="D"></NavItem>
-	</Demo>
+	</Navigator>
 </template>
 <script>
 	import NavItem from '@/components/NavItem.vue';
-	import Demo from '@/App.vue';
+	import Navigator from '@/App.vue';
 	export default {
 		components: {
 			NavItem: NavItem,
-			Demo: Demo
+			Navigator: Navigator
 		},
 		data: () => ({})
 	};
