@@ -1,6 +1,7 @@
 <template>
 	<component
-		:is="horizontal ? 'Row' : 'Column'"
+		v-bind="$attrs"
+		:is="horizontal ? 'Row' : 'Row'"
 		:class="rootClass"
 		:expand="expand"
 		ref="navitem"
@@ -16,7 +17,7 @@
 			:href="route"
 			:target="target"
 			class="vp-navigator-item--link"
-			style="padding: 0 10px;display:flex;align-items:center"
+			style="padding: 0 10px;display:inline-flex;align-items:center"
 		>
 			<div
 				:style="{
@@ -36,7 +37,7 @@
 				'flex-direction': (iconReverse === '' ? reverseIcon : (iconReverse === 'true')) ? 'row-reverse' : 'row',
 				padding: '10px'
 			}"
-			style="white-space: nowrap;display:flex;align-items:center;flex-grow:1"
+			style="white-space: nowrap;display:inline-flex;align-items:center;flex-grow:1"
 		>
 			{{ title }}
 		</component>
@@ -44,7 +45,7 @@
 			v-if="$slots.default"
 			@click.stop="show=!show"
 			class="vp-navigator-item--link vp-navigator-item--arrow"
-			style="padding: 0 10px;display:flex;align-items:center"
+			style="padding: 0 10px;display:inline-flex;align-items:center"
 		>
 			<div
 				:style="{
@@ -54,12 +55,17 @@
 				style="background-repeat:no-repeat;background-size:contain;background-position:center;aspect-ratio:1/1"
 			/>
 		</div>
-		<template v-if="$slots.default && (show || forceOpen || forceOpenProvider)">
+		<template v-if="horizontal && $slots.default && (show || forceOpen || forceOpenProvider)">
 			<div class="wrapper">
 				<slot/>
 			</div>
 		</template>
 	</component>
+	<template v-if="!horizontal && $slots.default && (show || forceOpen || forceOpenProvider)">
+		<div class="wrapper">
+			<slot/>
+		</div>
+	</template>
 </template>
 <script>
 	import { computed } from 'vue'
@@ -256,7 +262,8 @@
 		padding: 0;
 		cursor: pointer;
 		border-bottom: 1px solid black;
-		align-items: stretch;
+		align-items:stretch;
+		flex-wrap: nowrap;
 	}
 	.vp-navigator-item:hover {
 		background-color: rgb(0, 0, 0, 0.1)
