@@ -1,60 +1,69 @@
 <template>
-	<Navigator
-		direction="right"
-		iconSize="40px"
-		orientation="Row"
-		forceOpen="true"
-		iconsReverse="true"
-	>
-		<NavItem title="A">
-		</NavItem>
-		<NavItem
-			title="B"
-			icon="--menu-svg"
+	<Row style="z-index:2;overflow:visible">
+		<Navigator
+			direction="right"
+			iconSize="40px"
+			orientation="Row"
+			iconsReverse="true"
+			style="z-index:2"
+			drop="up"
 		>
-			<NavItem title="BA">
-			</NavItem>
-			<NavItem title="BB">
-				<NavItem
-					title="BBA"
-					icon="--close-svg"
-					iconReverse="true"
-				>
-				</NavItem>
-				<NavItem
-					title="BBC"
-					icon="--menu-svg"
-				></NavItem>
-				<NavItem
-					title="BB"
-					icon="--menu-svg"
-				>
-					<NavItem title="BBA">
-					</NavItem>
-					<NavItem title="BBC"></NavItem>
-					<NavItem title="BBD"></NavItem>
-				</NavItem>
-				<NavItem title="BBD"></NavItem>
+			<NavItem title="A">
 			</NavItem>
 			<NavItem
-				title="BC"
+				title="B"
 				icon="--menu-svg"
-			></NavItem>
-			<NavItem title="BD"></NavItem>
-		</NavItem>
-		<NavItem
-			title="C"
-			icon="--close-svg"
-		>
-		</NavItem>
-		<NavItem title="D"></NavItem>
-	</Navigator>
+			>
+				<NavItem title="BA">
+				</NavItem>
+				<NavItem title="BB">
+					<NavItem
+						title="BBA"
+						icon="--close-svg"
+						iconReverse="true"
+					>
+					</NavItem>
+					<NavItem
+						title="BBC"
+						icon="--menu-svg"
+					></NavItem>
+					<NavItem
+						title="BB"
+						icon="--menu-svg"
+					>
+						<NavItem title="BBA">
+						</NavItem>
+						<NavItem title="BBC"></NavItem>
+						<NavItem title="BBD"></NavItem>
+					</NavItem>
+					<NavItem title="BBD"></NavItem>
+				</NavItem>
+				<NavItem
+					title="BC"
+					icon="--menu-svg"
+				></NavItem>
+				<NavItem title="BD"></NavItem>
+			</NavItem>
+			<NavItem
+				title="C"
+				icon="--close-svg"
+			>
+			</NavItem>
+			<NavItem title="D"></NavItem>
+		</Navigator>
+	</Row>
+	<Row
+		style="overflow:visible"
+		expand="true"
+	></Row>
 </template>
 <script>
+	import Row from '@vueplayio/row';
 	import NavItem from '@/components/NavItem.vue';
 	import Navigator from '@/App.vue';
 	export default {
 		components: {
+			Row: Row,
 			NavItem: NavItem,
 			Navigator: Navigator
 		},
