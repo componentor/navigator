@@ -3,6 +3,7 @@
 		direction="right"
 		iconSize="40px"
 		orientation="Row"
+		forceOpen="true"
 	>
 		<NavItem title="A">
 		</NavItem>

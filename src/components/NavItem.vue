@@ -3,6 +3,9 @@
 		v-bind="$attrs"
 		:class="rootClass"
 		:expand="expand"
+		:style="{
+			'flex-direction': (iconReverse === '' ? reverseIcon : (iconReverse === 'true')) ? 'row-reverse' : 'row',
+		}"
 		ref="navitem"
 		class="vp-navigator-item"
 		@click.stop="($event.pointerType !== 'mouse' || $vertical) && $slots.default && !route ? show=!show : ''"
@@ -33,7 +36,6 @@
 			:href="route"
 			:target="target"
 			:style="{
-				'flex-direction': (iconReverse === '' ? reverseIcon : (iconReverse === 'true')) ? 'row-reverse' : 'row',
 				padding: '10px'
 			}"
 			style="white-space: nowrap;display:inline-flex;align-items:center;flex-grow:1"
