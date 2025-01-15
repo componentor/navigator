@@ -1,11 +1,17 @@
 <template>
+	<Row
+		style="overflow:visible"
+		expand="true"
+	>
+		test
+	</Row>
 	<Row style="z-index:2;overflow:visible">
 		<Navigator
 			direction="right"
 			iconSize="40px"
 			orientation="Row"
 			iconsReverse="true"
-			style="z-index:2"
+			style="z-index:2;flex-grow:1"
 			drop="up"
 		>
 			<NavItem title="A">
@@ -52,10 +58,6 @@
 			<NavItem title="D"></NavItem>
 		</Navigator>
 	</Row>
-	<Row
-		style="overflow:visible"
-		expand="true"
-	></Row>
 </template>
 <script>
 	import Row from '@vueplayio/row';

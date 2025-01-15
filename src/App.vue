@@ -8,7 +8,7 @@
 		class="vp-navigator"
 	>
 		<Toggle
-			v-if="small"
+			v-if="small && drop === 'down'"
 			@click="open=!open"
 			:open="open"
 			:style="{
@@ -16,13 +16,23 @@
 			}"
 			style="flex-shrink: 0"
 			:icon="toggle"
-		/> <template v-if="!small || open">
+		/> <template v-if="!small || open || forceOpen">
 			<slot>
 				<div style="padding:10px">
 					Drop Navigator Items Here
 				</div>
 			</slot>
 		</template>
+		<Toggle
+			v-if="small && drop === 'up'"
+			@click="open=!open"
+			:open="open"
+			:style="{
+				width: toggleSize
+			}"
+			style="flex-shrink: 0"
+			:icon="toggle"
+		/>
 	</component>
 </template>
 <script>
