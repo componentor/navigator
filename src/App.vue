@@ -1,5 +1,6 @@
 <template>
 	<component
+		ref="nav"
 		:is="small ? 'Column' : orientation"
 		:class="{
 			'vp-navigator--small': small
@@ -140,13 +141,23 @@
 		created() {
 			window.addEventListener('resize', this.handleResize);
 		},
+		mounted() {
+			document.addEventListener('pointerdown', this.handleClickOutside)
+		},
 		beforeUnmount() {
 			window.removeEventListener('resize', this.handleResize);
+			document.removeEventListener('click', this.handleClickOutside)
 		},
 		methods: {
 			handleResize() {
 				this.screenWidth = window.innerWidth;
 				this.open = false;
+			},
+			handleClickOutside(event) {
+				if (this.open && this.$refs.nav && !this.$refs.nav.$el.contains(event.target)) {
+					console.log('well')
+					this.open = false
+				}
 			}
 		}
 	};

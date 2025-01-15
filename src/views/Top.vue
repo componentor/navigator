@@ -2,7 +2,7 @@
 	<Navigator
 		direction="right"
 		iconSize="40px"
-		orientation="Column"
+		orientation="Row"
 	>
 		<NavItem title="A">
 		</NavItem>

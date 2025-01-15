@@ -1,14 +1,13 @@
 <template>
-	<component
+	<Row
 		v-bind="$attrs"
-		:is="horizontal ? 'Row' : 'Row'"
 		:class="rootClass"
 		:expand="expand"
 		ref="navitem"
 		class="vp-navigator-item"
-		@mouseenter="horizontal ? show=true : ''"
-		@mouseleave="horizontal ? show=false : ''"
-		@click.stop="$slots.default && !route ? show=!show : ''"
+		@click.stop="($event.pointerType !== 'mouse' || $vertical) && $slots.default && !route ? show=!show : ''"
+		@pointerover="$event.pointerType !== 'mouse' || $vertical ? '' : show=true"
+		@pointerleave="$event.pointerType !== 'mouse' || $vertical ? '' : show=false"
 	>
 		<component
 			v-if="icon"
@@ -55,13 +54,13 @@
 				style="background-repeat:no-repeat;background-size:contain;background-position:center;aspect-ratio:1/1"
 			/>
 		</div>
-		<template v-if="horizontal && $slots.default && (show || forceOpen || forceOpenProvider)">
+		<template v-if="!$vertical && $slots.default && (show || forceOpen || forceOpenProvider)">
 			<div class="wrapper">
 				<slot/>
 			</div>
 		</template>
-	</component>
-	<template v-if="!horizontal && $slots.default && (show || forceOpen || forceOpenProvider)">
+	</Row>
+	<template v-if="$vertical && $slots.default && (show || forceOpen || forceOpenProvider)">
 		<div class="wrapper">
 			<slot/>
 		</div>
@@ -70,7 +69,6 @@
 <script>
 	import { computed } from 'vue'
 	import Row from '@vueplayio/row';
-	import Column from '@vueplayio/column';
 	export default {
 		inject: [
 			'small',
@@ -170,32 +168,21 @@
 			}
 		},
 		components: {
-			Row: Row,
-			Column: Column
+			Row: Row
 		},
 		data: () => ({
 			show: false
 		}),
 		mounted() {
-			if (this.horizontal) {
-				document.addEventListener('click', this.handleClickOutside)
-			}
+			document.addEventListener('click', this.handleClickOutside)
 		},
 		beforeUnmount() {
-			if (this.horizontal) {
-				document.removeEventListener('click', this.handleClickOutside)
-			}
-		},
-		watch: {
-			horizontal(horizontal) {
-				if (horizontal) {
-					document.addEventListener('click', this.handleClickOutside)
-				} else {
-					document.removeEventListener('click', this.handleClickOutside)
-				}
-			}
+			document.removeEventListener('click', this.handleClickOutside)
 		},
 		computed: {
+			$vertical() {
+				return !this.horizontal || this.small
+			},
 			$iconSize() {
 				if (this.iconSize) return this.iconSize
 				if (this.childrenIconSizeProvider) return this.childrenIconSizeProvider
@@ -227,8 +214,8 @@
 			rootClass() {
 				const rootClass = {
 					'vp-navigator-item--small': this.small,
-					'vp-navigator-item--horizontal': this.horizontal,
-					'vp-navigator-item--vertical': !this.horizontal,
+					'vp-navigator-item--horizontal': !this.$vertical,
+					'vp-navigator-item--vertical': this.$vertical,
 					'vp-navigator-item--show': this.show,
 					'vp-navigator-item--hide': !this.show,
 					'vp-navigator-item--direction-left': this.direction === 'left',
@@ -263,7 +250,6 @@
 		cursor: pointer;
 		border-bottom: 1px solid black;
 		align-items:stretch;
-		flex-wrap: nowrap;
 	}
 	.vp-navigator-item:hover {
 		background-color: rgb(0, 0, 0, 0.1)
