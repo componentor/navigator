@@ -1,4 +1,9 @@
 <template>
+	<template v-if="drop === 'up' && $vertical && $slots.default && (show || forceOpen || forceOpenProvider)">
+		<div class="wrapper vp-navigator-item--up">
+			<slot/>
+		</div>
+	</template>
 	<Row
 		v-bind="$attrs"
 		:class="rootClass"
@@ -62,7 +67,7 @@
 			</div>
 		</template>
 	</Row>
-	<template v-if="$vertical && $slots.default && (show || forceOpen || forceOpenProvider)">
+	<template v-if="drop !== 'up' && $vertical && $slots.default && (show || forceOpen || forceOpenProvider)">
 		<div class="wrapper">
 			<slot/>
 		</div>
@@ -307,6 +312,10 @@
 		min-width: 100%;
 		top: auto;
 		bottom: 100%;
+	}
+	.vp-navigator-item--up.wrapper {
+		display: flex;
+		flex-direction: column-reverse;
 	}
 	.vp-navigator-item--horizontal:not(.vp-navigator-item--level-0) .wrapper {
 		position: absolute;

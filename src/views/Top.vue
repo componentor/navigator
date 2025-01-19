@@ -11,7 +11,7 @@
 			iconSize="40px"
 			orientation="Column"
 			style="z-index:2;flex-grow:1"
-			drop="down"
+			drop="up"
 		>
 			<NavItem title="A">
 			</NavItem>
