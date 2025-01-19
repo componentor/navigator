@@ -7,12 +7,11 @@
 	</Row>
 	<Row style="z-index:2;overflow:visible">
 		<Navigator
-			direction="right"
+			direction="left"
 			iconSize="40px"
-			orientation="Row"
-			iconsReverse="true"
+			orientation="Column"
 			style="z-index:2;flex-grow:1"
-			drop="up"
+			drop="down"
 		>
 			<NavItem title="A">
 			</NavItem>
