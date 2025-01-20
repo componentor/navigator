@@ -9,10 +9,10 @@
 		<Navigator
 			direction="right"
 			iconSize="40px"
-			orientation="Row"
+			orientation="Column"
 			style="z-index:2;flex-grow:1"
 			drop="up"
-			iconsReverse="true"
+			forceOpen="true"
 		>
 			<NavItem title="A">
 			</NavItem>
