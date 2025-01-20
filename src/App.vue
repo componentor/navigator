@@ -129,6 +129,206 @@
 			forceOpen: {
 				type: Boolean,
 				default: false
+			},
+			backgroundColor: {
+				type: String,
+				default: '',
+				control: 'color',
+				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				themes: ['dark', 'light'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
+			},
+			textColor: {
+				type: String,
+				default: '',
+				control: 'color',
+				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				themes: ['dark', 'light'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
+			},
+			borderTopColor: {
+				type: String,
+				default: '',
+				control: 'color',
+				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				themes: ['dark', 'light'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
+			},
+			borderRightColor: {
+				type: String,
+				default: '',
+				control: 'color',
+				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				themes: ['dark', 'light'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
+			},
+			borderBottomColor: {
+				type: String,
+				default: '',
+				control: 'color',
+				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				themes: ['dark', 'light'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
+			},
+			borderLeftColor: {
+				type: String,
+				default: '',
+				control: 'color',
+				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				themes: ['dark', 'light'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
+			},
+			borderTopWidth: {
+				type: String,
+				default: '',
+				control: 'slider',
+				unit: 'px',
+				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				themes: ['dark', 'light'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
+			},
+			borderRightWidth: {
+				type: String,
+				default: '',
+				control: 'slider',
+				unit: 'px',
+				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				themes: ['dark', 'light'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
+			},
+			borderBottomWidth: {
+				type: String,
+				default: '',
+				control: 'slider',
+				unit: 'px',
+				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				themes: ['dark', 'light'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
+			},
+			borderLeftWidth: {
+				type: String,
+				default: '',
+				control: 'slider',
+				unit: 'px',
+				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				themes: ['dark', 'light'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
+			},
+			borderTopStyle: {
+				type: String,
+				default: '',
+				options: [
+					{ value: '', key: 'Clear' },
+					{ value: 'none', key: 'none' },
+					{ value: 'hidden', key: 'hidden' },
+					{ value: 'solid', key: 'solid' },
+					{ value: 'dashed', key: 'dashed' },
+					{ value: 'dotted', key: 'dotted' },
+					{ value: 'double', key: 'double' },
+					{ value: 'groove', key: 'groove' },
+					{ value: 'ridge', key: 'ridge' },
+					{ value: 'inset', key: 'inset' },
+					{ value: 'outset', key: 'outset' }
+				],
+				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				themes: ['dark', 'light'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
+			},
+			borderRightStyle: {
+				type: String,
+				default: '',
+				options: [
+					{ value: '', key: 'Clear' },
+					{ value: 'none', key: 'none' },
+					{ value: 'hidden', key: 'hidden' },
+					{ value: 'solid', key: 'solid' },
+					{ value: 'dashed', key: 'dashed' },
+					{ value: 'dotted', key: 'dotted' },
+					{ value: 'double', key: 'double' },
+					{ value: 'groove', key: 'groove' },
+					{ value: 'ridge', key: 'ridge' },
+					{ value: 'inset', key: 'inset' },
+					{ value: 'outset', key: 'outset' }
+				],
+				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				themes: ['dark', 'light'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
+			},
+			borderBottomStyle: {
+				type: String,
+				default: '',
+				options: [
+					{ value: '', key: 'Clear' },
+					{ value: 'none', key: 'none' },
+					{ value: 'hidden', key: 'hidden' },
+					{ value: 'solid', key: 'solid' },
+					{ value: 'dashed', key: 'dashed' },
+					{ value: 'dotted', key: 'dotted' },
+					{ value: 'double', key: 'double' },
+					{ value: 'groove', key: 'groove' },
+					{ value: 'ridge', key: 'ridge' },
+					{ value: 'inset', key: 'inset' },
+					{ value: 'outset', key: 'outset' }
+				],
+				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				themes: ['dark', 'light'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
+			},
+			borderLeftStyle: {
+				type: String,
+				default: '',
+				options: [
+					{ value: '', key: 'Clear' },
+					{ value: 'none', key: 'none' },
+					{ value: 'hidden', key: 'hidden' },
+					{ value: 'solid', key: 'solid' },
+					{ value: 'dashed', key: 'dashed' },
+					{ value: 'dotted', key: 'dotted' },
+					{ value: 'double', key: 'double' },
+					{ value: 'groove', key: 'groove' },
+					{ value: 'ridge', key: 'ridge' },
+					{ value: 'inset', key: 'inset' },
+					{ value: 'outset', key: 'outset' }
+				],
+				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				themes: ['dark', 'light'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
+			},
+			borderTopRadius: {
+				type: String,
+				default: '',
+				control: 'slider',
+				unit: 'px',
+				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				themes: ['dark', 'light'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
+			},
+			borderRightRadius: {
+				type: String,
+				default: '',
+				control: 'slider',
+				unit: 'px',
+				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				themes: ['dark', 'light'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
+			},
+			borderBottomRadius: {
+				type: String,
+				default: '',
+				control: 'slider',
+				unit: 'px',
+				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				themes: ['dark', 'light'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
+			},
+			borderLeftRadius: {
+				type: String,
+				default: '',
+				control: 'slider',
+				unit: 'px',
+				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				themes: ['dark', 'light'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
 			}
 		},
 		components: {
