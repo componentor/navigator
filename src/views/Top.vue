@@ -36,7 +36,6 @@
 					<NavItem
 						title="BB"
 						icon="--menu-svg"
-						itemDirection="left"
 					>
 						<NavItem title="BBA">
 						</NavItem>

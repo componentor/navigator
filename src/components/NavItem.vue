@@ -45,7 +45,7 @@
 			}"
 			style="white-space: nowrap;display:inline-flex;align-items:center;flex-grow:1"
 		>
-			{{ title }}{{direction}}{{itemDirection}}
+			{{ title }}
 		</component>
 		<div
 			v-if="$slots.default"
@@ -317,16 +317,16 @@
 		transform: rotate(0deg);
 	}
 
-	.vp-navigator-item--direction-left.vp-navigator-item--horizontal:not(.vp-navigator-item--level-0) .vp-navigator-item--arrow,
-	.vp-navigator-item--direction-left.vp-navigator-item--reverse.vp-navigator-item--horizontal.vp-navigator-item--level-1 .vp-navigator-item--arrow,
-	.vp-navigator-item--direction-left.vp-navigator-item--drop-up.vp-navigator-item--reverse.vp-navigator-item--horizontal.vp-navigator-item--level-1 .vp-navigator-item--arrow {
-		transform: rotate(-180deg);
-	}
-
-	.vp-navigator-item--direction-right.vp-navigator-item--horizontal:not(.vp-navigator-item--level-0) .vp-navigator-item--arrow,
+	.vp-navigator-item--direction-right.vp-navigator-item--horizontal:not(.vp-navigator-item--level-0) > .vp-navigator-item--arrow,
 	.vp-navigator-item--direction-right.vp-navigator-item--reverse.vp-navigator-item--horizontal.vp-navigator-item--level-1 .vp-navigator-item--arrow,
 	.vp-navigator-item--direction-right.vp-navigator-item--drop-up.vp-navigator-item--reverse.vp-navigator-item--horizontal.vp-navigator-item--level-1 .vp-navigator-item--arrow {
 		transform: rotate(0deg);
+	}
+
+	.vp-navigator-item--direction-left.vp-navigator-item--horizontal:not(.vp-navigator-item--level-0) > .vp-navigator-item--arrow,
+	.vp-navigator-item--direction-left.vp-navigator-item--reverse.vp-navigator-item--horizontal.vp-navigator-item--level-1 .vp-navigator-item--arrow,
+	.vp-navigator-item--direction-left.vp-navigator-item--drop-up.vp-navigator-item--reverse.vp-navigator-item--horizontal.vp-navigator-item--level-1 .vp-navigator-item--arrow {
+		transform: rotate(-180deg);
 	}
 
 	.vp-navigator-item--horizontal.vp-navigator-item--level-0 .wrapper {
@@ -359,14 +359,14 @@
 		left: 100%;
 	}
 
-	.vp-navigator-item--direction-left.vp-navigator-item--horizontal:not(.vp-navigator-item--level-0) .wrapper {
-		left: auto;
-		right: 100%;
-	}
-
-	.vp-navigator-item--direction-right.vp-navigator-item--horizontal:not(.vp-navigator-item--level-0) .wrapper {
+	.vp-navigator-item--direction-right.vp-navigator-item--horizontal:not(.vp-navigator-item--level-0) > .wrapper {
 		left: 100%;
 		right: auto;
+	}
+
+	.vp-navigator-item--direction-left.vp-navigator-item--horizontal:not(.vp-navigator-item--level-0) > .wrapper {
+		left: auto;
+		right: 100%;
 	}
 
 	.vp-navigator-item--odd {
