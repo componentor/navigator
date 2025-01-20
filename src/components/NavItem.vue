@@ -1,7 +1,7 @@
 <template>
 	<template v-if="drop === 'up' && order !== 'odd' && $vertical && $slots.default && (show || forceOpen || forceOpenProvider)">
 		<div class="wrapper vp-navigator-item--up">
-			<slot/>
+			<slot />
 		</div>
 	</template>
 	<Row
@@ -60,49 +60,36 @@
 				}"
 				style="background-repeat:no-repeat;background-size:contain;background-position:center;aspect-ratio:1/1"
 			/>
-		</div>
-		<template v-if="!$vertical && $slots.default && (show || forceOpen || forceOpenProvider)">
+		</div> <template v-if="!$vertical && $slots.default && (show || forceOpen || forceOpenProvider)">
 			<div class="wrapper">
-				<slot/>
+				<slot />
 			</div>
 		</template>
-	</Row>
-	<template v-if="(drop !== 'up' || order === 'odd') && $vertical && $slots.default && (show || forceOpen || forceOpenProvider)">
+	</Row> <template v-if="(drop !== 'up' || order === 'odd') && $vertical && $slots.default && (show || forceOpen || forceOpenProvider)">
 		<div class="wrapper">
-			<slot/>
+			<slot />
 		</div>
 	</template>
 </template>
 <script>
-	import { computed } from 'vue'
+	import {
+		computed
+	} from 'vue';
 	import Row from '@vueplayio/row';
 	export default {
-		inject: [
-			'small',
-			'open',
-			'forceOpenProvider',
-			'direction',
-			'orientation',
-			'drop',
-			'level',
-			'order',
-			'reverseIcon',
-			'expand',
-			'childrenIconSizeProvider',
-			'childrenCaretProvider',
-			'childrenCaretSizeProvider'
-		],
+		inject: ['small', 'open', 'forceOpenProvider', 'direction', 'orientation', 'drop', 'level', 'order', 'reverseIcon', 'expand', 'childrenIconSizeProvider', 'childrenCaretProvider', 'childrenCaretSizeProvider'],
 		provide() {
 			return {
 				open: computed(() => this.show),
 				forceOpenProvider: computed(() => this.forceOpen || this.forceOpenProvider),
 				level: computed(() => this.level ? this.level + 1 : 1),
 				order: computed(() => this.order === 'odd' ? 'even' : 'odd'),
-				reverseIcon: computed(() => this.iconReverse === '' ? this.reverseIcon : (this.iconReverse === 'true')),
+				reverseIcon: computed(() => this.iconReverse === '' ? this.reverseIcon : this.iconReverse === 'true'),
 				childrenIconSizeProvider: computed(() => this.childrenIconSize || this.childrenIconSizeProvider),
 				childrenCaretProvider: computed(() => this.childrenCaret || this.childrenCaretProvider),
 				childrenCaretSizeProvider: computed(() => this.childrenCaretSize || this.childrenCaretSizeProvider),
-			}
+				direction: computed(() => this.itemDirection || this.direction)
+			};
 		},
 		props: {
 			title: {
@@ -159,11 +146,30 @@
 			iconReverse: {
 				type: String,
 				default: '',
-				options: [
-					{ key: 'Default', value: '' },
-					{ key: 'Yes', value: 'true' },
-					{ key: 'No', value: 'false' },
-				]
+				options: [{
+					key: 'Default',
+					value: ''
+				}, {
+					key: 'Yes',
+					value: 'true'
+				}, {
+					key: 'No',
+					value: 'false'
+				}]
+			},
+			itemDirection: {
+				type: String,
+				default: '',
+				options: [{
+					key: 'Default',
+					value: ''
+				}, {
+					key: 'Left',
+					value: 'left'
+				}, {
+					key: 'Right',
+					value: 'right'
+				}]
 			},
 			expand: {
 				type: Boolean,
@@ -181,19 +187,19 @@
 			show: false
 		}),
 		mounted() {
-			document.addEventListener('click', this.handleClickOutside)
+			document.addEventListener('click', this.handleClickOutside);
 		},
 		beforeUnmount() {
-			document.removeEventListener('click', this.handleClickOutside)
+			document.removeEventListener('click', this.handleClickOutside);
 		},
 		computed: {
 			$vertical() {
-				return !this.horizontal || this.small
+				return !this.horizontal || this.small;
 			},
 			$iconSize() {
-				if (this.iconSize) return this.iconSize
-				if (this.childrenIconSizeProvider) return this.childrenIconSizeProvider
-				return '20px'
+				if (this.iconSize) return this.iconSize;
+				if (this.childrenIconSizeProvider) return this.childrenIconSizeProvider;
+				return '20px';
 			},
 			$icon() {
 				if (this.icon?.startsWith('--')) {
@@ -203,7 +209,7 @@
 				}
 			},
 			$caret() {
-				const caret = this.caret || this.childrenCaretProvider || '--vp-nav-caret-icon'
+				const caret = this.caret || this.childrenCaretProvider || '--vp-nav-caret-icon';
 				if (caret?.startsWith('--')) {
 					return `var(${caret})`;
 				} else {
@@ -211,12 +217,12 @@
 				}
 			},
 			$caretSize() {
-				if (this.caretSize) return this.caretSize
-				if (this.childrenCaretSizeProvider) return this.childrenCaretSizeProvider
-				return '20px'
+				if (this.caretSize) return this.caretSize;
+				if (this.childrenCaretSizeProvider) return this.childrenCaretSizeProvider;
+				return '20px';
 			},
 			horizontal() {
-				return this.orientation === 'Row'
+				return this.orientation === 'Row';
 			},
 			rootClass() {
 				const rootClass = {
@@ -225,20 +231,21 @@
 					'vp-navigator-item--vertical': this.$vertical,
 					'vp-navigator-item--show': this.show || this.forceOpen || this.forceOpenProvider,
 					'vp-navigator-item--hide': !this.show && !this.forceOpen && !this.forceOpenProvider,
-					'vp-navigator-item--direction-left': this.direction === 'left',
+					'vp-navigator-item--direction-left': this.itemDirection ? this.itemDirection === 'left' : this.direction === 'left',
+					'vp-navigator-item--direction-right': this.itemDirection ? this.itemDirection === 'right' : this.direction === 'right',
 					'vp-navigator-item--drop-up': this.drop === 'up',
-					'vp-navigator-item--reverse': (this.iconReverse === '' ? this.reverseIcon : (this.iconReverse === 'true'))
-				}
-				const level = this.level || 0
-				rootClass[`vp-navigator-item--level-${level}`] = true
-				rootClass[`vp-navigator-item--${this.order}`] = true
-				return rootClass
+					'vp-navigator-item--reverse': this.iconReverse === '' ? this.reverseIcon : this.iconReverse === 'true'
+				};
+				const level = this.level || 0;
+				rootClass[`vp-navigator-item--level-${level}`] = true;
+				rootClass[`vp-navigator-item--${this.order}`] = true;
+				return rootClass;
 			}
 		},
 		methods: {
 			handleClickOutside(event) {
 				if (this.show && this.$refs.navitem && !this.$refs.navitem.$el.contains(event.target)) {
-					this.show = false
+					this.show = false;
 				}
 			}
 		}
@@ -249,6 +256,7 @@
 	* {
 		--vp-nav-caret-icon: url(@/assets/arrow.svg);
 	}
+
 	.vp-navigator-item {
 		position: relative;
 		background: 'inherit';
@@ -256,92 +264,121 @@
 		padding: 0;
 		cursor: pointer;
 		border-bottom: 1px solid black;
-		align-items:stretch;
+		align-items: stretch;
 	}
+
 	.vp-navigator-item:hover {
-		background-color: rgb(0, 0, 0, 0.1)
+		background-color: rgb(0, 0, 0, 0.1);
 	}
+
 	.vp-navigator-item--small {
 		background: transparent;
 	}
+
 	.vp-navigator-item--drop-up {
 		background: transparent;
 	}
+
 	.vp-navigator-item--vertical.vp-navigator-item--show .vp-navigator-item--arrow {
 		transform: rotate(90deg);
 	}
+
 	.vp-navigator-item--drop-up.vp-navigator-item--vertical.vp-navigator-item--show .vp-navigator-item--arrow {
 		transform: rotate(-90deg);
 	}
+
 	.vp-navigator-item--vertical.vp-navigator-item--hide .vp-navigator-item--arrow,
 	.vp-navigator-item--drop-up.vp-navigator-item--vertical.vp-navigator-item--hide .vp-navigator-item--arrow {
 		transform: rotate(0deg);
 	}
+
 	.vp-navigator-item--reverse.vp-navigator-item--vertical.vp-navigator-item--hide .vp-navigator-item--arrow,
 	.vp-navigator-item--drop-up.vp-navigator-item--reverse.vp-navigator-item--vertical.vp-navigator-item--hide .vp-navigator-item--arrow {
 		transform: rotate(-180deg);
 	}
+
 	.vp-navigator-item--horizontal.vp-navigator-item--level-0 .vp-navigator-item--arrow,
 	.vp-navigator-item--reverse.vp-navigator-item--horizontal.vp-navigator-item--level-0 .vp-navigator-item--arrow {
 		transform: rotate(90deg);
 	}
+
 	.vp-navigator-item--drop-up.vp-navigator-item--horizontal.vp-navigator-item--level-0 .vp-navigator-item--arrow,
 	.vp-navigator-item--drop-up.vp-navigator-item--reverse.vp-navigator-item--horizontal.vp-navigator-item--level-0 .vp-navigator-item--arrow {
 		transform: rotate(-90deg);
 	}
+
 	.vp-navigator-item--horizontal.vp-navigator-item--level-1 .vp-navigator-item--arrow,
 	.vp-navigator-item--drop-up.vp-navigator-item--horizontal.vp-navigator-item--level-1 .vp-navigator-item--arrow {
 		transform: rotate(0deg);
 	}
+
 	.vp-navigator-item--reverse.vp-navigator-item--horizontal.vp-navigator-item--level-1 .vp-navigator-item--arrow,
 	.vp-navigator-item--drop-up.vp-navigator-item--reverse.vp-navigator-item--horizontal.vp-navigator-item--level-1 .vp-navigator-item--arrow {
 		transform: rotate(0deg);
 	}
+
 	.vp-navigator-item--direction-left.vp-navigator-item--horizontal.vp-navigator-item--level-1 .vp-navigator-item--arrow,
 	.vp-navigator-item--direction-left.vp-navigator-item--reverse.vp-navigator-item--horizontal.vp-navigator-item--level-1 .vp-navigator-item--arrow,
 	.vp-navigator-item--direction-left.vp-navigator-item--drop-up.vp-navigator-item--reverse.vp-navigator-item--horizontal.vp-navigator-item--level-1 .vp-navigator-item--arrow {
 		transform: rotate(-180deg);
 	}
+
+	.vp-navigator-item--direction-right.vp-navigator-item--horizontal.vp-navigator-item--level-1 .vp-navigator-item--arrow,
+	.vp-navigator-item--direction-right.vp-navigator-item--reverse.vp-navigator-item--horizontal.vp-navigator-item--level-1 .vp-navigator-item--arrow,
+	.vp-navigator-item--direction-right.vp-navigator-item--drop-up.vp-navigator-item--reverse.vp-navigator-item--horizontal.vp-navigator-item--level-1 .vp-navigator-item--arrow {
+		transform: rotate(0deg);
+	}
+
 	.vp-navigator-item--horizontal.vp-navigator-item--level-0 .wrapper {
 		position: absolute;
 		min-width: 100%;
 		top: 100%;
 	}
+
 	.vp-navigator-item--drop-up.vp-navigator-item--horizontal.vp-navigator-item--level-0 .wrapper {
 		position: absolute;
 		min-width: 100%;
 		top: auto;
 		bottom: 100%;
 	}
+
 	.vp-navigator-item--up.wrapper {
 		display: flex;
 		flex-direction: column-reverse;
 	}
+
 	.vp-navigator-item--horizontal:not(.vp-navigator-item--level-0) .wrapper {
 		position: absolute;
 		top: 0%;
 		left: 100%;
 	}
+
 	.vp-navigator-item--drop-up.vp-navigator-item--horizontal:not(.vp-navigator-item--level-0) .wrapper {
 		position: absolute;
 		bottom: 0%;
 		left: 100%;
 	}
+
 	.vp-navigator-item--direction-left.vp-navigator-item--horizontal:not(.vp-navigator-item--level-0) .wrapper {
 		left: auto;
 		right: 100%;
 	}
-	.vp-navigator-item:not(.vp-navigator-item--level-0) {
+
+	.vp-navigator-item--direction-right.vp-navigator-item--horizontal:not(.vp-navigator-item--level-0) .wrapper {
+		left: 100%;
+		right: auto;
 	}
+
 	.vp-navigator-item--odd {
-		background: 'inherit'
+		background: 'inherit';
 	}
+
 	.vp-navigator-item--even {
-		background: 'inherit'
+		background: 'inherit';
 	}
+
 	.vp-navigator-item--link {
-		background: 'inherit'
+		background: 'inherit';
 	}
-	.vp-navigator-item--reverse {
-	}
+
 </style>
