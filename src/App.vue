@@ -136,7 +136,7 @@
 				default: '',
 				control: 'color',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
-				themes: ['dark', 'light'],
+				themes: ['light', 'dark'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			backgroundColor: {
@@ -144,7 +144,7 @@
 				default: '',
 				control: 'color',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
-				themes: ['dark', 'light'],
+				themes: ['light', 'dark'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			backgroundImage: {
@@ -152,7 +152,7 @@
 				default: '',
 				control: 'media',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
-				themes: ['dark', 'light'],
+				themes: ['light', 'dark'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			borderColor: {
@@ -160,7 +160,7 @@
 				default: '',
 				control: 'color',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
-				themes: ['dark', 'light'],
+				themes: ['light', 'dark'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			borderTopColor: {
@@ -168,7 +168,7 @@
 				default: '',
 				control: 'color',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
-				themes: ['dark', 'light'],
+				themes: ['light', 'dark'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			borderRightColor: {
@@ -176,7 +176,7 @@
 				default: '',
 				control: 'color',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
-				themes: ['dark', 'light'],
+				themes: ['light', 'dark'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			borderBottomColor: {
@@ -184,7 +184,7 @@
 				default: '',
 				control: 'color',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
-				themes: ['dark', 'light'],
+				themes: ['light', 'dark'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			borderLeftColor: {
@@ -192,7 +192,7 @@
 				default: '',
 				control: 'color',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
-				themes: ['dark', 'light'],
+				themes: ['light', 'dark'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			borderWidth: {
@@ -201,7 +201,7 @@
 				control: 'slider',
 				unit: 'px',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
-				themes: ['dark', 'light'],
+				themes: ['light', 'dark'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			borderTopWidth: {
@@ -210,7 +210,7 @@
 				control: 'slider',
 				unit: 'px',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
-				themes: ['dark', 'light'],
+				themes: ['light', 'dark'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			borderRightWidth: {
@@ -219,7 +219,7 @@
 				control: 'slider',
 				unit: 'px',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
-				themes: ['dark', 'light'],
+				themes: ['light', 'dark'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			borderBottomWidth: {
@@ -228,7 +228,7 @@
 				control: 'slider',
 				unit: 'px',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
-				themes: ['dark', 'light'],
+				themes: ['light', 'dark'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			borderLeftWidth: {
@@ -237,7 +237,7 @@
 				control: 'slider',
 				unit: 'px',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
-				themes: ['dark', 'light'],
+				themes: ['light', 'dark'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			borderStyle: {
@@ -257,7 +257,7 @@
 					{ value: 'outset', key: 'outset' }
 				],
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
-				themes: ['dark', 'light'],
+				themes: ['light', 'dark'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			borderTopStyle: {
@@ -277,7 +277,7 @@
 					{ value: 'outset', key: 'outset' }
 				],
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
-				themes: ['dark', 'light'],
+				themes: ['light', 'dark'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			borderRightStyle: {
@@ -297,7 +297,7 @@
 					{ value: 'outset', key: 'outset' }
 				],
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
-				themes: ['dark', 'light'],
+				themes: ['light', 'dark'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			borderBottomStyle: {
@@ -317,7 +317,7 @@
 					{ value: 'outset', key: 'outset' }
 				],
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
-				themes: ['dark', 'light'],
+				themes: ['light', 'dark'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			borderLeftStyle: {
@@ -337,7 +337,7 @@
 					{ value: 'outset', key: 'outset' }
 				],
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
-				themes: ['dark', 'light'],
+				themes: ['light', 'dark'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			borderRadius: {
@@ -346,7 +346,7 @@
 				control: 'slider',
 				unit: 'px',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
-				themes: ['dark', 'light'],
+				themes: ['light', 'dark'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			borderTopLeftRadius: {
@@ -355,7 +355,7 @@
 				control: 'slider',
 				unit: 'px',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
-				themes: ['dark', 'light'],
+				themes: ['light', 'dark'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			borderTopRightRadius: {
@@ -364,7 +364,7 @@
 				control: 'slider',
 				unit: 'px',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
-				themes: ['dark', 'light'],
+				themes: ['light', 'dark'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			borderBottomRightRadius: {
@@ -373,7 +373,7 @@
 				control: 'slider',
 				unit: 'px',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
-				themes: ['dark', 'light'],
+				themes: ['light', 'dark'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			borderBottomLeftRadius: {
@@ -382,7 +382,7 @@
 				control: 'slider',
 				unit: 'px',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
-				themes: ['dark', 'light'],
+				themes: ['light', 'dark'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			padding: {
@@ -391,7 +391,7 @@
 				control: 'slider',
 				unit: 'px',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
-				themes: ['dark', 'light'],
+				themes: ['light', 'dark'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			paddingTop: {
@@ -400,7 +400,7 @@
 				control: 'slider',
 				unit: 'px',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
-				themes: ['dark', 'light'],
+				themes: ['light', 'dark'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			paddingRight: {
@@ -409,7 +409,7 @@
 				control: 'slider',
 				unit: 'px',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
-				themes: ['dark', 'light'],
+				themes: ['light', 'dark'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			paddingBottom: {
@@ -418,7 +418,7 @@
 				control: 'slider',
 				unit: 'px',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
-				themes: ['dark', 'light'],
+				themes: ['light', 'dark'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			paddingLeft: {
@@ -427,7 +427,7 @@
 				control: 'slider',
 				unit: 'px',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
-				themes: ['dark', 'light'],
+				themes: ['light', 'dark'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			margin: {
@@ -436,7 +436,7 @@
 				control: 'slider',
 				unit: 'px',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
-				themes: ['dark', 'light'],
+				themes: ['light', 'dark'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			marginTop: {
@@ -445,7 +445,7 @@
 				control: 'slider',
 				unit: 'px',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
-				themes: ['dark', 'light'],
+				themes: ['light', 'dark'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			marginRight: {
@@ -454,7 +454,7 @@
 				control: 'slider',
 				unit: 'px',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
-				themes: ['dark', 'light'],
+				themes: ['light', 'dark'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			marginBottom: {
@@ -463,7 +463,7 @@
 				control: 'slider',
 				unit: 'px',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
-				themes: ['dark', 'light'],
+				themes: ['light', 'dark'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			marginLeft: {
@@ -472,7 +472,7 @@
 				control: 'slider',
 				unit: 'px',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
-				themes: ['dark', 'light'],
+				themes: ['light', 'dark'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
 			}
 		},
