@@ -76,22 +76,6 @@
 		computed
 	} from 'vue';
 	import Row from '@vueplayio/row';
-	const breakpoints = ['xs', 'sm', 'md', 'lg', 'xl', '2xl']
-	const themes = ['light', 'dark']
-	const groups = ['default', 'hover', 'current', 'active', 'focus']
-	const borderStyleOptions = [
-		{ value: '', key: 'Clear' },
-		{ value: 'none', key: 'none' },
-		{ value: 'hidden', key: 'hidden' },
-		{ value: 'solid', key: 'solid' },
-		{ value: 'dashed', key: 'dashed' },
-		{ value: 'dotted', key: 'dotted' },
-		{ value: 'double', key: 'double' },
-		{ value: 'groove', key: 'groove' },
-		{ value: 'ridge', key: 'ridge' },
-		{ value: 'inset', key: 'inset' },
-		{ value: 'outset', key: 'outset' }
-	]
 	export default {
 		inject: ['small', 'open', 'forceOpenProvider', 'direction', 'orientation', 'drop', 'level', 'order', 'reverseIcon', 'expand', 'childrenIconSizeProvider', 'childrenCaretProvider', 'childrenCaretSizeProvider', 'model'],
 		provide() {
@@ -216,233 +200,281 @@
 				type: String,
 				default: '',
 				control: 'color',
-				breakpoints,
-				themes,
-				groups
+				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
+				themes: ['light', 'dark'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			backgroundColor: {
 				type: String,
 				default: '',
 				control: 'color',
-				breakpoints,
-				themes,
-				groups
+				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
+				themes: ['light', 'dark'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			backgroundImage: {
 				type: String,
 				default: '',
 				control: 'media',
-				breakpoints,
-				themes,
-				groups
+				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
+				themes: ['light', 'dark'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			borderTopColor: {
 				type: String,
 				default: '',
 				control: 'color',
-				breakpoints,
-				themes,
-				groups
+				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
+				themes: ['light', 'dark'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			borderRightColor: {
 				type: String,
 				default: '',
 				control: 'color',
-				breakpoints,
-				themes,
-				groups
+				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
+				themes: ['light', 'dark'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			borderBottomColor: {
 				type: String,
 				default: '',
 				control: 'color',
-				breakpoints,
-				themes,
-				groups
+				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
+				themes: ['light', 'dark'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			borderLeftColor: {
 				type: String,
 				default: '',
 				control: 'color',
-				breakpoints,
-				themes,
-				groups
+				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
+				themes: ['light', 'dark'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			borderTopWidth: {
 				type: String,
 				default: '',
 				control: 'slider',
 				unit: 'px',
-				breakpoints,
-				themes,
-				groups
+				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
+				themes: ['light', 'dark'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			borderRightWidth: {
 				type: String,
 				default: '',
 				control: 'slider',
 				unit: 'px',
-				breakpoints,
-				themes,
-				groups
+				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
+				themes: ['light', 'dark'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			borderBottomWidth: {
 				type: String,
 				default: '',
 				control: 'slider',
 				unit: 'px',
-				breakpoints,
-				themes,
-				groups
+				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
+				themes: ['light', 'dark'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			borderLeftWidth: {
 				type: String,
 				default: '',
 				control: 'slider',
 				unit: 'px',
-				breakpoints,
-				themes,
-				groups
+				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
+				themes: ['light', 'dark'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			borderTopStyle: {
 				type: String,
 				default: '',
-				options: borderStyleOptions,
-				breakpoints,
-				themes,
-				groups
+				options: [
+					{ value: '', key: 'Clear' },
+					{ value: 'none', key: 'none' },
+					{ value: 'hidden', key: 'hidden' },
+					{ value: 'solid', key: 'solid' },
+					{ value: 'dashed', key: 'dashed' },
+					{ value: 'dotted', key: 'dotted' },
+					{ value: 'double', key: 'double' },
+					{ value: 'groove', key: 'groove' },
+					{ value: 'ridge', key: 'ridge' },
+					{ value: 'inset', key: 'inset' },
+					{ value: 'outset', key: 'outset' }
+				],
+				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
+				themes: ['light', 'dark'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			borderRightStyle: {
 				type: String,
 				default: '',
-				options: borderStyleOptions,
-				breakpoints,
-				themes,
-				groups
+				options: [
+					{ value: '', key: 'Clear' },
+					{ value: 'none', key: 'none' },
+					{ value: 'hidden', key: 'hidden' },
+					{ value: 'solid', key: 'solid' },
+					{ value: 'dashed', key: 'dashed' },
+					{ value: 'dotted', key: 'dotted' },
+					{ value: 'double', key: 'double' },
+					{ value: 'groove', key: 'groove' },
+					{ value: 'ridge', key: 'ridge' },
+					{ value: 'inset', key: 'inset' },
+					{ value: 'outset', key: 'outset' }
+				],
+				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
+				themes: ['light', 'dark'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			borderBottomStyle: {
 				type: String,
 				default: '',
-				options: borderStyleOptions,
-				breakpoints,
-				themes,
-				groups
+				options: [
+					{ value: '', key: 'Clear' },
+					{ value: 'none', key: 'none' },
+					{ value: 'hidden', key: 'hidden' },
+					{ value: 'solid', key: 'solid' },
+					{ value: 'dashed', key: 'dashed' },
+					{ value: 'dotted', key: 'dotted' },
+					{ value: 'double', key: 'double' },
+					{ value: 'groove', key: 'groove' },
+					{ value: 'ridge', key: 'ridge' },
+					{ value: 'inset', key: 'inset' },
+					{ value: 'outset', key: 'outset' }
+				],
+				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
+				themes: ['light', 'dark'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			borderLeftStyle: {
 				type: String,
 				default: '',
-				options: borderStyleOptions,
-				breakpoints,
-				themes,
-				groups
+				options: [
+					{ value: '', key: 'Clear' },
+					{ value: 'none', key: 'none' },
+					{ value: 'hidden', key: 'hidden' },
+					{ value: 'solid', key: 'solid' },
+					{ value: 'dashed', key: 'dashed' },
+					{ value: 'dotted', key: 'dotted' },
+					{ value: 'double', key: 'double' },
+					{ value: 'groove', key: 'groove' },
+					{ value: 'ridge', key: 'ridge' },
+					{ value: 'inset', key: 'inset' },
+					{ value: 'outset', key: 'outset' }
+				],
+				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
+				themes: ['light', 'dark'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			borderTopLeftRadius: {
 				type: String,
 				default: '',
 				control: 'slider',
 				unit: 'px',
-				breakpoints,
-				themes,
-				groups
+				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
+				themes: ['light', 'dark'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			borderTopRightRadius: {
 				type: String,
 				default: '',
 				control: 'slider',
 				unit: 'px',
-				breakpoints,
-				themes,
-				groups
+				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
+				themes: ['light', 'dark'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			borderBottomRightRadius: {
 				type: String,
 				default: '',
 				control: 'slider',
 				unit: 'px',
-				breakpoints,
-				themes,
-				groups
+				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
+				themes: ['light', 'dark'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			borderBottomLeftRadius: {
 				type: String,
 				default: '',
 				control: 'slider',
 				unit: 'px',
-				breakpoints,
-				themes,
-				groups
+				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
+				themes: ['light', 'dark'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			paddingTop: {
 				type: String,
 				default: '',
 				control: 'slider',
 				unit: 'px',
-				breakpoints,
-				themes,
-				groups
+				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
+				themes: ['light', 'dark'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			paddingRight: {
 				type: String,
 				default: '',
 				control: 'slider',
 				unit: 'px',
-				breakpoints,
-				themes,
-				groups
+				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
+				themes: ['light', 'dark'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			paddingBottom: {
 				type: String,
 				default: '',
 				control: 'slider',
 				unit: 'px',
-				breakpoints,
-				themes,
-				groups
+				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
+				themes: ['light', 'dark'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			paddingLeft: {
 				type: String,
 				default: '',
 				control: 'slider',
 				unit: 'px',
-				breakpoints,
-				themes,
-				groups
+				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
+				themes: ['light', 'dark'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			marginTop: {
 				type: String,
 				default: '',
 				control: 'slider',
 				unit: 'px',
-				breakpoints,
-				themes,
-				groups
+				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
+				themes: ['light', 'dark'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			marginRight: {
 				type: String,
 				default: '',
 				control: 'slider',
 				unit: 'px',
-				breakpoints,
-				themes,
-				groups
+				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
+				themes: ['light', 'dark'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			marginBottom: {
 				type: String,
 				default: '',
 				control: 'slider',
 				unit: 'px',
-				breakpoints,
-				themes,
-				groups
+				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
+				themes: ['light', 'dark'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			marginLeft: {
 				type: String,
 				default: '',
 				control: 'slider',
 				unit: 'px',
-				breakpoints,
-				themes,
-				groups
+				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
+				themes: ['light', 'dark'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
 			}
 		},
 		components: {
