@@ -10,7 +10,6 @@
 				drop="down"
 				textColor="{`default`:{`xs`:{`light`:`#1efc7bff`}}}"
 				backgroundColor="{`default`:{`xs`:{`light`:`#db6363ff`}},`hover`:{`xs`:{`light`:`#cf9b9bff`}}}"
-				forceOpen="true"
 			>
 				<NavItem title="A">
 				</NavItem>
