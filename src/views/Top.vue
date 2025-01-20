@@ -13,7 +13,6 @@
 				borderRadius="{`default`:{`xs`:{`light`:`18px`}}}"
 				borderTopLeftRadius="{`default`:{`xs`:{`light`:`6px`}}}"
 				padding="{`default`:{`xs`:{`light`:`0px`}}}"
-				paddingTop="{`default`:{`xs`:{`light`:`0px`}}}"
 			>
 				<NavItem title="A">
 				</NavItem>

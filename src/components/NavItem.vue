@@ -559,7 +559,17 @@
 				return rootClass;
 			},
 			selfModel() {
-				const obj = {}
+				const defaultValues = {
+					xs: { light: '', dark: '' },
+					sm: { light: '', dark: '' },
+					md: { light: '', dark: '' },
+					lg: { light: '', dark: '' },
+					xl: { light: '', dark: '' },
+					'2xl': { light: '', dark: '' },
+				};
+
+				const obj = {};
+
 				const props = [
 					'textColor',
 					'backgroundColor',
@@ -594,45 +604,37 @@
 					'marginRight',
 					'marginBottom',
 					'marginLeft',
-				]
+				];
+
 				for (const prop of props) {
-					obj[prop] = this[prop] ? JSON.parse(this[prop].replaceAll('`', '"')) : (this.model?.[prop] || {
-						default: {
-							xs: { light: '', dark: '' },
-							sm: { light: '', dark: '' },
-							md: { light: '', dark: '' },
-							lg: { light: '', dark: '' },
-							xl: { light: '', dark: '' },
-							'2xl': { light: '', dark: '' },
-						}
-					})
+					const parsedValue = this[prop] 
+						? JSON.parse(this[prop].replaceAll('`', '"')) 
+						: this.model?.[prop] || { 
+							default: { ...defaultValues },
+							hover: { ...defaultValues },
+							current: { ...defaultValues },
+							active: { ...defaultValues },
+							focus: { ...defaultValues },
+						};
+					obj[prop] = parsedValue;
 					for (const group of ['default', 'hover', 'current', 'active', 'focus']) {
 						if (!obj[prop][group]) {
-							obj[prop][group] = {
-								xs: { light: '', dark: '' },
-								sm: { light: '', dark: '' },
-								md: { light: '', dark: '' },
-								lg: { light: '', dark: '' },
-								xl: { light: '', dark: '' },
-								'2xl': { light: '', dark: '' },
-							}
+							obj[prop][group] = { ...defaultValues };
 						}
 						for (const breakpoint of ['2xl', 'xl', 'lg', 'md', 'sm', 'xs']) {
 							if (!obj[prop][group][breakpoint]) {
-								obj[prop][group][breakpoint] = {
-									light: '',
-									dark: ''
-								}
+								obj[prop][group][breakpoint] = { light: '', dark: '' };
 							}
 							for (const theme of ['light', 'dark']) {
 								if (!obj[prop][group][breakpoint][theme]) {
-									obj[prop][group][breakpoint][theme] = 'ignore'
+									obj[prop][group][breakpoint][theme] = 'ignore';
 								}
 							}
 						}
 					}
 				}
-				return obj
+
+				return obj;
 			}
 		},
 		methods: {
