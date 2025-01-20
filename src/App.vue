@@ -5,27 +5,11 @@
 		:class="{
 			'vp-navigator--small': small
 		}"
+		:reverse="(orientation === 'Row' && direction === 'left') || ((orientation === 'Column' || small) && drop === 'up')"
 		class="vp-navigator"
 	>
 		<Toggle
-			v-if="small && drop === 'down'"
-			@click="open=!open"
-			:open="open || forceOpen"
-			:style="{
-				width: toggleSize
-			}"
-			style="flex-shrink: 0"
-			:icon="toggleIcon"
-			:iconClose="closeIcon"
-		/> <template v-if="!small || open || forceOpen">
-			<slot>
-				<div style="padding:10px">
-					Drop Navigator Items Here
-				</div>
-			</slot>
-		</template>
-		<Toggle
-			v-if="small && drop === 'up'"
+			v-if="small"
 			@click="open=!open"
 			:open="open || forceOpen"
 			:style="{
@@ -35,6 +19,13 @@
 			:icon="toggleIcon"
 			:iconClose="closeIcon"
 		/>
+		<template v-if="!small || open || forceOpen">
+			<slot>
+				<div style="padding:10px">
+					Drop Navigator Items Here
+				</div>
+			</slot>
+		</template>
 	</component>
 </template>
 <script>
