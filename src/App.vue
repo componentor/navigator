@@ -34,6 +34,22 @@
 	import Column from '@vueplayio/column';
 	import Row from '@vueplayio/row';
 	import Toggle from '@/components/Toggle.vue';
+	const breakpoints = ['xs', 'sm', 'md', 'lg', 'xl', '2xl']
+	const groups = ['default', 'hover', 'current', 'active', 'focus']
+	const themes = ['light', 'dark']
+	const borderStyleOptions = [
+		{ value: '', key: 'Clear' },
+		{ value: 'none', key: 'none' },
+		{ value: 'hidden', key: 'hidden' },
+		{ value: 'solid', key: 'solid' },
+		{ value: 'dashed', key: 'dashed' },
+		{ value: 'dotted', key: 'dotted' },
+		{ value: 'double', key: 'double' },
+		{ value: 'groove', key: 'groove' },
+		{ value: 'ridge', key: 'ridge' },
+		{ value: 'inset', key: 'inset' },
+		{ value: 'outset', key: 'outset' }
+	]
 	export default {
 		provide() {
 			return {
@@ -135,345 +151,233 @@
 				type: String,
 				default: '',
 				control: 'color',
-				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
-				themes: ['light', 'dark'],
-				groups: ['default', 'hover', 'current', 'active', 'focus']
+				breakpoints,
+				themes,
+				groups
 			},
 			backgroundColor: {
 				type: String,
 				default: '',
 				control: 'color',
-				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
-				themes: ['light', 'dark'],
-				groups: ['default', 'hover', 'current', 'active', 'focus']
+				breakpoints,
+				themes,
+				groups
 			},
 			backgroundImage: {
 				type: String,
 				default: '',
 				control: 'media',
-				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
-				themes: ['light', 'dark'],
-				groups: ['default', 'hover', 'current', 'active', 'focus']
-			},
-			borderColor: {
-				type: String,
-				default: '',
-				control: 'color',
-				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
-				themes: ['light', 'dark'],
-				groups: ['default', 'hover', 'current', 'active', 'focus']
+				breakpoints,
+				themes,
+				groups
 			},
 			borderTopColor: {
 				type: String,
 				default: '',
 				control: 'color',
-				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
-				themes: ['light', 'dark'],
-				groups: ['default', 'hover', 'current', 'active', 'focus']
+				breakpoints,
+				themes,
+				groups
 			},
 			borderRightColor: {
 				type: String,
 				default: '',
 				control: 'color',
-				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
-				themes: ['light', 'dark'],
-				groups: ['default', 'hover', 'current', 'active', 'focus']
+				breakpoints,
+				themes,
+				groups
 			},
 			borderBottomColor: {
 				type: String,
 				default: '',
 				control: 'color',
-				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
-				themes: ['light', 'dark'],
-				groups: ['default', 'hover', 'current', 'active', 'focus']
+				breakpoints,
+				themes,
+				groups
 			},
 			borderLeftColor: {
 				type: String,
 				default: '',
 				control: 'color',
-				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
-				themes: ['light', 'dark'],
-				groups: ['default', 'hover', 'current', 'active', 'focus']
-			},
-			borderWidth: {
-				type: String,
-				default: '',
-				control: 'slider',
-				unit: 'px',
-				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
-				themes: ['light', 'dark'],
-				groups: ['default', 'hover', 'current', 'active', 'focus']
+				breakpoints,
+				themes,
+				groups
 			},
 			borderTopWidth: {
 				type: String,
 				default: '',
 				control: 'slider',
 				unit: 'px',
-				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
-				themes: ['light', 'dark'],
-				groups: ['default', 'hover', 'current', 'active', 'focus']
+				breakpoints,
+				themes,
+				groups
 			},
 			borderRightWidth: {
 				type: String,
 				default: '',
 				control: 'slider',
 				unit: 'px',
-				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
-				themes: ['light', 'dark'],
-				groups: ['default', 'hover', 'current', 'active', 'focus']
+				breakpoints,
+				themes,
+				groups
 			},
 			borderBottomWidth: {
 				type: String,
 				default: '',
 				control: 'slider',
 				unit: 'px',
-				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
-				themes: ['light', 'dark'],
-				groups: ['default', 'hover', 'current', 'active', 'focus']
+				breakpoints,
+				themes,
+				groups
 			},
 			borderLeftWidth: {
 				type: String,
 				default: '',
 				control: 'slider',
 				unit: 'px',
-				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
-				themes: ['light', 'dark'],
-				groups: ['default', 'hover', 'current', 'active', 'focus']
-			},
-			borderStyle: {
-				type: String,
-				default: '',
-				options: [
-					{ value: '', key: 'Clear' },
-					{ value: 'none', key: 'none' },
-					{ value: 'hidden', key: 'hidden' },
-					{ value: 'solid', key: 'solid' },
-					{ value: 'dashed', key: 'dashed' },
-					{ value: 'dotted', key: 'dotted' },
-					{ value: 'double', key: 'double' },
-					{ value: 'groove', key: 'groove' },
-					{ value: 'ridge', key: 'ridge' },
-					{ value: 'inset', key: 'inset' },
-					{ value: 'outset', key: 'outset' }
-				],
-				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
-				themes: ['light', 'dark'],
-				groups: ['default', 'hover', 'current', 'active', 'focus']
+				breakpoints,
+				themes,
+				groups
 			},
 			borderTopStyle: {
 				type: String,
 				default: '',
-				options: [
-					{ value: '', key: 'Clear' },
-					{ value: 'none', key: 'none' },
-					{ value: 'hidden', key: 'hidden' },
-					{ value: 'solid', key: 'solid' },
-					{ value: 'dashed', key: 'dashed' },
-					{ value: 'dotted', key: 'dotted' },
-					{ value: 'double', key: 'double' },
-					{ value: 'groove', key: 'groove' },
-					{ value: 'ridge', key: 'ridge' },
-					{ value: 'inset', key: 'inset' },
-					{ value: 'outset', key: 'outset' }
-				],
-				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
-				themes: ['light', 'dark'],
-				groups: ['default', 'hover', 'current', 'active', 'focus']
+				options: borderStyleOptions,
+				breakpoints,
+				themes,
+				groups
 			},
 			borderRightStyle: {
 				type: String,
 				default: '',
-				options: [
-					{ value: '', key: 'Clear' },
-					{ value: 'none', key: 'none' },
-					{ value: 'hidden', key: 'hidden' },
-					{ value: 'solid', key: 'solid' },
-					{ value: 'dashed', key: 'dashed' },
-					{ value: 'dotted', key: 'dotted' },
-					{ value: 'double', key: 'double' },
-					{ value: 'groove', key: 'groove' },
-					{ value: 'ridge', key: 'ridge' },
-					{ value: 'inset', key: 'inset' },
-					{ value: 'outset', key: 'outset' }
-				],
-				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
-				themes: ['light', 'dark'],
-				groups: ['default', 'hover', 'current', 'active', 'focus']
+				options: borderStyleOptions,
+				breakpoints,
+				themes,
+				groups
 			},
 			borderBottomStyle: {
 				type: String,
 				default: '',
-				options: [
-					{ value: '', key: 'Clear' },
-					{ value: 'none', key: 'none' },
-					{ value: 'hidden', key: 'hidden' },
-					{ value: 'solid', key: 'solid' },
-					{ value: 'dashed', key: 'dashed' },
-					{ value: 'dotted', key: 'dotted' },
-					{ value: 'double', key: 'double' },
-					{ value: 'groove', key: 'groove' },
-					{ value: 'ridge', key: 'ridge' },
-					{ value: 'inset', key: 'inset' },
-					{ value: 'outset', key: 'outset' }
-				],
-				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
-				themes: ['light', 'dark'],
-				groups: ['default', 'hover', 'current', 'active', 'focus']
+				options: borderStyleOptions,
+				breakpoints,
+				themes,
+				groups
 			},
 			borderLeftStyle: {
 				type: String,
 				default: '',
-				options: [
-					{ value: '', key: 'Clear' },
-					{ value: 'none', key: 'none' },
-					{ value: 'hidden', key: 'hidden' },
-					{ value: 'solid', key: 'solid' },
-					{ value: 'dashed', key: 'dashed' },
-					{ value: 'dotted', key: 'dotted' },
-					{ value: 'double', key: 'double' },
-					{ value: 'groove', key: 'groove' },
-					{ value: 'ridge', key: 'ridge' },
-					{ value: 'inset', key: 'inset' },
-					{ value: 'outset', key: 'outset' }
-				],
-				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
-				themes: ['light', 'dark'],
-				groups: ['default', 'hover', 'current', 'active', 'focus']
-			},
-			borderRadius: {
-				type: String,
-				default: '',
-				control: 'slider',
-				unit: 'px',
-				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
-				themes: ['light', 'dark'],
-				groups: ['default', 'hover', 'current', 'active', 'focus']
+				options: borderStyleOptions,
+				breakpoints,
+				themes,
+				groups
 			},
 			borderTopLeftRadius: {
 				type: String,
 				default: '',
 				control: 'slider',
 				unit: 'px',
-				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
-				themes: ['light', 'dark'],
-				groups: ['default', 'hover', 'current', 'active', 'focus']
+				breakpoints,
+				themes,
+				groups
 			},
 			borderTopRightRadius: {
 				type: String,
 				default: '',
 				control: 'slider',
 				unit: 'px',
-				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
-				themes: ['light', 'dark'],
-				groups: ['default', 'hover', 'current', 'active', 'focus']
+				breakpoints,
+				themes,
+				groups
 			},
 			borderBottomRightRadius: {
 				type: String,
 				default: '',
 				control: 'slider',
 				unit: 'px',
-				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
-				themes: ['light', 'dark'],
-				groups: ['default', 'hover', 'current', 'active', 'focus']
+				breakpoints,
+				themes,
+				groups
 			},
 			borderBottomLeftRadius: {
 				type: String,
 				default: '',
 				control: 'slider',
 				unit: 'px',
-				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
-				themes: ['light', 'dark'],
-				groups: ['default', 'hover', 'current', 'active', 'focus']
-			},
-			padding: {
-				type: String,
-				default: '',
-				control: 'slider',
-				unit: 'px',
-				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
-				themes: ['light', 'dark'],
-				groups: ['default', 'hover', 'current', 'active', 'focus']
+				breakpoints,
+				themes,
+				groups
 			},
 			paddingTop: {
 				type: String,
 				default: '',
 				control: 'slider',
 				unit: 'px',
-				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
-				themes: ['light', 'dark'],
-				groups: ['default', 'hover', 'current', 'active', 'focus']
+				breakpoints,
+				themes,
+				groups
 			},
 			paddingRight: {
 				type: String,
 				default: '',
 				control: 'slider',
 				unit: 'px',
-				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
-				themes: ['light', 'dark'],
-				groups: ['default', 'hover', 'current', 'active', 'focus']
+				breakpoints,
+				themes,
+				groups
 			},
 			paddingBottom: {
 				type: String,
 				default: '',
 				control: 'slider',
 				unit: 'px',
-				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
-				themes: ['light', 'dark'],
-				groups: ['default', 'hover', 'current', 'active', 'focus']
+				breakpoints,
+				themes,
+				groups
 			},
 			paddingLeft: {
 				type: String,
 				default: '',
 				control: 'slider',
 				unit: 'px',
-				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
-				themes: ['light', 'dark'],
-				groups: ['default', 'hover', 'current', 'active', 'focus']
-			},
-			margin: {
-				type: String,
-				default: '',
-				control: 'slider',
-				unit: 'px',
-				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
-				themes: ['light', 'dark'],
-				groups: ['default', 'hover', 'current', 'active', 'focus']
+				breakpoints,
+				themes,
+				groups
 			},
 			marginTop: {
 				type: String,
 				default: '',
 				control: 'slider',
 				unit: 'px',
-				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
-				themes: ['light', 'dark'],
-				groups: ['default', 'hover', 'current', 'active', 'focus']
+				breakpoints,
+				themes,
+				groups
 			},
 			marginRight: {
 				type: String,
 				default: '',
 				control: 'slider',
 				unit: 'px',
-				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
-				themes: ['light', 'dark'],
-				groups: ['default', 'hover', 'current', 'active', 'focus']
+				breakpoints,
+				themes,
+				groups
 			},
 			marginBottom: {
 				type: String,
 				default: '',
 				control: 'slider',
 				unit: 'px',
-				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
-				themes: ['light', 'dark'],
-				groups: ['default', 'hover', 'current', 'active', 'focus']
+				breakpoints,
+				themes,
+				groups
 			},
 			marginLeft: {
 				type: String,
 				default: '',
 				control: 'slider',
 				unit: 'px',
-				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
-				themes: ['light', 'dark'],
-				groups: ['default', 'hover', 'current', 'active', 'focus']
+				breakpoints,
+				themes,
+				groups
 			}
 		},
 		components: {
@@ -495,32 +399,26 @@
 					'textColor',
 					'backgroundColor',
 					'backgroundImage',
-					'borderColor',
 					'borderTopColor',
 					'borderRightColor',
 					'borderBottomColor',
 					'borderLeftColor',
-					'borderWidth',
 					'borderTopWidth',
 					'borderRightWidth',
 					'borderBottomWidth',
 					'borderLeftWidth',
-					'borderStyle',
 					'borderTopStyle',
 					'borderRightStyle',
 					'borderBottomStyle',
 					'borderLeftStyle',
-					'borderRadius',
 					'borderTopLeftRadius',
 					'borderTopRightRadius',
 					'borderBottomRightRadius',
 					'borderBottomLeftRadius',
-					'padding',
 					'paddingTop',
 					'paddingRight',
 					'paddingBottom',
 					'paddingLeft',
-					'margin',
 					'marginTop',
 					'marginRight',
 					'marginBottom',
