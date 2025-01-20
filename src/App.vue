@@ -155,6 +155,14 @@
 				themes: ['dark', 'light'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
+			borderColor: {
+				type: String,
+				default: '',
+				control: 'color',
+				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				themes: ['dark', 'light'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
+			},
 			borderTopColor: {
 				type: String,
 				default: '',
@@ -183,6 +191,15 @@
 				type: String,
 				default: '',
 				control: 'color',
+				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				themes: ['dark', 'light'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
+			},
+			borderWidth: {
+				type: String,
+				default: '',
+				control: 'slider',
+				unit: 'px',
 				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
 				themes: ['dark', 'light'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
@@ -219,6 +236,26 @@
 				default: '',
 				control: 'slider',
 				unit: 'px',
+				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				themes: ['dark', 'light'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
+			},
+			borderStyle: {
+				type: String,
+				default: '',
+				options: [
+					{ value: '', key: 'Clear' },
+					{ value: 'none', key: 'none' },
+					{ value: 'hidden', key: 'hidden' },
+					{ value: 'solid', key: 'solid' },
+					{ value: 'dashed', key: 'dashed' },
+					{ value: 'dotted', key: 'dotted' },
+					{ value: 'double', key: 'double' },
+					{ value: 'groove', key: 'groove' },
+					{ value: 'ridge', key: 'ridge' },
+					{ value: 'inset', key: 'inset' },
+					{ value: 'outset', key: 'outset' }
+				],
 				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
 				themes: ['dark', 'light'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
@@ -303,7 +340,7 @@
 				themes: ['dark', 'light'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
-			borderTopRadius: {
+			borderRadius: {
 				type: String,
 				default: '',
 				control: 'slider',
@@ -312,7 +349,7 @@
 				themes: ['dark', 'light'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
-			borderRightRadius: {
+			borderTopLeftRadius: {
 				type: String,
 				default: '',
 				control: 'slider',
@@ -321,7 +358,7 @@
 				themes: ['dark', 'light'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
-			borderBottomRadius: {
+			borderTopRightRadius: {
 				type: String,
 				default: '',
 				control: 'slider',
@@ -330,7 +367,106 @@
 				themes: ['dark', 'light'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
-			borderLeftRadius: {
+			borderBottomRightRadius: {
+				type: String,
+				default: '',
+				control: 'slider',
+				unit: 'px',
+				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				themes: ['dark', 'light'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
+			},
+			borderBottomLeftRadius: {
+				type: String,
+				default: '',
+				control: 'slider',
+				unit: 'px',
+				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				themes: ['dark', 'light'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
+			},
+			padding: {
+				type: String,
+				default: '',
+				control: 'slider',
+				unit: 'px',
+				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				themes: ['dark', 'light'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
+			},
+			paddingTop: {
+				type: String,
+				default: '',
+				control: 'slider',
+				unit: 'px',
+				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				themes: ['dark', 'light'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
+			},
+			paddingRight: {
+				type: String,
+				default: '',
+				control: 'slider',
+				unit: 'px',
+				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				themes: ['dark', 'light'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
+			},
+			paddingBottom: {
+				type: String,
+				default: '',
+				control: 'slider',
+				unit: 'px',
+				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				themes: ['dark', 'light'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
+			},
+			paddingLeft: {
+				type: String,
+				default: '',
+				control: 'slider',
+				unit: 'px',
+				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				themes: ['dark', 'light'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
+			},
+			margin: {
+				type: String,
+				default: '',
+				control: 'slider',
+				unit: 'px',
+				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				themes: ['dark', 'light'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
+			},
+			marginTop: {
+				type: String,
+				default: '',
+				control: 'slider',
+				unit: 'px',
+				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				themes: ['dark', 'light'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
+			},
+			marginRight: {
+				type: String,
+				default: '',
+				control: 'slider',
+				unit: 'px',
+				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				themes: ['dark', 'light'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
+			},
+			marginBottom: {
+				type: String,
+				default: '',
+				control: 'slider',
+				unit: 'px',
+				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				themes: ['dark', 'light'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
+			},
+			marginLeft: {
 				type: String,
 				default: '',
 				control: 'slider',
@@ -359,22 +495,36 @@
 					'textColor',
 					'backgroundColor',
 					'backgroundImage',
+					'borderColor',
 					'borderTopColor',
 					'borderRightColor',
 					'borderBottomColor',
 					'borderLeftColor',
+					'borderWidth',
 					'borderTopWidth',
 					'borderRightWidth',
 					'borderBottomWidth',
 					'borderLeftWidth',
+					'borderStyle',
 					'borderTopStyle',
 					'borderRightStyle',
 					'borderBottomStyle',
 					'borderLeftStyle',
-					'borderTopRadius',
-					'borderRightRadius',
-					'borderBottomRadius',
-					'borderLeftRadius'
+					'borderRadius',
+					'borderTopLeftRadius',
+					'borderTopRightRadius',
+					'borderBottomRightRadius',
+					'borderBottomLeftRadius',
+					'padding',
+					'paddingTop',
+					'paddingRight',
+					'paddingBottom',
+					'paddingLeft',
+					'margin',
+					'marginTop',
+					'marginRight',
+					'marginBottom',
+					'marginLeft',
 				]
 				for (const prop of props) {
 					obj[prop] = this[prop] ? JSON.parse(this[prop]) : {

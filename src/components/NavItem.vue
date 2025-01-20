@@ -220,6 +220,14 @@
 				themes: ['dark', 'light'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
+			borderColor: {
+				type: String,
+				default: '',
+				control: 'color',
+				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				themes: ['dark', 'light'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
+			},
 			borderTopColor: {
 				type: String,
 				default: '',
@@ -248,6 +256,15 @@
 				type: String,
 				default: '',
 				control: 'color',
+				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				themes: ['dark', 'light'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
+			},
+			borderWidth: {
+				type: String,
+				default: '',
+				control: 'slider',
+				unit: 'px',
 				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
 				themes: ['dark', 'light'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
@@ -284,6 +301,26 @@
 				default: '',
 				control: 'slider',
 				unit: 'px',
+				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				themes: ['dark', 'light'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
+			},
+			borderStyle: {
+				type: String,
+				default: '',
+				options: [
+					{ value: '', key: 'Clear' },
+					{ value: 'none', key: 'none' },
+					{ value: 'hidden', key: 'hidden' },
+					{ value: 'solid', key: 'solid' },
+					{ value: 'dashed', key: 'dashed' },
+					{ value: 'dotted', key: 'dotted' },
+					{ value: 'double', key: 'double' },
+					{ value: 'groove', key: 'groove' },
+					{ value: 'ridge', key: 'ridge' },
+					{ value: 'inset', key: 'inset' },
+					{ value: 'outset', key: 'outset' }
+				],
 				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
 				themes: ['dark', 'light'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
@@ -368,7 +405,7 @@
 				themes: ['dark', 'light'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
-			borderTopRadius: {
+			borderRadius: {
 				type: String,
 				default: '',
 				control: 'slider',
@@ -377,7 +414,7 @@
 				themes: ['dark', 'light'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
-			borderRightRadius: {
+			borderTopLeftRadius: {
 				type: String,
 				default: '',
 				control: 'slider',
@@ -386,7 +423,7 @@
 				themes: ['dark', 'light'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
-			borderBottomRadius: {
+			borderTopRightRadius: {
 				type: String,
 				default: '',
 				control: 'slider',
@@ -395,7 +432,106 @@
 				themes: ['dark', 'light'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
-			borderLeftRadius: {
+			borderBottomRightRadius: {
+				type: String,
+				default: '',
+				control: 'slider',
+				unit: 'px',
+				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				themes: ['dark', 'light'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
+			},
+			borderBottomLeftRadius: {
+				type: String,
+				default: '',
+				control: 'slider',
+				unit: 'px',
+				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				themes: ['dark', 'light'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
+			},
+			padding: {
+				type: String,
+				default: '',
+				control: 'slider',
+				unit: 'px',
+				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				themes: ['dark', 'light'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
+			},
+			paddingTop: {
+				type: String,
+				default: '',
+				control: 'slider',
+				unit: 'px',
+				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				themes: ['dark', 'light'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
+			},
+			paddingRight: {
+				type: String,
+				default: '',
+				control: 'slider',
+				unit: 'px',
+				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				themes: ['dark', 'light'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
+			},
+			paddingBottom: {
+				type: String,
+				default: '',
+				control: 'slider',
+				unit: 'px',
+				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				themes: ['dark', 'light'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
+			},
+			paddingLeft: {
+				type: String,
+				default: '',
+				control: 'slider',
+				unit: 'px',
+				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				themes: ['dark', 'light'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
+			},
+			margin: {
+				type: String,
+				default: '',
+				control: 'slider',
+				unit: 'px',
+				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				themes: ['dark', 'light'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
+			},
+			marginTop: {
+				type: String,
+				default: '',
+				control: 'slider',
+				unit: 'px',
+				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				themes: ['dark', 'light'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
+			},
+			marginRight: {
+				type: String,
+				default: '',
+				control: 'slider',
+				unit: 'px',
+				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				themes: ['dark', 'light'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
+			},
+			marginBottom: {
+				type: String,
+				default: '',
+				control: 'slider',
+				unit: 'px',
+				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				themes: ['dark', 'light'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
+			},
+			marginLeft: {
 				type: String,
 				default: '',
 				control: 'slider',
@@ -472,22 +608,36 @@
 					'textColor',
 					'backgroundColor',
 					'backgroundImage',
+					'borderColor',
 					'borderTopColor',
 					'borderRightColor',
 					'borderBottomColor',
 					'borderLeftColor',
+					'borderWidth',
 					'borderTopWidth',
 					'borderRightWidth',
 					'borderBottomWidth',
 					'borderLeftWidth',
+					'borderStyle',
 					'borderTopStyle',
 					'borderRightStyle',
 					'borderBottomStyle',
 					'borderLeftStyle',
-					'borderTopRadius',
-					'borderRightRadius',
-					'borderBottomRadius',
-					'borderLeftRadius'
+					'borderRadius',
+					'borderTopLeftRadius',
+					'borderTopRightRadius',
+					'borderBottomRightRadius',
+					'borderBottomLeftRadius',
+					'padding',
+					'paddingTop',
+					'paddingRight',
+					'paddingBottom',
+					'paddingLeft',
+					'margin',
+					'marginTop',
+					'marginRight',
+					'marginBottom',
+					'marginLeft',
 				]
 				for (const prop of props) {
 					obj[prop] = this[prop] ? JSON.parse(this[prop]) : (this.model?.[prop] || {
@@ -554,11 +704,183 @@
 	}
 
 	.vp-navigator-item {
+		color: v-bind(selfModel.textColor.default.xs.light);
 		background-color: v-bind(selfModel.backgroundColor.default.xs.light);
+		background-image: v-bind(selfModel.backgroundImage.default.xs.light);
+		border-color: v-bind(selfModel.borderColor.default.xs.light);
+		border-top-color: v-bind(selfModel.borderTopColor.default.xs.light);
+		border-right-color: v-bind(selfModel.borderRightColor.default.xs.light);
+		border-bottom-color: v-bind(selfModel.borderBottomColor.default.xs.light);
+		border-left-color: v-bind(selfModel.borderLeftColor.default.xs.light);
+		border-width: v-bind(selfModel.borderWidth.default.xs.light);
+		border-top-width: v-bind(selfModel.borderTopWidth.default.xs.light);
+		border-right-width: v-bind(selfModel.borderRightWidth.default.xs.light);
+		border-bottom-width: v-bind(selfModel.borderBottomWidth.default.xs.light);
+		border-left-width: v-bind(selfModel.borderLeftWidth.default.xs.light);
+		border-style: v-bind(selfModel.borderStyle.default.xs.light);
+		border-top-style: v-bind(selfModel.borderTopStyle.default.xs.light);
+		border-right-style: v-bind(selfModel.borderRightStyle.default.xs.light);
+		border-bottom-style: v-bind(selfModel.borderBottomStyle.default.xs.light);
+		border-left-style: v-bind(selfModel.borderLeftStyle.default.xs.light);
+		border-radius: v-bind(selfModel.borderRadius.default.xs.light);
+		border-top-left-radius: v-bind(selfModel.borderTopLeftRadius.default.xs.light);
+		border-top-right-radius: v-bind(selfModel.borderTopRightRadius.default.xs.light);
+		border-bottom-right-radius: v-bind(selfModel.borderBottomRightRadius.default.xs.light);
+		border-bottom-left-radius: v-bind(selfModel.borderBottomLeftRadius.default.xs.light);
+		padding: v-bind(selfModel.padding.default.xs.light);
+		padding-top: v-bind(selfModel.paddingTop.default.xs.light);
+		padding-right: v-bind(selfModel.paddingRight.default.xs.light);
+		padding-bottom: v-bind(selfModel.paddingBottom.default.xs.light);
+		padding-left: v-bind(selfModel.paddingLeft.default.xs.light);
+		margin: v-bind(selfModel.margin.default.xs.light);
+		margin-top: v-bind(selfModel.marginTop.default.xs.light);
+		margin-right: v-bind(selfModel.marginRight.default.xs.light);
+		margin-bottom: v-bind(selfModel.marginBottom.default.xs.light);
+		margin-left: v-bind(selfModel.marginLeft.default.xs.light);
 	}
 
 	.vp-navigator-item:hover {
-		background-color: rgb(0, 0, 0, 0.1);
+		color: v-bind(selfModel.textColor.hover.xs.light);
+		background-color: v-bind(selfModel.backgroundColor.hover.xs.light);
+		background-image: v-bind(selfModel.backgroundImage.hover.xs.light);
+		border-color: v-bind(selfModel.borderColor.hover.xs.light);
+		border-top-color: v-bind(selfModel.borderTopColor.hover.xs.light);
+		border-right-color: v-bind(selfModel.borderRightColor.hover.xs.light);
+		border-bottom-color: v-bind(selfModel.borderBottomColor.hover.xs.light);
+		border-left-color: v-bind(selfModel.borderLeftColor.hover.xs.light);
+		border-width: v-bind(selfModel.borderWidth.hover.xs.light);
+		border-top-width: v-bind(selfModel.borderTopWidth.hover.xs.light);
+		border-right-width: v-bind(selfModel.borderRightWidth.hover.xs.light);
+		border-bottom-width: v-bind(selfModel.borderBottomWidth.hover.xs.light);
+		border-left-width: v-bind(selfModel.borderLeftWidth.hover.xs.light);
+		border-style: v-bind(selfModel.borderStyle.hover.xs.light);
+		border-top-style: v-bind(selfModel.borderTopStyle.hover.xs.light);
+		border-right-style: v-bind(selfModel.borderRightStyle.hover.xs.light);
+		border-bottom-style: v-bind(selfModel.borderBottomStyle.hover.xs.light);
+		border-left-style: v-bind(selfModel.borderLeftStyle.hover.xs.light);
+		border-radius: v-bind(selfModel.borderRadius.hover.xs.light);
+		border-top-left-radius: v-bind(selfModel.borderTopLeftRadius.hover.xs.light);
+		border-top-right-radius: v-bind(selfModel.borderTopRightRadius.hover.xs.light);
+		border-bottom-right-radius: v-bind(selfModel.borderBottomRightRadius.hover.xs.light);
+		border-bottom-left-radius: v-bind(selfModel.borderBottomLeftRadius.hover.xs.light);
+		padding: v-bind(selfModel.padding.hover.xs.light);
+		padding-top: v-bind(selfModel.paddingTop.hover.xs.light);
+		padding-right: v-bind(selfModel.paddingRight.hover.xs.light);
+		padding-bottom: v-bind(selfModel.paddingBottom.hover.xs.light);
+		padding-left: v-bind(selfModel.paddingLeft.hover.xs.light);
+		margin: v-bind(selfModel.margin.hover.xs.light);
+		margin-top: v-bind(selfModel.marginTop.hover.xs.light);
+		margin-right: v-bind(selfModel.marginRight.hover.xs.light);
+		margin-bottom: v-bind(selfModel.marginBottom.hover.xs.light);
+		margin-left: v-bind(selfModel.marginLeft.hover.xs.light);
+	}
+
+	.vp-navigator-item.current {
+		color: v-bind(selfModel.textColor.current.xs.light);
+		background-color: v-bind(selfModel.backgroundColor.current.xs.light);
+		background-image: v-bind(selfModel.backgroundImage.current.xs.light);
+		border-color: v-bind(selfModel.borderColor.current.xs.light);
+		border-top-color: v-bind(selfModel.borderTopColor.current.xs.light);
+		border-right-color: v-bind(selfModel.borderRightColor.current.xs.light);
+		border-bottom-color: v-bind(selfModel.borderBottomColor.current.xs.light);
+		border-left-color: v-bind(selfModel.borderLeftColor.current.xs.light);
+		border-width: v-bind(selfModel.borderWidth.current.xs.light);
+		border-top-width: v-bind(selfModel.borderTopWidth.current.xs.light);
+		border-right-width: v-bind(selfModel.borderRightWidth.current.xs.light);
+		border-bottom-width: v-bind(selfModel.borderBottomWidth.current.xs.light);
+		border-left-width: v-bind(selfModel.borderLeftWidth.current.xs.light);
+		border-style: v-bind(selfModel.borderStyle.current.xs.light);
+		border-top-style: v-bind(selfModel.borderTopStyle.current.xs.light);
+		border-right-style: v-bind(selfModel.borderRightStyle.current.xs.light);
+		border-bottom-style: v-bind(selfModel.borderBottomStyle.current.xs.light);
+		border-left-style: v-bind(selfModel.borderLeftStyle.current.xs.light);
+		border-radius: v-bind(selfModel.borderRadius.current.xs.light);
+		border-top-left-radius: v-bind(selfModel.borderTopLeftRadius.current.xs.light);
+		border-top-right-radius: v-bind(selfModel.borderTopRightRadius.current.xs.light);
+		border-bottom-right-radius: v-bind(selfModel.borderBottomRightRadius.current.xs.light);
+		border-bottom-left-radius: v-bind(selfModel.borderBottomLeftRadius.current.xs.light);
+		padding: v-bind(selfModel.padding.current.xs.light);
+		padding-top: v-bind(selfModel.paddingTop.current.xs.light);
+		padding-right: v-bind(selfModel.paddingRight.current.xs.light);
+		padding-bottom: v-bind(selfModel.paddingBottom.current.xs.light);
+		padding-left: v-bind(selfModel.paddingLeft.current.xs.light);
+		margin: v-bind(selfModel.margin.current.xs.light);
+		margin-top: v-bind(selfModel.marginTop.current.xs.light);
+		margin-right: v-bind(selfModel.marginRight.current.xs.light);
+		margin-bottom: v-bind(selfModel.marginBottom.current.xs.light);
+		margin-left: v-bind(selfModel.marginLeft.current.xs.light);
+	}
+
+	.vp-navigator-item:active {
+		color: v-bind(selfModel.textColor.active.xs.light);
+		background-color: v-bind(selfModel.backgroundColor.active.xs.light);
+		background-image: v-bind(selfModel.backgroundImage.active.xs.light);
+		border-color: v-bind(selfModel.borderColor.active.xs.light);
+		border-top-color: v-bind(selfModel.borderTopColor.active.xs.light);
+		border-right-color: v-bind(selfModel.borderRightColor.active.xs.light);
+		border-bottom-color: v-bind(selfModel.borderBottomColor.active.xs.light);
+		border-left-color: v-bind(selfModel.borderLeftColor.active.xs.light);
+		border-width: v-bind(selfModel.borderWidth.active.xs.light);
+		border-top-width: v-bind(selfModel.borderTopWidth.active.xs.light);
+		border-right-width: v-bind(selfModel.borderRightWidth.active.xs.light);
+		border-bottom-width: v-bind(selfModel.borderBottomWidth.active.xs.light);
+		border-left-width: v-bind(selfModel.borderLeftWidth.active.xs.light);
+		border-style: v-bind(selfModel.borderStyle.active.xs.light);
+		border-top-style: v-bind(selfModel.borderTopStyle.active.xs.light);
+		border-right-style: v-bind(selfModel.borderRightStyle.active.xs.light);
+		border-bottom-style: v-bind(selfModel.borderBottomStyle.active.xs.light);
+		border-left-style: v-bind(selfModel.borderLeftStyle.active.xs.light);
+		border-radius: v-bind(selfModel.borderRadius.active.xs.light);
+		border-top-left-radius: v-bind(selfModel.borderTopLeftRadius.active.xs.light);
+		border-top-right-radius: v-bind(selfModel.borderTopRightRadius.active.xs.light);
+		border-bottom-right-radius: v-bind(selfModel.borderBottomRightRadius.active.xs.light);
+		border-bottom-left-radius: v-bind(selfModel.borderBottomLeftRadius.active.xs.light);
+		padding: v-bind(selfModel.padding.active.xs.light);
+		padding-top: v-bind(selfModel.paddingTop.active.xs.light);
+		padding-right: v-bind(selfModel.paddingRight.active.xs.light);
+		padding-bottom: v-bind(selfModel.paddingBottom.active.xs.light);
+		padding-left: v-bind(selfModel.paddingLeft.active.xs.light);
+		margin: v-bind(selfModel.margin.active.xs.light);
+		margin-top: v-bind(selfModel.marginTop.active.xs.light);
+		margin-right: v-bind(selfModel.marginRight.active.xs.light);
+		margin-bottom: v-bind(selfModel.marginBottom.active.xs.light);
+		margin-left: v-bind(selfModel.marginLeft.active.xs.light);
+	}
+
+	.vp-navigator-item:focus {
+		color: v-bind(selfModel.textColor.focus.xs.light);
+		background-color: v-bind(selfModel.backgroundColor.focus.xs.light);
+		background-image: v-bind(selfModel.backgroundImage.focus.xs.light);
+		border-color: v-bind(selfModel.borderColor.focus.xs.light);
+		border-top-color: v-bind(selfModel.borderTopColor.focus.xs.light);
+		border-right-color: v-bind(selfModel.borderRightColor.focus.xs.light);
+		border-bottom-color: v-bind(selfModel.borderBottomColor.focus.xs.light);
+		border-left-color: v-bind(selfModel.borderLeftColor.focus.xs.light);
+		border-width: v-bind(selfModel.borderWidth.focus.xs.light);
+		border-top-width: v-bind(selfModel.borderTopWidth.focus.xs.light);
+		border-right-width: v-bind(selfModel.borderRightWidth.focus.xs.light);
+		border-bottom-width: v-bind(selfModel.borderBottomWidth.focus.xs.light);
+		border-left-width: v-bind(selfModel.borderLeftWidth.focus.xs.light);
+		border-style: v-bind(selfModel.borderStyle.focus.xs.light);
+		border-top-style: v-bind(selfModel.borderTopStyle.focus.xs.light);
+		border-right-style: v-bind(selfModel.borderRightStyle.focus.xs.light);
+		border-bottom-style: v-bind(selfModel.borderBottomStyle.focus.xs.light);
+		border-left-style: v-bind(selfModel.borderLeftStyle.focus.xs.light);
+		border-radius: v-bind(selfModel.borderRadius.focus.xs.light);
+		border-top-left-radius: v-bind(selfModel.borderTopLeftRadius.focus.xs.light);
+		border-top-right-radius: v-bind(selfModel.borderTopRightRadius.focus.xs.light);
+		border-bottom-right-radius: v-bind(selfModel.borderBottomRightRadius.focus.xs.light);
+		border-bottom-left-radius: v-bind(selfModel.borderBottomLeftRadius.focus.xs.light);
+		padding: v-bind(selfModel.padding.focus.xs.light);
+		padding-top: v-bind(selfModel.paddingTop.focus.xs.light);
+		padding-right: v-bind(selfModel.paddingRight.focus.xs.light);
+		padding-bottom: v-bind(selfModel.paddingBottom.focus.xs.light);
+		padding-left: v-bind(selfModel.paddingLeft.focus.xs.light);
+		margin: v-bind(selfModel.margin.focus.xs.light);
+		margin-top: v-bind(selfModel.marginTop.focus.xs.light);
+		margin-right: v-bind(selfModel.marginRight.focus.xs.light);
+		margin-bottom: v-bind(selfModel.marginBottom.focus.xs.light);
+		margin-left: v-bind(selfModel.marginLeft.focus.xs.light);
 	}
 
 	.vp-navigator-item--small {
