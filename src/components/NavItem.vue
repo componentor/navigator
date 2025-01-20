@@ -1,5 +1,5 @@
 <template>
-	<template v-if="drop === 'up' && $vertical && $slots.default && (show || forceOpen || forceOpenProvider)">
+	<template v-if="drop === 'up' && order !== 'odd' && $vertical && $slots.default && (show || forceOpen || forceOpenProvider)">
 		<div class="wrapper vp-navigator-item--up">
 			<slot/>
 		</div>
@@ -67,7 +67,7 @@
 			</div>
 		</template>
 	</Row>
-	<template v-if="drop !== 'up' && $vertical && $slots.default && (show || forceOpen || forceOpenProvider)">
+	<template v-if="(drop !== 'up' || order === 'odd') && $vertical && $slots.default && (show || forceOpen || forceOpenProvider)">
 		<div class="wrapper">
 			<slot/>
 		</div>
@@ -223,8 +223,8 @@
 					'vp-navigator-item--small': this.small,
 					'vp-navigator-item--horizontal': !this.$vertical,
 					'vp-navigator-item--vertical': this.$vertical,
-					'vp-navigator-item--show': this.show,
-					'vp-navigator-item--hide': !this.show,
+					'vp-navigator-item--show': this.show || this.forceOpen || this.forceOpenProvider,
+					'vp-navigator-item--hide': !this.show && !this.forceOpen && !this.forceOpenProvider,
 					'vp-navigator-item--direction-left': this.direction === 'left',
 					'vp-navigator-item--drop-up': this.drop === 'up',
 					'vp-navigator-item--reverse': (this.iconReverse === '' ? this.reverseIcon : (this.iconReverse === 'true'))

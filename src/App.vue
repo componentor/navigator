@@ -10,12 +10,13 @@
 		<Toggle
 			v-if="small && drop === 'down'"
 			@click="open=!open"
-			:open="open"
+			:open="open || forceOpen"
 			:style="{
 				width: toggleSize
 			}"
 			style="flex-shrink: 0"
-			:icon="toggle"
+			:icon="toggleIcon"
+			:iconClose="closeIcon"
 		/> <template v-if="!small || open || forceOpen">
 			<slot>
 				<div style="padding:10px">
@@ -26,12 +27,13 @@
 		<Toggle
 			v-if="small && drop === 'up'"
 			@click="open=!open"
-			:open="open"
+			:open="open || forceOpen"
 			:style="{
 				width: toggleSize
 			}"
 			style="flex-shrink: 0"
-			:icon="toggle"
+			:icon="toggleIcon"
+			:iconClose="closeIcon"
 		/>
 	</component>
 </template>
@@ -58,10 +60,15 @@
 			};
 		},
 		props: {
-			toggle: {
+			toggleIcon: {
 				type: String,
 				control: 'media',
 				default: '--menu-svg'
+			},
+			closeIcon: {
+				type: String,
+				control: 'media',
+				default: '--close-svg'
 			},
 			toggleSize: {
 				type: String,
@@ -165,7 +172,6 @@
 			},
 			handleClickOutside(event) {
 				if (this.open && this.$refs.nav && !this.$refs.nav.$el.contains(event.target)) {
-					console.log('well')
 					this.open = false
 				}
 			}
@@ -176,6 +182,7 @@
 <style scoped>
 	* {
 		--menu-svg: url(@/assets/menu.svg);
+		--close-svg: url(@/assets/close.svg);
 	}
 
 	.vp-navigator {
