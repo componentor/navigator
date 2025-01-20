@@ -58,7 +58,7 @@
 		</div> <template v-if="!$vertical && $slots.default && (show || forceOpen || forceOpenProvider)">
 			<div class="wrapper" :class="{
 				'vp-navigator-item--up': drop === 'up'
-			}">
+			}" :style="{ 'z-index': level ? level + 1 : 1 }">
 				<slot />
 			</div>
 		</template>
