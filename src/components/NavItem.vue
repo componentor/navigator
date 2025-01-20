@@ -105,7 +105,23 @@
 			},
 			target: {
 				type: String,
-				default: ''
+				default: '',
+				options: [{
+					key: 'Default',
+					value: ''
+				}, {
+					key: 'Blank',
+					value: '_blank'
+				}, {
+					key: 'Self',
+					value: '_self'
+				}, {
+					key: 'Parent',
+					value: '_parent'
+				}, {
+					key: 'Top',
+					value: '_top'
+				}]
 			},
 			icon: {
 				type: String,
