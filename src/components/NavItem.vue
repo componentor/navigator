@@ -77,7 +77,7 @@
 	} from 'vue';
 	import Row from '@vueplayio/row';
 	export default {
-		inject: ['small', 'open', 'forceOpenProvider', 'direction', 'orientation', 'drop', 'level', 'order', 'reverseIcon', 'expand', 'childrenIconSizeProvider', 'childrenCaretProvider', 'childrenCaretSizeProvider'],
+		inject: ['small', 'open', 'forceOpenProvider', 'direction', 'orientation', 'drop', 'level', 'order', 'reverseIcon', 'expand', 'childrenIconSizeProvider', 'childrenCaretProvider', 'childrenCaretSizeProvider', 'model'],
 		provide() {
 			return {
 				open: computed(() => this.show),
@@ -88,7 +88,8 @@
 				childrenIconSizeProvider: computed(() => this.childrenIconSize || this.childrenIconSizeProvider),
 				childrenCaretProvider: computed(() => this.childrenCaret || this.childrenCaretProvider),
 				childrenCaretSizeProvider: computed(() => this.childrenCaretSize || this.childrenCaretSizeProvider),
-				direction: computed(() => this.itemDirection ? this.itemDirection : this.direction)
+				direction: computed(() => this.itemDirection ? this.itemDirection : this.direction),
+				model: computed(() => this.selfModel)
 			};
 		},
 		props: {
@@ -194,6 +195,214 @@
 			forceOpen: {
 				type: Boolean,
 				default: false
+			},
+			textColor: {
+				type: String,
+				default: '',
+				control: 'color',
+				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				themes: ['dark', 'light'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
+			},
+			backgroundColor: {
+				type: String,
+				default: '',
+				control: 'color',
+				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				themes: ['dark', 'light'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
+			},
+			backgroundImage: {
+				type: String,
+				default: '',
+				control: 'media',
+				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				themes: ['dark', 'light'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
+			},
+			borderTopColor: {
+				type: String,
+				default: '',
+				control: 'color',
+				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				themes: ['dark', 'light'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
+			},
+			borderRightColor: {
+				type: String,
+				default: '',
+				control: 'color',
+				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				themes: ['dark', 'light'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
+			},
+			borderBottomColor: {
+				type: String,
+				default: '',
+				control: 'color',
+				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				themes: ['dark', 'light'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
+			},
+			borderLeftColor: {
+				type: String,
+				default: '',
+				control: 'color',
+				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				themes: ['dark', 'light'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
+			},
+			borderTopWidth: {
+				type: String,
+				default: '',
+				control: 'slider',
+				unit: 'px',
+				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				themes: ['dark', 'light'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
+			},
+			borderRightWidth: {
+				type: String,
+				default: '',
+				control: 'slider',
+				unit: 'px',
+				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				themes: ['dark', 'light'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
+			},
+			borderBottomWidth: {
+				type: String,
+				default: '',
+				control: 'slider',
+				unit: 'px',
+				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				themes: ['dark', 'light'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
+			},
+			borderLeftWidth: {
+				type: String,
+				default: '',
+				control: 'slider',
+				unit: 'px',
+				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				themes: ['dark', 'light'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
+			},
+			borderTopStyle: {
+				type: String,
+				default: '',
+				options: [
+					{ value: '', key: 'Clear' },
+					{ value: 'none', key: 'none' },
+					{ value: 'hidden', key: 'hidden' },
+					{ value: 'solid', key: 'solid' },
+					{ value: 'dashed', key: 'dashed' },
+					{ value: 'dotted', key: 'dotted' },
+					{ value: 'double', key: 'double' },
+					{ value: 'groove', key: 'groove' },
+					{ value: 'ridge', key: 'ridge' },
+					{ value: 'inset', key: 'inset' },
+					{ value: 'outset', key: 'outset' }
+				],
+				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				themes: ['dark', 'light'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
+			},
+			borderRightStyle: {
+				type: String,
+				default: '',
+				options: [
+					{ value: '', key: 'Clear' },
+					{ value: 'none', key: 'none' },
+					{ value: 'hidden', key: 'hidden' },
+					{ value: 'solid', key: 'solid' },
+					{ value: 'dashed', key: 'dashed' },
+					{ value: 'dotted', key: 'dotted' },
+					{ value: 'double', key: 'double' },
+					{ value: 'groove', key: 'groove' },
+					{ value: 'ridge', key: 'ridge' },
+					{ value: 'inset', key: 'inset' },
+					{ value: 'outset', key: 'outset' }
+				],
+				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				themes: ['dark', 'light'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
+			},
+			borderBottomStyle: {
+				type: String,
+				default: '',
+				options: [
+					{ value: '', key: 'Clear' },
+					{ value: 'none', key: 'none' },
+					{ value: 'hidden', key: 'hidden' },
+					{ value: 'solid', key: 'solid' },
+					{ value: 'dashed', key: 'dashed' },
+					{ value: 'dotted', key: 'dotted' },
+					{ value: 'double', key: 'double' },
+					{ value: 'groove', key: 'groove' },
+					{ value: 'ridge', key: 'ridge' },
+					{ value: 'inset', key: 'inset' },
+					{ value: 'outset', key: 'outset' }
+				],
+				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				themes: ['dark', 'light'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
+			},
+			borderLeftStyle: {
+				type: String,
+				default: '',
+				options: [
+					{ value: '', key: 'Clear' },
+					{ value: 'none', key: 'none' },
+					{ value: 'hidden', key: 'hidden' },
+					{ value: 'solid', key: 'solid' },
+					{ value: 'dashed', key: 'dashed' },
+					{ value: 'dotted', key: 'dotted' },
+					{ value: 'double', key: 'double' },
+					{ value: 'groove', key: 'groove' },
+					{ value: 'ridge', key: 'ridge' },
+					{ value: 'inset', key: 'inset' },
+					{ value: 'outset', key: 'outset' }
+				],
+				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				themes: ['dark', 'light'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
+			},
+			borderTopRadius: {
+				type: String,
+				default: '',
+				control: 'slider',
+				unit: 'px',
+				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				themes: ['dark', 'light'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
+			},
+			borderRightRadius: {
+				type: String,
+				default: '',
+				control: 'slider',
+				unit: 'px',
+				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				themes: ['dark', 'light'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
+			},
+			borderBottomRadius: {
+				type: String,
+				default: '',
+				control: 'slider',
+				unit: 'px',
+				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				themes: ['dark', 'light'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
+			},
+			borderLeftRadius: {
+				type: String,
+				default: '',
+				control: 'slider',
+				unit: 'px',
+				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				themes: ['dark', 'light'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
 			}
 		},
 		components: {
@@ -256,6 +465,68 @@
 				rootClass[`vp-navigator-item--level-${level}`] = true;
 				rootClass[`vp-navigator-item--${this.order}`] = true;
 				return rootClass;
+			},
+			selfModel() {
+				const obj = {}
+				const props = [
+					'textColor',
+					'backgroundColor',
+					'backgroundImage',
+					'borderTopColor',
+					'borderRightColor',
+					'borderBottomColor',
+					'borderLeftColor',
+					'borderTopWidth',
+					'borderRightWidth',
+					'borderBottomWidth',
+					'borderLeftWidth',
+					'borderTopStyle',
+					'borderRightStyle',
+					'borderBottomStyle',
+					'borderLeftStyle',
+					'borderTopRadius',
+					'borderRightRadius',
+					'borderBottomRadius',
+					'borderLeftRadius'
+				]
+				for (const prop of props) {
+					obj[prop] = this[prop] ? JSON.parse(this[prop]) : (this.model?.[prop] || {
+						default: {
+							xs: { light: '', dark: '' },
+							sm: { light: '', dark: '' },
+							md: { light: '', dark: '' },
+							lg: { light: '', dark: '' },
+							xl: { light: '', dark: '' },
+							'2xl': { light: '', dark: '' },
+						}
+					})
+					for (const group of ['default', 'hover', 'current', 'active', 'focus']) {
+						if (!obj[prop][group]) {
+							obj[prop][group] = {
+								xs: { light: '', dark: '' },
+								sm: { light: '', dark: '' },
+								md: { light: '', dark: '' },
+								lg: { light: '', dark: '' },
+								xl: { light: '', dark: '' },
+								'2xl': { light: '', dark: '' },
+							}
+						}
+						for (const breakpoint of ['2xl', 'xl', 'lg', 'md', 'sm']) {
+							if (!obj[prop][group][breakpoint]) {
+								obj[prop][group][breakpoint] = {
+									light: '',
+									dark: ''
+								}
+							}
+							for (const theme of ['light', 'dark']) {
+								if (!obj[prop][group][breakpoint][theme]) {
+									obj[prop][group][breakpoint] = 'inherit'
+								}
+							}
+						}
+					}
+				}
+				return obj
 			}
 		},
 		methods: {
@@ -275,12 +546,15 @@
 
 	.vp-navigator-item {
 		position: relative;
-		background: 'inherit';
 		overflow: visible;
 		padding: 0;
 		cursor: pointer;
 		border-bottom: 1px solid black;
 		align-items: stretch;
+	}
+
+	.vp-navigator-item {
+		background-color: v-bind(selfModel.backgroundColor.default.xs.light);
 	}
 
 	.vp-navigator-item:hover {

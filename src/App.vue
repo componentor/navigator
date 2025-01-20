@@ -46,7 +46,8 @@
 				reverseIcon: computed(() => this.iconsReverse),
 				childrenIconSizeProvider: computed(() => this.childrenIconSize),
 				childrenCaretProvider: computed(() => this.childrenCaret),
-				childrenCaretSizeProvider: computed(() => this.childrenCaretSize)
+				childrenCaretSizeProvider: computed(() => this.childrenCaretSize),
+				model: computed(() => this.model)
 			};
 		},
 		props: {
@@ -130,6 +131,14 @@
 				type: Boolean,
 				default: false
 			},
+			textColor: {
+				type: String,
+				default: '',
+				control: 'color',
+				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				themes: ['dark', 'light'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
+			},
 			backgroundColor: {
 				type: String,
 				default: '',
@@ -138,10 +147,10 @@
 				themes: ['dark', 'light'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
-			textColor: {
+			backgroundImage: {
 				type: String,
 				default: '',
-				control: 'color',
+				control: 'media',
 				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
 				themes: ['dark', 'light'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
@@ -343,6 +352,43 @@
 		computed: {
 			small() {
 				return this.screenWidth <= this.breakpoint;
+			},
+			model() {
+				const obj = {}
+				const props = [
+					'textColor',
+					'backgroundColor',
+					'backgroundImage',
+					'borderTopColor',
+					'borderRightColor',
+					'borderBottomColor',
+					'borderLeftColor',
+					'borderTopWidth',
+					'borderRightWidth',
+					'borderBottomWidth',
+					'borderLeftWidth',
+					'borderTopStyle',
+					'borderRightStyle',
+					'borderBottomStyle',
+					'borderLeftStyle',
+					'borderTopRadius',
+					'borderRightRadius',
+					'borderBottomRadius',
+					'borderLeftRadius'
+				]
+				for (const prop of props) {
+					obj[prop] = this[prop] ? JSON.parse(this[prop]) : {
+						default: {
+							xs: { light: '', dark: '' },
+							sm: { light: '', dark: '' },
+							md: { light: '', dark: '' },
+							lg: { light: '', dark: '' },
+							xl: { light: '', dark: '' },
+							'2xl': { light: '', dark: '' },
+						}
+					}
+				}
+				return obj
 			}
 		},
 		created() {
@@ -356,6 +402,9 @@
 			document.removeEventListener('click', this.handleClickOutside);
 		},
 		methods: {
+			renderProperty(prop) {
+				return prop
+			},
 			handleResize() {
 				this.screenWidth = window.innerWidth;
 				this.open = false;
