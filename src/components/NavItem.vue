@@ -45,7 +45,7 @@
 			}"
 			style="white-space: nowrap;display:inline-flex;align-items:center;flex-grow:1"
 		>
-			{{ title }}
+			{{ title }}{{direction}}{{itemDirection}}
 		</component>
 		<div
 			v-if="$slots.default"
@@ -88,7 +88,7 @@
 				childrenIconSizeProvider: computed(() => this.childrenIconSize || this.childrenIconSizeProvider),
 				childrenCaretProvider: computed(() => this.childrenCaret || this.childrenCaretProvider),
 				childrenCaretSizeProvider: computed(() => this.childrenCaretSize || this.childrenCaretSizeProvider),
-				direction: computed(() => this.itemDirection || this.direction)
+				direction: computed(() => this.itemDirection ? this.itemDirection : this.direction)
 			};
 		},
 		props: {
@@ -317,13 +317,13 @@
 		transform: rotate(0deg);
 	}
 
-	.vp-navigator-item--direction-left.vp-navigator-item--horizontal.vp-navigator-item--level-1 .vp-navigator-item--arrow,
+	.vp-navigator-item--direction-left.vp-navigator-item--horizontal:not(.vp-navigator-item--level-0) .vp-navigator-item--arrow,
 	.vp-navigator-item--direction-left.vp-navigator-item--reverse.vp-navigator-item--horizontal.vp-navigator-item--level-1 .vp-navigator-item--arrow,
 	.vp-navigator-item--direction-left.vp-navigator-item--drop-up.vp-navigator-item--reverse.vp-navigator-item--horizontal.vp-navigator-item--level-1 .vp-navigator-item--arrow {
 		transform: rotate(-180deg);
 	}
 
-	.vp-navigator-item--direction-right.vp-navigator-item--horizontal.vp-navigator-item--level-1 .vp-navigator-item--arrow,
+	.vp-navigator-item--direction-right.vp-navigator-item--horizontal:not(.vp-navigator-item--level-0) .vp-navigator-item--arrow,
 	.vp-navigator-item--direction-right.vp-navigator-item--reverse.vp-navigator-item--horizontal.vp-navigator-item--level-1 .vp-navigator-item--arrow,
 	.vp-navigator-item--direction-right.vp-navigator-item--drop-up.vp-navigator-item--reverse.vp-navigator-item--horizontal.vp-navigator-item--level-1 .vp-navigator-item--arrow {
 		transform: rotate(0deg);
