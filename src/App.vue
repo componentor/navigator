@@ -18,11 +18,10 @@
 			style="flex-shrink: 0"
 			:icon="toggleIcon"
 			:iconClose="closeIcon"
-		/>
-		<template v-if="!small || open || forceOpen">
+		/> <template v-if="!small || open || forceOpen">
 			<slot>
 				<div style="padding:10px">
-					Drop Navigator Items Here
+					Drop NavItems Here
 				</div>
 			</slot>
 		</template>
@@ -47,7 +46,7 @@
 				reverseIcon: computed(() => this.iconsReverse),
 				childrenIconSizeProvider: computed(() => this.childrenIconSize),
 				childrenCaretProvider: computed(() => this.childrenCaret),
-				childrenCaretSizeProvider: computed(() => this.childrenCaretSize),
+				childrenCaretSizeProvider: computed(() => this.childrenCaretSize)
 			};
 		},
 		props: {
@@ -150,11 +149,11 @@
 			window.addEventListener('resize', this.handleResize);
 		},
 		mounted() {
-			document.addEventListener('pointerdown', this.handleClickOutside)
+			document.addEventListener('pointerdown', this.handleClickOutside);
 		},
 		beforeUnmount() {
 			window.removeEventListener('resize', this.handleResize);
-			document.removeEventListener('click', this.handleClickOutside)
+			document.removeEventListener('click', this.handleClickOutside);
 		},
 		methods: {
 			handleResize() {
@@ -163,7 +162,7 @@
 			},
 			handleClickOutside(event) {
 				if (this.open && this.$refs.nav && !this.$refs.nav.$el.contains(event.target)) {
-					this.open = false
+					this.open = false;
 				}
 			}
 		}
