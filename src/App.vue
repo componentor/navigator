@@ -5,7 +5,7 @@
 		:class="{
 			'vp-navigator--small': small
 		}"
-		:reverse="(orientation === 'Row' && direction === 'left') || ((orientation === 'Column' || small) && drop === 'up')"
+		:reverse="((orientation === 'Row' && !small) && direction === 'left') || ((orientation === 'Column' || small) && drop === 'up')"
 		class="vp-navigator"
 	>
 		<Toggle

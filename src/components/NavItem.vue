@@ -1,9 +1,4 @@
 <template>
-	<template v-if="drop === 'up' && order !== 'odd' && $vertical && $slots.default && (show || forceOpen || forceOpenProvider)">
-		<div class="wrapper vp-navigator-item--up">
-			<slot />
-		</div>
-	</template>
 	<Row
 		v-bind="$attrs"
 		:class="rootClass"
@@ -61,12 +56,17 @@
 				style="background-repeat:no-repeat;background-size:contain;background-position:center;aspect-ratio:1/1"
 			/>
 		</div> <template v-if="!$vertical && $slots.default && (show || forceOpen || forceOpenProvider)">
-			<div class="wrapper">
+			<div class="wrapper" :class="{
+				'vp-navigator-item--up': drop === 'up'
+			}">
 				<slot />
 			</div>
 		</template>
-	</Row> <template v-if="(drop !== 'up' || order === 'odd') && $vertical && $slots.default && (show || forceOpen || forceOpenProvider)">
-		<div class="wrapper">
+	</Row>
+	<template v-if="$vertical && $slots.default && (show || forceOpen || forceOpenProvider)">
+		<div class="wrapper" :class="{
+			'vp-navigator-item--up': drop === 'up'
+		}">
 			<slot />
 		</div>
 	</template>

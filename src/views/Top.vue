@@ -12,7 +12,6 @@
 			orientation="Row"
 			style="z-index:2;flex-grow:1"
 			drop="up"
-			forceOpen="true"
 		>
 			<NavItem title="A">
 			</NavItem>
