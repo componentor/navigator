@@ -670,7 +670,7 @@
 							}
 							for (const theme of ['light', 'dark']) {
 								if (!obj[prop][group][breakpoint][theme]) {
-									obj[prop][group][breakpoint] = 'inherit'
+									obj[prop][group][breakpoint][theme] = 'inherit'
 								}
 							}
 						}
