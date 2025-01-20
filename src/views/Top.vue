@@ -9,10 +9,7 @@
 				style="z-index:2;flex-grow:1"
 				drop="down"
 			>
-				<NavItem
-					title="A"
-					icon="--close-svg"
-				>
+				<NavItem title="A">
 				</NavItem>
 				<NavItem
 					title="B"
