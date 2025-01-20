@@ -200,7 +200,7 @@
 				type: String,
 				default: '',
 				control: 'color',
-				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['dark', 'light'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
@@ -208,7 +208,7 @@
 				type: String,
 				default: '',
 				control: 'color',
-				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['dark', 'light'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
@@ -216,7 +216,7 @@
 				type: String,
 				default: '',
 				control: 'media',
-				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['dark', 'light'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
@@ -224,7 +224,7 @@
 				type: String,
 				default: '',
 				control: 'color',
-				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['dark', 'light'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
@@ -232,7 +232,7 @@
 				type: String,
 				default: '',
 				control: 'color',
-				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['dark', 'light'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
@@ -240,7 +240,7 @@
 				type: String,
 				default: '',
 				control: 'color',
-				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['dark', 'light'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
@@ -248,7 +248,7 @@
 				type: String,
 				default: '',
 				control: 'color',
-				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['dark', 'light'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
@@ -256,7 +256,7 @@
 				type: String,
 				default: '',
 				control: 'color',
-				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['dark', 'light'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
@@ -265,7 +265,7 @@
 				default: '',
 				control: 'slider',
 				unit: 'px',
-				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['dark', 'light'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
@@ -274,7 +274,7 @@
 				default: '',
 				control: 'slider',
 				unit: 'px',
-				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['dark', 'light'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
@@ -283,7 +283,7 @@
 				default: '',
 				control: 'slider',
 				unit: 'px',
-				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['dark', 'light'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
@@ -292,7 +292,7 @@
 				default: '',
 				control: 'slider',
 				unit: 'px',
-				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['dark', 'light'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
@@ -301,7 +301,7 @@
 				default: '',
 				control: 'slider',
 				unit: 'px',
-				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['dark', 'light'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
@@ -321,7 +321,7 @@
 					{ value: 'inset', key: 'inset' },
 					{ value: 'outset', key: 'outset' }
 				],
-				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['dark', 'light'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
@@ -341,7 +341,7 @@
 					{ value: 'inset', key: 'inset' },
 					{ value: 'outset', key: 'outset' }
 				],
-				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['dark', 'light'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
@@ -361,7 +361,7 @@
 					{ value: 'inset', key: 'inset' },
 					{ value: 'outset', key: 'outset' }
 				],
-				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['dark', 'light'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
@@ -381,7 +381,7 @@
 					{ value: 'inset', key: 'inset' },
 					{ value: 'outset', key: 'outset' }
 				],
-				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['dark', 'light'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
@@ -401,7 +401,7 @@
 					{ value: 'inset', key: 'inset' },
 					{ value: 'outset', key: 'outset' }
 				],
-				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['dark', 'light'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
@@ -410,7 +410,7 @@
 				default: '',
 				control: 'slider',
 				unit: 'px',
-				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['dark', 'light'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
@@ -419,7 +419,7 @@
 				default: '',
 				control: 'slider',
 				unit: 'px',
-				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['dark', 'light'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
@@ -428,7 +428,7 @@
 				default: '',
 				control: 'slider',
 				unit: 'px',
-				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['dark', 'light'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
@@ -437,7 +437,7 @@
 				default: '',
 				control: 'slider',
 				unit: 'px',
-				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['dark', 'light'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
@@ -446,7 +446,7 @@
 				default: '',
 				control: 'slider',
 				unit: 'px',
-				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['dark', 'light'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
@@ -455,7 +455,7 @@
 				default: '',
 				control: 'slider',
 				unit: 'px',
-				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['dark', 'light'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
@@ -464,7 +464,7 @@
 				default: '',
 				control: 'slider',
 				unit: 'px',
-				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['dark', 'light'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
@@ -473,7 +473,7 @@
 				default: '',
 				control: 'slider',
 				unit: 'px',
-				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['dark', 'light'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
@@ -482,7 +482,7 @@
 				default: '',
 				control: 'slider',
 				unit: 'px',
-				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['dark', 'light'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
@@ -491,7 +491,7 @@
 				default: '',
 				control: 'slider',
 				unit: 'px',
-				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['dark', 'light'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
@@ -500,7 +500,7 @@
 				default: '',
 				control: 'slider',
 				unit: 'px',
-				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['dark', 'light'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
@@ -509,7 +509,7 @@
 				default: '',
 				control: 'slider',
 				unit: 'px',
-				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['dark', 'light'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
@@ -518,7 +518,7 @@
 				default: '',
 				control: 'slider',
 				unit: 'px',
-				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['dark', 'light'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
@@ -527,7 +527,7 @@
 				default: '',
 				control: 'slider',
 				unit: 'px',
-				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['dark', 'light'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
@@ -536,7 +536,7 @@
 				default: '',
 				control: 'slider',
 				unit: 'px',
-				breakpoints: ['2xl', 'xl', 'lg', 'md', 'sm'],
+				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['dark', 'light'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
 			}
@@ -640,7 +640,7 @@
 					'marginLeft',
 				]
 				for (const prop of props) {
-					obj[prop] = this[prop] ? JSON.parse(this[prop]) : (this.model?.[prop] || {
+					obj[prop] = this[prop] ? JSON.parse(this[prop].replaceAll('`', '"')) : (this.model?.[prop] || {
 						default: {
 							xs: { light: '', dark: '' },
 							sm: { light: '', dark: '' },
@@ -661,7 +661,7 @@
 								'2xl': { light: '', dark: '' },
 							}
 						}
-						for (const breakpoint of ['2xl', 'xl', 'lg', 'md', 'sm']) {
+						for (const breakpoint of ['2xl', 'xl', 'lg', 'md', 'sm', 'xs']) {
 							if (!obj[prop][group][breakpoint]) {
 								obj[prop][group][breakpoint] = {
 									light: '',
