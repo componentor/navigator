@@ -885,7 +885,7 @@
 	.vp-navigator-item--odd,
 	.vp-navigator-item--even,
 	.vp-navigator-item--link {
-		cursor: auto;
+		cursor: inherit;
 	}
 
 </style>
