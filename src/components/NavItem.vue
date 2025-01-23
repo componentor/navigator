@@ -89,7 +89,7 @@
 				childrenCaretProvider: computed(() => this.childrenCaret || this.childrenCaretProvider),
 				childrenCaretSizeProvider: computed(() => this.childrenCaretSize || this.childrenCaretSizeProvider),
 				direction: computed(() => this.itemDirection ? this.itemDirection : this.direction),
-				model: computed(() => this.childModel ? JSON.parse(JSON.stringify(this.childModel)) : null)
+				model: computed(() => this.childModel)
 			};
 		},
 		props: {
