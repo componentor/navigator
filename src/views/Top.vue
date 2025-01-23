@@ -22,6 +22,7 @@
 					<NavItem
 						title="BB"
 						itemDirection="right"
+						backgroundColor="{`default`:{`xs`:{`light`:`#1ad6c3ff`}}}"
 					>
 						<NavItem
 							title="BBA"
