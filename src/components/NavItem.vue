@@ -89,7 +89,7 @@
 				childrenCaretProvider: computed(() => this.childrenCaret || this.childrenCaretProvider),
 				childrenCaretSizeProvider: computed(() => this.childrenCaretSize || this.childrenCaretSizeProvider),
 				direction: computed(() => this.itemDirection ? this.itemDirection : this.direction),
-				model: computed(() => this.selfModel)
+				model: computed(() => this.childModel)
 			};
 		},
 		props: {
@@ -481,7 +481,8 @@
 			Row: Row
 		},
 		data: () => ({
-			show: false
+			show: false,
+			childModel: {}
 		}),
 		mounted() {
 			document.addEventListener('click', this.handleClickOutside);
@@ -539,16 +540,15 @@
 				return rootClass;
 			},
 			selfModel() {
+				const def = 'ignore'
 				const defaultValues = {
-					xs: { light: '', dark: '' },
-					sm: { light: '', dark: '' },
-					md: { light: '', dark: '' },
-					lg: { light: '', dark: '' },
-					xl: { light: '', dark: '' },
-					'2xl': { light: '', dark: '' },
+					xs: { light: def, dark: def },
+					sm: { light: def, dark: def },
+					md: { light: def, dark: def },
+					lg: { light: def, dark: def },
+					xl: { light: def, dark: def },
+					'2xl': { light: def, dark: def },
 				};
-
-				const obj = {};
 
 				const props = [
 					'textColor',
@@ -580,24 +580,30 @@
 					'marginLeft',
 				];
 
-				const defaultStyle = {
+				const defaultStyle = JSON.stringify({
 					default: { ...defaultValues },
 					hover: { ...defaultValues },
 					current: { ...defaultValues },
 					active: { ...defaultValues },
 					focus: { ...defaultValues },
-				}
+				})
 
+				const obj = {}
+
+				this.childModel = {}
 				for (const prop of props) {
-					const parsedValue = this[prop] 
+					obj[prop] = JSON.parse(defaultStyle)
+					const parsedValue = this[prop]
 						? JSON.parse(this[prop].replaceAll('`', '"')) 
-						: this.model?.[prop] || defaultStyle;
-					obj[prop] = parsedValue;
-					for (const group in obj[prop]) {
-						for (const breakpoint in obj[prop][group]) {
-							for (const theme in obj[prop][group][breakpoint]) {
-								if (!obj[prop][group][breakpoint][theme]) {
-									obj[prop][group][breakpoint][theme] = 'inherit';
+						: this.model?.[prop];
+					if (parsedValue) {
+						this.childModel[prop] = parsedValue
+						for (const group in parsedValue) {
+							for (const breakpoint in parsedValue[group]) {
+								for (const theme in parsedValue[group][breakpoint]) {
+									if (parsedValue[group][breakpoint][theme]) {
+										obj[prop][group][breakpoint][theme] = parsedValue[group][breakpoint][theme];
+									}
 								}
 							}
 						}

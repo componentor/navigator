@@ -457,15 +457,8 @@
 					'marginLeft',
 				]
 				for (const prop of props) {
-					obj[prop] = this[prop] ? JSON.parse(this[prop].replaceAll('`', '"')) : {
-						default: {
-							xs: { light: '', dark: '' },
-							sm: { light: '', dark: '' },
-							md: { light: '', dark: '' },
-							lg: { light: '', dark: '' },
-							xl: { light: '', dark: '' },
-							'2xl': { light: '', dark: '' },
-						}
+					if (this[prop]) {
+						obj[prop] = JSON.parse(this[prop].replaceAll('`', '"'))
 					}
 				}
 				return obj

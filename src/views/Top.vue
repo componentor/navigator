@@ -8,8 +8,8 @@
 				orientation="Row"
 				style="z-index:2;flex-grow:1"
 				drop="down"
-				textColor="{`default`:{`xs`:{`light`:`#10e06aff`}}}"
-				backgroundColor="{`default`:{`xs`:{`light`:`#bd34bfff`}},`hover`:{`xs`:{`light`:`#802680ff`}}}"
+				textColor="{`default`:{`xs`:{`light`:`#36bf71ff`}}}"
+				backgroundColor="{`default`:{`xs`:{`light`:`#b832b8ff`}},`hover`:{`xs`:{`light`:`#802680ff`}}}"
 			>
 				<NavItem title="A">
 				</NavItem>
