@@ -9,10 +9,7 @@
 				style="z-index:2;flex-grow:1"
 				drop="down"
 				textColor="{`default`:{`xs`:{`light`:`#10e06aff`}}}"
-				backgroundColor="{`default`:{`xs`:{`light`:`#db6363ff`}},`hover`:{`xs`:{`light`:`#cf9b9bff`}}}"
-				borderRadius="{`default`:{`xs`:{`light`:`18px`}}}"
-				borderTopLeftRadius="{`default`:{`xs`:{`light`:`6px`}}}"
-				padding="{`default`:{`xs`:{`light`:`0px`}}}"
+				backgroundColor="{`default`:{`xs`:{`light`:`#bd34bfff`}},`hover`:{`xs`:{`light`:`#802680ff`}}}"
 			>
 				<NavItem title="A">
 				</NavItem>

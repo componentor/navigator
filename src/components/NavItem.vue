@@ -580,28 +580,24 @@
 					'marginLeft',
 				];
 
+				const defaultStyle = {
+					default: { ...defaultValues },
+					hover: { ...defaultValues },
+					current: { ...defaultValues },
+					active: { ...defaultValues },
+					focus: { ...defaultValues },
+				}
+
 				for (const prop of props) {
 					const parsedValue = this[prop] 
 						? JSON.parse(this[prop].replaceAll('`', '"')) 
-						: this.model?.[prop] || { 
-							default: { ...defaultValues },
-							hover: { ...defaultValues },
-							current: { ...defaultValues },
-							active: { ...defaultValues },
-							focus: { ...defaultValues },
-						};
+						: this.model?.[prop] || defaultStyle;
 					obj[prop] = parsedValue;
-					for (const group of ['default', 'hover', 'current', 'active', 'focus']) {
-						if (!obj[prop][group]) {
-							obj[prop][group] = { ...defaultValues };
-						}
-						for (const breakpoint of ['2xl', 'xl', 'lg', 'md', 'sm', 'xs']) {
-							if (!obj[prop][group][breakpoint]) {
-								obj[prop][group][breakpoint] = { light: '', dark: '' };
-							}
-							for (const theme of ['light', 'dark']) {
+					for (const group in obj[prop]) {
+						for (const breakpoint in obj[prop][group]) {
+							for (const theme in obj[prop][group][breakpoint]) {
 								if (!obj[prop][group][breakpoint][theme]) {
-									obj[prop][group][breakpoint][theme] = 'ignore';
+									obj[prop][group][breakpoint][theme] = 'inherit';
 								}
 							}
 						}
