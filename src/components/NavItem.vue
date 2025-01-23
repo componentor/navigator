@@ -43,7 +43,7 @@
 			{{ title }}
 		</component>
 		<div
-			v-if="$slots.default"
+			v-show="$slots.default"
 			@click.stop="show=!show"
 			class="vp-navigator-item--link vp-navigator-item--arrow"
 			style="padding: 0 10px;display:inline-flex;align-items:center"
@@ -55,16 +55,16 @@
 				}"
 				style="background-repeat:no-repeat;background-size:contain;background-position:center;aspect-ratio:1/1"
 			/>
-		</div> <template v-if="!$vertical && $slots.default && (show || forceOpen || forceOpenProvider)">
-			<div class="wrapper" :class="{
+		</div> <template v-if="!$vertical">
+			<div v-show="$slots.default && (show || forceOpen || forceOpenProvider)" class="wrapper" :class="{
 				'vp-navigator-item--up': drop === 'up'
 			}" :style="{ 'z-index': level ? level + 1 : 1 }">
 				<slot />
 			</div>
 		</template>
 	</Row>
-	<template v-if="$vertical && $slots.default && (show || forceOpen || forceOpenProvider)">
-		<div class="wrapper" :class="{
+	<template v-if="$vertical">
+		<div v-show="$slots.default && (show || forceOpen || forceOpenProvider)" class="wrapper" :class="{
 			'vp-navigator-item--up': drop === 'up'
 		}">
 			<slot />
@@ -580,23 +580,26 @@
 					'marginLeft',
 				];
 
-				const defaultStyle = JSON.stringify({
+				const defaultStyle = {
 					default: { ...defaultValues },
 					hover: { ...defaultValues },
 					current: { ...defaultValues },
 					active: { ...defaultValues },
 					focus: { ...defaultValues },
-				})
+				}
+
+				const defaultStyleString = JSON.stringify(defaultStyle)
 
 				const obj = {}
 
 				this.childModel = {}
 				for (const prop of props) {
-					obj[prop] = JSON.parse(defaultStyle)
+					obj[prop] = defaultStyle
 					const parsedValue = this[prop]
 						? JSON.parse(this[prop].replaceAll('`', '"')) 
 						: this.model?.[prop];
 					if (parsedValue) {
+						obj[prop] = JSON.parse(defaultStyleString)
 						this.childModel[prop] = parsedValue
 						for (const group in parsedValue) {
 							for (const breakpoint in parsedValue[group]) {
