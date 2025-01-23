@@ -43,7 +43,7 @@
 			{{ title }}
 		</component>
 		<div
-			v-show="$slots.default"
+			v-if="$slots.default"
 			@click.stop="show=!show"
 			class="vp-navigator-item--link vp-navigator-item--arrow"
 			style="padding: 0 10px;display:inline-flex;align-items:center"
@@ -64,7 +64,7 @@
 		</template>
 	</Row>
 	<template v-if="$vertical">
-		<div v-show="$slots.default && (show || forceOpen || forceOpenProvider)" class="wrapper" :class="{
+		<div v-if="$slots.default && (show || forceOpen || forceOpenProvider)" class="wrapper" :class="{
 			'vp-navigator-item--up': drop === 'up'
 		}">
 			<slot />
@@ -790,14 +790,6 @@
 		margin-left: v-bind(selfModel.marginLeft.focus.xs.light);
 	}
 
-	.vp-navigator-item--small {
-		background: transparent;
-	}
-
-	.vp-navigator-item--drop-up {
-		background: transparent;
-	}
-
 	.vp-navigator-item--vertical.vp-navigator-item--show .vp-navigator-item--arrow {
 		transform: rotate(90deg);
 	}
@@ -888,16 +880,12 @@
 		right: 100%;
 	}
 
-	.vp-navigator-item--odd {
-		background: 'inherit';
-	}
-
-	.vp-navigator-item--even {
-		background: 'inherit';
-	}
-
+	.vp-navigator-item--small,
+	.vp-navigator-item--drop-up,
+	.vp-navigator-item--odd,
+	.vp-navigator-item--even,
 	.vp-navigator-item--link {
-		background: 'inherit';
+		cursor: auto;
 	}
 
 </style>
