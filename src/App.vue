@@ -8,17 +8,16 @@
 		:reverse="((orientation === 'Row' && !small) && direction === 'left') || ((orientation === 'Column' || small) && drop === 'up')"
 		class="vp-navigator"
 	>
-		<Toggle
+		<div
 			v-if="small"
 			@click="open=!open"
-			:open="open || forceOpen"
 			:style="{
-				width: toggleSize
+				'background-image': open || forceOpen ? $closeIcon : $toggleIcon,
+				'width': toggleSize
 			}"
-			style="flex-shrink: 0"
-			:icon="toggleIcon"
-			:iconClose="closeIcon"
-		/> <template v-if="!small || open || forceOpen">
+			class="vp-toggle"
+		/>
+		<template v-if="!small || open || forceOpen">
 			<slot>
 				<div style="padding:10px">
 					Drop NavItems Here
@@ -33,7 +32,6 @@
 	} from 'vue';
 	import Column from '@vueplayio/column';
 	import Row from '@vueplayio/row';
-	import Toggle from '@/components/Toggle.vue';
 	export default {
 		provide() {
 			return {
@@ -414,14 +412,27 @@
 		},
 		components: {
 			Column,
-			Row,
-			Toggle
+			Row
 		},
 		data: () => ({
 			open: false,
 			screenWidth: window.innerWidth
 		}),
 		computed: {
+			$toggleIcon() {
+				if (this.toggleIcon?.startsWith('--')) {
+					return `var(${this.toggleIcon})`;
+				} else {
+					return `url(${this.toggleIcon})`;
+				}
+			},
+			$closeIcon() {
+				if (this.closeIcon?.startsWith('--')) {
+					return `var(${this.closeIcon})`;
+				} else {
+					return `url(${this.closeIcon})`;
+				}
+			},
 			small() {
 				return this.screenWidth <= this.breakpoint;
 			},
@@ -500,6 +511,14 @@
 	.vp-navigator {
 		padding: 0px;
 		overflow: visible;
+	}
+
+	.vp-toggle {
+		flex-shrink: 0;
+		cursor: pointer;
+		background-size: contain;
+		background-repeat: no-repeat;
+		aspect-ratio: 1/1
 	}
 
 </style>
