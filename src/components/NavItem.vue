@@ -55,8 +55,8 @@
 				}"
 				style="background-repeat:no-repeat;background-size:contain;background-position:center;aspect-ratio:1/1"
 			/>
-		</div> <template v-if="!$vertical">
-			<div v-show="$slots.default && (show || forceOpen || forceOpenProvider)" class="wrapper" :class="{
+		</div> <template v-if="!$vertical && $slots.default && (show || forceOpen || forceOpenProvider)">
+			<div class="wrapper" :class="{
 				'vp-navigator-item--up': drop === 'up'
 			}" :style="{ 'z-index': level ? level + 1 : 1 }">
 				<slot />
