@@ -3,9 +3,7 @@
 		v-bind="$attrs"
 		:class="rootClass"
 		:expand="expand"
-		:style="{
-			'flex-direction': (iconReverse === '' ? reverseIcon : (iconReverse === 'true')) ? 'row-reverse' : 'row',
-		}"
+		:style="style"
 		ref="navitem"
 		class="vp-navigator-item"
 		@click.stop="($event.pointerType !== 'mouse' || $vertical) && $slots.default && !route ? show=!show : ''"
@@ -15,8 +13,8 @@
 		<component
 			v-if="icon"
 			:is="external ? 'a' : 'router-link'"
-			:to="route"
-			:href="route"
+			:to="route || ''"
+			:href="route || ''"
 			:target="target"
 			class="vp-navigator-item--link"
 			style="padding: 0 10px;display:inline-flex;align-items:center"
@@ -32,8 +30,8 @@
 		<component
 			class="vp-navigator-item--link"
 			:is="external ? 'a' : 'router-link'"
-			:to="route"
-			:href="route"
+			:to="route || ''"
+			:href="route || ''"
 			:target="target"
 			:style="{
 				padding: '10px'
@@ -56,17 +54,24 @@
 				style="background-repeat:no-repeat;background-size:contain;background-position:center;aspect-ratio:1/1"
 			/>
 		</div> <template v-if="!$vertical && $slots.default && (show || forceOpen || forceOpenProvider)">
-			<div class="wrapper" :class="{
+			<div
+				class="wrapper"
+				:class="{
 				'vp-navigator-item--up': drop === 'up'
-			}" :style="{ 'z-index': level ? level + 1 : 1 }">
+			}"
+				:style="{ 'z-index': level ? level + 1 : 1 }"
+			>
 				<slot />
 			</div>
 		</template>
-	</Row>
-	<template v-if="$vertical">
-		<div v-if="$slots.default && (show || forceOpen || forceOpenProvider)" class="wrapper" :class="{
+	</Row> <template v-if="$vertical">
+		<div
+			v-if="$slots.default && (show || forceOpen || forceOpenProvider)"
+			class="wrapper"
+			:class="{
 			'vp-navigator-item--up': drop === 'up'
-		}">
+		}"
+		>
 			<slot />
 		</div>
 	</template>
@@ -291,19 +296,40 @@
 			borderTopStyle: {
 				type: String,
 				default: '',
-				options: [
-					{ value: '', key: 'Clear' },
-					{ value: 'none', key: 'none' },
-					{ value: 'hidden', key: 'hidden' },
-					{ value: 'solid', key: 'solid' },
-					{ value: 'dashed', key: 'dashed' },
-					{ value: 'dotted', key: 'dotted' },
-					{ value: 'double', key: 'double' },
-					{ value: 'groove', key: 'groove' },
-					{ value: 'ridge', key: 'ridge' },
-					{ value: 'inset', key: 'inset' },
-					{ value: 'outset', key: 'outset' }
-				],
+				options: [{
+					value: '',
+					key: 'Clear'
+				}, {
+					value: 'none',
+					key: 'none'
+				}, {
+					value: 'hidden',
+					key: 'hidden'
+				}, {
+					value: 'solid',
+					key: 'solid'
+				}, {
+					value: 'dashed',
+					key: 'dashed'
+				}, {
+					value: 'dotted',
+					key: 'dotted'
+				}, {
+					value: 'double',
+					key: 'double'
+				}, {
+					value: 'groove',
+					key: 'groove'
+				}, {
+					value: 'ridge',
+					key: 'ridge'
+				}, {
+					value: 'inset',
+					key: 'inset'
+				}, {
+					value: 'outset',
+					key: 'outset'
+				}],
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
@@ -311,19 +337,40 @@
 			borderRightStyle: {
 				type: String,
 				default: '',
-				options: [
-					{ value: '', key: 'Clear' },
-					{ value: 'none', key: 'none' },
-					{ value: 'hidden', key: 'hidden' },
-					{ value: 'solid', key: 'solid' },
-					{ value: 'dashed', key: 'dashed' },
-					{ value: 'dotted', key: 'dotted' },
-					{ value: 'double', key: 'double' },
-					{ value: 'groove', key: 'groove' },
-					{ value: 'ridge', key: 'ridge' },
-					{ value: 'inset', key: 'inset' },
-					{ value: 'outset', key: 'outset' }
-				],
+				options: [{
+					value: '',
+					key: 'Clear'
+				}, {
+					value: 'none',
+					key: 'none'
+				}, {
+					value: 'hidden',
+					key: 'hidden'
+				}, {
+					value: 'solid',
+					key: 'solid'
+				}, {
+					value: 'dashed',
+					key: 'dashed'
+				}, {
+					value: 'dotted',
+					key: 'dotted'
+				}, {
+					value: 'double',
+					key: 'double'
+				}, {
+					value: 'groove',
+					key: 'groove'
+				}, {
+					value: 'ridge',
+					key: 'ridge'
+				}, {
+					value: 'inset',
+					key: 'inset'
+				}, {
+					value: 'outset',
+					key: 'outset'
+				}],
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
@@ -331,19 +378,40 @@
 			borderBottomStyle: {
 				type: String,
 				default: '',
-				options: [
-					{ value: '', key: 'Clear' },
-					{ value: 'none', key: 'none' },
-					{ value: 'hidden', key: 'hidden' },
-					{ value: 'solid', key: 'solid' },
-					{ value: 'dashed', key: 'dashed' },
-					{ value: 'dotted', key: 'dotted' },
-					{ value: 'double', key: 'double' },
-					{ value: 'groove', key: 'groove' },
-					{ value: 'ridge', key: 'ridge' },
-					{ value: 'inset', key: 'inset' },
-					{ value: 'outset', key: 'outset' }
-				],
+				options: [{
+					value: '',
+					key: 'Clear'
+				}, {
+					value: 'none',
+					key: 'none'
+				}, {
+					value: 'hidden',
+					key: 'hidden'
+				}, {
+					value: 'solid',
+					key: 'solid'
+				}, {
+					value: 'dashed',
+					key: 'dashed'
+				}, {
+					value: 'dotted',
+					key: 'dotted'
+				}, {
+					value: 'double',
+					key: 'double'
+				}, {
+					value: 'groove',
+					key: 'groove'
+				}, {
+					value: 'ridge',
+					key: 'ridge'
+				}, {
+					value: 'inset',
+					key: 'inset'
+				}, {
+					value: 'outset',
+					key: 'outset'
+				}],
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
@@ -351,19 +419,40 @@
 			borderLeftStyle: {
 				type: String,
 				default: '',
-				options: [
-					{ value: '', key: 'Clear' },
-					{ value: 'none', key: 'none' },
-					{ value: 'hidden', key: 'hidden' },
-					{ value: 'solid', key: 'solid' },
-					{ value: 'dashed', key: 'dashed' },
-					{ value: 'dotted', key: 'dotted' },
-					{ value: 'double', key: 'double' },
-					{ value: 'groove', key: 'groove' },
-					{ value: 'ridge', key: 'ridge' },
-					{ value: 'inset', key: 'inset' },
-					{ value: 'outset', key: 'outset' }
-				],
+				options: [{
+					value: '',
+					key: 'Clear'
+				}, {
+					value: 'none',
+					key: 'none'
+				}, {
+					value: 'hidden',
+					key: 'hidden'
+				}, {
+					value: 'solid',
+					key: 'solid'
+				}, {
+					value: 'dashed',
+					key: 'dashed'
+				}, {
+					value: 'dotted',
+					key: 'dotted'
+				}, {
+					value: 'double',
+					key: 'double'
+				}, {
+					value: 'groove',
+					key: 'groove'
+				}, {
+					value: 'ridge',
+					key: 'ridge'
+				}, {
+					value: 'inset',
+					key: 'inset'
+				}, {
+					value: 'outset',
+					key: 'outset'
+				}],
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
@@ -482,7 +571,14 @@
 		},
 		data: () => ({
 			show: false,
-			childModel: {}
+			childModel: {},
+			hover: false,
+			active: false,
+			current: false,
+			focus: false,
+			breakpoint: 'xs',
+			theme: 'light',
+			group: 'default'
 		}),
 		mounted() {
 			document.addEventListener('click', this.handleClickOutside);
@@ -540,67 +636,60 @@
 				return rootClass;
 			},
 			selfModel() {
-				const def = 'ignore'
+				const def = 'inherit';
 				const defaultValues = {
-					xs: { light: def, dark: def },
-					sm: { light: def, dark: def },
-					md: { light: def, dark: def },
-					lg: { light: def, dark: def },
-					xl: { light: def, dark: def },
-					'2xl': { light: def, dark: def },
+					xs: {
+						light: def,
+						dark: def
+					},
+					sm: {
+						light: def,
+						dark: def
+					},
+					md: {
+						light: def,
+						dark: def
+					},
+					lg: {
+						light: def,
+						dark: def
+					},
+					xl: {
+						light: def,
+						dark: def
+					},
+					'2xl': {
+						light: def,
+						dark: def
+					}
 				};
-
-				const props = [
-					'textColor',
-					'backgroundColor',
-					'backgroundImage',
-					'borderTopColor',
-					'borderRightColor',
-					'borderBottomColor',
-					'borderLeftColor',
-					'borderTopWidth',
-					'borderRightWidth',
-					'borderBottomWidth',
-					'borderLeftWidth',
-					'borderTopStyle',
-					'borderRightStyle',
-					'borderBottomStyle',
-					'borderLeftStyle',
-					'borderTopLeftRadius',
-					'borderTopRightRadius',
-					'borderBottomRightRadius',
-					'borderBottomLeftRadius',
-					'paddingTop',
-					'paddingRight',
-					'paddingBottom',
-					'paddingLeft',
-					'marginTop',
-					'marginRight',
-					'marginBottom',
-					'marginLeft',
-				];
-
+				const props = ['textColor', 'backgroundColor', 'backgroundImage', 'borderTopColor', 'borderRightColor', 'borderBottomColor', 'borderLeftColor', 'borderTopWidth', 'borderRightWidth', 'borderBottomWidth', 'borderLeftWidth', 'borderTopStyle', 'borderRightStyle', 'borderBottomStyle', 'borderLeftStyle', 'borderTopLeftRadius', 'borderTopRightRadius', 'borderBottomRightRadius', 'borderBottomLeftRadius', 'paddingTop', 'paddingRight', 'paddingBottom', 'paddingLeft', 'marginTop', 'marginRight', 'marginBottom', 'marginLeft'];
 				const defaultStyle = {
-					default: { ...defaultValues },
-					hover: { ...defaultValues },
-					current: { ...defaultValues },
-					active: { ...defaultValues },
-					focus: { ...defaultValues },
-				}
-
-				const defaultStyleString = JSON.stringify(defaultStyle)
-
-				const obj = {}
-
-				this.childModel = {}
+					default: {
+						...defaultValues
+					},
+					hover: {
+						...defaultValues
+					},
+					current: {
+						...defaultValues
+					},
+					active: {
+						...defaultValues
+					},
+					focus: {
+						...defaultValues
+					}
+				};
+				const defaultStyleString = JSON.stringify(defaultStyle);
+				const obj = {};
+				this.childModel = {};
 				for (const prop of props) {
-					obj[prop] = defaultStyle
-					const parsedValue = this[prop]
-						? JSON.parse(this[prop].replaceAll('`', '"')) 
-						: this.model?.[prop];
+					obj[prop] = defaultStyle;
+					const parsedValue = this[prop] ? JSON.parse(this[prop].replaceAll('`', '"')) : this.model?.[prop];
 					if (parsedValue) {
-						obj[prop] = JSON.parse(defaultStyleString)
-						this.childModel[prop] = parsedValue
+						obj[prop] = JSON.parse(defaultStyleString);
+						this.childModel[prop] = parsedValue;
 						for (const group in parsedValue) {
 							for (const breakpoint in parsedValue[group]) {
 								for (const theme in parsedValue[group][breakpoint]) {
@@ -612,8 +701,19 @@
 						}
 					}
 				}
-
 				return obj;
+			},
+			style() {
+				const groups = ['default', 'hover', 'current', 'active', 'focus']
+				this.group = 'default'
+				this.breakpoint = 'xs'
+				this.theme = 'light'
+				const style = {}
+				for (const prop of Object.keys(this.childModel)) {
+					style[prop] = this.childModel[prop]?.['default']?.['xs']?.['light']
+				}
+				style['flex-direction'] = (this.iconReverse === '' ? this.reverseIcon : (this.iconReverse === 'true')) ? 'row-reverse' : 'row'
+				return style
 			}
 		},
 		methods: {
@@ -628,166 +728,16 @@
 </script>
 <style scoped>
 	* {
-		--vp-nav-caret-icon: url(@/assets/arrow.svg);
+		--vp-nav-caret-icon: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iY3VycmVudENvbG9yIiBjbGFzcz0ic2l6ZS02Ij4KICA8cGF0aCBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGQ9Im04LjI1IDQuNSA3LjUgNy41LTcuNSA3LjUiIC8+Cjwvc3ZnPg==);
 	}
 
-	.vp-navigator-item {
+	.vp-navigator-item,
+	.vp-row.vp-navigator-item {
 		position: relative;
 		overflow: visible;
 		padding: 0;
 		cursor: pointer;
-		border-bottom: 1px solid black;
 		align-items: stretch;
-	}
-
-	.vp-navigator-item {
-		color: v-bind(selfModel.textColor.default.xs.light);
-		background-color: v-bind(selfModel.backgroundColor.default.xs.light);
-		background-image: v-bind(selfModel.backgroundImage.default.xs.light);
-		border-top-color: v-bind(selfModel.borderTopColor.default.xs.light);
-		border-right-color: v-bind(selfModel.borderRightColor.default.xs.light);
-		border-bottom-color: v-bind(selfModel.borderBottomColor.default.xs.light);
-		border-left-color: v-bind(selfModel.borderLeftColor.default.xs.light);
-		border-top-width: v-bind(selfModel.borderTopWidth.default.xs.light);
-		border-right-width: v-bind(selfModel.borderRightWidth.default.xs.light);
-		border-bottom-width: v-bind(selfModel.borderBottomWidth.default.xs.light);
-		border-left-width: v-bind(selfModel.borderLeftWidth.default.xs.light);
-		border-top-style: v-bind(selfModel.borderTopStyle.default.xs.light);
-		border-right-style: v-bind(selfModel.borderRightStyle.default.xs.light);
-		border-bottom-style: v-bind(selfModel.borderBottomStyle.default.xs.light);
-		border-left-style: v-bind(selfModel.borderLeftStyle.default.xs.light);
-		border-top-left-radius: v-bind(selfModel.borderTopLeftRadius.default.xs.light);
-		border-top-right-radius: v-bind(selfModel.borderTopRightRadius.default.xs.light);
-		border-bottom-right-radius: v-bind(selfModel.borderBottomRightRadius.default.xs.light);
-		border-bottom-left-radius: v-bind(selfModel.borderBottomLeftRadius.default.xs.light);
-		padding-top: v-bind(selfModel.paddingTop.default.xs.light);
-		padding-right: v-bind(selfModel.paddingRight.default.xs.light);
-		padding-bottom: v-bind(selfModel.paddingBottom.default.xs.light);
-		padding-left: v-bind(selfModel.paddingLeft.default.xs.light);
-		margin-top: v-bind(selfModel.marginTop.default.xs.light);
-		margin-right: v-bind(selfModel.marginRight.default.xs.light);
-		margin-bottom: v-bind(selfModel.marginBottom.default.xs.light);
-		margin-left: v-bind(selfModel.marginLeft.default.xs.light);
-	}
-
-	.vp-navigator-item:hover {
-		color: v-bind(selfModel.textColor.hover.xs.light);
-		background-color: v-bind(selfModel.backgroundColor.hover.xs.light);
-		background-image: v-bind(selfModel.backgroundImage.hover.xs.light);
-		border-top-color: v-bind(selfModel.borderTopColor.hover.xs.light);
-		border-right-color: v-bind(selfModel.borderRightColor.hover.xs.light);
-		border-bottom-color: v-bind(selfModel.borderBottomColor.hover.xs.light);
-		border-left-color: v-bind(selfModel.borderLeftColor.hover.xs.light);
-		border-top-width: v-bind(selfModel.borderTopWidth.hover.xs.light);
-		border-right-width: v-bind(selfModel.borderRightWidth.hover.xs.light);
-		border-bottom-width: v-bind(selfModel.borderBottomWidth.hover.xs.light);
-		border-left-width: v-bind(selfModel.borderLeftWidth.hover.xs.light);
-		border-top-style: v-bind(selfModel.borderTopStyle.hover.xs.light);
-		border-right-style: v-bind(selfModel.borderRightStyle.hover.xs.light);
-		border-bottom-style: v-bind(selfModel.borderBottomStyle.hover.xs.light);
-		border-left-style: v-bind(selfModel.borderLeftStyle.hover.xs.light);
-		border-top-left-radius: v-bind(selfModel.borderTopLeftRadius.hover.xs.light);
-		border-top-right-radius: v-bind(selfModel.borderTopRightRadius.hover.xs.light);
-		border-bottom-right-radius: v-bind(selfModel.borderBottomRightRadius.hover.xs.light);
-		border-bottom-left-radius: v-bind(selfModel.borderBottomLeftRadius.hover.xs.light);
-		padding-top: v-bind(selfModel.paddingTop.hover.xs.light);
-		padding-right: v-bind(selfModel.paddingRight.hover.xs.light);
-		padding-bottom: v-bind(selfModel.paddingBottom.hover.xs.light);
-		padding-left: v-bind(selfModel.paddingLeft.hover.xs.light);
-		margin-top: v-bind(selfModel.marginTop.hover.xs.light);
-		margin-right: v-bind(selfModel.marginRight.hover.xs.light);
-		margin-bottom: v-bind(selfModel.marginBottom.hover.xs.light);
-		margin-left: v-bind(selfModel.marginLeft.hover.xs.light);
-	}
-
-	.vp-navigator-item.current {
-		color: v-bind(selfModel.textColor.current.xs.light);
-		background-color: v-bind(selfModel.backgroundColor.current.xs.light);
-		background-image: v-bind(selfModel.backgroundImage.current.xs.light);
-		border-top-color: v-bind(selfModel.borderTopColor.current.xs.light);
-		border-right-color: v-bind(selfModel.borderRightColor.current.xs.light);
-		border-bottom-color: v-bind(selfModel.borderBottomColor.current.xs.light);
-		border-left-color: v-bind(selfModel.borderLeftColor.current.xs.light);
-		border-top-width: v-bind(selfModel.borderTopWidth.current.xs.light);
-		border-right-width: v-bind(selfModel.borderRightWidth.current.xs.light);
-		border-bottom-width: v-bind(selfModel.borderBottomWidth.current.xs.light);
-		border-left-width: v-bind(selfModel.borderLeftWidth.current.xs.light);
-		border-top-style: v-bind(selfModel.borderTopStyle.current.xs.light);
-		border-right-style: v-bind(selfModel.borderRightStyle.current.xs.light);
-		border-bottom-style: v-bind(selfModel.borderBottomStyle.current.xs.light);
-		border-left-style: v-bind(selfModel.borderLeftStyle.current.xs.light);
-		border-top-left-radius: v-bind(selfModel.borderTopLeftRadius.current.xs.light);
-		border-top-right-radius: v-bind(selfModel.borderTopRightRadius.current.xs.light);
-		border-bottom-right-radius: v-bind(selfModel.borderBottomRightRadius.current.xs.light);
-		border-bottom-left-radius: v-bind(selfModel.borderBottomLeftRadius.current.xs.light);
-		padding-top: v-bind(selfModel.paddingTop.current.xs.light);
-		padding-right: v-bind(selfModel.paddingRight.current.xs.light);
-		padding-bottom: v-bind(selfModel.paddingBottom.current.xs.light);
-		padding-left: v-bind(selfModel.paddingLeft.current.xs.light);
-		margin-top: v-bind(selfModel.marginTop.current.xs.light);
-		margin-right: v-bind(selfModel.marginRight.current.xs.light);
-		margin-bottom: v-bind(selfModel.marginBottom.current.xs.light);
-		margin-left: v-bind(selfModel.marginLeft.current.xs.light);
-	}
-
-	.vp-navigator-item:active {
-		color: v-bind(selfModel.textColor.active.xs.light);
-		background-color: v-bind(selfModel.backgroundColor.active.xs.light);
-		background-image: v-bind(selfModel.backgroundImage.active.xs.light);
-		border-top-color: v-bind(selfModel.borderTopColor.active.xs.light);
-		border-right-color: v-bind(selfModel.borderRightColor.active.xs.light);
-		border-bottom-color: v-bind(selfModel.borderBottomColor.active.xs.light);
-		border-left-color: v-bind(selfModel.borderLeftColor.active.xs.light);
-		border-top-width: v-bind(selfModel.borderTopWidth.active.xs.light);
-		border-right-width: v-bind(selfModel.borderRightWidth.active.xs.light);
-		border-bottom-width: v-bind(selfModel.borderBottomWidth.active.xs.light);
-		border-left-width: v-bind(selfModel.borderLeftWidth.active.xs.light);
-		border-top-style: v-bind(selfModel.borderTopStyle.active.xs.light);
-		border-right-style: v-bind(selfModel.borderRightStyle.active.xs.light);
-		border-bottom-style: v-bind(selfModel.borderBottomStyle.active.xs.light);
-		border-left-style: v-bind(selfModel.borderLeftStyle.active.xs.light);
-		border-top-left-radius: v-bind(selfModel.borderTopLeftRadius.active.xs.light);
-		border-top-right-radius: v-bind(selfModel.borderTopRightRadius.active.xs.light);
-		border-bottom-right-radius: v-bind(selfModel.borderBottomRightRadius.active.xs.light);
-		border-bottom-left-radius: v-bind(selfModel.borderBottomLeftRadius.active.xs.light);
-		padding-top: v-bind(selfModel.paddingTop.active.xs.light);
-		padding-right: v-bind(selfModel.paddingRight.active.xs.light);
-		padding-bottom: v-bind(selfModel.paddingBottom.active.xs.light);
-		padding-left: v-bind(selfModel.paddingLeft.active.xs.light);
-		margin-top: v-bind(selfModel.marginTop.active.xs.light);
-		margin-right: v-bind(selfModel.marginRight.active.xs.light);
-		margin-bottom: v-bind(selfModel.marginBottom.active.xs.light);
-		margin-left: v-bind(selfModel.marginLeft.active.xs.light);
-	}
-
-	.vp-navigator-item:focus {
-		color: v-bind(selfModel.textColor.focus.xs.light);
-		background-color: v-bind(selfModel.backgroundColor.focus.xs.light);
-		background-image: v-bind(selfModel.backgroundImage.focus.xs.light);
-		border-top-color: v-bind(selfModel.borderTopColor.focus.xs.light);
-		border-right-color: v-bind(selfModel.borderRightColor.focus.xs.light);
-		border-bottom-color: v-bind(selfModel.borderBottomColor.focus.xs.light);
-		border-left-color: v-bind(selfModel.borderLeftColor.focus.xs.light);
-		border-top-width: v-bind(selfModel.borderTopWidth.focus.xs.light);
-		border-right-width: v-bind(selfModel.borderRightWidth.focus.xs.light);
-		border-bottom-width: v-bind(selfModel.borderBottomWidth.focus.xs.light);
-		border-left-width: v-bind(selfModel.borderLeftWidth.focus.xs.light);
-		border-top-style: v-bind(selfModel.borderTopStyle.focus.xs.light);
-		border-right-style: v-bind(selfModel.borderRightStyle.focus.xs.light);
-		border-bottom-style: v-bind(selfModel.borderBottomStyle.focus.xs.light);
-		border-left-style: v-bind(selfModel.borderLeftStyle.focus.xs.light);
-		border-top-left-radius: v-bind(selfModel.borderTopLeftRadius.focus.xs.light);
-		border-top-right-radius: v-bind(selfModel.borderTopRightRadius.focus.xs.light);
-		border-bottom-right-radius: v-bind(selfModel.borderBottomRightRadius.focus.xs.light);
-		border-bottom-left-radius: v-bind(selfModel.borderBottomLeftRadius.focus.xs.light);
-		padding-top: v-bind(selfModel.paddingTop.focus.xs.light);
-		padding-right: v-bind(selfModel.paddingRight.focus.xs.light);
-		padding-bottom: v-bind(selfModel.paddingBottom.focus.xs.light);
-		padding-left: v-bind(selfModel.paddingLeft.focus.xs.light);
-		margin-top: v-bind(selfModel.marginTop.focus.xs.light);
-		margin-right: v-bind(selfModel.marginRight.focus.xs.light);
-		margin-bottom: v-bind(selfModel.marginBottom.focus.xs.light);
-		margin-left: v-bind(selfModel.marginLeft.focus.xs.light);
 	}
 
 	.vp-navigator-item--vertical.vp-navigator-item--show .vp-navigator-item--arrow {
@@ -828,13 +778,13 @@
 		transform: rotate(0deg);
 	}
 
-	.vp-navigator-item--direction-right.vp-navigator-item--horizontal:not(.vp-navigator-item--level-0) > .vp-navigator-item--arrow,
+	.vp-navigator-item--direction-right.vp-navigator-item--horizontal:not(.vp-navigator-item--level-0)>.vp-navigator-item--arrow,
 	.vp-navigator-item--direction-right.vp-navigator-item--reverse.vp-navigator-item--horizontal.vp-navigator-item--level-1 .vp-navigator-item--arrow,
 	.vp-navigator-item--direction-right.vp-navigator-item--drop-up.vp-navigator-item--reverse.vp-navigator-item--horizontal.vp-navigator-item--level-1 .vp-navigator-item--arrow {
 		transform: rotate(0deg);
 	}
 
-	.vp-navigator-item--direction-left.vp-navigator-item--horizontal:not(.vp-navigator-item--level-0) > .vp-navigator-item--arrow,
+	.vp-navigator-item--direction-left.vp-navigator-item--horizontal:not(.vp-navigator-item--level-0)>.vp-navigator-item--arrow,
 	.vp-navigator-item--direction-left.vp-navigator-item--reverse.vp-navigator-item--horizontal.vp-navigator-item--level-1 .vp-navigator-item--arrow,
 	.vp-navigator-item--direction-left.vp-navigator-item--drop-up.vp-navigator-item--reverse.vp-navigator-item--horizontal.vp-navigator-item--level-1 .vp-navigator-item--arrow {
 		transform: rotate(-180deg);
@@ -870,12 +820,12 @@
 		left: 100%;
 	}
 
-	.vp-navigator-item--direction-right.vp-navigator-item--horizontal:not(.vp-navigator-item--level-0) > .wrapper {
+	.vp-navigator-item--direction-right.vp-navigator-item--horizontal:not(.vp-navigator-item--level-0)>.wrapper {
 		left: 100%;
 		right: auto;
 	}
 
-	.vp-navigator-item--direction-left.vp-navigator-item--horizontal:not(.vp-navigator-item--level-0) > .wrapper {
+	.vp-navigator-item--direction-left.vp-navigator-item--horizontal:not(.vp-navigator-item--level-0)>.wrapper {
 		left: auto;
 		right: 100%;
 	}
