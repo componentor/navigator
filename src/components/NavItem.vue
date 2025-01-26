@@ -7,12 +7,14 @@
 		ref="navitem"
 		class="vp-navigator-item"
 		@click.stop="($event.pointerType !== 'mouse' || $vertical) && $slots.default && !route ? show=!show : ''"
-		@pointerover="($event.pointerType !== 'mouse' || $vertical ? '' : show=true), hover=true"
-		@pointerleave="($event.pointerType !== 'mouse' || $vertical ? '' : show=false), hover=false"
-		@focus="focus=true"
-		@blur="focus=false"
-		@pointerdown="active=true"
-		@pointerup="active=false"
+		@pointerover="$event.pointerType !== 'mouse' || $vertical ? '' : show=true"
+		@pointerover.stop="hover=true"
+		@pointerleave="$event.pointerType !== 'mouse' || $vertical ? '' : show=false"
+		@pointerleave.stop="hover=false"
+		@focus.stop="focus=true"
+		@blur.stop="focus=false"
+		@pointerdown.stop="active=true"
+		@pointerup.stop="active=false"
 	>
 		<component
 			v-if="icon"
@@ -720,6 +722,7 @@
 		padding: 0;
 		cursor: pointer;
 		align-items: stretch;
+		transition: border-color .3s linear, opacity .3s linear, color .3s linear, background .3s linear, background-color .3s linear;
 	}
 
 	.vp-navigator-item--vertical.vp-navigator-item--show .vp-navigator-item--arrow {
