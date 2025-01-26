@@ -110,7 +110,7 @@
 			},
 			route: {
 				type: String,
-				default: '#'
+				default: ''
 			},
 			external: {
 				type: Boolean,
@@ -593,7 +593,7 @@
 			current() {
 				let route = this.route?.replace(/^\/|\/$/g, '')
 				let path = this.$route?.path?.replace(/^\/|\/$/g, '')
-				return route === path
+				return (route && route === path) || (!route && this.$route?.path === '/') || (route === '/' && !this.$route?.path)
 			},
 			group() {
 				if (this.current) return 'current'

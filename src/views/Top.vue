@@ -151,6 +151,149 @@
 		style="overflow:visible"
 		expand="true"
 	>
+		<Navigator
+			direction="right"
+			iconSize="40px"
+			orientation="Row"
+			style="z-index:2;flex-grow:1"
+			drop="down"
+			textColor="{`default`:{`xs`:{`light`:`#de1d1dff`}}}"
+			backgroundColor="{`default`:{`xs`:{`light`:`#cc7070ff`}},`hover`:{`xs`:{`light`:`#2932a6ff`}}}"
+		>
+			<NavItem title="A">
+			</NavItem>
+			<NavItem title="A">
+			</NavItem>
+			<NavItem
+				title="B"
+				icon="--menu-svg"
+			>
+				<NavItem title="BA">
+				</NavItem>
+				<NavItem
+					title="BB"
+					itemDirection="right"
+					backgroundColor="{`default`:{`xs`:{`light`:`#1ad6c3ff`}}}"
+					textColor="{`default`:{`xs`:{`light`:`#f2c40aff`}}}"
+				>
+					<NavItem
+						title="BBA"
+						icon="--close-svg"
+						iconReverse="false"
+					>
+					</NavItem>
+					<NavItem
+						title="BBC"
+						icon="--menu-svg"
+					></NavItem>
+					<NavItem
+						title="BB"
+						icon="--menu-svg"
+						itemDirection="left"
+						textColor="{`default`:{`xs`:{`light`:`#e60e0eff`}}}"
+					>
+						<NavItem title="BBA">
+						</NavItem>
+						<NavItem title="BBC"></NavItem>
+						<NavItem title="BBD"></NavItem>
+					</NavItem>
+					<NavItem title="BBD"></NavItem>
+				</NavItem>
+				<NavItem
+					title="BC"
+					icon="--menu-svg"
+				></NavItem>
+				<NavItem title="BD"></NavItem>
+			</NavItem>
+			<NavItem
+				title="B"
+				icon="--menu-svg"
+			>
+				<NavItem title="BA">
+				</NavItem>
+				<NavItem
+					title="BB"
+					itemDirection="right"
+					backgroundColor="{`default`:{`xs`:{`light`:`#1ad6c3ff`}}}"
+					textColor="{`default`:{`xs`:{`light`:`#f2c40aff`}}}"
+				>
+					<NavItem
+						title="BBA"
+						icon="--close-svg"
+						iconReverse="false"
+					>
+					</NavItem>
+					<NavItem
+						title="BBC"
+						icon="--menu-svg"
+					></NavItem>
+					<NavItem
+						title="BB"
+						icon="--menu-svg"
+						itemDirection="left"
+						textColor="{`default`:{`xs`:{`light`:`#e60e0eff`}}}"
+					>
+						<NavItem title="BBA">
+						</NavItem>
+						<NavItem title="BBC"></NavItem>
+						<NavItem title="BBD"></NavItem>
+					</NavItem>
+					<NavItem title="BBD"></NavItem>
+				</NavItem>
+				<NavItem
+					title="BC"
+					icon="--menu-svg"
+				></NavItem>
+				<NavItem title="BD"></NavItem>
+			</NavItem>
+			<NavItem
+				title="B"
+				icon="--menu-svg"
+			>
+				<NavItem title="BA">
+				</NavItem>
+				<NavItem
+					title="BB"
+					itemDirection="right"
+					backgroundColor="{`default`:{`xs`:{`light`:`#1ad6c3ff`}}}"
+					textColor="{`default`:{`xs`:{`light`:`#f2c40aff`}}}"
+				>
+					<NavItem
+						title="BBA"
+						icon="--close-svg"
+						iconReverse="false"
+					>
+					</NavItem>
+					<NavItem
+						title="BBC"
+						icon="--menu-svg"
+					></NavItem>
+					<NavItem
+						title="BB"
+						icon="--menu-svg"
+						itemDirection="left"
+						textColor="{`default`:{`xs`:{`light`:`#e60e0eff`}}}"
+					>
+						<NavItem title="BBA">
+						</NavItem>
+						<NavItem title="BBC"></NavItem>
+						<NavItem title="BBD"></NavItem>
+					</NavItem>
+					<NavItem title="BBD"></NavItem>
+				</NavItem>
+				<NavItem
+					title="BC"
+					icon="--menu-svg"
+				></NavItem>
+				<NavItem title="BD"></NavItem>
+			</NavItem>
+			<NavItem
+				title="C"
+				icon="--close-svg"
+			>
+			</NavItem>
+			<NavItem title="D"></NavItem>
+		</Navigator>
 	</Row>
 </template>
 <script>
