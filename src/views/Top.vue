@@ -9,7 +9,7 @@
 				style="z-index:2;flex-grow:1"
 				drop="down"
 				textColor="{`default`:{`xs`:{`light`:`#de1d1dff`}}}"
-				backgroundColor="{`default`:{`xs`:{`light`:`#992929ff`}}}"
+				backgroundColor="{`default`:{`xs`:{`light`:`#cc7070ff`}},`hover`:{`xs`:{`light`:`#2932a6ff`}}}"
 			>
 				<NavItem title="A">
 				</NavItem>

@@ -7,8 +7,12 @@
 		ref="navitem"
 		class="vp-navigator-item"
 		@click.stop="($event.pointerType !== 'mouse' || $vertical) && $slots.default && !route ? show=!show : ''"
-		@pointerover="$event.pointerType !== 'mouse' || $vertical ? '' : show=true"
-		@pointerleave="$event.pointerType !== 'mouse' || $vertical ? '' : show=false"
+		@pointerover="($event.pointerType !== 'mouse' || $vertical ? '' : show=true), hover=true"
+		@pointerleave="($event.pointerType !== 'mouse' || $vertical ? '' : show=false), hover=false"
+		@focus="focus=true"
+		@blur="focus=false"
+		@pointerdown="active=true"
+		@pointerup="active=false"
 	>
 		<component
 			v-if="icon"
@@ -574,11 +578,9 @@
 			childModel: {},
 			hover: false,
 			active: false,
-			current: false,
 			focus: false,
 			breakpoint: 'xs',
-			theme: 'light',
-			group: 'default'
+			theme: 'light'
 		}),
 		mounted() {
 			document.addEventListener('click', this.handleClickOutside);
@@ -587,6 +589,21 @@
 			document.removeEventListener('click', this.handleClickOutside);
 		},
 		computed: {
+			current() {
+				let route = this.route?.replace(/^\/|\/$/g, '')
+				let path = this.$route?.path?.replace(/^\/|\/$/g, '')
+				if (route === path) {
+					return true
+				}
+				return route === path
+			},
+			group() {
+				if (this.current) return 'current'
+				if (this.active) return 'active'
+				if (this.hover) return 'hover'
+				if (this.focus) return 'focus'
+				return 'default'
+			},
 			$vertical() {
 				return !this.horizontal || this.small;
 			},
@@ -636,9 +653,6 @@
 				return rootClass;
 			},
 			style() {
-				this.group = 'default'
-				this.breakpoint = 'xs'
-				this.theme = 'light'
 				this.childModel = {};
 				const style = {}
 				const props = ['textColor', 'backgroundColor', 'backgroundImage', 'borderTopColor', 'borderRightColor', 'borderBottomColor', 'borderLeftColor', 'borderTopWidth', 'borderRightWidth', 'borderBottomWidth', 'borderLeftWidth', 'borderTopStyle', 'borderRightStyle', 'borderBottomStyle', 'borderLeftStyle', 'borderTopLeftRadius', 'borderTopRightRadius', 'borderBottomRightRadius', 'borderBottomLeftRadius', 'paddingTop', 'paddingRight', 'paddingBottom', 'paddingLeft', 'marginTop', 'marginRight', 'marginBottom', 'marginLeft'];
