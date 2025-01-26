@@ -86,7 +86,7 @@
 	} from 'vue';
 	import Row from '@vueplayio/row';
 	export default {
-		inject: ['small', 'open', 'forceOpenProvider', 'direction', 'orientation', 'drop', 'level', 'order', 'reverseIcon', 'expand', 'childrenIconSizeProvider', 'childrenCaretProvider', 'childrenCaretSizeProvider', 'model'],
+		inject: ['theme', 'breakpoint', 'small', 'open', 'forceOpenProvider', 'direction', 'orientation', 'drop', 'level', 'order', 'reverseIcon', 'expand', 'childrenIconSizeProvider', 'childrenCaretProvider', 'childrenCaretSizeProvider', 'model'],
 		provide() {
 			return {
 				open: computed(() => this.show),
@@ -579,9 +579,7 @@
 			childModel: {},
 			hover: false,
 			active: false,
-			focus: false,
-			breakpoint: 'xs',
-			theme: 'light'
+			focus: false
 		}),
 		mounted() {
 			document.addEventListener('click', this.handleClickOutside);
@@ -683,15 +681,15 @@
 						let limitReached = false
 						for (const breakpoint of breakpoints) {
 							if (!limitReached) {
-								const firstPriority = this.childModel[prop]?.[this.group]?.[breakpoint]?.[this.theme]?.toString()
+								const firstPriority = this.childModel[prop]?.[this.group]?.[breakpoint]?.[this.theme || 'light']?.toString()
 								const secondPriority = this.childModel[prop]?.[this.group]?.[breakpoint]?.['light']?.toString()
-								const thirdPriority = this.childModel[prop]?.['default']?.[breakpoint]?.[this.theme]?.toString()
+								const thirdPriority = this.childModel[prop]?.['default']?.[breakpoint]?.[this.theme || 'light']?.toString()
 								const forthPriority = this.childModel[prop]?.['default']?.[breakpoint]?.['light']?.toString()
 								const value = firstPriority || secondPriority || thirdPriority || forthPriority
 								if (value) {
 									style[prop] = value
 								}
-								limitReached = breakpoint === this.breakpoint
+								limitReached = breakpoint === (this.breakpoint || 'xs')
 							}
 						}
 					}
