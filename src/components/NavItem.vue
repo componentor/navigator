@@ -107,7 +107,8 @@
 				default: 'Title'
 			},
 			route: {
-				type: String
+				type: String,
+				default: '#'
 			},
 			external: {
 				type: Boolean,
@@ -592,9 +593,6 @@
 			current() {
 				let route = this.route?.replace(/^\/|\/$/g, '')
 				let path = this.$route?.path?.replace(/^\/|\/$/g, '')
-				if (route === path) {
-					return true
-				}
 				return route === path
 			},
 			group() {
