@@ -635,82 +635,54 @@
 				rootClass[`vp-navigator-item--${this.order}`] = true;
 				return rootClass;
 			},
-			selfModel() {
-				const def = 'inherit';
-				const defaultValues = {
-					xs: {
-						light: def,
-						dark: def
-					},
-					sm: {
-						light: def,
-						dark: def
-					},
-					md: {
-						light: def,
-						dark: def
-					},
-					lg: {
-						light: def,
-						dark: def
-					},
-					xl: {
-						light: def,
-						dark: def
-					},
-					'2xl': {
-						light: def,
-						dark: def
-					}
-				};
-				const props = ['textColor', 'backgroundColor', 'backgroundImage', 'borderTopColor', 'borderRightColor', 'borderBottomColor', 'borderLeftColor', 'borderTopWidth', 'borderRightWidth', 'borderBottomWidth', 'borderLeftWidth', 'borderTopStyle', 'borderRightStyle', 'borderBottomStyle', 'borderLeftStyle', 'borderTopLeftRadius', 'borderTopRightRadius', 'borderBottomRightRadius', 'borderBottomLeftRadius', 'paddingTop', 'paddingRight', 'paddingBottom', 'paddingLeft', 'marginTop', 'marginRight', 'marginBottom', 'marginLeft'];
-				const defaultStyle = {
-					default: {
-						...defaultValues
-					},
-					hover: {
-						...defaultValues
-					},
-					current: {
-						...defaultValues
-					},
-					active: {
-						...defaultValues
-					},
-					focus: {
-						...defaultValues
-					}
-				};
-				const defaultStyleString = JSON.stringify(defaultStyle);
-				const obj = {};
-				this.childModel = {};
-				for (const prop of props) {
-					obj[prop] = defaultStyle;
-					const parsedValue = this[prop] ? JSON.parse(this[prop].replaceAll('`', '"')) : this.model?.[prop];
-					if (parsedValue) {
-						obj[prop] = JSON.parse(defaultStyleString);
-						this.childModel[prop] = parsedValue;
-						for (const group in parsedValue) {
-							for (const breakpoint in parsedValue[group]) {
-								for (const theme in parsedValue[group][breakpoint]) {
-									if (parsedValue[group][breakpoint][theme]) {
-										obj[prop][group][breakpoint][theme] = parsedValue[group][breakpoint][theme];
-									}
-								}
-							}
-						}
-					}
-				}
-				return obj;
-			},
 			style() {
-				const groups = ['default', 'hover', 'current', 'active', 'focus']
 				this.group = 'default'
 				this.breakpoint = 'xs'
 				this.theme = 'light'
+				this.childModel = {};
 				const style = {}
-				for (const prop of Object.keys(this.childModel)) {
-					style[prop] = this.childModel[prop]?.['default']?.['xs']?.['light']
+				const props = ['textColor', 'backgroundColor', 'backgroundImage', 'borderTopColor', 'borderRightColor', 'borderBottomColor', 'borderLeftColor', 'borderTopWidth', 'borderRightWidth', 'borderBottomWidth', 'borderLeftWidth', 'borderTopStyle', 'borderRightStyle', 'borderBottomStyle', 'borderLeftStyle', 'borderTopLeftRadius', 'borderTopRightRadius', 'borderBottomRightRadius', 'borderBottomLeftRadius', 'paddingTop', 'paddingRight', 'paddingBottom', 'paddingLeft', 'marginTop', 'marginRight', 'marginBottom', 'marginLeft'];
+				const groups = ['default', 'hover', 'current', 'active', 'focus']
+				const breakpoints = ['xs', 'sm', 'md', 'lg', 'xl', '2xl']
+				const themes = ['light', 'dark']
+				
+				for (const prop of props) {
+					const priority = this[prop] ? JSON.parse(this[prop].replaceAll('`', '"')) : {};
+					const fallback = this.model?.[prop] || {}
+					const merge = {}
+					for (const group of [...new Set([...Object.keys(priority), ...Object.keys(fallback)])]) {
+						const pri = priority?.[group] || {}
+						const fb = fallback?.[group] || {}
+						merge[group] = {}
+						for (const breakpoint of [...new Set([...Object.keys(pri), ...Object.keys(fb)])]) {
+							const p = pri?.[breakpoint] || {}
+							const f = fb?.[breakpoint] || {}
+							merge[group][breakpoint] = {}
+							for (const theme of [...new Set([...Object.keys(p), ...Object.keys(f)])]) {
+								const value = p?.[theme]?.toString() || f?.[theme]?.toString() || null
+								merge[group][breakpoint][theme] = value
+							}
+						}
+					}
+					const groups = Object.keys(merge)
+					if (groups.length) {
+						this.childModel[prop] = merge;
+						style[prop] = this.childModel[prop]?.['default']?.['xs']?.['light']
+						let limitReached = false
+						for (const breakpoint of breakpoints) {
+							if (!limitReached) {
+								const firstPriority = this.childModel[prop]?.[this.group]?.[breakpoint]?.[this.theme]?.toString()
+								const secondPriority = this.childModel[prop]?.[this.group]?.[breakpoint]?.['light']?.toString()
+								const thirdPriority = this.childModel[prop]?.['default']?.[breakpoint]?.[this.theme]?.toString()
+								const forthPriority = this.childModel[prop]?.['default']?.[breakpoint]?.['light']?.toString()
+								const value = firstPriority || secondPriority || thirdPriority || forthPriority
+								if (value) {
+									style[prop] = value
+								}
+								limitReached = breakpoint === this.breakpoint
+							}
+						}
+					}
 				}
 				style['flex-direction'] = (this.iconReverse === '' ? this.reverseIcon : (this.iconReverse === 'true')) ? 'row-reverse' : 'row'
 				return style
