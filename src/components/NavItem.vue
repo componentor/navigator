@@ -680,6 +680,7 @@
 						this.childModel[prop] = merge;
 						style[prop] = this.childModel[prop]?.['default']?.['xs']?.['light'];
 						let limitReached = false;
+						let limit = this.breakpoint || 'xs';
 						for (const breakpoint of breakpoints) {
 							if (!limitReached) {
 								const firstPriority = this.childModel[prop]?.[this.group]?.[breakpoint]?.[this.theme || 'light']?.toString();
@@ -690,7 +691,7 @@
 								if (value) {
 									style[prop] = value;
 								}
-								limitReached = breakpoint === (this.breakpoint || 'xs');
+								limitReached = breakpoint === limit;
 							}
 						}
 					}

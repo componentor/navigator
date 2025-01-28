@@ -131,7 +131,7 @@
 					value: 'up'
 				}]
 			},
-			breakpoint: {
+			breakpointCap: {
 				type: String,
 				control: 'slider',
 				unit: '',
@@ -533,7 +533,7 @@
 				}
 			},
 			small() {
-				return this.screenWidth <= this.breakpoint;
+				return this.screenWidth <= this.breakpointCap;
 			},
 			model() {
 				const obj = {};
