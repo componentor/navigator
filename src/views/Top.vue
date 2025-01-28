@@ -8,8 +8,8 @@
 				orientation="Row"
 				style="z-index:2;flex-grow:1"
 				drop="down"
-				textColor="{`default`:{`xs`:{`light`:`#de1d1dff`}}}"
-				backgroundColor="{`default`:{`xs`:{`light`:`#cc7070ff`}},`hover`:{`xs`:{`light`:`#2932a6ff`}}}"
+				textColor="{`def`:{`xs`:{`light`:`#de1d1dff`}}}"
+				backgroundColor="{`def`:{`xs`:{`light`:`#cc7070ff`}},`hover`:{`xs`:{`light`:`#2932a6ff`}}}"
 			>
 				<NavItem title="A">
 				</NavItem>
@@ -24,8 +24,8 @@
 					<NavItem
 						title="BB"
 						itemDirection="right"
-						backgroundColor="{`default`:{`xs`:{`light`:`#1ad6c3ff`}}}"
-						textColor="{`default`:{`xs`:{`light`:`#f2c40aff`}}}"
+						backgroundColor="{`def`:{`xs`:{`light`:`#1ad6c3ff`}}}"
+						textColor="{`def`:{`xs`:{`light`:`#f2c40aff`}}}"
 					>
 						<NavItem
 							title="BBA"
@@ -41,7 +41,7 @@
 							title="BB"
 							icon="--menu-svg"
 							itemDirection="left"
-							textColor="{`default`:{`xs`:{`light`:`#e60e0eff`}}}"
+							textColor="{`def`:{`xs`:{`light`:`#e60e0eff`}}}"
 						>
 							<NavItem title="BBA">
 							</NavItem>
@@ -65,8 +65,8 @@
 					<NavItem
 						title="BB"
 						itemDirection="right"
-						backgroundColor="{`default`:{`xs`:{`light`:`#1ad6c3ff`}}}"
-						textColor="{`default`:{`xs`:{`light`:`#f2c40aff`}}}"
+						backgroundColor="{`def`:{`xs`:{`light`:`#1ad6c3ff`}}}"
+						textColor="{`def`:{`xs`:{`light`:`#f2c40aff`}}}"
 					>
 						<NavItem
 							title="BBA"
@@ -82,7 +82,7 @@
 							title="BB"
 							icon="--menu-svg"
 							itemDirection="left"
-							textColor="{`default`:{`xs`:{`light`:`#e60e0eff`}}}"
+							textColor="{`def`:{`xs`:{`light`:`#e60e0eff`}}}"
 						>
 							<NavItem title="BBA">
 							</NavItem>
@@ -106,8 +106,8 @@
 					<NavItem
 						title="BB"
 						itemDirection="right"
-						backgroundColor="{`default`:{`xs`:{`light`:`#1ad6c3ff`}}}"
-						textColor="{`default`:{`xs`:{`light`:`#f2c40aff`}}}"
+						backgroundColor="{`def`:{`xs`:{`light`:`#1ad6c3ff`}}}"
+						textColor="{`def`:{`xs`:{`light`:`#f2c40aff`}}}"
 					>
 						<NavItem
 							title="BBA"
@@ -123,7 +123,7 @@
 							title="BB"
 							icon="--menu-svg"
 							itemDirection="left"
-							textColor="{`default`:{`xs`:{`light`:`#e60e0eff`}}}"
+							textColor="{`def`:{`xs`:{`light`:`#e60e0eff`}}}"
 						>
 							<NavItem title="BBA">
 							</NavItem>
@@ -157,8 +157,8 @@
 			orientation="Row"
 			style="z-index:2;flex-grow:1"
 			drop="down"
-			textColor="{`default`:{`xs`:{`light`:`#de1d1dff`}}}"
-			backgroundColor="{`default`:{`xs`:{`light`:`#cc7070ff`}},`hover`:{`xs`:{`light`:`#2932a6ff`}}}"
+			textColor="{`def`:{`xs`:{`light`:`#de1d1dff`}}}"
+			backgroundColor="{`def`:{`xs`:{`light`:`#cc7070ff`}},`hover`:{`xs`:{`light`:`#2932a6ff`}}}"
 		>
 			<NavItem title="A">
 			</NavItem>
@@ -173,8 +173,8 @@
 				<NavItem
 					title="BB"
 					itemDirection="right"
-					backgroundColor="{`default`:{`xs`:{`light`:`#1ad6c3ff`}}}"
-					textColor="{`default`:{`xs`:{`light`:`#f2c40aff`}}}"
+					backgroundColor="{`def`:{`xs`:{`light`:`#1ad6c3ff`}}}"
+					textColor="{`def`:{`xs`:{`light`:`#f2c40aff`}}}"
 				>
 					<NavItem
 						title="BBA"
@@ -190,7 +190,7 @@
 						title="BB"
 						icon="--menu-svg"
 						itemDirection="left"
-						textColor="{`default`:{`xs`:{`light`:`#e60e0eff`}}}"
+						textColor="{`def`:{`xs`:{`light`:`#e60e0eff`}}}"
 					>
 						<NavItem title="BBA">
 						</NavItem>
@@ -214,8 +214,8 @@
 				<NavItem
 					title="BB"
 					itemDirection="right"
-					backgroundColor="{`default`:{`xs`:{`light`:`#1ad6c3ff`}}}"
-					textColor="{`default`:{`xs`:{`light`:`#f2c40aff`}}}"
+					backgroundColor="{`def`:{`xs`:{`light`:`#1ad6c3ff`}}}"
+					textColor="{`def`:{`xs`:{`light`:`#f2c40aff`}}}"
 				>
 					<NavItem
 						title="BBA"
@@ -231,7 +231,7 @@
 						title="BB"
 						icon="--menu-svg"
 						itemDirection="left"
-						textColor="{`default`:{`xs`:{`light`:`#e60e0eff`}}}"
+						textColor="{`def`:{`xs`:{`light`:`#e60e0eff`}}}"
 					>
 						<NavItem title="BBA">
 						</NavItem>
@@ -255,8 +255,8 @@
 				<NavItem
 					title="BB"
 					itemDirection="right"
-					backgroundColor="{`default`:{`xs`:{`light`:`#1ad6c3ff`}}}"
-					textColor="{`default`:{`xs`:{`light`:`#f2c40aff`}}}"
+					backgroundColor="{`def`:{`xs`:{`light`:`#1ad6c3ff`}}}"
+					textColor="{`def`:{`xs`:{`light`:`#f2c40aff`}}}"
 				>
 					<NavItem
 						title="BBA"
@@ -272,7 +272,7 @@
 						title="BB"
 						icon="--menu-svg"
 						itemDirection="left"
-						textColor="{`default`:{`xs`:{`light`:`#e60e0eff`}}}"
+						textColor="{`def`:{`xs`:{`light`:`#e60e0eff`}}}"
 					>
 						<NavItem title="BBA">
 						</NavItem>
