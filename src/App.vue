@@ -18,9 +18,7 @@
 			class="vp-toggle"
 		/> <template v-if="!small || open || forceOpen">
 			<slot>
-				<div style="padding:10px">
-					Drop NavItems Here
-				</div>
+				<Placeholder />
 			</slot>
 		</template>
 	</component>
@@ -29,6 +27,7 @@
 	import {
 		computed
 	} from 'vue';
+	import Placeholder from '@/components/Placeholder.vue';
 	import Column from '@vueplayio/column';
 	import Row from '@vueplayio/row';
 	export default {
@@ -494,6 +493,7 @@
 			}
 		},
 		components: {
+			Placeholder,
 			Column,
 			Row
 		},
@@ -559,8 +559,8 @@
 </script>
 <style scoped>
 	* {
-		--menu-svg: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iY3VycmVudENvbG9yIj4KICA8cGF0aCBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGQ9Ik0zLjc1IDYuNzVoMTYuNU0zLjc1IDEyaDE2LjVtLTE2LjUgNS4yNWgxNi41IiAvPgo8L3N2Zz4=);
-		--close-svg: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iY3VycmVudENvbG9yIiBjbGFzcz0ic2l6ZS02Ij4KICA8cGF0aCBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGQ9Ik02IDE4IDE4IDZNNiA2bDEyIDEyIiAvPgo8L3N2Zz4=);
+		--menu-svg: url(@/assets/menu.svg);
+		--close-svg: url(@/assets/close.svg);
 	}
 
 	.vp-navigator {
