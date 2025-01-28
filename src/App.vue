@@ -31,6 +31,7 @@
 	import Column from '@vueplayio/column';
 	import Row from '@vueplayio/row';
 	export default {
+		inject: ['theme', 'breakpoint'],
 		provide() {
 			return {
 				open: computed(() => this.open),
@@ -43,7 +44,20 @@
 				childrenIconSizeProvider: computed(() => this.childrenIconSize),
 				childrenCaretProvider: computed(() => this.childrenCaret),
 				childrenCaretSizeProvider: computed(() => this.childrenCaretSize),
-				model: computed(() => this.model)
+				model: computed(() => this.model),
+				theme: computed(() => {
+					if (this.theme) return this.theme;
+					return this.darkmode ? 'dark' : 'light';
+				}),
+				breakpoint: computed(() => {
+					if (this.breakpoint) return this.breakpoint;
+					if (this.screenWidth > 1280) return '2xl';
+					if (this.screenWidth > 1024) return 'xl';
+					if (this.screenWidth > 768) return 'lg';
+					if (this.screenWidth > 640) return 'md';
+					if (this.screenWidth > 480) return 'sm';
+					return 'xs';
+				})
 			};
 		},
 		props: {
@@ -499,7 +513,9 @@
 		},
 		data: () => ({
 			open: false,
-			screenWidth: window.innerWidth
+			screenWidth: window.innerWidth,
+			colorSchemeMediaQuery: null,
+			darkmode: false
 		}),
 		computed: {
 			$toggleIcon() {
@@ -530,19 +546,25 @@
 				return obj;
 			}
 		},
-		created() {
+		mounted() {
+			this.colorSchemeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+			this.darkmode = window.matchMedia('(prefers-color-scheme: dark)')
+				.matches;
+			this.colorSchemeMediaQuery.addEventListener('change', this.handleColorSchemeChange);
+			document.addEventListener('pointerdown', this.handleClickOutside);
 			window.addEventListener('resize', this.handleResize);
 		},
-		mounted() {
-			document.addEventListener('pointerdown', this.handleClickOutside);
-		},
 		beforeUnmount() {
-			window.removeEventListener('resize', this.handleResize);
+			this.colorSchemeMediaQuery.removeEventListener('change', this.handleColorSchemeChange);
 			document.removeEventListener('click', this.handleClickOutside);
+			window.removeEventListener('resize', this.handleResize);
 		},
 		methods: {
 			renderProperty(prop) {
 				return prop;
+			},
+			handleColorSchemeChange(event) {
+				this.darkmode = event.matches;
 			},
 			handleResize() {
 				this.screenWidth = window.innerWidth;
