@@ -9,7 +9,8 @@
 				style="z-index:2;flex-grow:1"
 				drop="down"
 				textColor="{`default`:{`xs`:{`light`:`#de1d1dff`}}}"
-				backgroundColor="{`default`:{`xs`:{`light`:`#cc7070ff`}},`hover`:{`xs`:{`light`:`#2932a6ff`}}}"
+				backgroundColor="{`default`:{`xs`:{`light`:`#c95b5bff`,`dark`:`#804d4dff`},`md`:{`light`:`#ed2fd1ff`},`lg`:{`light`:`#ffd500ff`}},`hover`:{`xs`:{`light`:`#2932a6ff`}}}"
+				color="{`default`:{`xs`:{`light`:`#e8dadaff`,`dark`:`#99f0afff`}}}"
 			>
 				<NavItem title="A">
 				</NavItem>
