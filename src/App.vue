@@ -134,7 +134,7 @@
 				control: 'color',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
-				groups: ['def', 'hover', 'current', 'active', 'focus']
+				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			backgroundColor: {
 				type: String,
@@ -142,7 +142,7 @@
 				control: 'color',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
-				groups: ['def', 'hover', 'current', 'active', 'focus']
+				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			backgroundImage: {
 				type: String,
@@ -150,7 +150,7 @@
 				control: 'media',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
-				groups: ['def', 'hover', 'current', 'active', 'focus']
+				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			borderTopColor: {
 				type: String,
@@ -158,7 +158,7 @@
 				control: 'color',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
-				groups: ['def', 'hover', 'current', 'active', 'focus']
+				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			borderRightColor: {
 				type: String,
@@ -166,7 +166,7 @@
 				control: 'color',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
-				groups: ['def', 'hover', 'current', 'active', 'focus']
+				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			borderBottomColor: {
 				type: String,
@@ -174,7 +174,7 @@
 				control: 'color',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
-				groups: ['def', 'hover', 'current', 'active', 'focus']
+				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			borderLeftColor: {
 				type: String,
@@ -182,7 +182,7 @@
 				control: 'color',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
-				groups: ['def', 'hover', 'current', 'active', 'focus']
+				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			borderTopWidth: {
 				type: String,
@@ -191,7 +191,7 @@
 				unit: 'px',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
-				groups: ['def', 'hover', 'current', 'active', 'focus']
+				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			borderRightWidth: {
 				type: String,
@@ -200,7 +200,7 @@
 				unit: 'px',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
-				groups: ['def', 'hover', 'current', 'active', 'focus']
+				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			borderBottomWidth: {
 				type: String,
@@ -209,7 +209,7 @@
 				unit: 'px',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
-				groups: ['def', 'hover', 'current', 'active', 'focus']
+				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			borderLeftWidth: {
 				type: String,
@@ -218,7 +218,7 @@
 				unit: 'px',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
-				groups: ['def', 'hover', 'current', 'active', 'focus']
+				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			borderTopStyle: {
 				type: String,
@@ -259,7 +259,7 @@
 				}],
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
-				groups: ['def', 'hover', 'current', 'active', 'focus']
+				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			borderRightStyle: {
 				type: String,
@@ -300,7 +300,7 @@
 				}],
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
-				groups: ['def', 'hover', 'current', 'active', 'focus']
+				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			borderBottomStyle: {
 				type: String,
@@ -341,7 +341,7 @@
 				}],
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
-				groups: ['def', 'hover', 'current', 'active', 'focus']
+				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			borderLeftStyle: {
 				type: String,
@@ -382,7 +382,7 @@
 				}],
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
-				groups: ['def', 'hover', 'current', 'active', 'focus']
+				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			borderTopLeftRadius: {
 				type: String,
@@ -391,7 +391,7 @@
 				unit: 'px',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
-				groups: ['def', 'hover', 'current', 'active', 'focus']
+				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			borderTopRightRadius: {
 				type: String,
@@ -400,7 +400,7 @@
 				unit: 'px',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
-				groups: ['def', 'hover', 'current', 'active', 'focus']
+				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			borderBottomRightRadius: {
 				type: String,
@@ -409,7 +409,7 @@
 				unit: 'px',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
-				groups: ['def', 'hover', 'current', 'active', 'focus']
+				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			borderBottomLeftRadius: {
 				type: String,
@@ -418,7 +418,7 @@
 				unit: 'px',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
-				groups: ['def', 'hover', 'current', 'active', 'focus']
+				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			paddingTop: {
 				type: String,
@@ -427,7 +427,7 @@
 				unit: 'px',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
-				groups: ['def', 'hover', 'current', 'active', 'focus']
+				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			paddingRight: {
 				type: String,
@@ -436,7 +436,7 @@
 				unit: 'px',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
-				groups: ['def', 'hover', 'current', 'active', 'focus']
+				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			paddingBottom: {
 				type: String,
@@ -445,7 +445,7 @@
 				unit: 'px',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
-				groups: ['def', 'hover', 'current', 'active', 'focus']
+				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			paddingLeft: {
 				type: String,
@@ -454,7 +454,7 @@
 				unit: 'px',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
-				groups: ['def', 'hover', 'current', 'active', 'focus']
+				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			marginTop: {
 				type: String,
@@ -463,7 +463,7 @@
 				unit: 'px',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
-				groups: ['def', 'hover', 'current', 'active', 'focus']
+				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			marginRight: {
 				type: String,
@@ -472,7 +472,7 @@
 				unit: 'px',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
-				groups: ['def', 'hover', 'current', 'active', 'focus']
+				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			marginBottom: {
 				type: String,
@@ -481,7 +481,7 @@
 				unit: 'px',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
-				groups: ['def', 'hover', 'current', 'active', 'focus']
+				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			marginLeft: {
 				type: String,
@@ -490,7 +490,7 @@
 				unit: 'px',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
-				groups: ['def', 'hover', 'current', 'active', 'focus']
+				groups: ['default', 'hover', 'current', 'active', 'focus']
 			}
 		},
 		components: {

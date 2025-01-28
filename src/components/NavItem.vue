@@ -214,7 +214,7 @@
 				control: 'color',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
-				groups: ['def', 'hover', 'current', 'active', 'focus']
+				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			backgroundColor: {
 				type: String,
@@ -222,7 +222,7 @@
 				control: 'color',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
-				groups: ['def', 'hover', 'current', 'active', 'focus']
+				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			backgroundImage: {
 				type: String,
@@ -230,7 +230,7 @@
 				control: 'media',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
-				groups: ['def', 'hover', 'current', 'active', 'focus']
+				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			borderTopColor: {
 				type: String,
@@ -238,7 +238,7 @@
 				control: 'color',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
-				groups: ['def', 'hover', 'current', 'active', 'focus']
+				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			borderRightColor: {
 				type: String,
@@ -246,7 +246,7 @@
 				control: 'color',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
-				groups: ['def', 'hover', 'current', 'active', 'focus']
+				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			borderBottomColor: {
 				type: String,
@@ -254,7 +254,7 @@
 				control: 'color',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
-				groups: ['def', 'hover', 'current', 'active', 'focus']
+				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			borderLeftColor: {
 				type: String,
@@ -262,7 +262,7 @@
 				control: 'color',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
-				groups: ['def', 'hover', 'current', 'active', 'focus']
+				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			borderTopWidth: {
 				type: String,
@@ -271,7 +271,7 @@
 				unit: 'px',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
-				groups: ['def', 'hover', 'current', 'active', 'focus']
+				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			borderRightWidth: {
 				type: String,
@@ -280,7 +280,7 @@
 				unit: 'px',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
-				groups: ['def', 'hover', 'current', 'active', 'focus']
+				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			borderBottomWidth: {
 				type: String,
@@ -289,7 +289,7 @@
 				unit: 'px',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
-				groups: ['def', 'hover', 'current', 'active', 'focus']
+				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			borderLeftWidth: {
 				type: String,
@@ -298,7 +298,7 @@
 				unit: 'px',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
-				groups: ['def', 'hover', 'current', 'active', 'focus']
+				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			borderTopStyle: {
 				type: String,
@@ -339,7 +339,7 @@
 				}],
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
-				groups: ['def', 'hover', 'current', 'active', 'focus']
+				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			borderRightStyle: {
 				type: String,
@@ -380,7 +380,7 @@
 				}],
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
-				groups: ['def', 'hover', 'current', 'active', 'focus']
+				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			borderBottomStyle: {
 				type: String,
@@ -421,7 +421,7 @@
 				}],
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
-				groups: ['def', 'hover', 'current', 'active', 'focus']
+				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			borderLeftStyle: {
 				type: String,
@@ -462,7 +462,7 @@
 				}],
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
-				groups: ['def', 'hover', 'current', 'active', 'focus']
+				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			borderTopLeftRadius: {
 				type: String,
@@ -471,7 +471,7 @@
 				unit: 'px',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
-				groups: ['def', 'hover', 'current', 'active', 'focus']
+				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			borderTopRightRadius: {
 				type: String,
@@ -480,7 +480,7 @@
 				unit: 'px',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
-				groups: ['def', 'hover', 'current', 'active', 'focus']
+				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			borderBottomRightRadius: {
 				type: String,
@@ -489,7 +489,7 @@
 				unit: 'px',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
-				groups: ['def', 'hover', 'current', 'active', 'focus']
+				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			borderBottomLeftRadius: {
 				type: String,
@@ -498,7 +498,7 @@
 				unit: 'px',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
-				groups: ['def', 'hover', 'current', 'active', 'focus']
+				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			paddingTop: {
 				type: String,
@@ -507,7 +507,7 @@
 				unit: 'px',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
-				groups: ['def', 'hover', 'current', 'active', 'focus']
+				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			paddingRight: {
 				type: String,
@@ -516,7 +516,7 @@
 				unit: 'px',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
-				groups: ['def', 'hover', 'current', 'active', 'focus']
+				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			paddingBottom: {
 				type: String,
@@ -525,7 +525,7 @@
 				unit: 'px',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
-				groups: ['def', 'hover', 'current', 'active', 'focus']
+				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			paddingLeft: {
 				type: String,
@@ -534,7 +534,7 @@
 				unit: 'px',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
-				groups: ['def', 'hover', 'current', 'active', 'focus']
+				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			marginTop: {
 				type: String,
@@ -543,7 +543,7 @@
 				unit: 'px',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
-				groups: ['def', 'hover', 'current', 'active', 'focus']
+				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			marginRight: {
 				type: String,
@@ -552,7 +552,7 @@
 				unit: 'px',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
-				groups: ['def', 'hover', 'current', 'active', 'focus']
+				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			marginBottom: {
 				type: String,
@@ -561,7 +561,7 @@
 				unit: 'px',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
-				groups: ['def', 'hover', 'current', 'active', 'focus']
+				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			marginLeft: {
 				type: String,
@@ -570,7 +570,7 @@
 				unit: 'px',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
-				groups: ['def', 'hover', 'current', 'active', 'focus']
+				groups: ['default', 'hover', 'current', 'active', 'focus']
 			}
 		},
 		components: {
@@ -600,7 +600,7 @@
 				if (this.active) return 'active';
 				if (this.hover) return 'hover';
 				if (this.focus) return 'focus';
-				return 'def';
+				return 'default';
 			},
 			$vertical() {
 				return !this.horizontal || this.small;
@@ -654,7 +654,7 @@
 				this.childModel = {};
 				const style = {};
 				const props = ['textColor', 'backgroundColor', 'backgroundImage', 'borderTopColor', 'borderRightColor', 'borderBottomColor', 'borderLeftColor', 'borderTopWidth', 'borderRightWidth', 'borderBottomWidth', 'borderLeftWidth', 'borderTopStyle', 'borderRightStyle', 'borderBottomStyle', 'borderLeftStyle', 'borderTopLeftRadius', 'borderTopRightRadius', 'borderBottomRightRadius', 'borderBottomLeftRadius', 'paddingTop', 'paddingRight', 'paddingBottom', 'paddingLeft', 'marginTop', 'marginRight', 'marginBottom', 'marginLeft'];
-				const groups = ['def', 'hover', 'current', 'active', 'focus'];
+				const groups = ['default', 'hover', 'current', 'active', 'focus'];
 				const breakpoints = ['xs', 'sm', 'md', 'lg', 'xl', '2xl'];
 				const themes = ['light', 'dark'];
 				for (const prop of props) {
@@ -678,14 +678,14 @@
 					const groups = Object.keys(merge);
 					if (groups.length) {
 						this.childModel[prop] = merge;
-						style[prop] = this.childModel[prop]?.['def']?.['xs']?.['light'];
+						style[prop] = this.childModel[prop]?.['default']?.['xs']?.['light'];
 						let limitReached = false;
 						for (const breakpoint of breakpoints) {
 							if (!limitReached) {
 								const firstPriority = this.childModel[prop]?.[this.group]?.[breakpoint]?.[this.theme || 'light']?.toString();
 								const secondPriority = this.childModel[prop]?.[this.group]?.[breakpoint]?.['light']?.toString();
-								const thirdPriority = this.childModel[prop]?.['def']?.[breakpoint]?.[this.theme || 'light']?.toString();
-								const forthPriority = this.childModel[prop]?.['def']?.[breakpoint]?.['light']?.toString();
+								const thirdPriority = this.childModel[prop]?.['default']?.[breakpoint]?.[this.theme || 'light']?.toString();
+								const forthPriority = this.childModel[prop]?.['default']?.[breakpoint]?.['light']?.toString();
 								const value = firstPriority || secondPriority || thirdPriority || forthPriority;
 								if (value) {
 									style[prop] = value;
