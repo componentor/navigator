@@ -16,8 +16,7 @@
 				'width': toggleSize
 			}"
 			class="vp-toggle"
-		/>
-		<template v-if="!small || open || forceOpen">
+		/> <template v-if="!small || open || forceOpen">
 			<slot>
 				<div style="padding:10px">
 					Drop NavItems Here
@@ -135,7 +134,7 @@
 				control: 'color',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
-				groups: ['default', 'hover', 'current', 'active', 'focus']
+				groups: ['def', 'hover', 'current', 'active', 'focus']
 			},
 			backgroundColor: {
 				type: String,
@@ -143,7 +142,7 @@
 				control: 'color',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
-				groups: ['default', 'hover', 'current', 'active', 'focus']
+				groups: ['def', 'hover', 'current', 'active', 'focus']
 			},
 			backgroundImage: {
 				type: String,
@@ -151,7 +150,7 @@
 				control: 'media',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
-				groups: ['default', 'hover', 'current', 'active', 'focus']
+				groups: ['def', 'hover', 'current', 'active', 'focus']
 			},
 			borderTopColor: {
 				type: String,
@@ -159,7 +158,7 @@
 				control: 'color',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
-				groups: ['default', 'hover', 'current', 'active', 'focus']
+				groups: ['def', 'hover', 'current', 'active', 'focus']
 			},
 			borderRightColor: {
 				type: String,
@@ -167,7 +166,7 @@
 				control: 'color',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
-				groups: ['default', 'hover', 'current', 'active', 'focus']
+				groups: ['def', 'hover', 'current', 'active', 'focus']
 			},
 			borderBottomColor: {
 				type: String,
@@ -175,7 +174,7 @@
 				control: 'color',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
-				groups: ['default', 'hover', 'current', 'active', 'focus']
+				groups: ['def', 'hover', 'current', 'active', 'focus']
 			},
 			borderLeftColor: {
 				type: String,
@@ -183,7 +182,7 @@
 				control: 'color',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
-				groups: ['default', 'hover', 'current', 'active', 'focus']
+				groups: ['def', 'hover', 'current', 'active', 'focus']
 			},
 			borderTopWidth: {
 				type: String,
@@ -192,7 +191,7 @@
 				unit: 'px',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
-				groups: ['default', 'hover', 'current', 'active', 'focus']
+				groups: ['def', 'hover', 'current', 'active', 'focus']
 			},
 			borderRightWidth: {
 				type: String,
@@ -201,7 +200,7 @@
 				unit: 'px',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
-				groups: ['default', 'hover', 'current', 'active', 'focus']
+				groups: ['def', 'hover', 'current', 'active', 'focus']
 			},
 			borderBottomWidth: {
 				type: String,
@@ -210,7 +209,7 @@
 				unit: 'px',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
-				groups: ['default', 'hover', 'current', 'active', 'focus']
+				groups: ['def', 'hover', 'current', 'active', 'focus']
 			},
 			borderLeftWidth: {
 				type: String,
@@ -219,87 +218,171 @@
 				unit: 'px',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
-				groups: ['default', 'hover', 'current', 'active', 'focus']
+				groups: ['def', 'hover', 'current', 'active', 'focus']
 			},
 			borderTopStyle: {
 				type: String,
 				default: '',
-				options: [
-					{ value: '', key: 'Clear' },
-					{ value: 'none', key: 'none' },
-					{ value: 'hidden', key: 'hidden' },
-					{ value: 'solid', key: 'solid' },
-					{ value: 'dashed', key: 'dashed' },
-					{ value: 'dotted', key: 'dotted' },
-					{ value: 'double', key: 'double' },
-					{ value: 'groove', key: 'groove' },
-					{ value: 'ridge', key: 'ridge' },
-					{ value: 'inset', key: 'inset' },
-					{ value: 'outset', key: 'outset' }
-				],
+				options: [{
+					value: '',
+					key: 'Clear'
+				}, {
+					value: 'none',
+					key: 'none'
+				}, {
+					value: 'hidden',
+					key: 'hidden'
+				}, {
+					value: 'solid',
+					key: 'solid'
+				}, {
+					value: 'dashed',
+					key: 'dashed'
+				}, {
+					value: 'dotted',
+					key: 'dotted'
+				}, {
+					value: 'double',
+					key: 'double'
+				}, {
+					value: 'groove',
+					key: 'groove'
+				}, {
+					value: 'ridge',
+					key: 'ridge'
+				}, {
+					value: 'inset',
+					key: 'inset'
+				}, {
+					value: 'outset',
+					key: 'outset'
+				}],
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
-				groups: ['default', 'hover', 'current', 'active', 'focus']
+				groups: ['def', 'hover', 'current', 'active', 'focus']
 			},
 			borderRightStyle: {
 				type: String,
 				default: '',
-				options: [
-					{ value: '', key: 'Clear' },
-					{ value: 'none', key: 'none' },
-					{ value: 'hidden', key: 'hidden' },
-					{ value: 'solid', key: 'solid' },
-					{ value: 'dashed', key: 'dashed' },
-					{ value: 'dotted', key: 'dotted' },
-					{ value: 'double', key: 'double' },
-					{ value: 'groove', key: 'groove' },
-					{ value: 'ridge', key: 'ridge' },
-					{ value: 'inset', key: 'inset' },
-					{ value: 'outset', key: 'outset' }
-				],
+				options: [{
+					value: '',
+					key: 'Clear'
+				}, {
+					value: 'none',
+					key: 'none'
+				}, {
+					value: 'hidden',
+					key: 'hidden'
+				}, {
+					value: 'solid',
+					key: 'solid'
+				}, {
+					value: 'dashed',
+					key: 'dashed'
+				}, {
+					value: 'dotted',
+					key: 'dotted'
+				}, {
+					value: 'double',
+					key: 'double'
+				}, {
+					value: 'groove',
+					key: 'groove'
+				}, {
+					value: 'ridge',
+					key: 'ridge'
+				}, {
+					value: 'inset',
+					key: 'inset'
+				}, {
+					value: 'outset',
+					key: 'outset'
+				}],
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
-				groups: ['default', 'hover', 'current', 'active', 'focus']
+				groups: ['def', 'hover', 'current', 'active', 'focus']
 			},
 			borderBottomStyle: {
 				type: String,
 				default: '',
-				options: [
-					{ value: '', key: 'Clear' },
-					{ value: 'none', key: 'none' },
-					{ value: 'hidden', key: 'hidden' },
-					{ value: 'solid', key: 'solid' },
-					{ value: 'dashed', key: 'dashed' },
-					{ value: 'dotted', key: 'dotted' },
-					{ value: 'double', key: 'double' },
-					{ value: 'groove', key: 'groove' },
-					{ value: 'ridge', key: 'ridge' },
-					{ value: 'inset', key: 'inset' },
-					{ value: 'outset', key: 'outset' }
-				],
+				options: [{
+					value: '',
+					key: 'Clear'
+				}, {
+					value: 'none',
+					key: 'none'
+				}, {
+					value: 'hidden',
+					key: 'hidden'
+				}, {
+					value: 'solid',
+					key: 'solid'
+				}, {
+					value: 'dashed',
+					key: 'dashed'
+				}, {
+					value: 'dotted',
+					key: 'dotted'
+				}, {
+					value: 'double',
+					key: 'double'
+				}, {
+					value: 'groove',
+					key: 'groove'
+				}, {
+					value: 'ridge',
+					key: 'ridge'
+				}, {
+					value: 'inset',
+					key: 'inset'
+				}, {
+					value: 'outset',
+					key: 'outset'
+				}],
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
-				groups: ['default', 'hover', 'current', 'active', 'focus']
+				groups: ['def', 'hover', 'current', 'active', 'focus']
 			},
 			borderLeftStyle: {
 				type: String,
 				default: '',
-				options: [
-					{ value: '', key: 'Clear' },
-					{ value: 'none', key: 'none' },
-					{ value: 'hidden', key: 'hidden' },
-					{ value: 'solid', key: 'solid' },
-					{ value: 'dashed', key: 'dashed' },
-					{ value: 'dotted', key: 'dotted' },
-					{ value: 'double', key: 'double' },
-					{ value: 'groove', key: 'groove' },
-					{ value: 'ridge', key: 'ridge' },
-					{ value: 'inset', key: 'inset' },
-					{ value: 'outset', key: 'outset' }
-				],
+				options: [{
+					value: '',
+					key: 'Clear'
+				}, {
+					value: 'none',
+					key: 'none'
+				}, {
+					value: 'hidden',
+					key: 'hidden'
+				}, {
+					value: 'solid',
+					key: 'solid'
+				}, {
+					value: 'dashed',
+					key: 'dashed'
+				}, {
+					value: 'dotted',
+					key: 'dotted'
+				}, {
+					value: 'double',
+					key: 'double'
+				}, {
+					value: 'groove',
+					key: 'groove'
+				}, {
+					value: 'ridge',
+					key: 'ridge'
+				}, {
+					value: 'inset',
+					key: 'inset'
+				}, {
+					value: 'outset',
+					key: 'outset'
+				}],
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
-				groups: ['default', 'hover', 'current', 'active', 'focus']
+				groups: ['def', 'hover', 'current', 'active', 'focus']
 			},
 			borderTopLeftRadius: {
 				type: String,
@@ -308,7 +391,7 @@
 				unit: 'px',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
-				groups: ['default', 'hover', 'current', 'active', 'focus']
+				groups: ['def', 'hover', 'current', 'active', 'focus']
 			},
 			borderTopRightRadius: {
 				type: String,
@@ -317,7 +400,7 @@
 				unit: 'px',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
-				groups: ['default', 'hover', 'current', 'active', 'focus']
+				groups: ['def', 'hover', 'current', 'active', 'focus']
 			},
 			borderBottomRightRadius: {
 				type: String,
@@ -326,7 +409,7 @@
 				unit: 'px',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
-				groups: ['default', 'hover', 'current', 'active', 'focus']
+				groups: ['def', 'hover', 'current', 'active', 'focus']
 			},
 			borderBottomLeftRadius: {
 				type: String,
@@ -335,7 +418,7 @@
 				unit: 'px',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
-				groups: ['default', 'hover', 'current', 'active', 'focus']
+				groups: ['def', 'hover', 'current', 'active', 'focus']
 			},
 			paddingTop: {
 				type: String,
@@ -344,7 +427,7 @@
 				unit: 'px',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
-				groups: ['default', 'hover', 'current', 'active', 'focus']
+				groups: ['def', 'hover', 'current', 'active', 'focus']
 			},
 			paddingRight: {
 				type: String,
@@ -353,7 +436,7 @@
 				unit: 'px',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
-				groups: ['default', 'hover', 'current', 'active', 'focus']
+				groups: ['def', 'hover', 'current', 'active', 'focus']
 			},
 			paddingBottom: {
 				type: String,
@@ -362,7 +445,7 @@
 				unit: 'px',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
-				groups: ['default', 'hover', 'current', 'active', 'focus']
+				groups: ['def', 'hover', 'current', 'active', 'focus']
 			},
 			paddingLeft: {
 				type: String,
@@ -371,7 +454,7 @@
 				unit: 'px',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
-				groups: ['default', 'hover', 'current', 'active', 'focus']
+				groups: ['def', 'hover', 'current', 'active', 'focus']
 			},
 			marginTop: {
 				type: String,
@@ -380,7 +463,7 @@
 				unit: 'px',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
-				groups: ['default', 'hover', 'current', 'active', 'focus']
+				groups: ['def', 'hover', 'current', 'active', 'focus']
 			},
 			marginRight: {
 				type: String,
@@ -389,7 +472,7 @@
 				unit: 'px',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
-				groups: ['default', 'hover', 'current', 'active', 'focus']
+				groups: ['def', 'hover', 'current', 'active', 'focus']
 			},
 			marginBottom: {
 				type: String,
@@ -398,7 +481,7 @@
 				unit: 'px',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
-				groups: ['default', 'hover', 'current', 'active', 'focus']
+				groups: ['def', 'hover', 'current', 'active', 'focus']
 			},
 			marginLeft: {
 				type: String,
@@ -407,7 +490,7 @@
 				unit: 'px',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
-				groups: ['default', 'hover', 'current', 'active', 'focus']
+				groups: ['def', 'hover', 'current', 'active', 'focus']
 			}
 		},
 		components: {
@@ -437,42 +520,14 @@
 				return this.screenWidth <= this.breakpoint;
 			},
 			model() {
-				const obj = {}
-				const props = [
-					'textColor',
-					'backgroundColor',
-					'backgroundImage',
-					'borderTopColor',
-					'borderRightColor',
-					'borderBottomColor',
-					'borderLeftColor',
-					'borderTopWidth',
-					'borderRightWidth',
-					'borderBottomWidth',
-					'borderLeftWidth',
-					'borderTopStyle',
-					'borderRightStyle',
-					'borderBottomStyle',
-					'borderLeftStyle',
-					'borderTopLeftRadius',
-					'borderTopRightRadius',
-					'borderBottomRightRadius',
-					'borderBottomLeftRadius',
-					'paddingTop',
-					'paddingRight',
-					'paddingBottom',
-					'paddingLeft',
-					'marginTop',
-					'marginRight',
-					'marginBottom',
-					'marginLeft',
-				]
+				const obj = {};
+				const props = ['textColor', 'backgroundColor', 'backgroundImage', 'borderTopColor', 'borderRightColor', 'borderBottomColor', 'borderLeftColor', 'borderTopWidth', 'borderRightWidth', 'borderBottomWidth', 'borderLeftWidth', 'borderTopStyle', 'borderRightStyle', 'borderBottomStyle', 'borderLeftStyle', 'borderTopLeftRadius', 'borderTopRightRadius', 'borderBottomRightRadius', 'borderBottomLeftRadius', 'paddingTop', 'paddingRight', 'paddingBottom', 'paddingLeft', 'marginTop', 'marginRight', 'marginBottom', 'marginLeft'];
 				for (const prop of props) {
 					if (this[prop]) {
-						obj[prop] = JSON.parse(this[prop].replaceAll('`', '"'))
+						obj[prop] = JSON.parse(this[prop].replaceAll('`', '"'));
 					}
 				}
-				return obj
+				return obj;
 			}
 		},
 		created() {
@@ -487,7 +542,7 @@
 		},
 		methods: {
 			renderProperty(prop) {
-				return prop
+				return prop;
 			},
 			handleResize() {
 				this.screenWidth = window.innerWidth;
@@ -518,7 +573,7 @@
 		cursor: pointer;
 		background-size: contain;
 		background-repeat: no-repeat;
-		aspect-ratio: 1/1
+		aspect-ratio: 1/1;
 	}
 
 </style>
