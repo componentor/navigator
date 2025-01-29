@@ -64,12 +64,18 @@
 			toggleIcon: {
 				type: String,
 				control: 'media',
-				default: '--menu-svg'
+				default: '--menu-svg',
+				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
+				themes: ['light', 'dark'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			closeIcon: {
 				type: String,
 				control: 'media',
-				default: '--close-svg'
+				default: '--close-svg',
+				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
+				themes: ['light', 'dark'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			toggleSize: {
 				type: String,
