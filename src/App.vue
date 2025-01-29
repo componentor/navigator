@@ -7,6 +7,8 @@
 		}"
 		:reverse="((orientation === 'Row' && !small) && direction === 'left') || ((orientation === 'Column' || small) && drop === 'up')"
 		class="vp-navigator"
+		@pointerover="hover=true"
+		@pointerleave="hover=false"
 	>
 		<div
 			v-if="small"
@@ -64,7 +66,6 @@
 			toggleIcon: {
 				type: String,
 				control: 'media',
-				default: '--menu-svg',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
@@ -72,7 +73,6 @@
 			closeIcon: {
 				type: String,
 				control: 'media',
-				default: '--close-svg',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
@@ -527,23 +527,43 @@
 		},
 		data: () => ({
 			open: false,
+			hover: false,
 			screenWidth: window.innerWidth,
 			colorSchemeMediaQuery: null,
 			darkmode: false
 		}),
 		computed: {
+			themeComputed() {
+				if (this.theme) return this.theme;
+				return this.darkmode ? 'dark' : 'light';
+			},
+			bpoint() {
+				if (this.breakpoint) return this.breakpoint;
+				if (this.screenWidth > 1280) return '2xl';
+				if (this.screenWidth > 1024) return 'xl';
+				if (this.screenWidth > 768) return 'lg';
+				if (this.screenWidth > 640) return 'md';
+				if (this.screenWidth > 480) return 'sm';
+				return 'xs';
+			},
+			group() {
+				if (this.hover) return 'hover';
+				return 'default';
+			},
 			$toggleIcon() {
-				if (this.toggleIcon?.startsWith('--')) {
-					return `var(${this.toggleIcon})`;
+				if (!this.style?.toggleIcon) return 'var(--menu-svg)';
+				if (this.style.toggleIcon?.startsWith('--')) {
+					return `var(${this.style.toggleIcon})`;
 				} else {
-					return `url(${this.toggleIcon})`;
+					return `url(${this.style.toggleIcon})`;
 				}
 			},
 			$closeIcon() {
-				if (this.closeIcon?.startsWith('--')) {
-					return `var(${this.closeIcon})`;
+				if (!this.style?.closeIcon) return 'var(--close-svg)';
+				if (this.style.closeIcon?.startsWith('--')) {
+					return `var(${this.style.closeIcon})`;
 				} else {
-					return `url(${this.closeIcon})`;
+					return `url(${this.style.closeIcon})`;
 				}
 			},
 			small() {
@@ -558,6 +578,64 @@
 					}
 				}
 				return obj;
+			},
+			style() {
+				const style = {};
+				const props = ['toggleIcon', 'closeIcon'];
+				const groups = ['default', 'hover'];
+				const breakpoints = ['xs', 'sm', 'md', 'lg', 'xl', '2xl'];
+				const themes = ['light', 'dark'];
+				for (const prop of props) {
+					const priority = this[prop] ? JSON.parse(this[prop].replaceAll('`', '"')) : {};
+					const merge = {};
+					for (const group of Object.keys(priority)) {
+						const pri = priority?.[group] || {};
+						merge[group] = {};
+						for (const breakpoint of Object.keys(pri)) {
+							const p = pri?.[breakpoint] || {};
+							merge[group][breakpoint] = {};
+							for (const theme of Object.keys(p)) {
+								const value = p?.[theme]?.toString() || null;
+								merge[group][breakpoint][theme] = value;
+							}
+						}
+					}
+					const groups = Object.keys(merge);
+					if (groups.length) {
+						style[prop] = merge?.['default']?.['xs']?.['light'];
+						let limitReached = false;
+						let limit = this.bpoint || 'xs';
+						let match = false;
+						for (const breakpoint of breakpoints) {
+							if (!limitReached) {
+								const firstPriority = merge?.[this.group]?.[breakpoint]?.[this.themeComputed]?.toString();
+								const secondPriority = merge?.[this.group]?.[breakpoint]?.['light']?.toString();
+								const value = firstPriority || secondPriority;
+								if (value) {
+									style[prop] = value;
+									match = true;
+								}
+								limitReached = breakpoint === limit;
+							}
+						}
+						if (!match && this.group !== 'default') {
+							limitReached = false;
+							limit = this.bpoint || 'xs';
+							for (const breakpoint of breakpoints) {
+								if (!limitReached) {
+									const firstPriority = merge?.['default']?.[breakpoint]?.[this.themeComputed]?.toString();
+									const secondPriority = merge?.['default']?.[breakpoint]?.['light']?.toString();
+									const value = firstPriority || secondPriority;
+									if (value) {
+										style[prop] = value;
+									}
+									limitReached = breakpoint === limit;
+								}
+							}
+						}
+					}
+				}
+				return style;
 			}
 		},
 		mounted() {
@@ -565,7 +643,7 @@
 			this.darkmode = window.matchMedia('(prefers-color-scheme: dark)')
 				.matches;
 			this.colorSchemeMediaQuery.addEventListener('change', this.handleColorSchemeChange);
-			document.addEventListener('pointerdown', this.handleClickOutside);
+			document.addEventListener('click', this.handleClickOutside);
 			window.addEventListener('resize', this.handleResize);
 		},
 		beforeUnmount() {
