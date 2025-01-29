@@ -1,5 +1,8 @@
 <template>
-	<Row style="overflow:visible">
+	<Row
+		style="overflow:visible"
+		backgroundColor="{`default`:{`xs`:{`light`:`#ede8e8ff`,`dark`:`#666464ff`},`md`:{`light`:`#00ff2aff`,`dark`:`#c44343ff`}},`hover`:{`xs`:{`light`:`#fff700ff`,`dark`:`#e6d23cff`}}}"
+	>
 		<Column expand="true"></Column>
 		<Column style="overflow:visible">
 			<Navigator
