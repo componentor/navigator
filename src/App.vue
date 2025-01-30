@@ -9,7 +9,9 @@
 		}"
 		:reverse="((orientation === 'Row' && !small) && direction === 'left') || ((orientation === 'Column' || small) && drop === 'up')"
 		:style="{
-			backgroundColor: style?.backgroundColor
+			backgroundColor: style?.backgroundColor,
+			justifyContent: !open && small && style?.justifyToggle ? style?.justifyToggle : 'inherit',
+			alignItems: !open && small && style?.alignToggle ? style?.alignToggle : 'inherit'
 		}"
 		class="vp-navigator"
 		@pointerover="hover=true"
@@ -20,9 +22,7 @@
 			@click="open=!open"
 			:style="{
 				'background-image': open || forceOpen ? $closeIcon : $toggleIcon,
-				'width': toggleSize,
-				'justifty-content': !open && small && style?.justifyToggle ? style?.justifyToggle : 'inherit',
-				'align-items': !open && small && style?.alignToggle ? style?.alignToggle : 'inherit'
+				'width': toggleSize
 			}"
 			class="vp-toggle"
 		/> <template v-if="!small || open || forceOpen">
