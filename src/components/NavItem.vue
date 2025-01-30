@@ -670,8 +670,12 @@
 				const breakpoints = ['xs', 'sm', 'md', 'lg', 'xl', '2xl'];
 				const themes = ['light', 'dark'];
 				for (const prop of props) {
-					let priority = {}
-					if (this[prop]) { try { priority = JSON.parse(this[prop].replaceAll('`', '"')) } catch(e) {} }
+					let priority = {};
+					if (this[prop]) {
+						try {
+							priority = JSON.parse(this[prop].replaceAll('`', '"'));
+						} catch (e) {}
+					}
 					const fallback = this.model?.[prop] || {};
 					const merge = {};
 					for (const group of [...new Set([...Object.keys(priority), ...Object.keys(fallback)])]) {
@@ -734,11 +738,14 @@
 				const breakpoints = ['xs', 'sm', 'md', 'lg', 'xl', '2xl'];
 				const themes = ['light', 'dark'];
 				for (const prop of props) {
-					let priority = {}
-					if (this[prop]) { try { priority = JSON.parse(this[prop].replaceAll('`', '"')) } catch(e) {} }
+					let priority = {};
+					if (this[prop]) {
+						try {
+							priority = JSON.parse(this[prop].replaceAll('`', '"'));
+						} catch (e) {}
+					}
 					const merge = {};
 					for (const group of Object.keys(priority)) {
-						if (group === 'hover' && prop === 'backgroundColor') continue;
 						const pri = priority?.[group] || {};
 						merge[group] = {};
 						for (const breakpoint of Object.keys(pri)) {
@@ -758,7 +765,7 @@
 						let match = false;
 						for (const breakpoint of breakpoints) {
 							if (!limitReached) {
-								const firstPriority = merge?.[this.group]?.[breakpoint]?.[this.themeComputed]?.toString();
+								const firstPriority = merge?.[this.group]?.[breakpoint]?.[this.theme]?.toString();
 								const secondPriority = merge?.[this.group]?.[breakpoint]?.['light']?.toString();
 								const value = firstPriority || secondPriority;
 								if (value) {
@@ -773,7 +780,7 @@
 							limit = this.bpoint || 'xs';
 							for (const breakpoint of breakpoints) {
 								if (!limitReached) {
-									const firstPriority = merge?.['default']?.[breakpoint]?.[this.themeComputed]?.toString();
+									const firstPriority = merge?.['default']?.[breakpoint]?.[this.theme]?.toString();
 									const secondPriority = merge?.['default']?.[breakpoint]?.['light']?.toString();
 									const value = firstPriority || secondPriority;
 									if (value) {

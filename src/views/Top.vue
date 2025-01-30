@@ -21,7 +21,7 @@
 				</NavItem>
 				<NavItem
 					title="B"
-					icon="{`default`:{`xs`:{`light`:`--arrow-svg`}}}"
+					icon="{`default`:{`xs`:{`light`:`--arrow-svg`,`dark`:`--close-svg`}}}"
 				>
 					<NavItem title="BA">
 					</NavItem>
