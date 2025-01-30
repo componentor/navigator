@@ -9,7 +9,9 @@
 		}"
 		:reverse="((orientation === 'Row' && !small) && direction === 'left') || ((orientation === 'Column' || small) && drop === 'up')"
 		:style="{
-			backgroundColor: style?.backgroundColor
+			backgroundColor: style?.backgroundColor,
+			justiftyContent: !open && small && style?.justifyToggle ? style?.justifyToggle : 'inherit',
+			alignItems: !open && small && style?.alignToggle ? style?.alignToggle : 'inherit',
 		}"
 		class="vp-navigator"
 		@pointerover="hover=true"
@@ -98,6 +100,63 @@
 				control: 'slider',
 				unit: 'px',
 				default: '40px'
+			},
+			justifyToggle: {
+				type: String,
+				default: '',
+				options: [
+					{ value: '', key: 'Clear' },
+					{ value: 'flex-start', key: 'flex-start' },
+					{ value: 'flex-end', key: 'flex-end' },
+					{ value: 'center', key: 'center' },
+					{ value: 'space-between', key: 'space-between' },
+					{ value: 'space-around', key: 'space-around' },
+					{ value: 'space-evenly', key: 'space-evenly' },
+					{ value: 'stretch', key: 'stretch' },
+					{ value: 'normal', key: 'normal' },
+					{ value: 'start', key: 'start' },
+					{ value: 'end', key: 'end' },
+					{ value: 'left', key: 'left' },
+					{ value: 'right', key: 'right' },
+					{ value: 'inherit', key: 'inherit' },
+					{ value: 'initial', key: 'initial' },
+					{ value: 'revert', key: 'revert' },
+					{ value: 'revert-layer', key: 'revert-layer' },
+					{ value: 'unset', key: 'unset' }
+				],
+				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
+				themes: ['light', 'dark'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
+			},
+			alignToggle: {
+				type: String,
+				default: '',
+				options: [
+					{ value: '', key: 'Clear' },
+					{ value: 'anchor-center', key: 'anchor-center' },
+					{ value: 'normal', key: 'normal' },
+					{ value: 'stretch', key: 'stretch' },
+					{ value: 'center', key: 'center' },
+					{ value: 'start', key: 'start' },
+					{ value: 'end', key: 'end' },
+					{ value: 'self-start', key: 'self-start' },
+					{ value: 'self-end', key: 'self-end' },
+					{ value: 'flex-start', key: 'flex-start' },
+					{ value: 'flex-end', key: 'flex-end' },
+					{ value: 'baseline', key: 'baseline' },
+					{ value: 'first baseline', key: 'first baseline' },
+					{ value: 'last baseline', key: 'last baseline' },
+					{ value: 'safe center', key: 'safe center' },
+					{ value: 'unsafe center', key: 'unsafe center' },
+					{ value: 'inherit', key: 'inherit' },
+					{ value: 'initial', key: 'initial' },
+					{ value: 'revert', key: 'revert' },
+					{ value: 'revert-layer', key: 'revert-layer' },
+					{ value: 'unset', key: 'unset' }
+				],
+				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
+				themes: ['light', 'dark'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			iconsReverse: {
 				type: Boolean,
@@ -598,7 +657,7 @@
 			},
 			style() {
 				const style = {};
-				const props = ['toggleIcon', 'closeIcon', 'backgroundColor'];
+				const props = ['toggleIcon', 'closeIcon', 'justifyToggle', 'alignToggle', 'backgroundColor'];
 				const groups = ['default', 'hover'];
 				const breakpoints = ['xs', 'sm', 'md', 'lg', 'xl', '2xl'];
 				const themes = ['light', 'dark'];
