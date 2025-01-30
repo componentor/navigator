@@ -4,7 +4,8 @@
 		:is="small ? 'Column' : orientation"
 		:class="{
 			'vp-navigator--small': small,
-			'vp-navigator--open': open
+			'vp-navigator--open': open,
+			'vp-navigator--transition': transition,
 		}"
 		:reverse="((orientation === 'Row' && !small) && direction === 'left') || ((orientation === 'Column' || small) && drop === 'up')"
 		:style="{
@@ -65,6 +66,17 @@
 					return 'xs';
 				})
 			};
+		},
+		watch: {
+			open(open) {
+				if (open && this.small) {
+					setTimeout(() => {
+						this.transition = !this.transition
+					}, 3000)
+				} else {
+					this.transition = false
+				}
+			}
 		},
 		props: {
 			toggleIcon: {
@@ -534,7 +546,8 @@
 			hover: false,
 			screenWidth: window.innerWidth,
 			colorSchemeMediaQuery: null,
-			darkmode: false
+			darkmode: false,
+			transition: false
 		}),
 		computed: {
 			themeComputed() {
@@ -708,6 +721,10 @@
 		bottom: 0px;
 		padding: 5px;
 		z-index: 100!important;
+	}
+
+	.vp-navigator--small.vp-navigator--open.vp-navigator--transition {
+		transition: border-color .3s linear, opacity .3s linear, color .3s linear, background .3s linear, background-color .3s linear;
 	}
 
 	.vp-navigator--small:not(.vp-navigator--open) {
