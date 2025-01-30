@@ -72,7 +72,7 @@
 				if (open && this.small) {
 					setTimeout(() => {
 						this.transition = !this.transition
-					}, 3000)
+					})
 				} else {
 					this.transition = false
 				}
