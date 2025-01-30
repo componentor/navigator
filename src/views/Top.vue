@@ -21,7 +21,7 @@
 				</NavItem>
 				<NavItem
 					title="B"
-					icon="--menu-svg"
+					icon="{`default`:{`xs`:{`light`:`--arrow-svg`}}}"
 				>
 					<NavItem title="BA">
 					</NavItem>
@@ -152,7 +152,7 @@
 		</Column>
 	</Row>
 	<Row
-		style="overflow:visible"
+		style="overflow:visible;z-index:0"
 		expand="true"
 	>
 		<Navigator
@@ -170,7 +170,7 @@
 			</NavItem>
 			<NavItem
 				title="B"
-				icon="--menu-svg"
+				icon="{`default`:{`xs`:{`light`:`--menu-svg`}}}"
 			>
 				<NavItem title="BA">
 				</NavItem>

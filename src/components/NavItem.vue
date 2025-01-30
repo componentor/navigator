@@ -622,11 +622,11 @@
 				return '20px';
 			},
 			$icon() {
-				if (!this.style?.icon) return null;
-				if (this.style.icon?.startsWith('--')) {
-					return `var(${this.style.icon})`;
+				if (!this.$style?.icon) return null;
+				if (this.$style.icon?.startsWith('--')) {
+					return `var(${this.$style.icon})`;
 				} else {
-					return `url(${this.style.icon})`;
+					return `url(${this.$style.icon})`;
 				}
 			},
 			$caret() {
@@ -670,7 +670,8 @@
 				const breakpoints = ['xs', 'sm', 'md', 'lg', 'xl', '2xl'];
 				const themes = ['light', 'dark'];
 				for (const prop of props) {
-					const priority = this[prop] ? JSON.parse(this[prop].replaceAll('`', '"')) : {};
+					let priority = {}
+					if (this[prop]) { try { priority = JSON.parse(this[prop].replaceAll('`', '"')) } catch(e) {} }
 					const fallback = this.model?.[prop] || {};
 					const merge = {};
 					for (const group of [...new Set([...Object.keys(priority), ...Object.keys(fallback)])]) {
@@ -733,7 +734,8 @@
 				const breakpoints = ['xs', 'sm', 'md', 'lg', 'xl', '2xl'];
 				const themes = ['light', 'dark'];
 				for (const prop of props) {
-					const priority = this[prop] ? JSON.parse(this[prop].replaceAll('`', '"')) : {};
+					let priority = {}
+					if (this[prop]) { try { priority = JSON.parse(this[prop].replaceAll('`', '"')) } catch(e) {} }
 					const merge = {};
 					for (const group of Object.keys(priority)) {
 						if (group === 'hover' && prop === 'backgroundColor') continue;
