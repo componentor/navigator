@@ -1,5 +1,5 @@
 <template>
-	<Row
+	<Box
 		v-bind="$attrs"
 		:class="rootClass"
 		:expand="expand"
@@ -70,7 +70,7 @@
 				<slot />
 			</div>
 		</template>
-	</Row> <template v-if="$vertical">
+	</Box> <template v-if="$vertical">
 		<div
 			v-if="$slots.default && (show || forceOpen || forceOpenProvider)"
 			class="wrapper"
@@ -86,7 +86,7 @@
 	import {
 		computed
 	} from 'vue';
-	import Row from '@vueplayio/row';
+	import Box from '@vueplayio/box';
 	export default {
 		inject: ['theme', 'breakpoint', 'small', 'open', 'forceOpenProvider', 'direction', 'orientation', 'drop', 'level', 'order', 'reverseIcon', 'expand', 'childrenIconSizeProvider', 'childrenCaretProvider', 'childrenCaretSizeProvider', 'model'],
 		provide() {
@@ -585,7 +585,7 @@
 			}
 		},
 		components: {
-			Row: Row
+			Box: Box
 		},
 		data: () => ({
 			show: false,
@@ -811,7 +811,7 @@
 	}
 
 	.vp-navigator-item,
-	.vp-row.vp-navigator-item {
+	.vp-box.vp-navigator-item {
 		position: relative;
 		overflow: visible;
 		padding: 0;

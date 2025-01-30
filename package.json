@@ -11,8 +11,7 @@
     "dependencies": {
         "vue": "^3.5.13",
         "vue-router": "^4.5.0",
-        "@vueplayio/row": "https://manager.vueplay.io/row@^0.1.0",
-        "@vueplayio/column": "https://manager.vueplay.io/column@^0.1.0"
+        "@vueplayio/box": "https://manager.vueplay.io/row@^0.1.0"
     },
     "devDependencies": {
         "@rollup/plugin-data-uri": "^1.0.3",

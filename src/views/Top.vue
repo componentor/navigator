@@ -1,10 +1,16 @@
 <template>
-	<Row
+	<Box
 		style="overflow:visible"
 		backgroundColor="{`default`:{`xs`:{`light`:`#ede8e8ff`,`dark`:`#666464ff`},`md`:{`light`:`#00ff2aff`,`dark`:`#c44343ff`}},`hover`:{`xs`:{`light`:`#fff700ff`,`dark`:`#e6d23cff`}}}"
 	>
-		<Column expand="true"></Column>
-		<Column style="overflow:visible">
+		<Box
+			:column="true"
+			expand="true"
+		></Box>
+		<Box
+			:column="true"
+			style="overflow:visible"
+		>
 			<Navigator
 				direction="right"
 				iconSize="40px"
@@ -149,9 +155,9 @@
 				</NavItem>
 				<NavItem title="D"></NavItem>
 			</Navigator>
-		</Column>
-	</Row>
-	<Row
+		</Box>
+	</Box>
+	<Box
 		style="overflow:visible;z-index:0"
 		expand="true"
 	>
@@ -298,17 +304,15 @@
 			</NavItem>
 			<NavItem title="D"></NavItem>
 		</Navigator>
-	</Row>
+	</Box>
 </template>
 <script>
-	import Column from '@vueplayio/column';
-	import Row from '@vueplayio/row';
+	import Box from '@vueplayio/box';
 	import NavItem from '@/components/NavItem.vue';
 	import Navigator from '@/App.vue';
 	export default {
 		components: {
-			Column: Column,
-			Row: Row,
+			Box: Box,
 			NavItem: NavItem,
 			Navigator: Navigator
 		},

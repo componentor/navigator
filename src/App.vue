@@ -1,7 +1,7 @@
 <template>
-	<component
+	<box
 		ref="nav"
-		:is="small ? 'Column' : orientation"
+		:column="small || orientation === 'Column'"
 		:class="{
 			'vp-navigator--small': small,
 			'vp-navigator--open': open,
@@ -30,15 +30,14 @@
 				<Placeholder />
 			</slot>
 		</template>
-	</component>
+	</box>
 </template>
 <script>
 	import {
 		computed
 	} from 'vue';
 	import Placeholder from '@/components/Placeholder.vue';
-	import Column from '@vueplayio/column';
-	import Row from '@vueplayio/row';
+	import Box from '@vueplayio/box';
 	export default {
 		inject: ['theme', 'breakpoint'],
 		provide() {
@@ -675,8 +674,7 @@
 		},
 		components: {
 			Placeholder,
-			Column,
-			Row
+			Box
 		},
 		data: () => ({
 			open: false,
