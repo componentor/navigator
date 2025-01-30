@@ -3,9 +3,13 @@
 		ref="nav"
 		:is="small ? 'Column' : orientation"
 		:class="{
-			'vp-navigator--small': small
+			'vp-navigator--small': small,
+			'vp-navigator--open': open
 		}"
 		:reverse="((orientation === 'Row' && !small) && direction === 'left') || ((orientation === 'Column' || small) && drop === 'up')"
+		:style="{
+			backgroundColor: style?.backgroundColor
+		}"
 		class="vp-navigator"
 		@pointerover="hover=true"
 		@pointerleave="hover=false"
@@ -581,7 +585,7 @@
 			},
 			style() {
 				const style = {};
-				const props = ['toggleIcon', 'closeIcon'];
+				const props = ['toggleIcon', 'closeIcon', 'backgroundColor'];
 				const groups = ['default', 'hover'];
 				const breakpoints = ['xs', 'sm', 'md', 'lg', 'xl', '2xl'];
 				const themes = ['light', 'dark'];
@@ -589,6 +593,7 @@
 					const priority = this[prop] ? JSON.parse(this[prop].replaceAll('`', '"')) : {};
 					const merge = {};
 					for (const group of Object.keys(priority)) {
+						if (group === 'hover' && prop === 'backgroundColor') continue
 						const pri = priority?.[group] || {};
 						merge[group] = {};
 						for (const breakpoint of Object.keys(pri)) {
@@ -688,6 +693,25 @@
 		background-size: contain;
 		background-repeat: no-repeat;
 		aspect-ratio: 1/1;
+	}
+
+	.vp-navigator--small.vp-navigator--open .vp-toggle {
+		align-self: flex-end;
+		margin: 10px;
+	}
+
+	.vp-navigator--small.vp-navigator--open {
+		position: fixed;
+		top: 0px;
+		left: 0px;
+		right: 0px;
+		bottom: 0px;
+		padding: 5px;
+		z-index: 100!important;
+	}
+
+	.vp-navigator--small:not(.vp-navigator--open) {
+		background-color: transparent!important;
 	}
 
 </style>
