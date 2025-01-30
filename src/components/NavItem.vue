@@ -139,7 +139,10 @@
 			icon: {
 				type: String,
 				control: 'media',
-				default: ''
+				default: '',
+				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
+				themes: ['light', 'dark'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			iconSize: {
 				type: String,
@@ -207,6 +210,14 @@
 			forceOpen: {
 				type: Boolean,
 				default: false
+			},
+			fontWeight: {
+				type: String,
+				default: '',
+				control: 'slider',
+				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
+				themes: ['light', 'dark'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			color: {
 				type: String,
@@ -611,10 +622,11 @@
 				return '20px';
 			},
 			$icon() {
-				if (this.icon?.startsWith('--')) {
-					return `var(${this.icon})`;
+				if (!this.style?.icon) return null;
+				if (this.style.icon?.startsWith('--')) {
+					return `var(${this.style.icon})`;
 				} else {
-					return `url(${this.icon})`;
+					return `url(${this.style.icon})`;
 				}
 			},
 			$caret() {
@@ -653,7 +665,7 @@
 			style() {
 				this.childModel = {};
 				const style = {};
-				const props = ['color', 'backgroundColor', 'backgroundImage', 'borderTopColor', 'borderRightColor', 'borderBottomColor', 'borderLeftColor', 'borderTopWidth', 'borderRightWidth', 'borderBottomWidth', 'borderLeftWidth', 'borderTopStyle', 'borderRightStyle', 'borderBottomStyle', 'borderLeftStyle', 'borderTopLeftRadius', 'borderTopRightRadius', 'borderBottomRightRadius', 'borderBottomLeftRadius', 'paddingTop', 'paddingRight', 'paddingBottom', 'paddingLeft', 'marginTop', 'marginRight', 'marginBottom', 'marginLeft'];
+				const props = ['fontWeight', 'color', 'backgroundColor', 'backgroundImage', 'borderTopColor', 'borderRightColor', 'borderBottomColor', 'borderLeftColor', 'borderTopWidth', 'borderRightWidth', 'borderBottomWidth', 'borderLeftWidth', 'borderTopStyle', 'borderRightStyle', 'borderBottomStyle', 'borderLeftStyle', 'borderTopLeftRadius', 'borderTopRightRadius', 'borderBottomRightRadius', 'borderBottomLeftRadius', 'paddingTop', 'paddingRight', 'paddingBottom', 'paddingLeft', 'marginTop', 'marginRight', 'marginBottom', 'marginLeft'];
 				const groups = ['default', 'hover', 'current', 'active', 'focus'];
 				const breakpoints = ['xs', 'sm', 'md', 'lg', 'xl', '2xl'];
 				const themes = ['light', 'dark'];
@@ -681,22 +693,96 @@
 						style[prop] = this.childModel[prop]?.['default']?.['xs']?.['light'];
 						let limitReached = false;
 						let limit = this.breakpoint || 'xs';
+						let match = false;
 						for (const breakpoint of breakpoints) {
 							if (!limitReached) {
 								const firstPriority = this.childModel[prop]?.[this.group]?.[breakpoint]?.[this.theme || 'light']?.toString();
 								const secondPriority = this.childModel[prop]?.[this.group]?.[breakpoint]?.['light']?.toString();
-								const thirdPriority = this.childModel[prop]?.['default']?.[breakpoint]?.[this.theme || 'light']?.toString();
-								const forthPriority = this.childModel[prop]?.['default']?.[breakpoint]?.['light']?.toString();
-								const value = firstPriority || secondPriority || thirdPriority || forthPriority;
+								const value = firstPriority || secondPriority;
 								if (value) {
 									style[prop] = value;
+									match = true;
 								}
 								limitReached = breakpoint === limit;
+							}
+						}
+						if (!match && this.group !== 'default') {
+							limitReached = false;
+							limit = this.breakpoint || 'xs';
+							for (const breakpoint of breakpoints) {
+								if (!limitReached) {
+									const firstPriority = this.childModel[prop]?.['default']?.[breakpoint]?.[this.theme || 'light']?.toString();
+									const secondPriority = this.childModel[prop]?.['default']?.[breakpoint]?.['light']?.toString();
+									const value = firstPriority || secondPriority;
+									if (value) {
+										style[prop] = value;
+									}
+									limitReached = breakpoint === limit;
+								}
 							}
 						}
 					}
 				}
 				style['flex-direction'] = (this.iconReverse === '' ? this.reverseIcon : this.iconReverse === 'true') ? 'row-reverse' : 'row';
+				return style;
+			},
+			$style() {
+				const style = {};
+				const props = ['icon'];
+				const groups = ['default', 'hover'];
+				const breakpoints = ['xs', 'sm', 'md', 'lg', 'xl', '2xl'];
+				const themes = ['light', 'dark'];
+				for (const prop of props) {
+					const priority = this[prop] ? JSON.parse(this[prop].replaceAll('`', '"')) : {};
+					const merge = {};
+					for (const group of Object.keys(priority)) {
+						if (group === 'hover' && prop === 'backgroundColor') continue;
+						const pri = priority?.[group] || {};
+						merge[group] = {};
+						for (const breakpoint of Object.keys(pri)) {
+							const p = pri?.[breakpoint] || {};
+							merge[group][breakpoint] = {};
+							for (const theme of Object.keys(p)) {
+								const value = p?.[theme]?.toString() || null;
+								merge[group][breakpoint][theme] = value;
+							}
+						}
+					}
+					const groups = Object.keys(merge);
+					if (groups.length) {
+						style[prop] = merge?.['default']?.['xs']?.['light'];
+						let limitReached = false;
+						let limit = this.bpoint || 'xs';
+						let match = false;
+						for (const breakpoint of breakpoints) {
+							if (!limitReached) {
+								const firstPriority = merge?.[this.group]?.[breakpoint]?.[this.themeComputed]?.toString();
+								const secondPriority = merge?.[this.group]?.[breakpoint]?.['light']?.toString();
+								const value = firstPriority || secondPriority;
+								if (value) {
+									style[prop] = value;
+									match = true;
+								}
+								limitReached = breakpoint === limit;
+							}
+						}
+						if (!match && this.group !== 'default') {
+							limitReached = false;
+							limit = this.bpoint || 'xs';
+							for (const breakpoint of breakpoints) {
+								if (!limitReached) {
+									const firstPriority = merge?.['default']?.[breakpoint]?.[this.themeComputed]?.toString();
+									const secondPriority = merge?.['default']?.[breakpoint]?.['light']?.toString();
+									const value = firstPriority || secondPriority;
+									if (value) {
+										style[prop] = value;
+									}
+									limitReached = breakpoint === limit;
+								}
+							}
+						}
+					}
+				}
 				return style;
 			}
 		},
