@@ -728,7 +728,9 @@
 				const props = ['fontWeight', 'color', 'backgroundColor', 'backgroundImage', 'borderTopColor', 'borderRightColor', 'borderBottomColor', 'borderLeftColor', 'borderTopWidth', 'borderRightWidth', 'borderBottomWidth', 'borderLeftWidth', 'borderTopStyle', 'borderRightStyle', 'borderBottomStyle', 'borderLeftStyle', 'borderTopLeftRadius', 'borderTopRightRadius', 'borderBottomRightRadius', 'borderBottomLeftRadius', 'paddingTop', 'paddingRight', 'paddingBottom', 'paddingLeft', 'marginTop', 'marginRight', 'marginBottom', 'marginLeft'];
 				for (const prop of props) {
 					if (this[prop]) {
-						obj[prop] = JSON.parse(this[prop].replaceAll('`', '"'));
+						try {
+							obj[prop] = JSON.parse(this[prop].replaceAll('`', '"'));
+						} catch(e) {}
 					}
 				}
 				return obj;
@@ -740,7 +742,8 @@
 				const breakpoints = ['xs', 'sm', 'md', 'lg', 'xl', '2xl'];
 				const themes = ['light', 'dark'];
 				for (const prop of props) {
-					const priority = this[prop] ? JSON.parse(this[prop].replaceAll('`', '"')) : {};
+					let priority = {}
+					if (this[prop]) { try { priority = JSON.parse(this[prop].replaceAll('`', '"')) } catch(e) {} }
 					const merge = {};
 					for (const group of Object.keys(priority)) {
 						if (group === 'hover' && prop === 'backgroundColor') continue;
