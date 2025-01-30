@@ -13,6 +13,7 @@
 				drop="down"
 				backgroundColor="{`default`:{`xs`:{`light`:`#c95b5bff`,`dark`:`#804d4dff`},`md`:{`light`:`#ed2fd1ff`},`lg`:{`light`:`#ffd500ff`}},`hover`:{`xs`:{`light`:`#2932a6ff`}}}"
 				color="{`default`:{`xs`:{`light`:`#e8dadaff`,`dark`:`#99f0afff`}}}"
+				caretIcon="{`default`:{`xs`:{`light`:`--arrow-svg`}}}"
 			>
 				<NavItem title="A">
 				</NavItem>

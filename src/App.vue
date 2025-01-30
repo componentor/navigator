@@ -51,8 +51,8 @@
 				drop: computed(() => this.drop),
 				reverseIcon: computed(() => this.iconsReverse),
 				childrenIconSizeProvider: computed(() => this.childrenIconSize),
-				childrenCaretProvider: computed(() => this.childrenCaret),
-				childrenCaretSizeProvider: computed(() => this.childrenCaretSize),
+				childrenCaretProvider: computed(() => this.style.caretIcon),
+				childrenCaretSizeProvider: computed(() => this.caretSize),
 				model: computed(() => this.model),
 				theme: computed(() => {
 					if (this.theme) return this.theme;
@@ -94,6 +94,19 @@
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
+			},
+			caretIcon: {
+				type: String,
+				control: 'media',
+				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
+				themes: ['light', 'dark'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
+			},
+			caretSize: {
+				type: String,
+				default: '',
+				unit: 'px',
+				control: 'slider'
 			},
 			toggleSize: {
 				type: String,
@@ -239,17 +252,6 @@
 				default: false
 			},
 			childrenIconSize: {
-				type: String,
-				default: '',
-				unit: 'px',
-				control: 'slider'
-			},
-			childrenCaret: {
-				type: String,
-				control: 'media',
-				default: ''
-			},
-			childrenCaretSize: {
 				type: String,
 				default: '',
 				unit: 'px',
@@ -733,7 +735,7 @@
 			},
 			style() {
 				const style = {};
-				const props = ['toggleIcon', 'closeIcon', 'justifyToggle', 'alignToggle', 'backgroundColor'];
+				const props = ['toggleIcon', 'closeIcon', 'caretIcon', 'justifyToggle', 'alignToggle', 'backgroundColor'];
 				const groups = ['default', 'hover'];
 				const breakpoints = ['xs', 'sm', 'md', 'lg', 'xl', '2xl'];
 				const themes = ['light', 'dark'];
