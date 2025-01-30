@@ -10,8 +10,8 @@
 		:reverse="((orientation === 'Row' && !small) && direction === 'left') || ((orientation === 'Column' || small) && drop === 'up')"
 		:style="{
 			backgroundColor: style?.backgroundColor,
-			justifyContent: !open && small && style?.justifyToggle ? style?.justifyToggle : 'inherit',
-			alignItems: !open && small && style?.alignToggle ? style?.alignToggle : 'inherit'
+			justifyContent: !open && small && style?.justifyToggle ? style?.justifyToggle : null,
+			alignItems: !open && small && style?.alignToggle ? style?.alignToggle : null
 		}"
 		class="vp-navigator"
 		@pointerover="hover=true"
