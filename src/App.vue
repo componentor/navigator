@@ -9,9 +9,7 @@
 		}"
 		:reverse="((orientation === 'Row' && !small) && direction === 'left') || ((orientation === 'Column' || small) && drop === 'up')"
 		:style="{
-			backgroundColor: style?.backgroundColor,
-			justiftyContent: !open && small && style?.justifyToggle ? style?.justifyToggle : 'inherit',
-			alignItems: !open && small && style?.alignToggle ? style?.alignToggle : 'inherit',
+			backgroundColor: style?.backgroundColor
 		}"
 		class="vp-navigator"
 		@pointerover="hover=true"
@@ -22,7 +20,9 @@
 			@click="open=!open"
 			:style="{
 				'background-image': open || forceOpen ? $closeIcon : $toggleIcon,
-				'width': toggleSize
+				'width': toggleSize,
+				'justifty-content': !open && small && style?.justifyToggle ? style?.justifyToggle : 'inherit',
+				'align-items': !open && small && style?.alignToggle ? style?.alignToggle : 'inherit'
 			}"
 			class="vp-toggle"
 		/> <template v-if="!small || open || forceOpen">
@@ -73,10 +73,10 @@
 			open(open) {
 				if (open && this.small) {
 					setTimeout(() => {
-						this.transition = !this.transition
-					})
+						this.transition = !this.transition;
+					});
 				} else {
-					this.transition = false
+					this.transition = false;
 				}
 			}
 		},
@@ -104,26 +104,61 @@
 			justifyToggle: {
 				type: String,
 				default: '',
-				options: [
-					{ value: '', key: 'Clear' },
-					{ value: 'flex-start', key: 'flex-start' },
-					{ value: 'flex-end', key: 'flex-end' },
-					{ value: 'center', key: 'center' },
-					{ value: 'space-between', key: 'space-between' },
-					{ value: 'space-around', key: 'space-around' },
-					{ value: 'space-evenly', key: 'space-evenly' },
-					{ value: 'stretch', key: 'stretch' },
-					{ value: 'normal', key: 'normal' },
-					{ value: 'start', key: 'start' },
-					{ value: 'end', key: 'end' },
-					{ value: 'left', key: 'left' },
-					{ value: 'right', key: 'right' },
-					{ value: 'inherit', key: 'inherit' },
-					{ value: 'initial', key: 'initial' },
-					{ value: 'revert', key: 'revert' },
-					{ value: 'revert-layer', key: 'revert-layer' },
-					{ value: 'unset', key: 'unset' }
-				],
+				options: [{
+					value: '',
+					key: 'Clear'
+				}, {
+					value: 'flex-start',
+					key: 'flex-start'
+				}, {
+					value: 'flex-end',
+					key: 'flex-end'
+				}, {
+					value: 'center',
+					key: 'center'
+				}, {
+					value: 'space-between',
+					key: 'space-between'
+				}, {
+					value: 'space-around',
+					key: 'space-around'
+				}, {
+					value: 'space-evenly',
+					key: 'space-evenly'
+				}, {
+					value: 'stretch',
+					key: 'stretch'
+				}, {
+					value: 'normal',
+					key: 'normal'
+				}, {
+					value: 'start',
+					key: 'start'
+				}, {
+					value: 'end',
+					key: 'end'
+				}, {
+					value: 'left',
+					key: 'left'
+				}, {
+					value: 'right',
+					key: 'right'
+				}, {
+					value: 'inherit',
+					key: 'inherit'
+				}, {
+					value: 'initial',
+					key: 'initial'
+				}, {
+					value: 'revert',
+					key: 'revert'
+				}, {
+					value: 'revert-layer',
+					key: 'revert-layer'
+				}, {
+					value: 'unset',
+					key: 'unset'
+				}],
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
@@ -131,29 +166,70 @@
 			alignToggle: {
 				type: String,
 				default: '',
-				options: [
-					{ value: '', key: 'Clear' },
-					{ value: 'anchor-center', key: 'anchor-center' },
-					{ value: 'normal', key: 'normal' },
-					{ value: 'stretch', key: 'stretch' },
-					{ value: 'center', key: 'center' },
-					{ value: 'start', key: 'start' },
-					{ value: 'end', key: 'end' },
-					{ value: 'self-start', key: 'self-start' },
-					{ value: 'self-end', key: 'self-end' },
-					{ value: 'flex-start', key: 'flex-start' },
-					{ value: 'flex-end', key: 'flex-end' },
-					{ value: 'baseline', key: 'baseline' },
-					{ value: 'first baseline', key: 'first baseline' },
-					{ value: 'last baseline', key: 'last baseline' },
-					{ value: 'safe center', key: 'safe center' },
-					{ value: 'unsafe center', key: 'unsafe center' },
-					{ value: 'inherit', key: 'inherit' },
-					{ value: 'initial', key: 'initial' },
-					{ value: 'revert', key: 'revert' },
-					{ value: 'revert-layer', key: 'revert-layer' },
-					{ value: 'unset', key: 'unset' }
-				],
+				options: [{
+					value: '',
+					key: 'Clear'
+				}, {
+					value: 'anchor-center',
+					key: 'anchor-center'
+				}, {
+					value: 'normal',
+					key: 'normal'
+				}, {
+					value: 'stretch',
+					key: 'stretch'
+				}, {
+					value: 'center',
+					key: 'center'
+				}, {
+					value: 'start',
+					key: 'start'
+				}, {
+					value: 'end',
+					key: 'end'
+				}, {
+					value: 'self-start',
+					key: 'self-start'
+				}, {
+					value: 'self-end',
+					key: 'self-end'
+				}, {
+					value: 'flex-start',
+					key: 'flex-start'
+				}, {
+					value: 'flex-end',
+					key: 'flex-end'
+				}, {
+					value: 'baseline',
+					key: 'baseline'
+				}, {
+					value: 'first baseline',
+					key: 'first baseline'
+				}, {
+					value: 'last baseline',
+					key: 'last baseline'
+				}, {
+					value: 'safe center',
+					key: 'safe center'
+				}, {
+					value: 'unsafe center',
+					key: 'unsafe center'
+				}, {
+					value: 'inherit',
+					key: 'inherit'
+				}, {
+					value: 'initial',
+					key: 'initial'
+				}, {
+					value: 'revert',
+					key: 'revert'
+				}, {
+					value: 'revert-layer',
+					key: 'revert-layer'
+				}, {
+					value: 'unset',
+					key: 'unset'
+				}],
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
@@ -665,7 +741,7 @@
 					const priority = this[prop] ? JSON.parse(this[prop].replaceAll('`', '"')) : {};
 					const merge = {};
 					for (const group of Object.keys(priority)) {
-						if (group === 'hover' && prop === 'backgroundColor') continue
+						if (group === 'hover' && prop === 'backgroundColor') continue;
 						const pri = priority?.[group] || {};
 						merge[group] = {};
 						for (const breakpoint of Object.keys(pri)) {
@@ -779,7 +855,7 @@
 		right: 0px;
 		bottom: 0px;
 		padding: 5px;
-		z-index: 100!important;
+		z-index: 100 !important;
 	}
 
 	.vp-navigator--small.vp-navigator--open.vp-navigator--transition {
@@ -787,7 +863,7 @@
 	}
 
 	.vp-navigator--small:not(.vp-navigator--open) {
-		background-color: transparent!important;
+		background-color: transparent !important;
 	}
 
 </style>
