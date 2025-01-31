@@ -4,11 +4,11 @@
 		backgroundColor="{`default`:{`xs`:{`light`:`#ede8e8ff`,`dark`:`#666464ff`},`md`:{`light`:`#00ff2aff`,`dark`:`#c44343ff`}},`hover`:{`xs`:{`light`:`#fff700ff`,`dark`:`#e6d23cff`}}}"
 	>
 		<Box
-			:column="true"
+			column="{`default`:{`xs`:{`light`:true}}}"
 			expand="true"
 		></Box>
 		<Box
-			:column="true"
+			column="{`default`:{`xs`:{`light`:true}}}"
 			style="overflow:visible"
 		>
 			<Navigator

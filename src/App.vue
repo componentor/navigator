@@ -1,7 +1,7 @@
 <template>
 	<box
 		ref="nav"
-		:column="small || orientation === 'Column'"
+		:column="(small || orientation === 'Column') ? '{`default`:{`xs`:{`light`:true}}}' : ''"
 		:class="{
 			'vp-navigator--small': small,
 			'vp-navigator--open': open,
