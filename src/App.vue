@@ -323,6 +323,14 @@
 				themes: ['light', 'dark'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
+			backgroundColorDrop: {
+				type: String,
+				default: '',
+				control: 'color',
+				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
+				themes: ['light', 'dark'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
+			},
 			backgroundImage: {
 				type: String,
 				default: '',
@@ -723,7 +731,7 @@
 			},
 			model() {
 				const obj = {};
-				const props = ['fontWeight', 'color', 'backgroundColor', 'backgroundImage', 'borderTopColor', 'borderRightColor', 'borderBottomColor', 'borderLeftColor', 'borderTopWidth', 'borderRightWidth', 'borderBottomWidth', 'borderLeftWidth', 'borderTopStyle', 'borderRightStyle', 'borderBottomStyle', 'borderLeftStyle', 'borderTopLeftRadius', 'borderTopRightRadius', 'borderBottomRightRadius', 'borderBottomLeftRadius', 'paddingTop', 'paddingRight', 'paddingBottom', 'paddingLeft', 'marginTop', 'marginRight', 'marginBottom', 'marginLeft'];
+				const props = ['fontWeight', 'color', 'backgroundColor', 'backgroundColorDrop', 'backgroundImage', 'borderTopColor', 'borderRightColor', 'borderBottomColor', 'borderLeftColor', 'borderTopWidth', 'borderRightWidth', 'borderBottomWidth', 'borderLeftWidth', 'borderTopStyle', 'borderRightStyle', 'borderBottomStyle', 'borderLeftStyle', 'borderTopLeftRadius', 'borderTopRightRadius', 'borderBottomRightRadius', 'borderBottomLeftRadius', 'paddingTop', 'paddingRight', 'paddingBottom', 'paddingLeft', 'marginTop', 'marginRight', 'marginBottom', 'marginLeft'];
 				for (const prop of props) {
 					if (this[prop]) {
 						try {
