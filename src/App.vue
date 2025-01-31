@@ -867,6 +867,7 @@
 		bottom: 0px;
 		padding: 5px;
 		height: 100vh!important;
+		overflow: hidden!important;
 		z-index: 100 !important;
 	}
 
