@@ -866,6 +866,7 @@
 		right: 0px;
 		bottom: 0px;
 		padding: 5px;
+		height: 100vh!important;
 		z-index: 100 !important;
 	}
 
