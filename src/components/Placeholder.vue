@@ -1,6 +1,6 @@
 <template>
 	<div style="padding:10px">
-		Drop NavItem here!
+		Drop Link here!
 	</div>
 </template>
 <script>
