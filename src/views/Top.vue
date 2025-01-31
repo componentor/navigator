@@ -5,7 +5,7 @@
 	>
 		<Box
 			column="{`default`:{`xs`:{`light`:true}}}"
-			expand="true"
+			expand="{`default`:{`xs`:{`light`:true}}}"
 		></Box>
 		<Box
 			column="{`default`:{`xs`:{`light`:true}}}"
@@ -179,7 +179,7 @@
 	</Box>
 	<Box
 		style="overflow:visible;z-index:0"
-		expand="true"
+		expand="{`default`:{`xs`:{`light`:true}}}"
 	>
 		<Navigator
 			direction="right"

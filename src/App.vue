@@ -1,5 +1,5 @@
 <template>
-	<box
+	<Box
 		ref="nav"
 		:column="(small || orientation === 'Column') ? '{`default`:{`xs`:{`light`:true}}}' : ''"
 		:class="{
@@ -7,7 +7,7 @@
 			'vp-navigator--open': open,
 			'vp-navigator--transition': transition,
 		}"
-		:reverse="((orientation === 'Row' && !small) && direction === 'left') || ((orientation === 'Column' || small) && drop === 'up')"
+		:reverse="(((orientation === 'Row' && !small) && direction === 'left') || ((orientation === 'Column' || small) && drop === 'up')) ? '{`default`:{`xs`:{`light`:true}}}' : ''"
 		:style="{
 			backgroundColor: style?.backgroundColor,
 			justifyContent: !open && small && style?.justifyToggle ? style?.justifyToggle : null,
@@ -30,7 +30,7 @@
 				<Placeholder />
 			</slot>
 		</template>
-	</box>
+	</Box>
 </template>
 <script>
 	import {

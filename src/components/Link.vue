@@ -2,7 +2,7 @@
 	<Box
 		v-bind="$attrs"
 		:class="rootClass"
-		:expand="expand"
+		:expand="expand ? '{`default`:{`xs`:{`light`:true}}}' : ''"
 		:style="style"
 		ref="navitem"
 		class="vp-navigator-item"
@@ -731,9 +731,9 @@
 				style['flex-direction'] = (this.iconReverse === '' ? this.reverseIcon : this.iconReverse === 'true') ? 'row-reverse' : 'row';
 				if (style['backgroundColorDrop']) {
 					if (this.level >= 1) {
-						style['backgroundColor'] = style['backgroundColorDrop']
+						style['backgroundColor'] = style['backgroundColorDrop'];
 					}
-					delete style['backgroundColorDrop']
+					delete style['backgroundColorDrop'];
 				}
 				return style;
 			},
