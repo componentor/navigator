@@ -11,7 +11,8 @@
 		:style="{
 			backgroundColor: style?.backgroundColor,
 			justifyContent: !open && small && style?.justifyToggle ? style?.justifyToggle : null,
-			alignItems: !open && small && style?.alignToggle ? style?.alignToggle : null
+			alignItems: !open && small && style?.alignToggle ? style?.alignToggle : null,
+			gap: !small ? style?.gap : null
 		}"
 		class="vp-navigator"
 		@pointerover="hover=true"
@@ -255,6 +256,24 @@
 				default: '',
 				unit: 'px',
 				control: 'slider'
+			},
+			gap: {
+				type: String,
+				default: '',
+				unit: 'px',
+				control: 'slider',
+				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
+				themes: ['light', 'dark'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
+			},
+			childrenGap: {
+				type: String,
+				default: '',
+				unit: 'px',
+				control: 'slider',
+				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
+				themes: ['light', 'dark'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			orientation: {
 				type: String,
@@ -731,9 +750,13 @@
 			},
 			model() {
 				const obj = {};
-				const props = ['fontWeight', 'color', 'backgroundColor', 'backgroundColorDrop', 'backgroundImage', 'borderTopColor', 'borderRightColor', 'borderBottomColor', 'borderLeftColor', 'borderTopWidth', 'borderRightWidth', 'borderBottomWidth', 'borderLeftWidth', 'borderTopStyle', 'borderRightStyle', 'borderBottomStyle', 'borderLeftStyle', 'borderTopLeftRadius', 'borderTopRightRadius', 'borderBottomRightRadius', 'borderBottomLeftRadius', 'paddingTop', 'paddingRight', 'paddingBottom', 'paddingLeft', 'marginTop', 'marginRight', 'marginBottom', 'marginLeft'];
+				const props = ['fontWeight', 'gap', 'color', 'backgroundColor', 'backgroundColorDrop', 'backgroundImage', 'borderTopColor', 'borderRightColor', 'borderBottomColor', 'borderLeftColor', 'borderTopWidth', 'borderRightWidth', 'borderBottomWidth', 'borderLeftWidth', 'borderTopStyle', 'borderRightStyle', 'borderBottomStyle', 'borderLeftStyle', 'borderTopLeftRadius', 'borderTopRightRadius', 'borderBottomRightRadius', 'borderBottomLeftRadius', 'paddingTop', 'paddingRight', 'paddingBottom', 'paddingLeft', 'marginTop', 'marginRight', 'marginBottom', 'marginLeft'];
 				for (const prop of props) {
-					if (this[prop]) {
+					if (prop === 'gap' && this['childrenGap']) {
+						try {
+							obj[prop] = JSON.parse(this['childrenGap'].replaceAll('`', '"'));
+						} catch(e) {}
+					} else if (prop !== 'gap' && this[prop]) {
 						try {
 							obj[prop] = JSON.parse(this[prop].replaceAll('`', '"'));
 						} catch(e) {}
@@ -743,7 +766,7 @@
 			},
 			style() {
 				const style = {};
-				const props = ['toggleIcon', 'closeIcon', 'caretIcon', 'justifyToggle', 'alignToggle', 'backgroundColor'];
+				const props = ['toggleIcon', 'closeIcon', 'caretIcon', 'justifyToggle', 'alignToggle', 'gap', 'backgroundColor'];
 				const groups = ['default', 'hover'];
 				const breakpoints = ['xs', 'sm', 'md', 'lg', 'xl', '2xl'];
 				const themes = ['light', 'dark'];
