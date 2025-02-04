@@ -755,11 +755,11 @@
 					if (prop === 'gap' && this['childrenGap']) {
 						try {
 							obj[prop] = JSON.parse(this['childrenGap'].replaceAll('`', '"'));
-						} catch(e) {}
+						} catch (e) {}
 					} else if (prop !== 'gap' && this[prop]) {
 						try {
 							obj[prop] = JSON.parse(this[prop].replaceAll('`', '"'));
-						} catch(e) {}
+						} catch (e) {}
 					}
 				}
 				return obj;
@@ -771,8 +771,12 @@
 				const breakpoints = ['xs', 'sm', 'md', 'lg', 'xl', '2xl'];
 				const themes = ['light', 'dark'];
 				for (const prop of props) {
-					let priority = {}
-					if (this[prop]) { try { priority = JSON.parse(this[prop].replaceAll('`', '"')) } catch(e) {} }
+					let priority = {};
+					if (this[prop]) {
+						try {
+							priority = JSON.parse(this[prop].replaceAll('`', '"'));
+						} catch (e) {}
+					}
 					const merge = {};
 					for (const group of Object.keys(priority)) {
 						if (group === 'hover' && prop === 'backgroundColor') continue;
@@ -889,8 +893,8 @@
 		right: 0px;
 		bottom: 0px;
 		padding: 5px;
-		height: 100vh!important;
-		overflow-x: hidden!important;
+		height: 100vh !important;
+		overflow-x: hidden !important;
 		z-index: 100 !important;
 	}
 
