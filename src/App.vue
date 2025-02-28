@@ -4,6 +4,7 @@
 		:disabled="!open || !small"
 	>
 		<Box
+			v-bind="$attrs"
 			ref="nav"
 			:column="(small || orientation === 'Column') ? '{`default`:{`xs`:{`light`:true}}}' : ''"
 			:class="{
