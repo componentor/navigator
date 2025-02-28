@@ -1,7 +1,7 @@
 <template>
 	<Teleport
-		v-if="open && small"
 		to="body"
+		:disabled="!open || !small"
 	>
 		<Box
 			ref="nav"
@@ -37,40 +37,6 @@
 			</template>
 		</Box>
 	</Teleport>
-	<Box
-		v-else=""
-		ref="nav"
-		:column="(small || orientation === 'Column') ? '{`default`:{`xs`:{`light`:true}}}' : ''"
-		:class="{
-			'vp-navigator--small': small,
-			'vp-navigator--open': open,
-			'vp-navigator--transition': transition,
-		}"
-		:reverse="(((orientation === 'Row' && !small) && direction === 'left') || ((orientation === 'Column' || small) && drop === 'up')) ? '{`default`:{`xs`:{`light`:true}}}' : ''"
-		:style="{
-			backgroundColor: style?.backgroundColor,
-			justifyContent: !open && small && style?.justifyToggle ? style?.justifyToggle : null,
-			alignItems: !open && small && style?.alignToggle ? style?.alignToggle : null,
-			gap: !small ? style?.gap : null
-		}"
-		class="vp-navigator"
-		@pointerover="hover=true"
-		@pointerleave="hover=false"
-	>
-		<div
-			v-if="small"
-			@click="open=!open"
-			:style="{
-				'background-image': open || forceOpen ? $closeIcon : $toggleIcon,
-				'width': toggleSize
-			}"
-			class="vp-toggle"
-		/> <template v-if="!small || open || forceOpen">
-			<slot>
-				<Placeholder />
-			</slot>
-		</template>
-	</Box>
 </template>
 <script>
 	import {
