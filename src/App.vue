@@ -46,6 +46,7 @@
 	import Placeholder from '@/components/Placeholder.vue';
 	import Box from '@vueplayio/box';
 	export default {
+		inheritAttrs: false,
 		inject: ['theme', 'breakpoint'],
 		provide() {
 			return {
