@@ -320,7 +320,7 @@
 				type: String,
 				control: 'slider',
 				unit: '',
-				default: '480'
+				default: '640'
 			},
 			forceOpen: {
 				type: Boolean,
