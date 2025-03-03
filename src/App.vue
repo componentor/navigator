@@ -66,6 +66,7 @@
 					return this.darkmode ? 'dark' : 'light';
 				}),
 				breakpoint: computed(() => {
+					if (this.screenWidth <= this.breakpointCap) return 'sm';
 					if (this.breakpoint) return this.breakpoint;
 					if (this.screenWidth > 1280) return '2xl';
 					if (this.screenWidth > 1024) return 'xl';
