@@ -21,6 +21,9 @@
 				color="{`default`:{`xs`:{`light`:`#e8dadaff`,`dark`:`#99f0afff`}}}"
 				caretIcon="{`default`:{`xs`:{`light`:`--arrow-svg`}}}"
 				backgroundColorDrop="{`default`:{`xs`:{`light`:`#db1fd5ff`}}}"
+				paddingTop="{`default`:{`xs`:{`light`:`23px`}}}"
+				paddingRight="{`default`:{`xs`:{`light`:`28px`}}}"
+				paddingLeft="{`default`:{`xs`:{`light`:`17px`}}}"
 			>
 				<Link title="A">
 				</Link>
