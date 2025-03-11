@@ -714,7 +714,7 @@
 		data: () => ({
 			open: false,
 			hover: false,
-			screenWidth: window.innerWidth,
+			screenWidth: 0,
 			colorSchemeMediaQuery: null,
 			darkmode: false,
 			transition: false
@@ -839,6 +839,7 @@
 			}
 		},
 		mounted() {
+			this.screenWidth = window.innerWidth;
 			this.colorSchemeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
 			this.darkmode = window.matchMedia('(prefers-color-scheme: dark)')
 				.matches;
