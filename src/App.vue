@@ -1,8 +1,7 @@
 <template>
 	<Teleport
-		v-if="mounted"
 		to="body"
-		:disabled="!open || !small"
+		:disabled="!mounted || !open || !small"
 	>
 		<Box
 			v-bind="$attrs"
