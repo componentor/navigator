@@ -1,5 +1,6 @@
 <template>
 	<Teleport
+		v-if="mounted"
 		to="body"
 		:disabled="!open || !small"
 	>
@@ -717,7 +718,8 @@
 			screenWidth: 1280,
 			colorSchemeMediaQuery: null,
 			darkmode: false,
-			transition: false
+			transition: false,
+			mounted: false
 		}),
 		computed: {
 			themeComputed() {
@@ -839,6 +841,7 @@
 			}
 		},
 		mounted() {
+			this.mounted = true;
 			this.screenWidth = window.innerWidth;
 			this.colorSchemeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
 			this.darkmode = window.matchMedia('(prefers-color-scheme: dark)')
