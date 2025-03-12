@@ -119,7 +119,6 @@
 	import Navigator from '@/components/Navigator.vue';
 	import Placeholder from '@/components/Placeholder.vue';
 	export default {
-		inheritAttrs: false,
 		components: {
 			Navigator,
 			Placeholder
