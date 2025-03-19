@@ -37,7 +37,7 @@
 	import {
 		computed
 	} from 'vue';
-	import Placeholder from '@/components/Placeholder.vue';
+	import Placeholder from './Placeholder.vue';
 	import Box from '@vueplayio/box';
 	export default {
 		inject: ['theme', 'breakpoint'],
@@ -299,8 +299,8 @@
 </script>
 <style scoped>
 	* {
-		--menu-svg: url(@/assets/menu.svg);
-		--close-svg: url(@/assets/close.svg);
+		--menu-svg: url(../assets/menu.svg);
+		--close-svg: url(../assets/close.svg);
 	}
 
 	.vp-navigator {
