@@ -116,8 +116,8 @@
 	</Navigator>
 </template>
 <script>
-	import Navigator from './components/Navigator.vue';
-	import Placeholder from './components/Placeholder.vue';
+	import Navigator from '@/components/Navigator.vue';
+	import Placeholder from '@/components/Placeholder.vue';
 	export default {
 		components: {
 			Navigator,
