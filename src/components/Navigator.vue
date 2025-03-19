@@ -139,7 +139,7 @@
 		data: () => ({
 			open: false,
 			hover: false,
-			screenWidth: 1280,
+			screenWidth: 1024,
 			colorSchemeMediaQuery: null,
 			darkmode: false,
 			transition: false
