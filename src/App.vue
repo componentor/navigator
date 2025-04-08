@@ -24,7 +24,7 @@
 			:forceOpen="forceOpen"
 			:fontWeight="fontWeight"
 			:color="color"
-			:backgroundColor="backgroundColor"
+			:backgroundColor="backgroundColorModal || backgroundColor"
 			:backgroundColorDrop="backgroundColorDrop"
 			:backgroundImage="backgroundImage"
 			:borderTopColor="borderTopColor"
@@ -386,6 +386,14 @@
 				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			backgroundColorDrop: {
+				type: String,
+				default: '',
+				control: 'color',
+				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
+				themes: ['light', 'dark'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
+			},
+			backgroundColorModal: {
 				type: String,
 				default: '',
 				control: 'color',
