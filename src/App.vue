@@ -24,7 +24,7 @@
 			:forceOpen="forceOpen"
 			:fontWeight="fontWeight"
 			:color="color"
-			:backgroundColor="backgroundColorModal || backgroundColor"
+			:backgroundColor="small && open ? backgroundColorModal : backgroundColor"
 			:backgroundColorDrop="backgroundColorDrop"
 			:backgroundImage="backgroundImage"
 			:borderTopColor="borderTopColor"
