@@ -12,11 +12,7 @@
             backgroundColor: style?.backgroundColor,
             justifyContent: !open && !forceOpen && small && style?.justifyToggle ? style?.justifyToggle : null,
             alignItems: !open && !forceOpen && small && style?.alignToggle ? style?.alignToggle : null,
-            gap: !small ? style?.gap : null,
-			paddingTop: paddingTopModal,
-			paddingRight: paddingRightModal,
-			paddingBottom: paddingBottomModal,
-			paddingLeft: paddingLeftModal
+            gap: !small ? style?.gap : null
         }"
         class="vp-navigator"
         @pointerover="hover=true"
@@ -26,7 +22,7 @@
 			v-if="small"
 			@click="open=!open"
 			:style="{
-				'transform': 'translate(' + translateXToggle || 0 + ', ' + translateYToggle || 0 + ')',
+				'transform': 'translate(' + (translateXToggle || 0) + ', ' + (translateYToggle || 0) + ')',
 				'background-image': open || forceOpen ? $closeIcon : $toggleIcon,
 				'width': toggleSize,
 				'z-index': open || forceOpen ? 10 : null
