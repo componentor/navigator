@@ -341,6 +341,7 @@
 		right: 0px;
 		bottom: 0px;
 		padding: 5px;
+		padding-top: v-bind(paddingTopModal);
 		height: 100vh !important;
 		overflow-x: hidden !important;
 		z-index: 100 !important;
