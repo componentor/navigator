@@ -9,10 +9,6 @@
         }"
         :reverse="(((orientation === 'Row' && !small) && direction === 'left') || ((orientation === 'Column' || small) && drop === 'up')) ? '{`default`:{`xs`:{`light`:true}}}' : ''"
         :style="{
-			paddingTop: paddingTopModal || null,
-			paddingRight: paddingRightModal || null,
-			paddingBottom: paddingBottomModal || null,
-			paddingLeft: paddingLeftModal || null,
             backgroundColor: style?.backgroundColor,
             justifyContent: !open && !forceOpen && small && style?.justifyToggle ? style?.justifyToggle : null,
             alignItems: !open && !forceOpen && small && style?.alignToggle ? style?.alignToggle : null,
@@ -157,6 +153,14 @@
 			transition: false
 		}),
 		computed: {
+			paddings() {
+				return {
+					top: this.paddingTopModal.replace('!important', '') ? this.paddingTopModal + '!important' : 'auto',
+					right: this.paddingRightModal.replace('!important', '') ? this.paddingRightModal + '!important' : 'auto',
+					bottom: this.paddingBottomModal.replace('!important', '') ? this.paddingBottomModal + '!important' : 'auto',
+					left: this.paddingLeftModal.replace('!important', '') ? this.paddingLeftModal + '!important' : 'auto'
+				}
+			},
 			themeComputed() {
 				if (this.theme) return this.theme;
 				return this.darkmode ? 'dark' : 'light';
@@ -341,6 +345,10 @@
 		right: 0px;
 		bottom: 0px;
 		padding: 5px;
+		padding-left: v-bind(paddings.left);
+		padding-top: v-bind(paddings.top);
+		padding-right: v-bind(paddings.right);
+		padding-bottom: v-bind(paddings.bottom);
 		height: 100vh !important;
 		overflow-x: hidden !important;
 		z-index: 100 !important;
