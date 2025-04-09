@@ -12,7 +12,7 @@
 			paddingTop: paddingTopModal || null,
 			paddingRight: paddingRightModal || null,
 			paddingBottom: paddingBottomModal || null,
-			paddingLeft: paddingLeftModal || null
+			paddingLeft: paddingLeftModal || null,
             backgroundColor: style?.backgroundColor,
             justifyContent: !open && !forceOpen && small && style?.justifyToggle ? style?.justifyToggle : null,
             alignItems: !open && !forceOpen && small && style?.alignToggle ? style?.alignToggle : null,
