@@ -9,6 +9,10 @@
         }"
         :reverse="(((orientation === 'Row' && !small) && direction === 'left') || ((orientation === 'Column' || small) && drop === 'up')) ? '{`default`:{`xs`:{`light`:true}}}' : ''"
         :style="{
+			paddingTop: paddingTopModal || null,
+			paddingRight: paddingRightModal || null,
+			paddingBottom: paddingBottomModal || null,
+			paddingLeft: paddingLeftModal || null
             backgroundColor: style?.backgroundColor,
             justifyContent: !open && !forceOpen && small && style?.justifyToggle ? style?.justifyToggle : null,
             alignItems: !open && !forceOpen && small && style?.alignToggle ? style?.alignToggle : null,
@@ -19,29 +23,20 @@
         @pointerleave="hover=false"
     >
 		<div
+			v-if="small"
+			@click="open=!open"
 			:style="{
-				paddingTop: paddingTopModal || null,
-				paddingRight: paddingRightModal || null,
-				paddingBottom: paddingBottomModal || null,
-				paddingLeft: paddingLeftModal || null
+				'transform': `translate(${translateXToggle || 0}, ${translateYToggle || 0})`,
+				'background-image': open || forceOpen ? $closeIcon : $toggleIcon,
+				'width': toggleSize,
+				'z-index': open || forceOpen ? 10 : null
 			}"
-		>
-			<div
-				v-if="small"
-				@click="open=!open"
-				:style="{
-					'transform': `translate(${translateXToggle || 0}, ${translateYToggle || 0})`,
-					'background-image': open || forceOpen ? $closeIcon : $toggleIcon,
-					'width': toggleSize,
-					'z-index': open || forceOpen ? 10 : null
-				}"
-				class="vp-toggle"
-			/> <template v-if="!small || open || forceOpen">
-				<slot>
-					<Placeholder />
-				</slot>
-			</template>
-		</div>
+			class="vp-toggle"
+		/> <template v-if="!small || open || forceOpen">
+			<slot>
+				<Placeholder />
+			</slot>
+		</template>
     </Box>
 </template>
 <script>
