@@ -154,6 +154,10 @@
 		}),
 		computed: {
 			paddings() {
+				console.log('this.paddingTopModal', this.paddingTopModal)
+				console.log('this.paddingRightModal', this.paddingRightModal)
+				console.log('this.paddingBottomModal', this.paddingBottomModal)
+				console.log('this.paddingLeftModal', this.paddingLeftModal)
 				return {
 					top: this.paddingTopModal ? this.paddingTopModal.replace('!important', '') + '!important' : 'auto',
 					right: this.paddingRightModal ? this.paddingRightModal.replace('!important', '') + '!important' : 'auto',
