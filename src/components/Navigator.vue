@@ -154,16 +154,14 @@
 		}),
 		computed: {
 			paddings() {
-				console.log('this.paddingTopModal', this.paddingTopModal)
-				console.log('this.paddingRightModal', this.paddingRightModal)
-				console.log('this.paddingBottomModal', this.paddingBottomModal)
-				console.log('this.paddingLeftModal', this.paddingLeftModal)
-				return {
+				const obj = {
 					top: this.paddingTopModal ? this.paddingTopModal.replace('!important', '') + '!important' : 'auto',
 					right: this.paddingRightModal ? this.paddingRightModal.replace('!important', '') + '!important' : 'auto',
 					bottom: this.paddingBottomModal ? this.paddingBottomModal.replace('!important', '') + '!important' : 'auto',
 					left: this.paddingLeftModal ? this.paddingLeftModal.replace('!important', '') + '!important' : 'auto'
 				}
+				console.log('obj', obj)
+				return obj
 			},
 			themeComputed() {
 				if (this.theme) return this.theme;
