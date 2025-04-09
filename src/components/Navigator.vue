@@ -155,13 +155,16 @@
 		computed: {
 			paddings() {
 				const obj = {
-					top: this.paddingTopModal || 'auto',
-					right: this.paddingRightModal || 'auto',
-					bottom: this.paddingBottomModal || 'auto',
-					left: this.paddingLeftModal || 'auto'
+					top: this.paddingTopModal || 'initial',
+					right: this.paddingRightModal || 'initial',
+					bottom: this.paddingBottomModal || 'initial',
+					left: this.paddingLeftModal || 'initial'
 				}
-				console.log('obj', obj)
-				return obj
+				const res = `${obj.top} ${obj.right} ${obj.bottom} ${obj.left}!important`
+				if (res === 'initial initial initial initial') {
+					return 'initial'
+				}
+				return res
 			},
 			themeComputed() {
 				if (this.theme) return this.theme;
@@ -346,11 +349,7 @@
 		left: 0px;
 		right: 0px;
 		bottom: 0px;
-		padding: auto!important;
-		padding-left: v-bind(paddings.left);
-		padding-top: v-bind(paddings.top);
-		padding-right: v-bind(paddings.right);
-		padding-bottom: v-bind(paddings.bottom);
+		padding: v-bind(paddings)!important;
 		height: 100vh !important;
 		overflow-x: hidden !important;
 		z-index: 100 !important;
