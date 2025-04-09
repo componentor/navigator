@@ -155,10 +155,10 @@
 		computed: {
 			paddings() {
 				const obj = {
-					top: this.paddingTopModal ? this.paddingTopModal.replace('!important', '') + '!important' : 'auto',
-					right: this.paddingRightModal ? this.paddingRightModal.replace('!important', '') + '!important' : 'auto',
-					bottom: this.paddingBottomModal ? this.paddingBottomModal.replace('!important', '') + '!important' : 'auto',
-					left: this.paddingLeftModal ? this.paddingLeftModal.replace('!important', '') + '!important' : 'auto'
+					top: this.paddingTopModal || 'auto',
+					right: this.paddingRightModal || 'auto',
+					bottom: this.paddingBottomModal || 'auto',
+					left: this.paddingLeftModal || 'auto'
 				}
 				console.log('obj', obj)
 				return obj
@@ -350,7 +350,7 @@
 		padding-left: v-bind(paddings.left);
 		padding-top: v-bind(paddings.top);
 		padding-right: v-bind(paddings.right);
-		padding-bottom: v-bind(paddings.bottom);
+		padding-bottom: v-bind(paddings.bottom)!important;
 		height: 100vh !important;
 		overflow-x: hidden !important;
 		z-index: 100 !important;
