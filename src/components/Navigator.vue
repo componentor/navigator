@@ -12,7 +12,11 @@
             backgroundColor: style?.backgroundColor,
             justifyContent: !open && !forceOpen && small && style?.justifyToggle ? style?.justifyToggle : null,
             alignItems: !open && !forceOpen && small && style?.alignToggle ? style?.alignToggle : null,
-            gap: !small ? style?.gap : null
+            gap: !small ? style?.gap : null,
+			paddingTop: paddingTopModal ? paddingTopModal + '!important' : null,
+			paddingRight: paddingRightModal ? paddingRightModal + '!important' : null,
+			paddingBottom: paddingBottomModal ? paddingBottomModal + '!important' : null,
+			paddingLeft: paddingLeftModal ? paddingLeftModal + '!important' : null
         }"
         class="vp-navigator"
         @pointerover="hover=true"
@@ -153,19 +157,6 @@
 			transition: false
 		}),
 		computed: {
-			paddings() {
-				const obj = {
-					top: this.paddingTopModal || 'initial',
-					right: this.paddingRightModal || 'initial',
-					bottom: this.paddingBottomModal || 'initial',
-					left: this.paddingLeftModal || 'initial'
-				}
-				const res = `${obj.top} ${obj.right} ${obj.bottom} ${obj.left}!important`
-				if (res === 'initial initial initial initial') {
-					return 'initial'
-				}
-				return res
-			},
 			themeComputed() {
 				if (this.theme) return this.theme;
 				return this.darkmode ? 'dark' : 'light';
@@ -349,7 +340,7 @@
 		left: 0px;
 		right: 0px;
 		bottom: 0px;
-		padding: v-bind(paddings)!important;
+		padding: 5px;
 		height: 100vh !important;
 		overflow-x: hidden !important;
 		z-index: 100 !important;
