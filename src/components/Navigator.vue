@@ -346,11 +346,11 @@
 		left: 0px;
 		right: 0px;
 		bottom: 0px;
-		padding: 5px;
+		padding: auto!important;
 		padding-left: v-bind(paddings.left);
 		padding-top: v-bind(paddings.top);
 		padding-right: v-bind(paddings.right);
-		padding-bottom: v-bind(paddings.bottom)!important;
+		padding-bottom: v-bind(paddings.bottom);
 		height: 100vh !important;
 		overflow-x: hidden !important;
 		z-index: 100 !important;
