@@ -9,10 +9,6 @@
         }"
         :reverse="(((orientation === 'Row' && !small) && direction === 'left') || ((orientation === 'Column' || small) && drop === 'up')) ? '{`default`:{`xs`:{`light`:true}}}' : ''"
         :style="{
-			paddingTop: paddingTopModal ? paddingTopModal.replace('!important', '') + '!important' : null,
-			paddingRight: paddingRightModal ? paddingRightModal.replace('!important', '') + '!important' : null,
-			paddingBottom: paddingBottomModal ? paddingBottomModal.replace('!important', '') + '!important' : null,
-			paddingLeft: paddingLeftModal ? paddingLeftModal.replace('!important', '') + '!important' : null,
             backgroundColor: style?.backgroundColor,
             justifyContent: !open && !forceOpen && small && style?.justifyToggle ? style?.justifyToggle : null,
             alignItems: !open && !forceOpen && small && style?.alignToggle ? style?.alignToggle : null,
@@ -22,21 +18,30 @@
         @pointerover="hover=true"
         @pointerleave="hover=false"
     >
-        <div
-            v-if="small"
-            @click="open=!open"
-            :style="{
-				'transform': `translate(${translateXToggle || 0}, ${translateYToggle || 0})`,
-                'background-image': open || forceOpen ? $closeIcon : $toggleIcon,
-                'width': toggleSize,
-				'z-index': open || forceOpen ? 10 : null
-            }"
-            class="vp-toggle"
-        /> <template v-if="!small || open || forceOpen">
-            <slot>
-                <Placeholder />
-            </slot>
-        </template>
+		<div
+			:style="{
+				paddingTop: paddingTopModal || null,
+				paddingRight: paddingRightModal || null,
+				paddingBottom: paddingBottomModal || null,
+				paddingLeft: paddingLeftModal || null
+			}"
+		>
+			<div
+				v-if="small"
+				@click="open=!open"
+				:style="{
+					'transform': `translate(${translateXToggle || 0}, ${translateYToggle || 0})`,
+					'background-image': open || forceOpen ? $closeIcon : $toggleIcon,
+					'width': toggleSize,
+					'z-index': open || forceOpen ? 10 : null
+				}"
+				class="vp-toggle"
+			/> <template v-if="!small || open || forceOpen">
+				<slot>
+					<Placeholder />
+				</slot>
+			</template>
+		</div>
     </Box>
 </template>
 <script>
