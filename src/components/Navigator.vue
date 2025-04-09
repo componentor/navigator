@@ -4,7 +4,7 @@
         :column="(small || orientation === 'Column') ? '{`default`:{`xs`:{`light`:true}}}' : ''"
         :class="{
             'vp-navigator--small': small,
-            'vp-navigator--open': open,
+            'vp-navigator--open': open || forceOpen,
             'vp-navigator--transition': transition,
         }"
         :reverse="(((orientation === 'Row' && !small) && direction === 'left') || ((orientation === 'Column' || small) && drop === 'up')) ? '{`default`:{`xs`:{`light`:true}}}' : ''"
@@ -14,8 +14,8 @@
 			paddingBottom: paddingBottomModal || null,
 			paddingLeft: paddingLeftModal || null,
             backgroundColor: style?.backgroundColor,
-            justifyContent: !open && small && style?.justifyToggle ? style?.justifyToggle : null,
-            alignItems: !open && small && style?.alignToggle ? style?.alignToggle : null,
+            justifyContent: !open && !forceOpen && small && style?.justifyToggle ? style?.justifyToggle : null,
+            alignItems: !open && !forceOpen && small && style?.alignToggle ? style?.alignToggle : null,
             gap: !small ? style?.gap : null
         }"
         class="vp-navigator"
@@ -28,7 +28,8 @@
             :style="{
 				'transform': `translate(${translateXToggle || 0}, ${translateYToggle || 0})`,
                 'background-image': open || forceOpen ? $closeIcon : $toggleIcon,
-                'width': toggleSize
+                'width': toggleSize,
+				'z-index': open || forceOpen ? 10 : null
             }"
             class="vp-toggle"
         /> <template v-if="!small || open || forceOpen">
