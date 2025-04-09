@@ -155,10 +155,10 @@
 		computed: {
 			paddings() {
 				return {
-					top: this.paddingTopModal.replace('!important', '') ? this.paddingTopModal + '!important' : 'auto',
-					right: this.paddingRightModal.replace('!important', '') ? this.paddingRightModal + '!important' : 'auto',
-					bottom: this.paddingBottomModal.replace('!important', '') ? this.paddingBottomModal + '!important' : 'auto',
-					left: this.paddingLeftModal.replace('!important', '') ? this.paddingLeftModal + '!important' : 'auto'
+					top: this.paddingTopModal ? this.paddingTopModal.replace('!important', '') + '!important' : 'auto',
+					right: this.paddingRightModal ? this.paddingRightModal.replace('!important', '') + '!important' : 'auto',
+					bottom: this.paddingBottomModal ? this.paddingBottomModal.replace('!important', '') + '!important' : 'auto',
+					left: this.paddingLeftModal ? this.paddingLeftModal.replace('!important', '') + '!important' : 'auto'
 				}
 			},
 			themeComputed() {
