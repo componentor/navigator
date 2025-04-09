@@ -306,6 +306,7 @@
 	.vp-navigator {
 		padding: 0px;
 		overflow: visible;
+		display: flex;
 	}
 
 	.vp-toggle {
