@@ -105,12 +105,6 @@
 		:borderTopRightRadius="borderTopRightRadius"
 		:borderBottomRightRadius="borderBottomRightRadius"
 		:borderBottomLeftRadius="borderBottomLeftRadius"
-		:translateXToggle="small && (open || forceOpen) ? translateXToggle : ''"
-		:translateYToggle="small && (open || forceOpen) ? translateYToggle : ''"
-		:paddingTopModal="small && (open || forceOpen) ? paddingTopModal : ''"
-		:paddingRightModal="small && (open || forceOpen) ? paddingRightModal : ''"
-		:paddingBottomModal="small && (open || forceOpen) ? paddingBottomModal : ''"
-		:paddingLeftModal="small && (open || forceOpen) ? paddingLeftModal : ''"
 		:paddingTop="paddingTop"
 		:paddingRight="paddingRight"
 		:paddingBottom="paddingBottom"
@@ -693,55 +687,37 @@
 				type: String,
 				default: '',
 				control: 'slider',
-				unit: 'px',
-				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
-				themes: ['light', 'dark'],
-				groups: ['default', 'hover', 'current', 'active', 'focus']
+				unit: 'px'
 			},
 			translateYToggle: {
 				type: String,
 				default: '',
 				control: 'slider',
-				unit: 'px',
-				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
-				themes: ['light', 'dark'],
-				groups: ['default', 'hover', 'current', 'active', 'focus']
+				unit: 'px'
 			},
 			paddingTopModal: {
 				type: String,
 				default: '',
 				control: 'slider',
-				unit: 'px',
-				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
-				themes: ['light', 'dark'],
-				groups: ['default', 'hover', 'current', 'active', 'focus']
+				unit: 'px'
 			},
 			paddingRightModal: {
 				type: String,
 				default: '',
 				control: 'slider',
-				unit: 'px',
-				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
-				themes: ['light', 'dark'],
-				groups: ['default', 'hover', 'current', 'active', 'focus']
+				unit: 'px'
 			},
 			paddingBottomModal: {
 				type: String,
 				default: '',
 				control: 'slider',
-				unit: 'px',
-				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
-				themes: ['light', 'dark'],
-				groups: ['default', 'hover', 'current', 'active', 'focus']
+				unit: 'px'
 			},
 			paddingLeftModal: {
 				type: String,
 				default: '',
 				control: 'slider',
-				unit: 'px',
-				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
-				themes: ['light', 'dark'],
-				groups: ['default', 'hover', 'current', 'active', 'focus']
+				unit: 'px'
 			},
 			paddingTop: {
 				type: String,
