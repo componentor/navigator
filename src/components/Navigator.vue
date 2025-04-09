@@ -13,10 +13,10 @@
             justifyContent: !open && !forceOpen && small && style?.justifyToggle ? style?.justifyToggle : null,
             alignItems: !open && !forceOpen && small && style?.alignToggle ? style?.alignToggle : null,
             gap: !small ? style?.gap : null,
-			paddingTop: paddingTopModal ? paddingTopModal + '!important' : null,
-			paddingRight: paddingRightModal ? paddingRightModal + '!important' : null,
-			paddingBottom: paddingBottomModal ? paddingBottomModal + '!important' : null,
-			paddingLeft: paddingLeftModal ? paddingLeftModal + '!important' : null
+			paddingTop: paddingTopModal,
+			paddingRight: paddingRightModal,
+			paddingBottom: paddingBottomModal,
+			paddingLeft: paddingLeftModal
         }"
         class="vp-navigator"
         @pointerover="hover=true"
