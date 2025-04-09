@@ -9,10 +9,10 @@
         }"
         :reverse="(((orientation === 'Row' && !small) && direction === 'left') || ((orientation === 'Column' || small) && drop === 'up')) ? '{`default`:{`xs`:{`light`:true}}}' : ''"
         :style="{
-			paddingTop: paddingTopModal || null,
-			paddingRight: paddingRightModal || null,
-			paddingBottom: paddingBottomModal || null,
-			paddingLeft: paddingLeftModal || null,
+			paddingTop: paddingTopModal ? paddingTopModal.replace('!important', '') + '!important' : null,
+			paddingRight: paddingRightModal ? paddingRightModal.replace('!important', '') + '!important' : null,
+			paddingBottom: paddingBottomModal ? paddingBottomModal.replace('!important', '') + '!important' : null,
+			paddingLeft: paddingLeftModal ? paddingLeftModal.replace('!important', '') + '!important' : null,
             backgroundColor: style?.backgroundColor,
             justifyContent: !open && !forceOpen && small && style?.justifyToggle ? style?.justifyToggle : null,
             alignItems: !open && !forceOpen && small && style?.alignToggle ? style?.alignToggle : null,
