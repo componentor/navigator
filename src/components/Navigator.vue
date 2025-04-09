@@ -26,7 +26,7 @@
             v-if="small"
             @click="open=!open"
             :style="{
-				'transform': `translate(${translateXToggle || 0}, ${translateYToggle || 0})`
+				'transform': `translate(${translateXToggle || 0}, ${translateYToggle || 0})`,
                 'background-image': open || forceOpen ? $closeIcon : $toggleIcon,
                 'width': toggleSize
             }"
