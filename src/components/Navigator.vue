@@ -32,7 +32,7 @@
 			<slot>
 				<Placeholder />
 			</slot>
-			<Test/>
+			<Test :id="pathId"/>
 		</template>
     </Box>
 </template>
@@ -46,10 +46,15 @@
 	export default {
 		inject: ['theme', 'breakpoint'],
 		provide() {
+			const self = this
 			return {
 				setPath(path, id) {
+					console.log('trying to update')
 					this.path = path
 					this.pathId = id
+					console.log('retrying to update')
+					self.path = path
+					self.pathId = id
 				},
 				path: computed(() => this.path),
 				pathId: computed(() => this.pathId),
@@ -81,6 +86,9 @@
 			};
 		},
 		watch: {
+			pathId(id) {
+				console.log('updated now', id)
+			},
 			open(open) {
 				if (open && this.small) {
 					setTimeout(() => {

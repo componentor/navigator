@@ -1,5 +1,5 @@
 <template>
-	<div :class="pid"></div>
+	<div :class="pathId"></div>
 </template>
 <script>
 	export default {
