@@ -53,6 +53,7 @@
 				},
 				path: computed(() => self.pathComputed),
 				pathId: computed(() => self.pathIdComputed),
+				pathIdRec: computed(() => this.pathId),
 				open: computed(() => this.open),
 				forceOpenProvider: computed(() => this.forceOpen),
 				small: computed(() => this.small),
