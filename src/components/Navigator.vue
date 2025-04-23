@@ -46,6 +46,7 @@
 		provide() {
 			return {
 				setPath(path, id) {
+					console.log('top level pathId is set', id)
 					this.path = path
 					this.pathId = id
 				},
