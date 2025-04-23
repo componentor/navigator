@@ -32,6 +32,7 @@
 			<slot>
 				<Placeholder />
 			</slot>
+			<Test/>
 		</template>
     </Box>
 </template>
@@ -40,6 +41,7 @@
 		computed
 	} from 'vue';
 	import Placeholder from '@/components/Placeholder.vue';
+	import Test from '@/components/Test.vue';
 	import Box from '@vueplayio/box';
 	export default {
 		inject: ['theme', 'breakpoint'],
@@ -148,7 +150,8 @@
 		],
 		components: {
 			Placeholder,
-			Box
+			Box,
+			Test
 		},
 		data: () => ({
 			open: false,
