@@ -45,10 +45,12 @@
 		inject: ['theme', 'breakpoint'],
 		provide() {
 			return {
-				setPath(path) {
+				setPath(path, id) {
 					this.path = path
+					this.pathId = id
 				},
 				path: computed(() => this.path),
+				pathId: computed(() => this.pathId),
 				open: computed(() => this.open),
 				forceOpenProvider: computed(() => this.forceOpen),
 				small: computed(() => this.small),
@@ -155,7 +157,8 @@
 			colorSchemeMediaQuery: null,
 			darkmode: false,
 			transition: false,
-			path: ''
+			path: '',
+			pathId: ''
 		}),
 		computed: {
 			themeComputed() {
