@@ -32,7 +32,6 @@
 			<slot>
 				<Placeholder />
 			</slot>
-			<Test :id="pathId"/>
 		</template>
     </Box>
 </template>
@@ -41,7 +40,6 @@
 		computed
 	} from 'vue';
 	import Placeholder from '@/components/Placeholder.vue';
-	import Test from '@/components/Test.vue';
 	import Box from '@vueplayio/box';
 	export default {
 		inject: ['theme', 'breakpoint'],
@@ -49,10 +47,6 @@
 			const self = this
 			return {
 				setPath(path, id) {
-					console.log('trying to update')
-					this.path = path
-					this.pathId = id
-					console.log('retrying to update')
 					self.path = path
 					self.pathId = id
 				},
@@ -86,9 +80,6 @@
 			};
 		},
 		watch: {
-			pathId(id) {
-				console.log('updated now', id)
-			},
 			open(open) {
 				if (open && this.small) {
 					setTimeout(() => {
@@ -158,8 +149,7 @@
 		],
 		components: {
 			Placeholder,
-			Box,
-			Test
+			Box
 		},
 		data: () => ({
 			open: false,
