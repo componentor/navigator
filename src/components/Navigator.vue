@@ -49,7 +49,6 @@
 				setPath(path, id) {
 					self.path = path
 					self.pathId = id
-					console.log('yy', id)
 				},
 				path: computed(() => this.path),
 				pathId: computed(() => this.pathId),
@@ -81,9 +80,6 @@
 			};
 		},
 		watch: {
-			pathId(id) {
-				console.log('It changed', id)
-			},
 			open(open) {
 				if (open && this.small) {
 					setTimeout(() => {
