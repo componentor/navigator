@@ -44,16 +44,14 @@
 	export default {
 		inject: ['theme', 'breakpoint'],
 		provide() {
-			const self = this
 			return {
 				setPath(path, id) {
 					console.log('top level pathId is set', id)
 					this.path = path
 					this.pathId = id
 				},
-				path: computed(() => self.pathComputed),
-				pathId: computed(() => self.pathIdComputed),
-				pathIdRec: computed(() => this.pathId),
+				path: computed(() => this.path),
+				pathId: computed(() => this.pathId),
 				open: computed(() => this.open),
 				forceOpenProvider: computed(() => this.forceOpen),
 				small: computed(() => this.small),
@@ -164,12 +162,6 @@
 			pathId: ''
 		}),
 		computed: {
-			pathComputed() {
-				return this.path
-			},
-			pathIdComputed() {
-				return this.pathId
-			},
 			themeComputed() {
 				if (this.theme) return this.theme;
 				return this.darkmode ? 'dark' : 'light';
