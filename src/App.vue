@@ -57,7 +57,8 @@
 			:marginRight="marginRight"
 			:marginBottom="marginBottom"
 			:marginLeft="marginLeft"
-			:verticalIndent="verticalIndent"
+			:verticalLeftIndent="verticalLeftIndent"
+			:verticalRightIndent="verticalRightIndent"
 			@open="open = $event"
 			@small="small = $event"
 		>
@@ -118,7 +119,8 @@
 		:marginRight="marginRight"
 		:marginBottom="marginBottom"
 		:marginLeft="marginLeft"
-		:verticalIndent="verticalIndent"
+		:verticalLeftIndent="verticalLeftIndent"
+		:verticalRightIndent="verticalRightIndent"
 		@open="open = $event"
 		@small="small = $event"
 	>
@@ -157,11 +159,17 @@
 				themes: ['light', 'dark'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
-			verticalIndent: {
+			verticalLeftIndent: {
 				type: String,
 				default: '',
-				unit: 'px',
-				control: 'slider'
+				control: 'slider',
+				unit: 'px'
+			},
+			verticalRightIndent: {
+				type: String,
+				default: '',
+				control: 'slider',
+				unit: 'px'
 			},
 			caretSize: {
 				type: String,
