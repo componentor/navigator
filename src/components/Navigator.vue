@@ -205,7 +205,9 @@
 				const obj = {};
 				const props = ['fontWeight', 'gap', 'color', 'backgroundColor', 'backgroundColorDrop', 'verticalLeftIndent', 'verticalRightIndent', 'backgroundImage', 'borderTopColor', 'borderRightColor', 'borderBottomColor', 'borderLeftColor', 'borderTopWidth', 'borderRightWidth', 'borderBottomWidth', 'borderLeftWidth', 'borderTopStyle', 'borderRightStyle', 'borderBottomStyle', 'borderLeftStyle', 'borderTopLeftRadius', 'borderTopRightRadius', 'borderBottomRightRadius', 'borderBottomLeftRadius', 'paddingTop', 'paddingRight', 'paddingBottom', 'paddingLeft', 'marginTop', 'marginRight', 'marginBottom', 'marginLeft'];
 				for (const prop of props) {
-					if (prop === 'gap' && this['childrenGap']) {
+					if (['verticalLeftIndent', 'verticalRightIndent'].includes(prop)) {
+						obj[prop] = this[prop]
+					} else if (prop === 'gap' && this['childrenGap']) {
 						try {
 							obj[prop] = JSON.parse(this['childrenGap'].replaceAll('`', '"'));
 						} catch (e) {}
