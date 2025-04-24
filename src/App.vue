@@ -57,6 +57,7 @@
 			:marginRight="marginRight"
 			:marginBottom="marginBottom"
 			:marginLeft="marginLeft"
+			:verticalIndent="verticalIndent"
 			@open="open = $event"
 			@small="small = $event"
 		>
@@ -117,6 +118,7 @@
 		:marginRight="marginRight"
 		:marginBottom="marginBottom"
 		:marginLeft="marginLeft"
+		:verticalIndent="verticalIndent"
 		@open="open = $event"
 		@small="small = $event"
 	>
@@ -154,6 +156,12 @@
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
+			},
+			verticalIndent: {
+				type: String,
+				default: '',
+				unit: 'px',
+				control: 'slider'
 			},
 			caretSize: {
 				type: String,
