@@ -27,32 +27,40 @@
 			:backgroundColor="small && (open || forceOpen) ? backgroundColorModal : backgroundColor"
 			:backgroundColorDrop="backgroundColorDrop"
 			:backgroundImage="backgroundImage"
+			:border="border"
+			:borderColor="borderColor"
 			:borderTopColor="borderTopColor"
 			:borderRightColor="borderRightColor"
 			:borderBottomColor="borderBottomColor"
 			:borderLeftColor="borderLeftColor"
+			:borderWidth="borderWidth"
 			:borderTopWidth="borderTopWidth"
 			:borderRightWidth="borderRightWidth"
 			:borderBottomWidth="borderBottomWidth"
 			:borderLeftWidth="borderLeftWidth"
+			:borderStyle="borderStyle"
 			:borderTopStyle="borderTopStyle"
 			:borderRightStyle="borderRightStyle"
 			:borderBottomStyle="borderBottomStyle"
 			:borderLeftStyle="borderLeftStyle"
+			:borderRadius="borderRadius"
 			:borderTopLeftRadius="borderTopLeftRadius"
 			:borderTopRightRadius="borderTopRightRadius"
 			:borderBottomRightRadius="borderBottomRightRadius"
 			:borderBottomLeftRadius="borderBottomLeftRadius"
 			:translateXToggle="small && (open || forceOpen) ? translateXToggle : ''"
 			:translateYToggle="small && (open || forceOpen) ? translateYToggle : ''"
+			:paddingModal="paddingModal"
 			:paddingTopModal="paddingTopModal"
 			:paddingRightModal="paddingRightModal"
 			:paddingBottomModal="paddingBottomModal"
 			:paddingLeftModal="paddingLeftModal"
+			:padding="padding"
 			:paddingTop="paddingTop"
 			:paddingRight="paddingRight"
 			:paddingBottom="paddingBottom"
 			:paddingLeft="paddingLeft"
+			:margin="margin"
 			:marginTop="marginTop"
 			:marginRight="marginRight"
 			:marginBottom="marginBottom"
@@ -91,30 +99,38 @@
 		:backgroundColor="backgroundColor"
 		:backgroundColorDrop="backgroundColorDrop"
 		:backgroundImage="backgroundImage"
+		:border="border"
+		:borderColor="borderColor"
 		:borderTopColor="borderTopColor"
 		:borderRightColor="borderRightColor"
 		:borderBottomColor="borderBottomColor"
 		:borderLeftColor="borderLeftColor"
+		:borderWidth="borderWidth"
 		:borderTopWidth="borderTopWidth"
 		:borderRightWidth="borderRightWidth"
 		:borderBottomWidth="borderBottomWidth"
 		:borderLeftWidth="borderLeftWidth"
+		:borderStyle="borderStyle"
 		:borderTopStyle="borderTopStyle"
 		:borderRightStyle="borderRightStyle"
 		:borderBottomStyle="borderBottomStyle"
 		:borderLeftStyle="borderLeftStyle"
+		:borderRadius="borderRadius"
 		:borderTopLeftRadius="borderTopLeftRadius"
 		:borderTopRightRadius="borderTopRightRadius"
 		:borderBottomRightRadius="borderBottomRightRadius"
 		:borderBottomLeftRadius="borderBottomLeftRadius"
+		:paddingModal="paddingModal"
 		:paddingTopModal="paddingTopModal"
 		:paddingRightModal="paddingRightModal"
 		:paddingBottomModal="paddingBottomModal"
 		:paddingLeftModal="paddingLeftModal"
+		:padding="padding"
 		:paddingTop="paddingTop"
 		:paddingRight="paddingRight"
 		:paddingBottom="paddingBottom"
 		:paddingLeft="paddingLeft"
+		:margin="margin"
 		:marginTop="marginTop"
 		:marginRight="marginRight"
 		:marginBottom="marginBottom"
@@ -435,6 +451,21 @@
 				themes: ['light', 'dark'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
+			border: {
+				type: String,
+				default: '',
+				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
+				themes: ['light', 'dark'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
+			},
+			borderColor: {
+				type: String,
+				default: '',
+				control: 'color',
+				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
+				themes: ['light', 'dark'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
+			},
 			borderTopColor: {
 				type: String,
 				default: '',
@@ -463,6 +494,15 @@
 				type: String,
 				default: '',
 				control: 'color',
+				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
+				themes: ['light', 'dark'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
+			},
+			borderWidth: {
+				type: String,
+				default: '',
+				control: 'slider',
+				unit: 'px',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
@@ -499,6 +539,47 @@
 				default: '',
 				control: 'slider',
 				unit: 'px',
+				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
+				themes: ['light', 'dark'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
+			},
+			borderStyle: {
+				type: String,
+				default: '',
+				options: [{
+					value: '',
+					key: 'Clear'
+				}, {
+					value: 'none',
+					key: 'none'
+				}, {
+					value: 'hidden',
+					key: 'hidden'
+				}, {
+					value: 'solid',
+					key: 'solid'
+				}, {
+					value: 'dashed',
+					key: 'dashed'
+				}, {
+					value: 'dotted',
+					key: 'dotted'
+				}, {
+					value: 'double',
+					key: 'double'
+				}, {
+					value: 'groove',
+					key: 'groove'
+				}, {
+					value: 'ridge',
+					key: 'ridge'
+				}, {
+					value: 'inset',
+					key: 'inset'
+				}, {
+					value: 'outset',
+					key: 'outset'
+				}],
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
@@ -667,6 +748,15 @@
 				themes: ['light', 'dark'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
+			borderRadius: {
+				type: String,
+				default: '',
+				control: 'slider',
+				unit: 'px',
+				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
+				themes: ['light', 'dark'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
+			},
 			borderTopLeftRadius: {
 				type: String,
 				default: '',
@@ -715,6 +805,12 @@
 				control: 'slider',
 				unit: 'px'
 			},
+			paddingModal: {
+				type: String,
+				default: '5px',
+				control: 'slider',
+				unit: 'px'
+			},
 			paddingTopModal: {
 				type: String,
 				default: '',
@@ -738,6 +834,15 @@
 				default: '',
 				control: 'slider',
 				unit: 'px'
+			},
+			padding: {
+				type: String,
+				default: '',
+				control: 'slider',
+				unit: 'px',
+				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
+				themes: ['light', 'dark'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			paddingTop: {
 				type: String,
@@ -767,6 +872,15 @@
 				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			paddingLeft: {
+				type: String,
+				default: '',
+				control: 'slider',
+				unit: 'px',
+				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
+				themes: ['light', 'dark'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
+			},
+			margin: {
 				type: String,
 				default: '',
 				control: 'slider',

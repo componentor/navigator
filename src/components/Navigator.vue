@@ -118,32 +118,40 @@
             'backgroundColor',
             'backgroundColorDrop',
             'backgroundImage',
+            'border',
+            'borderColor',
             'borderTopColor',
             'borderRightColor',
             'borderBottomColor',
             'borderLeftColor',
+            'borderWidth',
             'borderTopWidth',
             'borderRightWidth',
             'borderBottomWidth',
             'borderLeftWidth',
+            'borderStyle',
             'borderTopStyle',
             'borderRightStyle',
             'borderBottomStyle',
             'borderLeftStyle',
+            'borderRadius',
             'borderTopLeftRadius',
             'borderTopRightRadius',
             'borderBottomRightRadius',
             'borderBottomLeftRadius',
 			'translateXToggle',
 			'translateYToggle',
+			'paddingModal',
 			'paddingTopModal',
             'paddingRightModal',
             'paddingBottomModal',
             'paddingLeftModal',
+            'padding',
             'paddingTop',
             'paddingRight',
             'paddingBottom',
             'paddingLeft',
+            'margin',
             'marginTop',
             'marginRight',
             'marginBottom',
@@ -203,7 +211,7 @@
 			},
 			model() {
 				const obj = {};
-				const props = ['fontWeight', 'gap', 'color', 'backgroundColor', 'backgroundColorDrop', 'verticalLeftIndent', 'verticalRightIndent', 'backgroundImage', 'borderTopColor', 'borderRightColor', 'borderBottomColor', 'borderLeftColor', 'borderTopWidth', 'borderRightWidth', 'borderBottomWidth', 'borderLeftWidth', 'borderTopStyle', 'borderRightStyle', 'borderBottomStyle', 'borderLeftStyle', 'borderTopLeftRadius', 'borderTopRightRadius', 'borderBottomRightRadius', 'borderBottomLeftRadius', 'paddingTop', 'paddingRight', 'paddingBottom', 'paddingLeft', 'marginTop', 'marginRight', 'marginBottom', 'marginLeft'];
+				const props = ['fontWeight', 'gap', 'color', 'backgroundColor', 'backgroundColorDrop', 'verticalLeftIndent', 'verticalRightIndent', 'backgroundImage', 'border', 'borderColor', 'borderTopColor', 'borderRightColor', 'borderBottomColor', 'borderLeftColor', 'borderWidth', 'borderTopWidth', 'borderRightWidth', 'borderBottomWidth', 'borderLeftWidth', 'borderStyle', 'borderTopStyle', 'borderRightStyle', 'borderBottomStyle', 'borderLeftStyle', 'borderRadius', 'borderTopLeftRadius', 'borderTopRightRadius', 'borderBottomRightRadius', 'borderBottomLeftRadius', 'padding', 'paddingTop', 'paddingRight', 'paddingBottom', 'paddingLeft', 'margin', 'marginTop', 'marginRight', 'marginBottom', 'marginLeft'];
 				for (const prop of props) {
 					if (['verticalLeftIndent', 'verticalRightIndent'].includes(prop)) {
 						obj[prop] = this[prop]
@@ -349,7 +357,7 @@
 		left: 0px;
 		right: 0px;
 		bottom: 0px;
-		padding: 5px;
+		padding: v-bind(paddingModal)!important;
 		padding-top: v-bind(paddingTopModal)!important;
 		padding-right: v-bind(paddingRightModal)!important;
 		padding-bottom: v-bind(paddingBottomModal)!important;
