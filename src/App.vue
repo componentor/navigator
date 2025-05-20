@@ -65,6 +65,8 @@
 			:marginRight="marginRight"
 			:marginBottom="marginBottom"
 			:marginLeft="marginLeft"
+			:justifyContent="justifyContent"
+			:position="position"
 			:verticalLeftIndent="verticalLeftIndent"
 			:verticalRightIndent="verticalRightIndent"
 			@open="open = $event"
@@ -135,6 +137,8 @@
 		:marginRight="marginRight"
 		:marginBottom="marginBottom"
 		:marginLeft="marginLeft"
+		:justifyContent="justifyContent"
+		:position="position"
 		:verticalLeftIndent="verticalLeftIndent"
 		:verticalRightIndent="verticalRightIndent"
 		@open="open = $event"
@@ -924,6 +928,106 @@
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
+			},
+			justifyContent: {
+				type: String,
+				default: '',
+				options: [{
+					value: '',
+					key: 'Clear'
+				}, {
+					value: 'flex-start',
+					key: 'flex-start'
+				}, {
+					value: 'flex-end',
+					key: 'flex-end'
+				}, {
+					value: 'center',
+					key: 'center'
+				}, {
+					value: 'space-between',
+					key: 'space-between'
+				}, {
+					value: 'space-around',
+					key: 'space-around'
+				}, {
+					value: 'space-evenly',
+					key: 'space-evenly'
+				}, {
+					value: 'stretch',
+					key: 'stretch'
+				}, {
+					value: 'normal',
+					key: 'normal'
+				}, {
+					value: 'start',
+					key: 'start'
+				}, {
+					value: 'end',
+					key: 'end'
+				}, {
+					value: 'left',
+					key: 'left'
+				}, {
+					value: 'right',
+					key: 'right'
+				}, {
+					value: 'inherit',
+					key: 'inherit'
+				}, {
+					value: 'initial',
+					key: 'initial'
+				}, {
+					value: 'revert',
+					key: 'revert'
+				}, {
+					value: 'revert-layer',
+					key: 'revert-layer'
+				}, {
+					value: 'unset',
+					key: 'unset'
+				}],
+				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
+				themes: ['light', 'dark'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
+			},
+			position: {
+				type: String,
+				default: '',
+				options: [{
+					value: '',
+					key: 'Clear'
+				}, {
+					value: 'relative',
+					key: 'relative'
+				}, {
+					value: 'absolute',
+					key: 'absolute'
+				}, {
+					value: 'fixed',
+					key: 'fixed'
+				}, {
+					value: 'sticky',
+					key: 'sticky'
+				}, {
+					value: 'revert',
+					key: 'revert'
+				}, {
+					value: 'static',
+					key: 'static'
+				}, {
+					value: 'initial',
+					key: 'initial'
+				}, {
+					value: 'inherit',
+					key: 'inherit'
+				}, {
+					value: 'unset',
+					key: 'unset'
+				}],
+				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
+				themes: ['light', 'dark'],
+				groups: ['default', 'hover']
 			}
 		},
 		data: () => ({
