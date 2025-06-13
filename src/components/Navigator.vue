@@ -218,20 +218,32 @@
 							}
 							console.log('well well')
 							if (!match && this.group !== 'default') {
+								console.log('a')
 								limitReached = false;
+								console.log('b')
 								limit = this.bpoint || 'xs';
+								console.log('c')
 								for (const breakpoint of breakpoints) {
+									console.log('d', breakpoint)
 									if (!limitReached) {
+										console.log('f', limitReached, merge, merge?.['default'], merge?.['default']?.[breakpoint])
+										console.log('g', merge?.['default']?.[breakpoint]?.[this.themeComputed])
+										console.log('h', merge?.['default']?.[breakpoint]?.['light'])
 										const firstPriority = merge?.['default']?.[breakpoint]?.[this.themeComputed]?.toString();
 										const secondPriority = merge?.['default']?.[breakpoint]?.['light']?.toString();
 										const value = firstPriority || secondPriority;
+										console.log('val', value)
 										if (value) {
+											console.log('style', style, prop)
 											style[prop] = value;
 										}
+										console.log('yo', breakpoint, limit)
 										limitReached = breakpoint === limit;
+										console.log('yo')
 									}
 								}
 							}
+							console.log('uupsy')
 						}
 					}
 				} catch(e) {
