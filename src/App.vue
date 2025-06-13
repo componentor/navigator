@@ -966,7 +966,7 @@
 		}),
 		computed: {
 			isClient() {
-				return typeof window !== 'undefined' ? true : false
+				return typeof window !== 'undefined' ? true : false;
 			}
 		},
 		mounted() {
