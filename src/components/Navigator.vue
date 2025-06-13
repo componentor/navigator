@@ -102,7 +102,7 @@
 		data: () => ({
 			open: false,
 			hover: false,
-			windowWidth: 1280,//typeof global !== 'undefined' ? (global?.windowWidth || 1280) : 1280,
+			windowWidth: typeof global !== 'undefined' ? (global?.windowWidth || 1280) : 1280,
 			colorSchemeMediaQuery: null,
 			darkmode: false,
 			transition: false,
@@ -115,6 +115,9 @@
 				return this.darkmode ? 'dark' : 'light';
 			},
 			bpoint() {
+				console.log('windowWidth', this.windowWidth)
+				console.log('breakpointCap', this.breakpointCap)
+				console.log('breakpoint', this.breakpoint)
 				if (this.windowWidth <= this.breakpointCap) return 'sm';
 				if (this.breakpoint) return this.breakpoint;
 				if (this.windowWidth > 1280) return '2xl';
