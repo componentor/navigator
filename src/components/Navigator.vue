@@ -130,6 +130,7 @@
 				return 'xs';
 			},
 			group() {
+				console.log('hover', this.hover)
 				if (this.hover) return 'hover';
 				return 'default';
 			},
@@ -179,6 +180,7 @@
 				return obj;
 			},
 			style() {
+				console.log('begin style')
 				const scope = this
 				const style = {};
 				try {
@@ -186,6 +188,7 @@
 					const groups = ['default', 'hover'];
 					const breakpoints = ['xs', 'sm', 'md', 'lg', 'xl', '2xl'];
 					const themes = ['light', 'dark'];
+					console.log('begin loop props')
 					for (const prop of props) {
 						let priority = {};
 						if (this[prop]) {
@@ -194,6 +197,7 @@
 							} catch (e) {}
 						}
 						const merge = {};
+						console.log('begin loop pri')
 						for (const group of Object.keys(priority)) {
 							if (group === 'hover' && prop === 'backgroundColor') continue;
 							const pri = priority?.[group] || {};
@@ -208,12 +212,15 @@
 							}
 						}
 						const groups = Object.keys(merge);
+						console.log('begin loop groups', groups)
 						if (groups.length) {
 							style[prop] = merge?.['default']?.['xs']?.['light'];
 							let limitReached = false;
 							let limit = this.bpoint || 'xs';
 							let match = false;
+							console.log('begin loop breakpoints', breakpoints)
 							for (const breakpoint of breakpoints) {
+								console.log({ limitReached, merge, breakpoint, this.themeComputed })
 								if (!limitReached) {
 									const firstPriority = merge?.[this.group]?.[breakpoint]?.[this.themeComputed]?.toString();
 									const secondPriority = merge?.[this.group]?.[breakpoint]?.['light']?.toString();
