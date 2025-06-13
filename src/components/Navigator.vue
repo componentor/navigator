@@ -102,7 +102,7 @@
 		data: () => ({
 			open: false,
 			hover: false,
-			windowWidth: typeof window !== 'undefined' ? window.innerWidth : typeof global !== 'undefined' ? global.windowWidth || 1280 : 1280,
+			windowWidth: 1280,
 			colorSchemeMediaQuery: null,
 			darkmode: false,
 			transition: false,
@@ -232,7 +232,6 @@
 		},
 		mounted() {
 			this.windowWidth = window.innerWidth;
-			document.cookie = `windowWidth=${window.innerWidth}; path=/; max-age=3600; SameSite=None`;
 			this.colorSchemeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
 			this.darkmode = window.matchMedia('(prefers-color-scheme: dark)')
 				.matches;
