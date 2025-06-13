@@ -44,12 +44,9 @@
 	export default {
 		inject: ['theme', 'breakpoint'],
 		provide() {
-			console.log('hihi')
 			const self = this;
-			console.log('haha')
 			return {
 				setPath(path, id) {
-					console.log('settis')
 					self.path = path;
 					self.pathId = id;
 				},
@@ -67,12 +64,10 @@
 				childrenCaretSizeProvider: computed(() => this.caretSize),
 				model: computed(() => this.model),
 				theme: computed(() => {
-					console.log('comp yy')
 					if (this.theme) return this.theme;
 					return this.darkmode ? 'dark' : 'light';
 				}),
 				breakpoint: computed(() => {
-					console.log('bpstatrt', this.windowWidth, Number(this.breakpointCap || 0))
 					if (this.windowWidth <= Number(this.breakpointCap || 0)) return 'sm';
 					if (this.breakpoint) return this.breakpoint;
 					if (this.windowWidth > 1280) return '2xl';
@@ -86,7 +81,6 @@
 		},
 		watch: {
 			open(open) {
-				console.log('plopp')
 				if (open && this.small) {
 					setTimeout(() => {
 						this.transition = !this.transition;
@@ -94,11 +88,9 @@
 				} else {
 					this.transition = false;
 				}
-				console.log('lets open', open)
 				this.$emit('open', open);
 			},
 			small(small) {
-				console.log('this is small', small)
 				this.$emit('small', small);
 			}
 		},
@@ -119,14 +111,10 @@
 		}),
 		computed: {
 			themeComputed() {
-				console.log('compis')
 				if (this.theme) return this.theme;
 				return this.darkmode ? 'dark' : 'light';
 			},
 			bpoint() {
-				console.log('windowWidth', this.windowWidth)
-				console.log('breakpointCap', typeof this.breakpointCap, this.breakpointCap)
-				console.log('breakpoint', this.breakpoint)
 				if (this.windowWidth <= Number(this.breakpointCap || 0)) return 'sm';
 				if (this.breakpoint) return this.breakpoint;
 				if (this.windowWidth > 1280) return '2xl';
@@ -137,40 +125,29 @@
 				return 'xs';
 			},
 			group() {
-				console.log('hover', this.hover)
 				if (this.hover) return 'hover';
 				return 'default';
 			},
 			$toggleIcon() {
-				console.log('AAA')
 				if (!this.style?.toggleIcon) return 'var(--menu-svg)';
-				console.log('BBBB')
 				if (this.style.toggleIcon?.startsWith('--')) {
-					console.log('CCC', this.style)
 					return `var(${this.style.toggleIcon})`;
 				} else {
-					console.log('DDD')
 					return `url(${this.style.toggleIcon})`;
 				}
 			},
 			$closeIcon() {
-				console.log('EEE')
 				if (!this.style?.closeIcon) return 'var(--close-svg)';
-				console.log('FFF')
 				if (this.style.closeIcon?.startsWith('--')) {
-					console.log('GGG')
 					return `var(${this.style.closeIcon})`;
 				} else {
-					console.log('HHH')
 					return `url(${this.style.closeIcon})`;
 				}
 			},
 			small() {
-				console.log('smallis')
 				return this.windowWidth <= Number(this.breakpointCap || 0);
 			},
 			model() {
-				console.log('model start')
 				const obj = {};
 				const props = ['fontWeight', 'gap', 'color', 'backgroundColor', 'backgroundColorDrop', 'verticalLeftIndent', 'verticalRightIndent', 'backgroundImage', 'border', 'borderColor', 'borderTopColor', 'borderRightColor', 'borderBottomColor', 'borderLeftColor', 'borderWidth', 'borderTopWidth', 'borderRightWidth', 'borderBottomWidth', 'borderLeftWidth', 'borderStyle', 'borderTopStyle', 'borderRightStyle', 'borderBottomStyle', 'borderLeftStyle', 'borderRadius', 'borderTopLeftRadius', 'borderTopRightRadius', 'borderBottomRightRadius', 'borderBottomLeftRadius', 'padding', 'paddingTop', 'paddingRight', 'paddingBottom', 'paddingLeft', 'margin', 'marginTop', 'marginRight', 'marginBottom', 'marginLeft', 'position', 'justifyContent'];
 				for (const prop of props) {
@@ -186,106 +163,76 @@
 						} catch (e) {}
 					}
 				}
-				console.log('model end')
 				return obj;
 			},
 			style() {
-				console.log('begin style')
 				const scope = this
 				const style = {};
-				try {
-					const props = ['toggleIcon', 'closeIcon', 'caretIcon', 'justifyToggle', 'alignToggle', 'gap', 'backgroundColor'];
-					const groups = ['default', 'hover'];
-					const breakpoints = ['xs', 'sm', 'md', 'lg', 'xl', '2xl'];
-					const themes = ['light', 'dark'];
-					console.log('begin loop props')
-					for (const prop of props) {
-						let priority = {};
-						if (this[prop]) {
-							try {
-								priority = JSON.parse(this[prop].replaceAll('`', '"'));
-							} catch (e) {}
-						}
-						const merge = {};
-						console.log('begin loop pri')
-						for (const group of Object.keys(priority)) {
-							if (group === 'hover' && prop === 'backgroundColor') continue;
-							const pri = priority?.[group] || {};
-							merge[group] = {};
-							for (const breakpoint of Object.keys(pri)) {
-								const p = pri?.[breakpoint] || {};
-								merge[group][breakpoint] = {};
-								for (const theme of Object.keys(p)) {
-									const value = p?.[theme]?.toString() || null;
-									merge[group][breakpoint][theme] = value;
-								}
+				const props = ['toggleIcon', 'closeIcon', 'caretIcon', 'justifyToggle', 'alignToggle', 'gap', 'backgroundColor'];
+				const groups = ['default', 'hover'];
+				const breakpoints = ['xs', 'sm', 'md', 'lg', 'xl', '2xl'];
+				const themes = ['light', 'dark'];
+				for (const prop of props) {
+					let priority = {};
+					if (this[prop]) {
+						try {
+							priority = JSON.parse(this[prop].replaceAll('`', '"'));
+						} catch (e) {}
+					}
+					const merge = {};
+					for (const group of Object.keys(priority)) {
+						if (group === 'hover' && prop === 'backgroundColor') continue;
+						const pri = priority?.[group] || {};
+						merge[group] = {};
+						for (const breakpoint of Object.keys(pri)) {
+							const p = pri?.[breakpoint] || {};
+							merge[group][breakpoint] = {};
+							for (const theme of Object.keys(p)) {
+								const value = p?.[theme]?.toString() || null;
+								merge[group][breakpoint][theme] = value;
 							}
 						}
-						const groups = Object.keys(merge);
-						console.log('begin loop groups', groups)
-						if (groups.length) {
-							style[prop] = merge?.['default']?.['xs']?.['light'];
-							let limitReached = false;
-							let limit = this.bpoint || 'xs';
-							let match = false;
-							console.log('begin loop breakpoints', breakpoints)
+					}
+					const groups = Object.keys(merge);
+					if (groups.length) {
+						style[prop] = merge?.['default']?.['xs']?.['light'];
+						let limitReached = false;
+						let limit = this.bpoint || 'xs';
+						let match = false;
+						for (const breakpoint of breakpoints) {
+							if (!limitReached) {
+								const firstPriority = merge?.[this.group]?.[breakpoint]?.[this.themeComputed]?.toString();
+								const secondPriority = merge?.[this.group]?.[breakpoint]?.['light']?.toString();
+								const value = firstPriority || secondPriority;
+								if (value) {
+									style[prop] = value;
+									match = true;
+								}
+								limitReached = breakpoint === limit;
+							}
+						}
+						if (!match && this.group !== 'default') {
+							limitReached = false;
+							limit = this.bpoint || 'xs';
 							for (const breakpoint of breakpoints) {
-								console.log({ limitReached, merge, breakpoint, themeComputed: this.themeComputed })
 								if (!limitReached) {
-									const firstPriority = merge?.[this.group]?.[breakpoint]?.[this.themeComputed]?.toString();
-									const secondPriority = merge?.[this.group]?.[breakpoint]?.['light']?.toString();
+									const firstPriority = merge?.['default']?.[breakpoint]?.[this.themeComputed]?.toString();
+									const secondPriority = merge?.['default']?.[breakpoint]?.['light']?.toString();
 									const value = firstPriority || secondPriority;
 									if (value) {
 										style[prop] = value;
-										match = true;
 									}
 									limitReached = breakpoint === limit;
 								}
 							}
-							console.log('scope', scope)
-							console.log('wehoop', this)
-							console.log('well well', match, this.group)
-							if (!match && this.group !== 'default') {
-								console.log('a')
-								limitReached = false;
-								console.log('b')
-								limit = this.bpoint || 'xs';
-								console.log('c')
-								for (const breakpoint of breakpoints) {
-									console.log('d', breakpoint)
-									if (!limitReached) {
-										console.log('f', limitReached, merge, merge?.['default'], merge?.['default']?.[breakpoint])
-										console.log('g', merge?.['default']?.[breakpoint]?.[this.themeComputed])
-										console.log('h', merge?.['default']?.[breakpoint]?.['light'])
-										const firstPriority = merge?.['default']?.[breakpoint]?.[this.themeComputed]?.toString();
-										const secondPriority = merge?.['default']?.[breakpoint]?.['light']?.toString();
-										const value = firstPriority || secondPriority;
-										console.log('val', value)
-										if (value) {
-											console.log('style', style, prop)
-											style[prop] = value;
-										}
-										console.log('yo', breakpoint, limit)
-										limitReached = breakpoint === limit;
-										console.log('yo')
-									}
-								}
-							}
-							console.log('uupsy')
 						}
 					}
-				} catch(e) {
-					console.log('buh', e)
 				}
-				console.log('style', style)
 				return style;
 			}
 		},
 		mounted() {
-			console.log('before', this.windowWidth)
 			this.windowWidth = window.innerWidth;
-			console.log(this.windowWidth)
-
 			this.colorSchemeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
 			this.darkmode = window.matchMedia('(prefers-color-scheme: dark)')
 				.matches;
@@ -300,24 +247,19 @@
 		},
 		methods: {
 			renderProperty(prop) {
-				console.log('blah')
 				return prop;
 			},
 			handleColorSchemeChange(event) {
-				console.log('bluh')
 				this.darkmode = event.matches;
 			},
 			handleResize() {
-				console.log('size')
 				this.windowWidth = window.innerWidth;
 				this.open = false;
 			},
 			handleClickOutside(event) {
-				console.log('hey ho', this.$refs)
 				if (this.open && this.$refs.nav && !this.$refs.nav.$el.contains(event.target)) {
 					this.open = false;
 				}
-				console.log('mo mo')
 			}
 		}
 	};
