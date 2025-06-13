@@ -68,13 +68,13 @@
 					return this.darkmode ? 'dark' : 'light';
 				}),
 				breakpoint: computed(() => {
-					if (this.screenWidth <= this.breakpointCap) return 'sm';
+					if (this.windowWidth <= this.breakpointCap) return 'sm';
 					if (this.breakpoint) return this.breakpoint;
-					if (this.screenWidth > 1280) return '2xl';
-					if (this.screenWidth > 1024) return 'xl';
-					if (this.screenWidth > 768) return 'lg';
-					if (this.screenWidth > 640) return 'md';
-					if (this.screenWidth > 480) return 'sm';
+					if (this.windowWidth > 1280) return '2xl';
+					if (this.windowWidth > 1024) return 'xl';
+					if (this.windowWidth > 768) return 'lg';
+					if (this.windowWidth > 640) return 'md';
+					if (this.windowWidth > 480) return 'sm';
 					return 'xs';
 				})
 			};
@@ -166,7 +166,7 @@
 		data: () => ({
 			open: false,
 			hover: false,
-			screenWidth: 1280,
+			windowWidth: typeof window !== 'undefined' ? window.innerWidth : typeof global !== 'undefined' ? global.windowWidth : 1280,
 			colorSchemeMediaQuery: null,
 			darkmode: false,
 			transition: false,
@@ -179,13 +179,13 @@
 				return this.darkmode ? 'dark' : 'light';
 			},
 			bpoint() {
-				if (this.screenWidth <= this.breakpointCap) return 'sm';
+				if (this.windowWidth <= this.breakpointCap) return 'sm';
 				if (this.breakpoint) return this.breakpoint;
-				if (this.screenWidth > 1280) return '2xl';
-				if (this.screenWidth > 1024) return 'xl';
-				if (this.screenWidth > 768) return 'lg';
-				if (this.screenWidth > 640) return 'md';
-				if (this.screenWidth > 480) return 'sm';
+				if (this.windowWidth > 1280) return '2xl';
+				if (this.windowWidth > 1024) return 'xl';
+				if (this.windowWidth > 768) return 'lg';
+				if (this.windowWidth > 640) return 'md';
+				if (this.windowWidth > 480) return 'sm';
 				return 'xs';
 			},
 			group() {
@@ -209,7 +209,7 @@
 				}
 			},
 			small() {
-				return this.screenWidth <= this.breakpointCap;
+				return this.windowWidth <= this.breakpointCap;
 			},
 			model() {
 				const obj = {};
@@ -294,8 +294,14 @@
 				return style;
 			}
 		},
+		created() {
+			if (typeof window !== 'undefined') {
+				this.windowWidth = window.innerWidth;
+				document.cookie = `windowWidth=${window.innerWidth}; path=/; max-age=3600; SameSite=None`;
+			}
+		},
 		mounted() {
-			this.screenWidth = window.innerWidth;
+			this.windowWidth = window.innerWidth;
 			this.colorSchemeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
 			this.darkmode = window.matchMedia('(prefers-color-scheme: dark)')
 				.matches;
@@ -316,7 +322,7 @@
 				this.darkmode = event.matches;
 			},
 			handleResize() {
-				this.screenWidth = window.innerWidth;
+				this.windowWidth = window.innerWidth;
 				this.open = false;
 			},
 			handleClickOutside(event) {
