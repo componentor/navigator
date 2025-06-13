@@ -398,7 +398,7 @@
 				}]
 			},
 			breakpointCap: {
-				type: String,
+				type: Number,
 				control: 'slider',
 				unit: '',
 				default: '640'
@@ -408,9 +408,11 @@
 				default: false
 			},
 			fontWeight: {
-				type: String,
+				type: Number,
 				default: '',
 				control: 'slider',
+				min: 0,
+				max: 1000,
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
