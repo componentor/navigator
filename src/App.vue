@@ -401,7 +401,7 @@
 				type: Number,
 				control: 'slider',
 				unit: '',
-				default: '640'
+				default: 640
 			},
 			forceOpen: {
 				type: Boolean,
@@ -409,7 +409,6 @@
 			},
 			fontWeight: {
 				type: Number,
-				default: '',
 				control: 'slider',
 				min: 0,
 				max: 1000,

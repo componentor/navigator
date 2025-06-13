@@ -68,7 +68,7 @@
 					return this.darkmode ? 'dark' : 'light';
 				}),
 				breakpoint: computed(() => {
-					if (this.windowWidth <= this.breakpointCap) return 'sm';
+					if (this.windowWidth <= Number(this.breakpointCap || 0)) return 'sm';
 					if (this.breakpoint) return this.breakpoint;
 					if (this.windowWidth > 1280) return '2xl';
 					if (this.windowWidth > 1024) return 'xl';
@@ -118,7 +118,7 @@
 				console.log('windowWidth', this.windowWidth)
 				console.log('breakpointCap', typeof this.breakpointCap, this.breakpointCap)
 				console.log('breakpoint', this.breakpoint)
-				if (this.windowWidth <= this.breakpointCap) return 'sm';
+				if (this.windowWidth <= Number(this.breakpointCap || 0)) return 'sm';
 				if (this.breakpoint) return this.breakpoint;
 				if (this.windowWidth > 1280) return '2xl';
 				if (this.windowWidth > 1024) return 'xl';
@@ -148,7 +148,7 @@
 				}
 			},
 			small() {
-				return this.windowWidth <= this.breakpointCap;
+				return this.windowWidth <= Number(this.breakpointCap || 0);
 			},
 			model() {
 				const obj = {};
