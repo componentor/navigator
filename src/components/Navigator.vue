@@ -134,18 +134,26 @@
 				return 'default';
 			},
 			$toggleIcon() {
+				console.log('AAA')
 				if (!this.style?.toggleIcon) return 'var(--menu-svg)';
+				console.log('BBBB')
 				if (this.style.toggleIcon?.startsWith('--')) {
+					console.log('CCC')
 					return `var(${this.style.toggleIcon})`;
 				} else {
+					console.log('DDD')
 					return `url(${this.style.toggleIcon})`;
 				}
 			},
 			$closeIcon() {
+				console.log('EEE')
 				if (!this.style?.closeIcon) return 'var(--close-svg)';
+				console.log('FFF')
 				if (this.style.closeIcon?.startsWith('--')) {
+					console.log('GGG')
 					return `var(${this.style.closeIcon})`;
 				} else {
+					console.log('HHH')
 					return `url(${this.style.closeIcon})`;
 				}
 			},
@@ -252,6 +260,7 @@
 				} catch(e) {
 					console.log('buh', e)
 				}
+				console.log('style', style)
 				return style;
 			}
 		},
@@ -284,9 +293,11 @@
 				this.open = false;
 			},
 			handleClickOutside(event) {
+				console.log('hey ho', this.$refs)
 				if (this.open && this.$refs.nav && !this.$refs.nav.$el.contains(event.target)) {
 					this.open = false;
 				}
+				console.log('mo mo')
 			}
 		}
 	};
