@@ -1,8 +1,7 @@
 <template>
 	<Teleport
-		v-if="mounted"
 		to="body"
-		:disabled="(!open && !forceOpen) || !small"
+		:disabled="!mounted || (!open && !forceOpen) || !small"
 	>
 		<Navigator
 			v-bind="$attrs"
@@ -78,7 +77,7 @@
 		</Navigator>
 	</Teleport>
 	<Navigator
-		v-else=""
+		v-if="!mounted"
 		v-bind="$attrs"
 		:toggleIcon="toggleIcon"
 		:closeIcon="closeIcon"
