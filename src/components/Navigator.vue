@@ -171,6 +171,7 @@
 				return obj;
 			},
 			style() {
+				const scope = this
 				const style = {};
 				try {
 					const props = ['toggleIcon', 'closeIcon', 'caretIcon', 'justifyToggle', 'alignToggle', 'gap', 'backgroundColor'];
@@ -216,7 +217,9 @@
 									limitReached = breakpoint === limit;
 								}
 							}
-							console.log('well well')
+							console.log('scope', scope)
+							console.log('wehoop', this)
+							console.log('well well', match, this.group)
 							if (!match && this.group !== 'default') {
 								console.log('a')
 								limitReached = false;
