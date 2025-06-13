@@ -88,9 +88,11 @@
 				} else {
 					this.transition = false;
 				}
+				console.log('lets open', open)
 				this.$emit('open', open);
 			},
 			small(small) {
+				console.log('this is small', small)
 				this.$emit('small', small);
 			}
 		},
@@ -170,65 +172,70 @@
 			},
 			style() {
 				const style = {};
-				const props = ['toggleIcon', 'closeIcon', 'caretIcon', 'justifyToggle', 'alignToggle', 'gap', 'backgroundColor'];
-				const groups = ['default', 'hover'];
-				const breakpoints = ['xs', 'sm', 'md', 'lg', 'xl', '2xl'];
-				const themes = ['light', 'dark'];
-				for (const prop of props) {
-					let priority = {};
-					if (this[prop]) {
-						try {
-							priority = JSON.parse(this[prop].replaceAll('`', '"'));
-						} catch (e) {}
-					}
-					const merge = {};
-					for (const group of Object.keys(priority)) {
-						if (group === 'hover' && prop === 'backgroundColor') continue;
-						const pri = priority?.[group] || {};
-						merge[group] = {};
-						for (const breakpoint of Object.keys(pri)) {
-							const p = pri?.[breakpoint] || {};
-							merge[group][breakpoint] = {};
-							for (const theme of Object.keys(p)) {
-								const value = p?.[theme]?.toString() || null;
-								merge[group][breakpoint][theme] = value;
-							}
+				try {
+					const props = ['toggleIcon', 'closeIcon', 'caretIcon', 'justifyToggle', 'alignToggle', 'gap', 'backgroundColor'];
+					const groups = ['default', 'hover'];
+					const breakpoints = ['xs', 'sm', 'md', 'lg', 'xl', '2xl'];
+					const themes = ['light', 'dark'];
+					for (const prop of props) {
+						let priority = {};
+						if (this[prop]) {
+							try {
+								priority = JSON.parse(this[prop].replaceAll('`', '"'));
+							} catch (e) {}
 						}
-					}
-					const groups = Object.keys(merge);
-					if (groups.length) {
-						style[prop] = merge?.['default']?.['xs']?.['light'];
-						let limitReached = false;
-						let limit = this.bpoint || 'xs';
-						let match = false;
-						for (const breakpoint of breakpoints) {
-							if (!limitReached) {
-								const firstPriority = merge?.[this.group]?.[breakpoint]?.[this.themeComputed]?.toString();
-								const secondPriority = merge?.[this.group]?.[breakpoint]?.['light']?.toString();
-								const value = firstPriority || secondPriority;
-								if (value) {
-									style[prop] = value;
-									match = true;
+						const merge = {};
+						for (const group of Object.keys(priority)) {
+							if (group === 'hover' && prop === 'backgroundColor') continue;
+							const pri = priority?.[group] || {};
+							merge[group] = {};
+							for (const breakpoint of Object.keys(pri)) {
+								const p = pri?.[breakpoint] || {};
+								merge[group][breakpoint] = {};
+								for (const theme of Object.keys(p)) {
+									const value = p?.[theme]?.toString() || null;
+									merge[group][breakpoint][theme] = value;
 								}
-								limitReached = breakpoint === limit;
 							}
 						}
-						if (!match && this.group !== 'default') {
-							limitReached = false;
-							limit = this.bpoint || 'xs';
+						const groups = Object.keys(merge);
+						if (groups.length) {
+							style[prop] = merge?.['default']?.['xs']?.['light'];
+							let limitReached = false;
+							let limit = this.bpoint || 'xs';
+							let match = false;
 							for (const breakpoint of breakpoints) {
 								if (!limitReached) {
-									const firstPriority = merge?.['default']?.[breakpoint]?.[this.themeComputed]?.toString();
-									const secondPriority = merge?.['default']?.[breakpoint]?.['light']?.toString();
+									const firstPriority = merge?.[this.group]?.[breakpoint]?.[this.themeComputed]?.toString();
+									const secondPriority = merge?.[this.group]?.[breakpoint]?.['light']?.toString();
 									const value = firstPriority || secondPriority;
 									if (value) {
 										style[prop] = value;
+										match = true;
 									}
 									limitReached = breakpoint === limit;
 								}
 							}
+							console.log('well well')
+							if (!match && this.group !== 'default') {
+								limitReached = false;
+								limit = this.bpoint || 'xs';
+								for (const breakpoint of breakpoints) {
+									if (!limitReached) {
+										const firstPriority = merge?.['default']?.[breakpoint]?.[this.themeComputed]?.toString();
+										const secondPriority = merge?.['default']?.[breakpoint]?.['light']?.toString();
+										const value = firstPriority || secondPriority;
+										if (value) {
+											style[prop] = value;
+										}
+										limitReached = breakpoint === limit;
+									}
+								}
+							}
 						}
 					}
+				} catch(e) {
+					console.log('buh', e)
 				}
 				return style;
 			}
