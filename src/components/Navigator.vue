@@ -102,7 +102,7 @@
 		data: () => ({
 			open: false,
 			hover: false,
-			windowWidth: typeof global !== 'undefined' ? global?.windowWidth || 1280 : 1280,
+			windowWidth: typeof global !== 'undefined' ? (global?.windowWidth || 1280) : 1280,
 			colorSchemeMediaQuery: null,
 			darkmode: false,
 			transition: false,
@@ -231,7 +231,10 @@
 			}
 		},
 		mounted() {
+			console.log('before', this.windowWidth)
 			this.windowWidth = window.innerWidth;
+			console.log(this.windowWidth)
+
 			this.colorSchemeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
 			this.darkmode = window.matchMedia('(prefers-color-scheme: dark)')
 				.matches;
