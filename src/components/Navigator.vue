@@ -116,7 +116,7 @@
 			},
 			bpoint() {
 				console.log('windowWidth', this.windowWidth)
-				console.log('breakpointCap', this.breakpointCap)
+				console.log('breakpointCap', typeof this.breakpointCap, this.breakpointCap)
 				console.log('breakpoint', this.breakpoint)
 				if (this.windowWidth <= this.breakpointCap) return 'sm';
 				if (this.breakpoint) return this.breakpoint;
