@@ -146,7 +146,7 @@
 				if (!this.style?.toggleIcon) return 'var(--menu-svg)';
 				console.log('BBBB')
 				if (this.style.toggleIcon?.startsWith('--')) {
-					console.log('CCC')
+					console.log('CCC', this.style)
 					return `var(${this.style.toggleIcon})`;
 				} else {
 					console.log('DDD')
