@@ -44,9 +44,12 @@
 	export default {
 		inject: ['theme', 'breakpoint'],
 		provide() {
+			console.log('hihi')
 			const self = this;
+			console.log('haha')
 			return {
 				setPath(path, id) {
+					console.log('settis')
 					self.path = path;
 					self.pathId = id;
 				},
@@ -60,14 +63,16 @@
 				drop: computed(() => this.drop),
 				reverseIcon: computed(() => this.iconsReverse),
 				childrenIconSizeProvider: computed(() => this.childrenIconSize),
-				childrenCaretProvider: computed(() => this.style.caretIcon),
+				childrenCaretProvider: computed(() => this.style?.caretIcon),
 				childrenCaretSizeProvider: computed(() => this.caretSize),
 				model: computed(() => this.model),
 				theme: computed(() => {
+					console.log('comp yy')
 					if (this.theme) return this.theme;
 					return this.darkmode ? 'dark' : 'light';
 				}),
 				breakpoint: computed(() => {
+					console.log('bpstatrt', this.windowWidth, Number(this.breakpointCap || 0))
 					if (this.windowWidth <= Number(this.breakpointCap || 0)) return 'sm';
 					if (this.breakpoint) return this.breakpoint;
 					if (this.windowWidth > 1280) return '2xl';
@@ -81,6 +86,7 @@
 		},
 		watch: {
 			open(open) {
+				console.log('plopp')
 				if (open && this.small) {
 					setTimeout(() => {
 						this.transition = !this.transition;
@@ -113,6 +119,7 @@
 		}),
 		computed: {
 			themeComputed() {
+				console.log('compis')
 				if (this.theme) return this.theme;
 				return this.darkmode ? 'dark' : 'light';
 			},
@@ -159,9 +166,11 @@
 				}
 			},
 			small() {
+				console.log('smallis')
 				return this.windowWidth <= Number(this.breakpointCap || 0);
 			},
 			model() {
+				console.log('model start')
 				const obj = {};
 				const props = ['fontWeight', 'gap', 'color', 'backgroundColor', 'backgroundColorDrop', 'verticalLeftIndent', 'verticalRightIndent', 'backgroundImage', 'border', 'borderColor', 'borderTopColor', 'borderRightColor', 'borderBottomColor', 'borderLeftColor', 'borderWidth', 'borderTopWidth', 'borderRightWidth', 'borderBottomWidth', 'borderLeftWidth', 'borderStyle', 'borderTopStyle', 'borderRightStyle', 'borderBottomStyle', 'borderLeftStyle', 'borderRadius', 'borderTopLeftRadius', 'borderTopRightRadius', 'borderBottomRightRadius', 'borderBottomLeftRadius', 'padding', 'paddingTop', 'paddingRight', 'paddingBottom', 'paddingLeft', 'margin', 'marginTop', 'marginRight', 'marginBottom', 'marginLeft', 'position', 'justifyContent'];
 				for (const prop of props) {
@@ -177,6 +186,7 @@
 						} catch (e) {}
 					}
 				}
+				console.log('model end')
 				return obj;
 			},
 			style() {
@@ -290,12 +300,15 @@
 		},
 		methods: {
 			renderProperty(prop) {
+				console.log('blah')
 				return prop;
 			},
 			handleColorSchemeChange(event) {
+				console.log('bluh')
 				this.darkmode = event.matches;
 			},
 			handleResize() {
+				console.log('size')
 				this.windowWidth = window.innerWidth;
 				this.open = false;
 			},
