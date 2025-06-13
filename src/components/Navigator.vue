@@ -220,7 +220,7 @@
 							let match = false;
 							console.log('begin loop breakpoints', breakpoints)
 							for (const breakpoint of breakpoints) {
-								console.log({ limitReached, merge, breakpoint, this.themeComputed })
+								console.log({ limitReached, merge, breakpoint, themeComputed: this.themeComputed })
 								if (!limitReached) {
 									const firstPriority = merge?.[this.group]?.[breakpoint]?.[this.themeComputed]?.toString();
 									const secondPriority = merge?.[this.group]?.[breakpoint]?.['light']?.toString();
