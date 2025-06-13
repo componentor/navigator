@@ -1,23 +1,23 @@
 <template>
-    <Box
-        ref="nav"
-        :column="(small || orientation === 'Column') ? '{`default`:{`xs`:{`light`:true}}}' : ''"
-        :class="{
+	<Box
+		ref="nav"
+		:column="(small || orientation === 'Column') ? '{`default`:{`xs`:{`light`:true}}}' : ''"
+		:class="{
             'vp-navigator--small': small,
             'vp-navigator--open': open || forceOpen,
             'vp-navigator--transition': transition,
         }"
-        :reverse="(((orientation === 'Row' && !small) && direction === 'left') || ((orientation === 'Column' || small) && drop === 'up')) ? '{`default`:{`xs`:{`light`:true}}}' : ''"
-        :style="{
+		:reverse="(((orientation === 'Row' && !small) && direction === 'left') || ((orientation === 'Column' || small) && drop === 'up')) ? '{`default`:{`xs`:{`light`:true}}}' : ''"
+		:style="{
             backgroundColor: style?.backgroundColor,
             justifyContent: !open && !forceOpen && small && style?.justifyToggle ? style?.justifyToggle : null,
             alignItems: !open && !forceOpen && small && style?.alignToggle ? style?.alignToggle : null,
             gap: !small ? style?.gap : null
         }"
-        class="vp-navigator"
-        @pointerover="hover=true"
-        @pointerleave="hover=false"
-    >
+		class="vp-navigator"
+		@pointerover="hover=true"
+		@pointerleave="hover=false"
+	>
 		<div
 			v-if="small"
 			@click="open=!open"
@@ -33,7 +33,7 @@
 				<Placeholder />
 			</slot>
 		</template>
-    </Box>
+	</Box>
 </template>
 <script>
 	import {
@@ -44,11 +44,11 @@
 	export default {
 		inject: ['theme', 'breakpoint'],
 		provide() {
-			const self = this
+			const self = this;
 			return {
 				setPath(path, id) {
-					self.path = path
-					self.pathId = id
+					self.path = path;
+					self.pathId = id;
 				},
 				path: computed(() => this.path),
 				pathId: computed(() => this.pathId),
@@ -88,77 +88,13 @@
 				} else {
 					this.transition = false;
 				}
-                this.$emit('open', open)
+				this.$emit('open', open);
 			},
-            small(small) {
-                this.$emit('small', small)
-            }
+			small(small) {
+				this.$emit('small', small);
+			}
 		},
-		props: [
-			'toggleIcon',
-            'closeIcon',
-            'caretIcon',
-            'caretSize',
-            'toggleSize',
-            'justifyToggle',
-            'alignToggle',
-			'iconsReverse',
-            'childrenIconSize',
-            'gap',
-            'childrenGap',
-            'orientation',
-            'direction',
-            'drop',
-            'breakpointCap',
-            'forceOpen',
-            'fontWeight',
-			'verticalLeftIndent',
-			'verticalRightIndent',
-            'color',
-            'backgroundColor',
-            'backgroundColorDrop',
-            'backgroundImage',
-            'border',
-            'borderColor',
-            'borderTopColor',
-            'borderRightColor',
-            'borderBottomColor',
-            'borderLeftColor',
-            'borderWidth',
-            'borderTopWidth',
-            'borderRightWidth',
-            'borderBottomWidth',
-            'borderLeftWidth',
-            'borderStyle',
-            'borderTopStyle',
-            'borderRightStyle',
-            'borderBottomStyle',
-            'borderLeftStyle',
-            'borderRadius',
-            'borderTopLeftRadius',
-            'borderTopRightRadius',
-            'borderBottomRightRadius',
-            'borderBottomLeftRadius',
-			'translateXToggle',
-			'translateYToggle',
-			'paddingModal',
-			'paddingTopModal',
-            'paddingRightModal',
-            'paddingBottomModal',
-            'paddingLeftModal',
-            'padding',
-            'paddingTop',
-            'paddingRight',
-            'paddingBottom',
-            'paddingLeft',
-            'margin',
-            'marginTop',
-            'marginRight',
-            'marginBottom',
-            'marginLeft',
-			'position',
-			'justifyContent'
-		],
+		props: ['toggleIcon', 'closeIcon', 'caretIcon', 'caretSize', 'toggleSize', 'justifyToggle', 'alignToggle', 'iconsReverse', 'childrenIconSize', 'gap', 'childrenGap', 'orientation', 'direction', 'drop', 'breakpointCap', 'forceOpen', 'fontWeight', 'verticalLeftIndent', 'verticalRightIndent', 'color', 'backgroundColor', 'backgroundColorDrop', 'backgroundImage', 'border', 'borderColor', 'borderTopColor', 'borderRightColor', 'borderBottomColor', 'borderLeftColor', 'borderWidth', 'borderTopWidth', 'borderRightWidth', 'borderBottomWidth', 'borderLeftWidth', 'borderStyle', 'borderTopStyle', 'borderRightStyle', 'borderBottomStyle', 'borderLeftStyle', 'borderRadius', 'borderTopLeftRadius', 'borderTopRightRadius', 'borderBottomRightRadius', 'borderBottomLeftRadius', 'translateXToggle', 'translateYToggle', 'paddingModal', 'paddingTopModal', 'paddingRightModal', 'paddingBottomModal', 'paddingLeftModal', 'padding', 'paddingTop', 'paddingRight', 'paddingBottom', 'paddingLeft', 'margin', 'marginTop', 'marginRight', 'marginBottom', 'marginLeft', 'position', 'justifyContent'],
 		components: {
 			Placeholder,
 			Box
@@ -166,7 +102,7 @@
 		data: () => ({
 			open: false,
 			hover: false,
-			windowWidth: typeof window !== 'undefined' ? window.innerWidth : typeof global !== 'undefined' ? global.windowWidth : 1280,
+			windowWidth: typeof window !== 'undefined' ? window.innerWidth : typeof global !== 'undefined' ? global.windowWidth || 1280 : 1280,
 			colorSchemeMediaQuery: null,
 			darkmode: false,
 			transition: false,
@@ -216,7 +152,7 @@
 				const props = ['fontWeight', 'gap', 'color', 'backgroundColor', 'backgroundColorDrop', 'verticalLeftIndent', 'verticalRightIndent', 'backgroundImage', 'border', 'borderColor', 'borderTopColor', 'borderRightColor', 'borderBottomColor', 'borderLeftColor', 'borderWidth', 'borderTopWidth', 'borderRightWidth', 'borderBottomWidth', 'borderLeftWidth', 'borderStyle', 'borderTopStyle', 'borderRightStyle', 'borderBottomStyle', 'borderLeftStyle', 'borderRadius', 'borderTopLeftRadius', 'borderTopRightRadius', 'borderBottomRightRadius', 'borderBottomLeftRadius', 'padding', 'paddingTop', 'paddingRight', 'paddingBottom', 'paddingLeft', 'margin', 'marginTop', 'marginRight', 'marginBottom', 'marginLeft', 'position', 'justifyContent'];
 				for (const prop of props) {
 					if (['verticalLeftIndent', 'verticalRightIndent'].includes(prop)) {
-						obj[prop] = this[prop]
+						obj[prop] = this[prop];
 					} else if (prop === 'gap' && this['childrenGap']) {
 						try {
 							obj[prop] = JSON.parse(this['childrenGap'].replaceAll('`', '"'));
@@ -294,14 +230,9 @@
 				return style;
 			}
 		},
-		created() {
-			if (typeof window !== 'undefined') {
-				this.windowWidth = window.innerWidth;
-				document.cookie = `windowWidth=${window.innerWidth}; path=/; max-age=3600; SameSite=None`;
-			}
-		},
 		mounted() {
 			this.windowWidth = window.innerWidth;
+			document.cookie = `windowWidth=${window.innerWidth}; path=/; max-age=3600; SameSite=None`;
 			this.colorSchemeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
 			this.darkmode = window.matchMedia('(prefers-color-scheme: dark)')
 				.matches;
@@ -365,11 +296,11 @@
 		left: 0px;
 		right: 0px;
 		bottom: 0px;
-		padding: v-bind(paddingModal)!important;
-		padding-top: v-bind(paddingTopModal)!important;
-		padding-right: v-bind(paddingRightModal)!important;
-		padding-bottom: v-bind(paddingBottomModal)!important;
-		padding-left: v-bind(paddingLeftModal)!important;
+		padding: v-bind(paddingModal) !important;
+		padding-top: v-bind(paddingTopModal) !important;
+		padding-right: v-bind(paddingRightModal) !important;
+		padding-bottom: v-bind(paddingBottomModal) !important;
+		padding-left: v-bind(paddingLeftModal) !important;
 		height: 100vh !important;
 		overflow-x: hidden !important;
 		z-index: 100 !important;
