@@ -1,7 +1,7 @@
 <template>
 	<Teleport
 		to="body"
-		:disabled="!isClient || (!open && !forceOpen) || !small"
+		:disabled="!mounted || (!open && !forceOpen) || !small"
 	>
 		<Navigator
 			v-bind="$attrs"
@@ -76,6 +76,77 @@
 			</slot>
 		</Navigator>
 	</Teleport>
+	<Navigator
+		v-if="!mounted"
+		v-bind="$attrs"
+		:toggleIcon="toggleIcon"
+		:closeIcon="closeIcon"
+		:caretIcon="caretIcon"
+		:caretSize="caretSize"
+		:toggleSize="toggleSize"
+		:justifyToggle="justifyToggle"
+		:alignToggle="alignToggle"
+		:iconsReverse="iconsReverse"
+		:childrenIconSize="childrenIconSize"
+		:gap="gap"
+		:childrenGap="childrenGap"
+		:orientation="orientation"
+		:direction="direction"
+		:drop="drop"
+		:breakpointCap="breakpointCap"
+		:forceOpen="forceOpen"
+		:fontWeight="fontWeight"
+		:color="color"
+		:backgroundColor="backgroundColor"
+		:backgroundColorDrop="backgroundColorDrop"
+		:backgroundImage="backgroundImage"
+		:border="border"
+		:borderColor="borderColor"
+		:borderTopColor="borderTopColor"
+		:borderRightColor="borderRightColor"
+		:borderBottomColor="borderBottomColor"
+		:borderLeftColor="borderLeftColor"
+		:borderWidth="borderWidth"
+		:borderTopWidth="borderTopWidth"
+		:borderRightWidth="borderRightWidth"
+		:borderBottomWidth="borderBottomWidth"
+		:borderLeftWidth="borderLeftWidth"
+		:borderStyle="borderStyle"
+		:borderTopStyle="borderTopStyle"
+		:borderRightStyle="borderRightStyle"
+		:borderBottomStyle="borderBottomStyle"
+		:borderLeftStyle="borderLeftStyle"
+		:borderRadius="borderRadius"
+		:borderTopLeftRadius="borderTopLeftRadius"
+		:borderTopRightRadius="borderTopRightRadius"
+		:borderBottomRightRadius="borderBottomRightRadius"
+		:borderBottomLeftRadius="borderBottomLeftRadius"
+		:paddingModal="paddingModal"
+		:paddingTopModal="paddingTopModal"
+		:paddingRightModal="paddingRightModal"
+		:paddingBottomModal="paddingBottomModal"
+		:paddingLeftModal="paddingLeftModal"
+		:padding="padding"
+		:paddingTop="paddingTop"
+		:paddingRight="paddingRight"
+		:paddingBottom="paddingBottom"
+		:paddingLeft="paddingLeft"
+		:margin="margin"
+		:marginTop="marginTop"
+		:marginRight="marginRight"
+		:marginBottom="marginBottom"
+		:marginLeft="marginLeft"
+		:justifyContent="justifyContent"
+		:position="position"
+		:verticalLeftIndent="verticalLeftIndent"
+		:verticalRightIndent="verticalRightIndent"
+		@open="open = $event"
+		@small="small = $event"
+	>
+		<slot>
+			<Placeholder />
+		</slot>
+	</Navigator>
 </template>
 <script>
 	import Navigator from '@/components/Navigator.vue';
@@ -964,11 +1035,6 @@
 			small: false,
 			mounted: false
 		}),
-		computed: {
-			isClient() {
-				return typeof window !== 'undefined' ? true : false;
-			}
-		},
 		mounted() {
 			this.mounted = true;
 		}
