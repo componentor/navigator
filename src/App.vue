@@ -6,6 +6,7 @@
 	>
 		<Navigator
 			v-bind="$attrs"
+			:title="title + ' mounted'"
 			:toggleIcon="toggleIcon"
 			:closeIcon="closeIcon"
 			:caretIcon="caretIcon"
@@ -80,7 +81,7 @@
 	<Navigator
 		v-else-if="!mounted"
 		v-bind="$attrs"
-		:title="title"
+		:title="title + ' not mounted'"
 		:toggleIcon="toggleIcon"
 		:closeIcon="closeIcon"
 		:caretIcon="caretIcon"
@@ -1041,6 +1042,7 @@
 			mounted: false
 		}),
 		mounted() {
+			console.log('nav loaded', this.title);
 			this.mounted = true;
 		}
 	};
