@@ -145,6 +145,9 @@
 				}
 			},
 			small() {
+				console.log('small ?', this.windowWidth <= Number(this.breakpointCap || 0))
+				console.log('this.windowWidth', this.windowWidth, typeof this.windowWidth)
+				console.log('this.breakpointCap', this.breakpointCap, typeof this.breakpointCap)
 				return this.windowWidth <= Number(this.breakpointCap || 0);
 			},
 			model() {
