@@ -80,6 +80,7 @@
 	<Navigator
 		v-else-if="!mounted"
 		v-bind="$attrs"
+		:title="title"
 		:toggleIcon="toggleIcon"
 		:closeIcon="closeIcon"
 		:caretIcon="caretIcon"
@@ -158,6 +159,9 @@
 			Placeholder
 		},
 		props: {
+			title: {
+				type: String
+			},
 			toggleIcon: {
 				type: String,
 				control: 'media',
