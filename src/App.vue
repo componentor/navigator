@@ -1,7 +1,7 @@
 <template>
 	<Teleport
-		to="body"
-		:disabled="!isClient || (!open && !forceOpen) || !small"
+		:to="isClient ? 'body' : null"
+		:disabled="(!open && !forceOpen) || !small"
 	>
 		<Navigator
 			v-bind="$attrs"
