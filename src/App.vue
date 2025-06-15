@@ -1,6 +1,7 @@
 <template>
-	<Teleport
-		:to="isClient ? 'body' : null"
+	<component
+		:is="isClient ? 'Teleport' : 'template'"
+		:to="'body'"
 		:disabled="(!open && !forceOpen) || !small"
 	>
 		<Navigator
@@ -75,7 +76,7 @@
 				<Placeholder />
 			</slot>
 		</Navigator>
-	</Teleport>
+	</component>
 </template>
 <script>
 	import Navigator from '@/components/Navigator.vue';
