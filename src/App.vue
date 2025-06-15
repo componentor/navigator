@@ -1,10 +1,87 @@
-<component
-	:is="isClient ? 'Teleport' : 'template'"
-	:to="'body'"
-	:disabled="(!open && !forceOpen) || !small"
->
+<template v-if="isClient">
+	<Teleport
+		to="body"
+		:disabled="(!open && !forceOpen) || !small"
+	>
+		<Navigator
+			v-bind="$attrs"
+			:title="title + ' mounted'"
+			:toggleIcon="toggleIcon"
+			:closeIcon="closeIcon"
+			:caretIcon="caretIcon"
+			:caretSize="caretSize"
+			:toggleSize="toggleSize"
+			:justifyToggle="justifyToggle"
+			:alignToggle="alignToggle"
+			:iconsReverse="iconsReverse"
+			:childrenIconSize="childrenIconSize"
+			:gap="gap"
+			:childrenGap="childrenGap"
+			:orientation="orientation"
+			:direction="direction"
+			:drop="drop"
+			:breakpointCap="breakpointCap"
+			:forceOpen="forceOpen"
+			:fontWeight="fontWeight"
+			:color="color"
+			:backgroundColor="small && (open || forceOpen) ? backgroundColorModal : backgroundColor"
+			:backgroundColorDrop="backgroundColorDrop"
+			:backgroundImage="backgroundImage"
+			:border="border"
+			:borderColor="borderColor"
+			:borderTopColor="borderTopColor"
+			:borderRightColor="borderRightColor"
+			:borderBottomColor="borderBottomColor"
+			:borderLeftColor="borderLeftColor"
+			:borderWidth="borderWidth"
+			:borderTopWidth="borderTopWidth"
+			:borderRightWidth="borderRightWidth"
+			:borderBottomWidth="borderBottomWidth"
+			:borderLeftWidth="borderLeftWidth"
+			:borderStyle="borderStyle"
+			:borderTopStyle="borderTopStyle"
+			:borderRightStyle="borderRightStyle"
+			:borderBottomStyle="borderBottomStyle"
+			:borderLeftStyle="borderLeftStyle"
+			:borderRadius="borderRadius"
+			:borderTopLeftRadius="borderTopLeftRadius"
+			:borderTopRightRadius="borderTopRightRadius"
+			:borderBottomRightRadius="borderBottomRightRadius"
+			:borderBottomLeftRadius="borderBottomLeftRadius"
+			:translateXToggle="small && (open || forceOpen) ? translateXToggle : ''"
+			:translateYToggle="small && (open || forceOpen) ? translateYToggle : ''"
+			:paddingModal="paddingModal"
+			:paddingTopModal="paddingTopModal"
+			:paddingRightModal="paddingRightModal"
+			:paddingBottomModal="paddingBottomModal"
+			:paddingLeftModal="paddingLeftModal"
+			:padding="padding"
+			:paddingTop="paddingTop"
+			:paddingRight="paddingRight"
+			:paddingBottom="paddingBottom"
+			:paddingLeft="paddingLeft"
+			:margin="margin"
+			:marginTop="marginTop"
+			:marginRight="marginRight"
+			:marginBottom="marginBottom"
+			:marginLeft="marginLeft"
+			:justifyContent="justifyContent"
+			:position="position"
+			:verticalLeftIndent="verticalLeftIndent"
+			:verticalRightIndent="verticalRightIndent"
+			@open="open = $event"
+			@small="small = $event"
+		>
+			<slot>
+				<Placeholder />
+			</slot>
+		</Navigator>
+	</Teleport>
+</template>
+<template v-else-if="!isClient">
 	<Navigator
 		v-bind="$attrs"
+		:title="title + ' not mounted'"
 		:toggleIcon="toggleIcon"
 		:closeIcon="closeIcon"
 		:caretIcon="caretIcon"
@@ -23,7 +100,7 @@
 		:forceOpen="forceOpen"
 		:fontWeight="fontWeight"
 		:color="color"
-		:backgroundColor="small && (open || forceOpen) ? backgroundColorModal : backgroundColor"
+		:backgroundColor="backgroundColor"
 		:backgroundColorDrop="backgroundColorDrop"
 		:backgroundImage="backgroundImage"
 		:border="border"
@@ -47,8 +124,6 @@
 		:borderTopRightRadius="borderTopRightRadius"
 		:borderBottomRightRadius="borderBottomRightRadius"
 		:borderBottomLeftRadius="borderBottomLeftRadius"
-		:translateXToggle="small && (open || forceOpen) ? translateXToggle : ''"
-		:translateYToggle="small && (open || forceOpen) ? translateYToggle : ''"
 		:paddingModal="paddingModal"
 		:paddingTopModal="paddingTopModal"
 		:paddingRightModal="paddingRightModal"
@@ -75,7 +150,7 @@
 			<Placeholder />
 		</slot>
 	</Navigator>
-</component>
+</template>
 <script>
 	import Navigator from '@/components/Navigator.vue';
 	import Placeholder from '@/components/Placeholder.vue';
@@ -85,6 +160,9 @@
 			Placeholder
 		},
 		props: {
+			title: {
+				type: String
+			},
 			toggleIcon: {
 				type: String,
 				control: 'media',
@@ -969,6 +1047,7 @@
 			}
 		},
 		mounted() {
+			console.log('nav loaded', this.title);
 			this.mounted = true;
 		}
 	};
