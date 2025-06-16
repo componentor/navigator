@@ -7,6 +7,7 @@
 			<Navigator
 				v-bind="$attrs"
 				:title="title + ' mounted'"
+				:initSmall="smallSSR"
 				:toggleIcon="toggleIcon"
 				:closeIcon="closeIcon"
 				:caretIcon="caretIcon"
@@ -83,7 +84,7 @@
 		<Navigator
 			v-bind="$attrs"
 			:title="title + ' not mounted'"
-			:forceSmall="smallSSR"
+			:initSmall="smallSSR"
 			:toggleIcon="toggleIcon"
 			:closeIcon="closeIcon"
 			:caretIcon="caretIcon"
