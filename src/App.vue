@@ -1,5 +1,5 @@
 <template>
-	<template v-if="isClient">
+	<template v-if="isClient && mounted">
 		<Teleport
 			to="body"
 			:disabled="(!open && !forceOpen) || !small"
@@ -78,7 +78,7 @@
 			</Navigator>
 		</Teleport>
 	</template>
-	<template v-else-if="!isClient">
+	<template v-else-if="!isClient || !mounted">
 		<Navigator
 			v-bind="$attrs"
 			:toggleIcon="toggleIcon"
