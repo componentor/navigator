@@ -44,7 +44,7 @@
 			}"
 			:reverse="(((orientation === 'Row' && !small) && direction === 'left') || ((orientation === 'Column' || small) && drop === 'up')) ? '{`default`:{`xs`:{`light`:true}}}' : ''"
 			:style="{
-				backgroundColor: backgroundColorModal || style?.backgroundColor,
+				backgroundColor: style?.backgroundColorModal || style?.backgroundColor,
 				justifyContent: !open && !forceOpen && small && style?.justifyToggle ? style?.justifyToggle : null,
 				alignItems: !open && !forceOpen && small && style?.alignToggle ? style?.alignToggle : null,
 				gap: !small ? style?.gap : null
@@ -204,7 +204,7 @@
 			style() {
 				const scope = this
 				const style = {};
-				const props = ['toggleIcon', 'closeIcon', 'caretIcon', 'justifyToggle', 'alignToggle', 'gap', 'backgroundColor'];
+				const props = ['toggleIcon', 'closeIcon', 'caretIcon', 'justifyToggle', 'alignToggle', 'gap', 'backgroundColor', 'backgroundColorModal'];
 				const groups = ['default', 'hover'];
 				const breakpoints = ['xs', 'sm', 'md', 'lg', 'xl', '2xl'];
 				const themes = ['light', 'dark'];
