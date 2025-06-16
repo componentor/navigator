@@ -4,14 +4,14 @@
 		:column="(small || orientation === 'Column') ? '{`default`:{`xs`:{`light`:true}}}' : ''"
 		:class="{
             'vp-navigator--small': small,
-            'vp-navigator--open': open || forceOpen,
+            'vp-navigator--open': open || forceOpen || modal,
             'vp-navigator--transition': transition,
         }"
 		:reverse="(((orientation === 'Row' && !small) && direction === 'left') || ((orientation === 'Column' || small) && drop === 'up')) ? '{`default`:{`xs`:{`light`:true}}}' : ''"
 		:style="{
             backgroundColor: style?.backgroundColor,
-            justifyContent: !open && !forceOpen && small && style?.justifyToggle ? style?.justifyToggle : null,
-            alignItems: !open && !forceOpen && small && style?.alignToggle ? style?.alignToggle : null,
+            justifyContent: !open && !forceOpen && !modal && small && style?.justifyToggle ? style?.justifyToggle : null,
+            alignItems: !open && !forceOpen && !modal && small && style?.alignToggle ? style?.alignToggle : null,
             gap: !small ? style?.gap : null
         }"
 		class="vp-navigator"
@@ -23,12 +23,12 @@
 			@click="open=!open"
 			:style="{
 				'transform': 'translate(' + (translateXToggle || 0) + ', ' + (translateYToggle || 0) + ')',
-				'background-image': open || forceOpen ? $closeIcon : $toggleIcon,
+				'background-image': open || forceOpen || modal ? $closeIcon : $toggleIcon,
 				'width': toggleSize,
-				'z-index': open || forceOpen ? 10 : null
+				'z-index': open || forceOpen || modal ? 10 : null
 			}"
 			class="vp-toggle"
-		/> <template v-if="!small || open || forceOpen">
+		/> <template v-if="!small || open || forceOpen || modal">
 			<slot>
 				<Placeholder />
 			</slot>
