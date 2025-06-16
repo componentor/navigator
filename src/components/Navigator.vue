@@ -1,6 +1,5 @@
 <template>
 	<Box
-		ref="nav"
 		:column="(small || orientation === 'Column') ? '{`default`:{`xs`:{`light`:true}}}' : ''"
 		:class="{
             'vp-navigator--small': small,
@@ -34,6 +33,43 @@
 			</slot>
 		</template>
 	</Box>
+	<Teleport v-if="small && (open || forceOpen)" to="body">
+		<Box
+			ref="nav"
+			:column="(small || orientation === 'Column') ? '{`default`:{`xs`:{`light`:true}}}' : ''"
+			:class="{
+				'vp-navigator--small': small,
+				'vp-navigator--open': open || forceOpen,
+				'vp-navigator--transition': transition,
+			}"
+			:reverse="(((orientation === 'Row' && !small) && direction === 'left') || ((orientation === 'Column' || small) && drop === 'up')) ? '{`default`:{`xs`:{`light`:true}}}' : ''"
+			:style="{
+				backgroundColor: style?.backgroundColor,
+				justifyContent: !open && !forceOpen && small && style?.justifyToggle ? style?.justifyToggle : null,
+				alignItems: !open && !forceOpen && small && style?.alignToggle ? style?.alignToggle : null,
+				gap: !small ? style?.gap : null
+			}"
+			class="vp-navigator"
+			@pointerover="hover=true"
+			@pointerleave="hover=false"
+		>
+			<div
+				v-if="small"
+				@click="toggleOpen"
+				:style="{
+					'transform': 'translate(' + (translateXToggle || 0) + ', ' + (translateYToggle || 0) + ')',
+					'background-image': open || forceOpen ? $closeIcon : $toggleIcon,
+					'width': toggleSize,
+					'z-index': open || forceOpen ? 10 : null
+				}"
+				class="vp-toggle"
+			/> <template v-if="!small || open || forceOpen">
+				<slot>
+					<Placeholder />
+				</slot>
+			</template>
+		</Box>
+	</Teleport>
 </template>
 <script>
 	import {
