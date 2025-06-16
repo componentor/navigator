@@ -1,11 +1,12 @@
-<template>
-	<template v-if="isClient">
+<template data-allow-mismatch="">
+	<template v-if="isClient" data-allow-mismatch="">
 		<Teleport
 			to="body"
 			:disabled="(!open && !forceOpen) || !small"
 			data-allow-mismatch=""
 		>
 			<Navigator
+				data-allow-mismatch=""
 				v-bind="$attrs"
 				:toggleIcon="toggleIcon"
 				:closeIcon="closeIcon"
