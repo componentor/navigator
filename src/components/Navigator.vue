@@ -33,7 +33,7 @@
 			</slot>
 		</template>
 	</Box>
-	<Teleport v-if="small && (open || forceOpen)" to="body">
+	<Teleport v-if="isMounted && small && (open || forceOpen)" to="body">
 		<Box
 			ref="nav"
 			:column="(small || orientation === 'Column') ? '{`default`:{`xs`:{`light`:true}}}' : ''"
@@ -124,10 +124,9 @@
 				} else {
 					this.transition = false;
 				}
-				this.$emit('open', open);
 			},
-			small(small) {
-				this.$emit('small', small);
+			'$router'() {
+				this.open = false
 			}
 		},
 		props: ['toggleIcon', 'closeIcon', 'caretIcon', 'caretSize', 'toggleSize', 'justifyToggle', 'alignToggle', 'iconsReverse', 'childrenIconSize', 'gap', 'childrenGap', 'orientation', 'direction', 'drop', 'breakpointCap', 'forceOpen', 'fontWeight', 'verticalLeftIndent', 'verticalRightIndent', 'color', 'backgroundColor', 'backgroundColorModal', 'backgroundColorDrop', 'backgroundImage', 'border', 'borderColor', 'borderTopColor', 'borderRightColor', 'borderBottomColor', 'borderLeftColor', 'borderWidth', 'borderTopWidth', 'borderRightWidth', 'borderBottomWidth', 'borderLeftWidth', 'borderStyle', 'borderTopStyle', 'borderRightStyle', 'borderBottomStyle', 'borderLeftStyle', 'borderRadius', 'borderTopLeftRadius', 'borderTopRightRadius', 'borderBottomRightRadius', 'borderBottomLeftRadius', 'translateXToggle', 'translateYToggle', 'paddingModal', 'paddingTopModal', 'paddingRightModal', 'paddingBottomModal', 'paddingLeftModal', 'padding', 'paddingTop', 'paddingRight', 'paddingBottom', 'paddingLeft', 'margin', 'marginTop', 'marginRight', 'marginBottom', 'marginLeft', 'position', 'justifyContent'],
@@ -143,7 +142,8 @@
 			darkmode: false,
 			transition: false,
 			path: '',
-			pathId: ''
+			pathId: '',
+			isMounted: false
 		}),
 		computed: {
 			themeComputed() {
@@ -268,6 +268,7 @@
 			}
 		},
 		mounted() {
+			this.isMounted = true
 			this.windowWidth = window.innerWidth;
 			document.cookie = `windowWidth=${window.innerWidth}; path=/; max-age=3600; Secure; SameSite=None`;
 			this.colorSchemeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
