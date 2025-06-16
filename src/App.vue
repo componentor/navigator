@@ -6,8 +6,6 @@
 		>
 			<Navigator
 				v-bind="$attrs"
-				:title="title + ' mounted'"
-				:initSmall="smallSSR"
 				:toggleIcon="toggleIcon"
 				:closeIcon="closeIcon"
 				:caretIcon="caretIcon"
@@ -83,8 +81,6 @@
 	<template v-else-if="!isClient">
 		<Navigator
 			v-bind="$attrs"
-			:title="title + ' not mounted'"
-			:initSmall="smallSSR"
 			:toggleIcon="toggleIcon"
 			:closeIcon="closeIcon"
 			:caretIcon="caretIcon"
@@ -1048,14 +1044,9 @@
 		computed: {
 			isClient() {
 				return typeof window !== 'undefined' ? true : false;
-			},
-			smallSSR() {
-				const windowWidth = typeof global !== 'undefined' ? (global?.windowWidth || 1280) : 1280
-				return !this.isClient && windowWidth <= Number(this.breakpointCap || 0);
 			}
 		},
 		mounted() {
-			console.log('nav loaded', this.title, this.breakpointCap, typeof this.breakpointCap);
 			this.mounted = true;
 		}
 	};

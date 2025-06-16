@@ -94,7 +94,7 @@
 				this.$emit('small', small);
 			}
 		},
-		props: ['initSmall', 'initWidth', 'title', 'toggleIcon', 'closeIcon', 'caretIcon', 'caretSize', 'toggleSize', 'justifyToggle', 'alignToggle', 'iconsReverse', 'childrenIconSize', 'gap', 'childrenGap', 'orientation', 'direction', 'drop', 'breakpointCap', 'forceOpen', 'fontWeight', 'verticalLeftIndent', 'verticalRightIndent', 'color', 'backgroundColor', 'backgroundColorDrop', 'backgroundImage', 'border', 'borderColor', 'borderTopColor', 'borderRightColor', 'borderBottomColor', 'borderLeftColor', 'borderWidth', 'borderTopWidth', 'borderRightWidth', 'borderBottomWidth', 'borderLeftWidth', 'borderStyle', 'borderTopStyle', 'borderRightStyle', 'borderBottomStyle', 'borderLeftStyle', 'borderRadius', 'borderTopLeftRadius', 'borderTopRightRadius', 'borderBottomRightRadius', 'borderBottomLeftRadius', 'translateXToggle', 'translateYToggle', 'paddingModal', 'paddingTopModal', 'paddingRightModal', 'paddingBottomModal', 'paddingLeftModal', 'padding', 'paddingTop', 'paddingRight', 'paddingBottom', 'paddingLeft', 'margin', 'marginTop', 'marginRight', 'marginBottom', 'marginLeft', 'position', 'justifyContent'],
+		props: ['title', 'toggleIcon', 'closeIcon', 'caretIcon', 'caretSize', 'toggleSize', 'justifyToggle', 'alignToggle', 'iconsReverse', 'childrenIconSize', 'gap', 'childrenGap', 'orientation', 'direction', 'drop', 'breakpointCap', 'forceOpen', 'fontWeight', 'verticalLeftIndent', 'verticalRightIndent', 'color', 'backgroundColor', 'backgroundColorDrop', 'backgroundImage', 'border', 'borderColor', 'borderTopColor', 'borderRightColor', 'borderBottomColor', 'borderLeftColor', 'borderWidth', 'borderTopWidth', 'borderRightWidth', 'borderBottomWidth', 'borderLeftWidth', 'borderStyle', 'borderTopStyle', 'borderRightStyle', 'borderBottomStyle', 'borderLeftStyle', 'borderRadius', 'borderTopLeftRadius', 'borderTopRightRadius', 'borderBottomRightRadius', 'borderBottomLeftRadius', 'translateXToggle', 'translateYToggle', 'paddingModal', 'paddingTopModal', 'paddingRightModal', 'paddingBottomModal', 'paddingLeftModal', 'padding', 'paddingTop', 'paddingRight', 'paddingBottom', 'paddingLeft', 'margin', 'marginTop', 'marginRight', 'marginBottom', 'marginLeft', 'position', 'justifyContent'],
 		components: {
 			Placeholder,
 			Box
@@ -107,8 +107,7 @@
 			darkmode: false,
 			transition: false,
 			path: '',
-			pathId: '',
-			mounted: false
+			pathId: ''
 		}),
 		computed: {
 			themeComputed() {
@@ -146,12 +145,7 @@
 				}
 			},
 			small() {
-				console.log('title', this.title)
-				console.log('initSmall', this.initSmall)
-				console.log('small ?', this.windowWidth <= Number(this.breakpointCap || 0))
-				console.log('this.windowWidth', this.windowWidth, typeof this.windowWidth)
-				console.log('this.breakpointCap', this.breakpointCap, typeof this.breakpointCap)
-				return (!this.mounted && this.initSmall) || this.windowWidth <= Number(this.breakpointCap || 0);
+				return this.windowWidth <= Number(this.breakpointCap || 0);
 			},
 			model() {
 				const obj = {};
@@ -238,7 +232,6 @@
 			}
 		},
 		mounted() {
-			this.mounted = true
 			this.windowWidth = window.innerWidth;
 			document.cookie = `windowWidth=${window.innerWidth}; path=/; max-age=3600; Secure; SameSite=None`;
 			this.colorSchemeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
