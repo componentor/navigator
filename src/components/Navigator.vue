@@ -125,7 +125,7 @@
 					this.transition = false;
 				}
 			},
-			'$router'() {
+			'$route'() {
 				this.open = false
 			}
 		},
