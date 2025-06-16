@@ -20,7 +20,7 @@
 	>
 		<div
 			v-if="small"
-			@click="toggleOpen"
+			@click.stop="toggleOpen"
 			:style="{
 				'transform': 'translate(' + (translateXToggle || 0) + ', ' + (translateYToggle || 0) + ')',
 				'background-image': open || forceOpen ? $closeIcon : $toggleIcon,
@@ -56,7 +56,7 @@
 		>
 			<div
 				v-if="small"
-				@click="toggleOpen"
+				@click.stop="toggleOpen"
 				:style="{
 					'transform': 'translate(' + (translateXToggle || 0) + ', ' + (translateYToggle || 0) + ')',
 					'background-image': open || forceOpen ? $closeIcon : $toggleIcon,
@@ -286,7 +286,6 @@
 		methods: {
 			toggleOpen() {
 				this.open = !this.open
-				console.log('open is', this.open)
 			},
 			renderProperty(prop) {
 				return prop;
@@ -299,9 +298,7 @@
 				this.open = false;
 			},
 			handleClickOutside(event) {
-				console.log('click outside')
 				if (this.open && this.$refs.nav && !this.$refs.nav.$el.contains(event.target)) {
-					console.log('closing')
 					this.open = false;
 				}
 			}
