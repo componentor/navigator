@@ -286,6 +286,7 @@
 		methods: {
 			toggleOpen() {
 				this.open = !this.open
+				console.log('open is', this.open)
 			},
 			renderProperty(prop) {
 				return prop;
@@ -298,7 +299,9 @@
 				this.open = false;
 			},
 			handleClickOutside(event) {
+				console.log('click outside')
 				if (this.open && this.$refs.nav && !this.$refs.nav.$el.contains(event.target)) {
+					console.log('closing')
 					this.open = false;
 				}
 			}
