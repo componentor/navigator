@@ -83,6 +83,7 @@
 		<Navigator
 			v-bind="$attrs"
 			:title="title + ' not mounted'"
+			:forceSmall="smallSSR"
 			:toggleIcon="toggleIcon"
 			:closeIcon="closeIcon"
 			:caretIcon="caretIcon"
@@ -1046,6 +1047,10 @@
 		computed: {
 			isClient() {
 				return typeof window !== 'undefined' ? true : false;
+			},
+			smallSSR() {
+				const windowWidth = typeof global !== 'undefined' ? (global?.windowWidth || 1280) : 1280
+				return !this.isClient && windowWidth <= Number(this.breakpointCap || 0);
 			}
 		},
 		mounted() {
