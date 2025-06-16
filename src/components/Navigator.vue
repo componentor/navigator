@@ -20,7 +20,7 @@
 	>
 		<div
 			v-if="small"
-			@click="open=!open"
+			@click="toggleOpen"
 			:style="{
 				'transform': 'translate(' + (translateXToggle || 0) + ', ' + (translateYToggle || 0) + ')',
 				'background-image': open || forceOpen || modal ? $closeIcon : $toggleIcon,
@@ -109,9 +109,6 @@
 			path: '',
 			pathId: ''
 		}),
-		created() {
-			if (this.modal) this.open = true
-		},
 		computed: {
 			themeComputed() {
 				if (this.theme) return this.theme;
@@ -250,6 +247,10 @@
 			window.removeEventListener('resize', this.handleResize);
 		},
 		methods: {
+			toggleOpen() {
+				if (this.modal) return $emit('open', false)
+				this.open = !this.open
+			},
 			renderProperty(prop) {
 				return prop;
 			},
@@ -257,10 +258,12 @@
 				this.darkmode = event.matches;
 			},
 			handleResize() {
+				if (this.modal) return this.$emit('open', false)
 				this.windowWidth = window.innerWidth;
 				this.open = false;
 			},
 			handleClickOutside(event) {
+				if (this.modal) return this.$emit('open', false)
 				if (this.open && this.$refs.nav && !this.$refs.nav.$el.contains(event.target)) {
 					this.open = false;
 				}
