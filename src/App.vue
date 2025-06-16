@@ -1,8 +1,9 @@
 <template>
-	<template v-if="isClient && mounted">
+	<template v-if="isClient">
 		<Teleport
 			to="body"
 			:disabled="(!open && !forceOpen) || !small"
+			data-allow-mismatch=""
 		>
 			<Navigator
 				v-bind="$attrs"
@@ -78,8 +79,9 @@
 			</Navigator>
 		</Teleport>
 	</template>
-	<template v-else-if="!isClient || !mounted">
+	<template v-else-if="!isClient">
 		<Navigator
+			data-allow-mismatch=""
 			v-bind="$attrs"
 			:toggleIcon="toggleIcon"
 			:closeIcon="closeIcon"
@@ -1038,16 +1040,12 @@
 		},
 		data: () => ({
 			open: false,
-			small: false,
-			mounted: false
+			small: false
 		}),
 		computed: {
 			isClient() {
 				return typeof window !== 'undefined' ? true : false;
 			}
-		},
-		mounted() {
-			this.mounted = true;
 		}
 	};
 
