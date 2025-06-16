@@ -1,84 +1,85 @@
 <template>
-	<Navigator
-		v-if="!shouldTeleport"
-		v-bind="$attrs"
-		@open="open = $event"
-		@small="small = $event"
-		:toggleIcon="toggleIcon"
-		:closeIcon="closeIcon"
-		:caretIcon="caretIcon"
-		:caretSize="caretSize"
-		:toggleSize="toggleSize"
-		:justifyToggle="justifyToggle"
-		:alignToggle="alignToggle"
-		:iconsReverse="iconsReverse"
-		:childrenIconSize="childrenIconSize"
-		:gap="gap"
-		:childrenGap="childrenGap"
-		:orientation="orientation"
-		:direction="direction"
-		:drop="drop"
-		:breakpointCap="breakpointCap"
-		:forceOpen="forceOpen"
-		:fontWeight="fontWeight"
-		:color="color"
-		:backgroundColor="backgroundColor"
-		:backgroundColorDrop="backgroundColorDrop"
-		:backgroundImage="backgroundImage"
-		:border="border"
-		:borderColor="borderColor"
-		:borderTopColor="borderTopColor"
-		:borderRightColor="borderRightColor"
-		:borderBottomColor="borderBottomColor"
-		:borderLeftColor="borderLeftColor"
-		:borderWidth="borderWidth"
-		:borderTopWidth="borderTopWidth"
-		:borderRightWidth="borderRightWidth"
-		:borderBottomWidth="borderBottomWidth"
-		:borderLeftWidth="borderLeftWidth"
-		:borderStyle="borderStyle"
-		:borderTopStyle="borderTopStyle"
-		:borderRightStyle="borderRightStyle"
-		:borderBottomStyle="borderBottomStyle"
-		:borderLeftStyle="borderLeftStyle"
-		:borderRadius="borderRadius"
-		:borderTopLeftRadius="borderTopLeftRadius"
-		:borderTopRightRadius="borderTopRightRadius"
-		:borderBottomRightRadius="borderBottomRightRadius"
-		:borderBottomLeftRadius="borderBottomLeftRadius"
-		:paddingModal="paddingModal"
-		:paddingTopModal="paddingTopModal"
-		:paddingRightModal="paddingRightModal"
-		:paddingBottomModal="paddingBottomModal"
-		:paddingLeftModal="paddingLeftModal"
-		:padding="padding"
-		:paddingTop="paddingTop"
-		:paddingRight="paddingRight"
-		:paddingBottom="paddingBottom"
-		:paddingLeft="paddingLeft"
-		:margin="margin"
-		:marginTop="marginTop"
-		:marginRight="marginRight"
-		:marginBottom="marginBottom"
-		:marginLeft="marginLeft"
-		:justifyContent="justifyContent"
-		:position="position"
-		:verticalLeftIndent="verticalLeftIndent"
-		:verticalRightIndent="verticalRightIndent"
-	>
-		<slot>
-			<Placeholder />
-		</slot>
-	</Navigator>
-	<Teleport
-		v-if="shouldTeleport"
-		to="body"
-	>
+	<template v-if="isClient">
+		<Teleport
+			to="body"
+			:disabled="(!open && !forceOpen) || !small"
+		>
+			<Navigator
+				v-bind="$attrs"
+				:toggleIcon="toggleIcon"
+				:closeIcon="closeIcon"
+				:caretIcon="caretIcon"
+				:caretSize="caretSize"
+				:toggleSize="toggleSize"
+				:justifyToggle="justifyToggle"
+				:alignToggle="alignToggle"
+				:iconsReverse="iconsReverse"
+				:childrenIconSize="childrenIconSize"
+				:gap="gap"
+				:childrenGap="childrenGap"
+				:orientation="orientation"
+				:direction="direction"
+				:drop="drop"
+				:breakpointCap="breakpointCap"
+				:forceOpen="forceOpen"
+				:fontWeight="fontWeight"
+				:color="color"
+				:backgroundColor="small && (open || forceOpen) ? backgroundColorModal : backgroundColor"
+				:backgroundColorDrop="backgroundColorDrop"
+				:backgroundImage="backgroundImage"
+				:border="border"
+				:borderColor="borderColor"
+				:borderTopColor="borderTopColor"
+				:borderRightColor="borderRightColor"
+				:borderBottomColor="borderBottomColor"
+				:borderLeftColor="borderLeftColor"
+				:borderWidth="borderWidth"
+				:borderTopWidth="borderTopWidth"
+				:borderRightWidth="borderRightWidth"
+				:borderBottomWidth="borderBottomWidth"
+				:borderLeftWidth="borderLeftWidth"
+				:borderStyle="borderStyle"
+				:borderTopStyle="borderTopStyle"
+				:borderRightStyle="borderRightStyle"
+				:borderBottomStyle="borderBottomStyle"
+				:borderLeftStyle="borderLeftStyle"
+				:borderRadius="borderRadius"
+				:borderTopLeftRadius="borderTopLeftRadius"
+				:borderTopRightRadius="borderTopRightRadius"
+				:borderBottomRightRadius="borderBottomRightRadius"
+				:borderBottomLeftRadius="borderBottomLeftRadius"
+				:translateXToggle="small && (open || forceOpen) ? translateXToggle : ''"
+				:translateYToggle="small && (open || forceOpen) ? translateYToggle : ''"
+				:paddingModal="paddingModal"
+				:paddingTopModal="paddingTopModal"
+				:paddingRightModal="paddingRightModal"
+				:paddingBottomModal="paddingBottomModal"
+				:paddingLeftModal="paddingLeftModal"
+				:padding="padding"
+				:paddingTop="paddingTop"
+				:paddingRight="paddingRight"
+				:paddingBottom="paddingBottom"
+				:paddingLeft="paddingLeft"
+				:margin="margin"
+				:marginTop="marginTop"
+				:marginRight="marginRight"
+				:marginBottom="marginBottom"
+				:marginLeft="marginLeft"
+				:justifyContent="justifyContent"
+				:position="position"
+				:verticalLeftIndent="verticalLeftIndent"
+				:verticalRightIndent="verticalRightIndent"
+				@open="open = $event"
+				@small="small = $event"
+			>
+				<slot>
+					<Placeholder />
+				</slot>
+			</Navigator>
+		</Teleport>
+	</template> <template v-else-if="!isClient">
 		<Navigator
 			v-bind="$attrs"
-			@open="open = $event"
-			@small="small = $event"
-			:modal="true"
 			:toggleIcon="toggleIcon"
 			:closeIcon="closeIcon"
 			:caretIcon="caretIcon"
@@ -97,7 +98,7 @@
 			:forceOpen="forceOpen"
 			:fontWeight="fontWeight"
 			:color="color"
-			:backgroundColor="backgroundColorModal"
+			:backgroundColor="backgroundColor"
 			:backgroundColorDrop="backgroundColorDrop"
 			:backgroundImage="backgroundImage"
 			:border="border"
@@ -121,8 +122,6 @@
 			:borderTopRightRadius="borderTopRightRadius"
 			:borderBottomRightRadius="borderBottomRightRadius"
 			:borderBottomLeftRadius="borderBottomLeftRadius"
-			:translateXToggle="translateXToggle"
-			:translateYToggle="translateYToggle"
 			:paddingModal="paddingModal"
 			:paddingTopModal="paddingTopModal"
 			:paddingRightModal="paddingRightModal"
@@ -142,13 +141,14 @@
 			:position="position"
 			:verticalLeftIndent="verticalLeftIndent"
 			:verticalRightIndent="verticalRightIndent"
+			@open="open = $event"
+			@small="small = $event"
 		>
 			<slot>
 				<Placeholder />
 			</slot>
 		</Navigator>
-	</Teleport>
-</template>
+	</template> </template>
 <script>
 	import Navigator from '@/components/Navigator.vue';
 	import Placeholder from '@/components/Placeholder.vue';
@@ -1033,25 +1033,11 @@
 		},
 		data: () => ({
 			open: false,
-			small: false,
-			isMounted: false
+			small: false
 		}),
 		computed: {
 			isClient() {
 				return typeof window !== 'undefined' ? true : false;
-			},
-			shouldTeleport() {
-				return this.isMounted && ((this.open || this.forceOpen) && this.small);
-			}
-		},
-		mounted() {
-			this.isMounted = true;
-		},
-		watch: {
-			'$route'() {
-				if (this.open) {
-					this.open = false;
-				}
 			}
 		}
 	};

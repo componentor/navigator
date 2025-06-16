@@ -4,14 +4,14 @@
 		:column="(small || orientation === 'Column') ? '{`default`:{`xs`:{`light`:true}}}' : ''"
 		:class="{
             'vp-navigator--small': small,
-            'vp-navigator--open': open || forceOpen || modal,
+            'vp-navigator--open': open || forceOpen,
             'vp-navigator--transition': transition,
         }"
 		:reverse="(((orientation === 'Row' && !small) && direction === 'left') || ((orientation === 'Column' || small) && drop === 'up')) ? '{`default`:{`xs`:{`light`:true}}}' : ''"
 		:style="{
             backgroundColor: style?.backgroundColor,
-            justifyContent: !open && !forceOpen && !modal && small && style?.justifyToggle ? style?.justifyToggle : null,
-            alignItems: !open && !forceOpen && !modal && small && style?.alignToggle ? style?.alignToggle : null,
+            justifyContent: !open && !forceOpen && small && style?.justifyToggle ? style?.justifyToggle : null,
+            alignItems: !open && !forceOpen && small && style?.alignToggle ? style?.alignToggle : null,
             gap: !small ? style?.gap : null
         }"
 		class="vp-navigator"
@@ -23,12 +23,12 @@
 			@click="toggleOpen"
 			:style="{
 				'transform': 'translate(' + (translateXToggle || 0) + ', ' + (translateYToggle || 0) + ')',
-				'background-image': open || forceOpen || modal ? $closeIcon : $toggleIcon,
+				'background-image': open || forceOpen ? $closeIcon : $toggleIcon,
 				'width': toggleSize,
-				'z-index': open || forceOpen || modal ? 10 : null
+				'z-index': open || forceOpen ? 10 : null
 			}"
 			class="vp-toggle"
-		/> <template v-if="!small || open || forceOpen || modal">
+		/> <template v-if="!small || open || forceOpen">
 			<slot>
 				<Placeholder />
 			</slot>
@@ -94,7 +94,7 @@
 				this.$emit('small', small);
 			}
 		},
-		props: ['modal', 'toggleIcon', 'closeIcon', 'caretIcon', 'caretSize', 'toggleSize', 'justifyToggle', 'alignToggle', 'iconsReverse', 'childrenIconSize', 'gap', 'childrenGap', 'orientation', 'direction', 'drop', 'breakpointCap', 'forceOpen', 'fontWeight', 'verticalLeftIndent', 'verticalRightIndent', 'color', 'backgroundColor', 'backgroundColorDrop', 'backgroundImage', 'border', 'borderColor', 'borderTopColor', 'borderRightColor', 'borderBottomColor', 'borderLeftColor', 'borderWidth', 'borderTopWidth', 'borderRightWidth', 'borderBottomWidth', 'borderLeftWidth', 'borderStyle', 'borderTopStyle', 'borderRightStyle', 'borderBottomStyle', 'borderLeftStyle', 'borderRadius', 'borderTopLeftRadius', 'borderTopRightRadius', 'borderBottomRightRadius', 'borderBottomLeftRadius', 'translateXToggle', 'translateYToggle', 'paddingModal', 'paddingTopModal', 'paddingRightModal', 'paddingBottomModal', 'paddingLeftModal', 'padding', 'paddingTop', 'paddingRight', 'paddingBottom', 'paddingLeft', 'margin', 'marginTop', 'marginRight', 'marginBottom', 'marginLeft', 'position', 'justifyContent'],
+		props: ['toggleIcon', 'closeIcon', 'caretIcon', 'caretSize', 'toggleSize', 'justifyToggle', 'alignToggle', 'iconsReverse', 'childrenIconSize', 'gap', 'childrenGap', 'orientation', 'direction', 'drop', 'breakpointCap', 'forceOpen', 'fontWeight', 'verticalLeftIndent', 'verticalRightIndent', 'color', 'backgroundColor', 'backgroundColorDrop', 'backgroundImage', 'border', 'borderColor', 'borderTopColor', 'borderRightColor', 'borderBottomColor', 'borderLeftColor', 'borderWidth', 'borderTopWidth', 'borderRightWidth', 'borderBottomWidth', 'borderLeftWidth', 'borderStyle', 'borderTopStyle', 'borderRightStyle', 'borderBottomStyle', 'borderLeftStyle', 'borderRadius', 'borderTopLeftRadius', 'borderTopRightRadius', 'borderBottomRightRadius', 'borderBottomLeftRadius', 'translateXToggle', 'translateYToggle', 'paddingModal', 'paddingTopModal', 'paddingRightModal', 'paddingBottomModal', 'paddingLeftModal', 'padding', 'paddingTop', 'paddingRight', 'paddingBottom', 'paddingLeft', 'margin', 'marginTop', 'marginRight', 'marginBottom', 'marginLeft', 'position', 'justifyContent'],
 		components: {
 			Placeholder,
 			Box
@@ -248,7 +248,6 @@
 		},
 		methods: {
 			toggleOpen() {
-				if (this.modal) return $emit('open', false)
 				this.open = !this.open
 			},
 			renderProperty(prop) {
@@ -258,12 +257,10 @@
 				this.darkmode = event.matches;
 			},
 			handleResize() {
-				if (this.modal) return this.$emit('open', false)
 				this.windowWidth = window.innerWidth;
 				this.open = false;
 			},
 			handleClickOutside(event) {
-				if (this.modal) return this.$emit('open', false)
 				if (this.open && this.$refs.nav && !this.$refs.nav.$el.contains(event.target)) {
 					this.open = false;
 				}
