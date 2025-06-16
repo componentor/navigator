@@ -235,6 +235,12 @@
 				return style;
 			}
 		},
+		created() {
+			if (typeof window !== 'undefined') {
+				console.log('created', window.innerWidth)
+				this.windowWidth = window.innerWidth;
+			}
+		},
 		mounted() {
 			this.windowWidth = window.innerWidth;
 			document.cookie = `windowWidth=${window.innerWidth}; path=/; max-age=3600; Secure; SameSite=None`;

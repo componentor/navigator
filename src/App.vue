@@ -1049,7 +1049,7 @@
 			}
 		},
 		mounted() {
-			console.log('nav loaded', this.title);
+			console.log('nav loaded', this.title, this.breakpointCap, typeof this.breakpointCap);
 			this.mounted = true;
 		}
 	};
