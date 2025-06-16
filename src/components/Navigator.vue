@@ -1,5 +1,6 @@
 <template>
 	<Box
+		v-bind="$attrs"
 		:column="(small || orientation === 'Column') ? '{`default`:{`xs`:{`light`:true}}}' : ''"
 		:class="{
             'vp-navigator--small': small,

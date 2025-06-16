@@ -1,5 +1,6 @@
 <template>
 	<Navigator
+		v-bind="$attrs"
 		:toggleIcon="toggleIcon"
 		:closeIcon="closeIcon"
 		:caretIcon="caretIcon"
