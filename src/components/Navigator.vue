@@ -99,6 +99,8 @@
 				orientation: computed(() => this.small ? 'Column' : this.orientation),
 				direction: computed(() => this.direction),
 				center: computed(() => this.center),
+				borderRadiusDropArea: computed(() => this.borderRadiusDropArea),
+				backgroundDropArea: computed(() => this.backgroundDropArea),
 				drop: computed(() => this.drop),
 				reverseIcon: computed(() => this.iconsReverse),
 				childrenIconSizeProvider: computed(() => this.childrenIconSize),
@@ -135,7 +137,7 @@
 				this.open = false;
 			}
 		},
-		props: ['center', 'toggleIcon', 'closeIcon', 'caretIcon', 'caretSize', 'toggleSize', 'justifyToggle', 'alignToggle', 'iconsReverse', 'childrenIconSize', 'gap', 'childrenGap', 'orientation', 'direction', 'drop', 'breakpointCap', 'forceOpen', 'fontWeight', 'verticalLeftIndent', 'verticalRightIndent', 'color', 'backgroundColor', 'backgroundColorModal', 'backgroundColorDrop', 'backgroundImage', 'border', 'borderColor', 'borderTopColor', 'borderRightColor', 'borderBottomColor', 'borderLeftColor', 'borderWidth', 'borderTopWidth', 'borderRightWidth', 'borderBottomWidth', 'borderLeftWidth', 'borderStyle', 'borderTopStyle', 'borderRightStyle', 'borderBottomStyle', 'borderLeftStyle', 'borderRadius', 'borderTopLeftRadius', 'borderTopRightRadius', 'borderBottomRightRadius', 'borderBottomLeftRadius', 'translateXToggle', 'translateYToggle', 'paddingModal', 'paddingTopModal', 'paddingRightModal', 'paddingBottomModal', 'paddingLeftModal', 'padding', 'paddingTop', 'paddingRight', 'paddingBottom', 'paddingLeft', 'margin', 'marginTop', 'marginRight', 'marginBottom', 'marginLeft', 'position', 'justifyContent'],
+		props: ['borderRadiusDropArea', 'backgroundDropArea', 'center', 'toggleIcon', 'closeIcon', 'caretIcon', 'caretSize', 'toggleSize', 'justifyToggle', 'alignToggle', 'iconsReverse', 'childrenIconSize', 'gap', 'childrenGap', 'orientation', 'direction', 'drop', 'breakpointCap', 'forceOpen', 'fontWeight', 'verticalLeftIndent', 'verticalRightIndent', 'color', 'backgroundColor', 'backgroundColorModal', 'backgroundColorDrop', 'backgroundImage', 'border', 'borderColor', 'borderTopColor', 'borderRightColor', 'borderBottomColor', 'borderLeftColor', 'borderWidth', 'borderTopWidth', 'borderRightWidth', 'borderBottomWidth', 'borderLeftWidth', 'borderStyle', 'borderTopStyle', 'borderRightStyle', 'borderBottomStyle', 'borderLeftStyle', 'borderRadius', 'borderTopLeftRadius', 'borderTopRightRadius', 'borderBottomRightRadius', 'borderBottomLeftRadius', 'translateXToggle', 'translateYToggle', 'paddingModal', 'paddingTopModal', 'paddingRightModal', 'paddingBottomModal', 'paddingLeftModal', 'padding', 'paddingTop', 'paddingRight', 'paddingBottom', 'paddingLeft', 'margin', 'marginTop', 'marginRight', 'marginBottom', 'marginLeft', 'position', 'justifyContent'],
 		components: {
 			Placeholder,
 			Box

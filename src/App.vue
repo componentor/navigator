@@ -20,6 +20,8 @@
 		:forceOpen="forceOpen"
 		:fontWeight="fontWeight"
 		:color="color"
+		:borderRadiusDropArea="borderRadiusDropArea"
+		:backgroundDropArea="backgroundDropArea"
 		:backgroundColor="backgroundColor"
 		:backgroundColorModal="backgroundColorModal"
 		:backgroundColorDrop="backgroundColorDrop"
@@ -374,6 +376,14 @@
 				themes: ['light', 'dark'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
+			backgroundDropArea: {
+				type: String,
+				default: '',
+				control: 'color',
+				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
+				themes: ['light', 'dark'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
+			},
 			backgroundColorModal: {
 				type: String,
 				default: '',
@@ -683,6 +693,15 @@
 					value: 'outset',
 					key: 'outset'
 				}],
+				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
+				themes: ['light', 'dark'],
+				groups: ['default', 'hover', 'current', 'active', 'focus']
+			},
+			borderRadiusDropArea: {
+				type: String,
+				default: '',
+				control: 'slider',
+				unit: 'px',
 				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
 				themes: ['light', 'dark'],
 				groups: ['default', 'hover', 'current', 'active', 'focus']
