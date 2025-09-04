@@ -99,7 +99,7 @@
 				orientation: computed(() => this.small ? 'Column' : this.orientation),
 				direction: computed(() => this.direction),
 				center: computed(() => this.center),
-				borderRadiusDropArea: computed(() => this.borderRadiusDropArea),
+				borderRadiusDrop: computed(() => this.borderRadiusDropArea),
 				backgroundDropArea: computed(() => this.backgroundDropArea),
 				drop: computed(() => this.drop),
 				reverseIcon: computed(() => this.iconsReverse),
