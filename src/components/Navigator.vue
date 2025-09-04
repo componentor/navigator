@@ -27,13 +27,17 @@
 				'z-index': open || forceOpen ? 10 : null
 			}"
 			class="vp-toggle"
-		/> <template v-if="!small || open || forceOpen">
+		/>
+		<template v-if="!small || open || forceOpen">
 			<slot>
 				<Placeholder />
 			</slot>
 		</template>
 	</Box>
-	<Teleport v-if="isMounted && small && (open || forceOpen)" to="body">
+	<Teleport
+		v-if="isMounted && small && (open || forceOpen)"
+		to="body"
+	>
 		<Box
 			ref="nav"
 			:column="(small || orientation === 'Column') ? '{`default`:{`xs`:{`light`:true}}}' : ''"
@@ -63,7 +67,8 @@
 					'z-index': open || forceOpen ? 10 : null
 				}"
 				class="vp-toggle"
-			/> <template v-if="!small || open || forceOpen">
+			/>
+			<template v-if="!small || open || forceOpen">
 				<slot>
 					<Placeholder />
 				</slot>
@@ -93,6 +98,7 @@
 				small: computed(() => this.small),
 				orientation: computed(() => this.small ? 'Column' : this.orientation),
 				direction: computed(() => this.direction),
+				center: computed(() => this.center),
 				drop: computed(() => this.drop),
 				reverseIcon: computed(() => this.iconsReverse),
 				childrenIconSizeProvider: computed(() => this.childrenIconSize),
@@ -126,10 +132,10 @@
 				}
 			},
 			'$route'() {
-				this.open = false
+				this.open = false;
 			}
 		},
-		props: ['toggleIcon', 'closeIcon', 'caretIcon', 'caretSize', 'toggleSize', 'justifyToggle', 'alignToggle', 'iconsReverse', 'childrenIconSize', 'gap', 'childrenGap', 'orientation', 'direction', 'drop', 'breakpointCap', 'forceOpen', 'fontWeight', 'verticalLeftIndent', 'verticalRightIndent', 'color', 'backgroundColor', 'backgroundColorModal', 'backgroundColorDrop', 'backgroundImage', 'border', 'borderColor', 'borderTopColor', 'borderRightColor', 'borderBottomColor', 'borderLeftColor', 'borderWidth', 'borderTopWidth', 'borderRightWidth', 'borderBottomWidth', 'borderLeftWidth', 'borderStyle', 'borderTopStyle', 'borderRightStyle', 'borderBottomStyle', 'borderLeftStyle', 'borderRadius', 'borderTopLeftRadius', 'borderTopRightRadius', 'borderBottomRightRadius', 'borderBottomLeftRadius', 'translateXToggle', 'translateYToggle', 'paddingModal', 'paddingTopModal', 'paddingRightModal', 'paddingBottomModal', 'paddingLeftModal', 'padding', 'paddingTop', 'paddingRight', 'paddingBottom', 'paddingLeft', 'margin', 'marginTop', 'marginRight', 'marginBottom', 'marginLeft', 'position', 'justifyContent'],
+		props: ['center', 'toggleIcon', 'closeIcon', 'caretIcon', 'caretSize', 'toggleSize', 'justifyToggle', 'alignToggle', 'iconsReverse', 'childrenIconSize', 'gap', 'childrenGap', 'orientation', 'direction', 'drop', 'breakpointCap', 'forceOpen', 'fontWeight', 'verticalLeftIndent', 'verticalRightIndent', 'color', 'backgroundColor', 'backgroundColorModal', 'backgroundColorDrop', 'backgroundImage', 'border', 'borderColor', 'borderTopColor', 'borderRightColor', 'borderBottomColor', 'borderLeftColor', 'borderWidth', 'borderTopWidth', 'borderRightWidth', 'borderBottomWidth', 'borderLeftWidth', 'borderStyle', 'borderTopStyle', 'borderRightStyle', 'borderBottomStyle', 'borderLeftStyle', 'borderRadius', 'borderTopLeftRadius', 'borderTopRightRadius', 'borderBottomRightRadius', 'borderBottomLeftRadius', 'translateXToggle', 'translateYToggle', 'paddingModal', 'paddingTopModal', 'paddingRightModal', 'paddingBottomModal', 'paddingLeftModal', 'padding', 'paddingTop', 'paddingRight', 'paddingBottom', 'paddingLeft', 'margin', 'marginTop', 'marginRight', 'marginBottom', 'marginLeft', 'position', 'justifyContent'],
 		components: {
 			Placeholder,
 			Box
@@ -137,7 +143,7 @@
 		data: () => ({
 			open: false,
 			hover: false,
-			windowWidth: typeof global !== 'undefined' ? (global?.windowWidth || 1280) : 1280,
+			windowWidth: typeof global !== 'undefined' ? global?.windowWidth || 1280 : 1280,
 			colorSchemeMediaQuery: null,
 			darkmode: false,
 			transition: false,
@@ -202,12 +208,12 @@
 				return obj;
 			},
 			style() {
-				const scope = this
+				const scope = this;
 				const style = {};
 				const props = ['toggleIcon', 'closeIcon', 'caretIcon', 'justifyToggle', 'alignToggle', 'gap', 'backgroundColor', 'backgroundColorModal'];
 				const groups = ['default', 'hover'];
 				const breakpoints = ['xs', 'sm', 'md', 'lg', 'xl', '2xl'];
-				const themes = [this.themeComputed, ...['light', 'dark'].filter(t => t !== this.themeComputed)]
+				const themes = [this.themeComputed, ...['light', 'dark'].filter(t => t !== this.themeComputed)];
 				for (const prop of props) {
 					let priority = {};
 					if (this[prop]) {
@@ -234,18 +240,18 @@
 						for (const theme of themes) {
 							style[prop] = merge?.['default']?.['xs']?.[theme];
 							if (typeof style[prop] !== 'undefined' && style[prop] !== null && style[prop] !== '') {
-								break
+								break;
 							}
 						}
 						let limit = this.bpoint || 'xs';
 						let match = false;
 						for (const breakpoint of breakpoints) {
 							for (const theme of themes) {
-								let value = merge?.[this.group]?.[breakpoint]?.[theme]?.toString()
+								let value = merge?.[this.group]?.[breakpoint]?.[theme]?.toString();
 								if (typeof value !== 'undefined' && value !== null && value !== '') {
 									match = true;
 									style[prop] = value;
-									break
+									break;
 								}
 							}
 							if (breakpoint === limit) break;
@@ -254,10 +260,10 @@
 							limit = this.bpoint || 'xs';
 							for (const breakpoint of breakpoints) {
 								for (const theme of themes) {
-									let value = merge?.['default']?.[breakpoint]?.[theme]?.toString()
+									let value = merge?.['default']?.[breakpoint]?.[theme]?.toString();
 									if (typeof value !== 'undefined' && value !== null && value !== '') {
 										style[prop] = value;
-										break
+										break;
 									}
 								}
 								if (breakpoint === limit) break;
@@ -269,7 +275,7 @@
 			}
 		},
 		mounted() {
-			this.isMounted = true
+			this.isMounted = true;
 			this.windowWidth = window.innerWidth;
 			document.cookie = `windowWidth=${window.innerWidth}; path=/; Secure; SameSite=None`;
 			this.colorSchemeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
@@ -286,7 +292,7 @@
 		},
 		methods: {
 			toggleOpen() {
-				this.open = !this.open
+				this.open = !this.open;
 			},
 			renderProperty(prop) {
 				return prop;
