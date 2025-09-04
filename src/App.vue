@@ -14,6 +14,7 @@
 		:childrenGap="childrenGap"
 		:orientation="orientation"
 		:direction="direction"
+		:center="centerDropdown"
 		:drop="drop"
 		:breakpointCap="breakpointCap"
 		:forceOpen="forceOpen"
@@ -306,6 +307,17 @@
 				}, {
 					key: 'Left',
 					value: 'left'
+				}]
+			},
+			centerDropdown: {
+				type: String,
+				default: 'true',
+				options: [{
+					key: 'Yes',
+					value: 'true'
+				}, {
+					key: 'No',
+					value: 'false'
 				}]
 			},
 			drop: {
