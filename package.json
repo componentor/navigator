@@ -9,9 +9,9 @@
     "build": "vite build"
   },
   "dependencies": {
-    "vue": "^3.5.21",
-    "vue-router": "^4.5.1",
-    "@vueplayio/box": "https://manager.vueplay.io/box@^0.1.85"
+    "vue": "^3.5.25",
+    "vue-router": "^4.6.3",
+    "@vueplayio/box": "https://manager.vueplay.io/box@^1.0.2"
   },
   "devDependencies": {
     "@rollup/plugin-data-uri": "^1.0.3",
