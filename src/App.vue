@@ -344,7 +344,7 @@
 				default: false
 			},
 			fontWeight: {
-				type: Number,
+				type: String,
 				control: 'slider',
 				min: 0,
 				max: 1000,
