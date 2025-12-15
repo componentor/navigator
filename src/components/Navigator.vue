@@ -85,7 +85,7 @@
 		parse,
 		getStyle
 	} from '@componentor/breakpoint';
-	import Placeholder from '@/components/Placeholder.vue';
+	import Placeholder from './Placeholder.vue';
 	export default {
 		inheritAttrs: false,
 		inject: {
@@ -475,8 +475,8 @@
 </script>
 <style scoped>
 	* {
-		--menu-svg: url(@/assets/menu.svg);
-		--close-svg: url(@/assets/close.svg);
+		--menu-svg: url(../assets/menu.svg);
+		--close-svg: url(../assets/close.svg);
 	}
 
 	.vp-navigator {
