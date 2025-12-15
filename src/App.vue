@@ -337,7 +337,7 @@
 				type: Number,
 				control: 'slider',
 				unit: '',
-				default: 640
+				default: 768
 			},
 			forceOpen: {
 				type: Boolean,
