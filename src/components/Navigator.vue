@@ -119,6 +119,7 @@
 				childrenCaretProvider: computed(() => this.parsedCaretIcon),
 				childrenCaretSizeProvider: computed(() => this.caretSize),
 				childrenCstyleProvider: computed(() => this.cstyleItem),
+				childrenCstyleModalProvider: computed(() => this.cstyleItemModal),
 				wrapperCstyleProvider: computed(() => this.cstyleDropArea),
 				model: computed(() => this.model),
 				theme: computed(() => {
@@ -239,6 +240,14 @@
 			cstyleItem: {
 				type: [String, Object, Array],
 				default: ''
+			},
+			cstyleToggleModal: {
+				type: [String, Object, Array],
+				default: ''
+			},
+			cstyleItemModal: {
+				type: [String, Object, Array],
+				default: ''
 			}
 		},
 		components: {
@@ -293,6 +302,12 @@
 			},
 			cstyleToggleString() {
 				return this.normalizeCstyle(this.cstyleToggle);
+			},
+			cstyleToggleModalString() {
+				return this.normalizeCstyle(this.cstyleToggleModal);
+			},
+			cstyleItemModalString() {
+				return this.normalizeCstyle(this.cstyleItemModal);
 			},
 			computedStyle() {
 				const baseStyle = {};
@@ -351,7 +366,19 @@
 				return style;
 			},
 			toggleStyleModal() {
-				return { ...this.toggleStyle };
+				const style = { ...this.toggleStyle };
+				if (this.cstyleToggleModalString) {
+					const parsed = parse(this.cstyleToggleModalString);
+					const computedToggle = getStyle(parsed, {
+						theme: this.themeComputed,
+						breakpoint: this.bpoint,
+						states: this.toggleStateArray,
+						breakpointStrategy: 'mobile-first',
+						themeStrategy: 'fallback'
+					});
+					Object.assign(style, this.parseStyleString(computedToggle));
+				}
+				return style;
 			},
 			$toggleIcon() {
 				const icon = this.getThemedIcon(this.toggleIcon);
