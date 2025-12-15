@@ -1,5 +1,6 @@
 <template>
 	<div
+		v-bind="$attrs"
 		:class="{
 			'vp-navigator--small': small,
 			'vp-navigator--open': open || forceOpen,
@@ -12,12 +13,22 @@
 		@pointerover="hover=true"
 		@pointerleave="hover=false"
 	>
-		<div
+		<slot
 			v-if="small"
-			@click.stop="toggleOpen"
+			name="toggle"
+			:isOpen="open || forceOpen"
+			:toggle="toggleOpen"
 			:style="toggleStyle"
-			class="vp-toggle"
-		/>
+			:icon="open || forceOpen ? $closeIcon : $toggleIcon"
+		>
+			<div
+				@click.stop="toggleOpen"
+				@pointerover="toggleHover=true"
+				@pointerleave="toggleHover=false"
+				:style="toggleStyle"
+				class="vp-toggle"
+			/>
+		</slot>
 		<template v-if="!small || open || forceOpen">
 			<slot>
 				<Placeholder />
@@ -42,12 +53,22 @@
 			@pointerover="hover=true"
 			@pointerleave="hover=false"
 		>
-			<div
+			<slot
 				v-if="small"
-				@click.stop="toggleOpen"
+				name="toggle"
+				:isOpen="open || forceOpen"
+				:toggle="toggleOpen"
 				:style="toggleStyleModal"
-				class="vp-toggle"
-			/>
+				:icon="open || forceOpen ? $closeIcon : $toggleIcon"
+			>
+				<div
+					@click.stop="toggleOpen"
+					@pointerover="toggleHover=true"
+					@pointerleave="toggleHover=false"
+					:style="toggleStyleModal"
+					class="vp-toggle"
+				/>
+			</slot>
 			<template v-if="!small || open || forceOpen">
 				<slot>
 					<Placeholder />
@@ -66,6 +87,7 @@
 	} from '@componentor/breakpoint';
 	import Placeholder from '@/components/Placeholder.vue';
 	export default {
+		inheritAttrs: false,
 		inject: {
 			theme: {
 				default: ''
@@ -89,13 +111,15 @@
 				orientation: computed(() => this.small ? 'Column' : this.orientation),
 				direction: computed(() => this.direction),
 				center: computed(() => this.center),
-				cstyleDropArea: computed(() => this.cstyleDropArea),
 				drop: computed(() => this.drop),
+				level: computed(() => 0),
+				order: computed(() => 'odd'),
 				reverseIcon: computed(() => this.iconsReverse),
 				childrenIconSizeProvider: computed(() => this.childrenIconSize),
 				childrenCaretProvider: computed(() => this.parsedCaretIcon),
 				childrenCaretSizeProvider: computed(() => this.caretSize),
-				childrenGapProvider: computed(() => this.childrenGap),
+				childrenCstyleProvider: computed(() => this.cstyleItem),
+				wrapperCstyleProvider: computed(() => this.cstyleDropArea),
 				model: computed(() => this.model),
 				theme: computed(() => {
 					if (this.theme) return this.theme;
@@ -211,6 +235,10 @@
 			cstyleDropArea: {
 				type: [String, Object, Array],
 				default: ''
+			},
+			cstyleItem: {
+				type: [String, Object, Array],
+				default: ''
 			}
 		},
 		components: {
@@ -219,6 +247,7 @@
 		data: () => ({
 			open: false,
 			hover: false,
+			toggleHover: false,
 			windowWidth: typeof global !== 'undefined' ? global?.windowWidth || 1280 : 1280,
 			colorSchemeMediaQuery: null,
 			darkmode: false,
@@ -245,6 +274,12 @@
 			stateArray() {
 				const states = [];
 				if (this.hover) states.push('hover');
+				return states;
+			},
+			toggleStateArray() {
+				const states = [];
+				if (this.toggleHover) states.push('hover');
+				if (this.open || this.forceOpen) states.push('open');
 				return states;
 			},
 			small() {
@@ -296,17 +331,18 @@
 				return baseStyle;
 			},
 			toggleStyle() {
+				const isOpen = this.open || this.forceOpen;
 				const style = {
-					backgroundImage: this.open || this.forceOpen ? this.$closeIcon : this.$toggleIcon,
+					backgroundImage: isOpen ? this.$closeIcon : this.$toggleIcon,
 					width: this.toggleSize,
-					zIndex: this.open || this.forceOpen ? 10 : null
+					zIndex: isOpen ? 10 : null
 				};
 				if (this.cstyleToggleString) {
 					const parsed = parse(this.cstyleToggleString);
 					const computedToggle = getStyle(parsed, {
 						theme: this.themeComputed,
 						breakpoint: this.bpoint,
-						states: this.stateArray,
+						states: this.toggleStateArray,
 						breakpointStrategy: 'mobile-first',
 						themeStrategy: 'fallback'
 					});
@@ -315,11 +351,10 @@
 				return style;
 			},
 			toggleStyleModal() {
-				const style = { ...this.toggleStyle };
-				return style;
+				return { ...this.toggleStyle };
 			},
 			$toggleIcon() {
-				const icon = this.parsedToggleIcon;
+				const icon = this.getThemedIcon(this.toggleIcon);
 				if (!icon) return 'var(--menu-svg)';
 				if (icon.startsWith('--')) {
 					return `var(${icon})`;
@@ -327,21 +362,15 @@
 				return `url(${icon})`;
 			},
 			$closeIcon() {
-				const icon = this.parsedCloseIcon;
+				const icon = this.getThemedIcon(this.closeIcon);
 				if (!icon) return 'var(--close-svg)';
 				if (icon.startsWith('--')) {
 					return `var(${icon})`;
 				}
 				return `url(${icon})`;
 			},
-			parsedToggleIcon() {
-				return this.parseIconProp(this.toggleIcon);
-			},
-			parsedCloseIcon() {
-				return this.parseIconProp(this.closeIcon);
-			},
 			parsedCaretIcon() {
-				return this.parseIconProp(this.caretIcon);
+				return this.getThemedIcon(this.caretIcon);
 			},
 			model() {
 				return {
@@ -398,22 +427,30 @@
 				});
 				return result;
 			},
-			parseIconProp(prop) {
+			getThemedIcon(prop) {
 				if (!prop) return '';
+				// Try parsing as JSON structure with theme/breakpoint support
 				try {
 					const parsed = JSON.parse(prop.replaceAll('`', '"'));
-					const themes = [this.themeComputed, 'light', 'dark'];
+					const themes = [this.themeComputed, 'light', 'dark'].filter(Boolean);
 					const breakpoints = ['xs', 'sm', 'md', 'lg', 'xl', '2xl'];
+					const groups = ['default', 'hover'];
 					const limit = this.bpoint || 'xs';
-					for (const breakpoint of breakpoints) {
-						for (const theme of themes) {
-							const value = parsed?.default?.[breakpoint]?.[theme];
-							if (value) return value;
+
+					// Try to find a value matching current state
+					for (const group of groups) {
+						for (let i = 0; i < breakpoints.length; i++) {
+							const breakpoint = breakpoints[i];
+							for (const theme of themes) {
+								const value = parsed?.[group]?.[breakpoint]?.[theme];
+								if (value) return value;
+							}
+							if (breakpoint === limit) break;
 						}
-						if (breakpoint === limit) break;
 					}
-					return parsed?.default?.xs?.light || '';
+					return '';
 				} catch (e) {
+					// Not JSON, return as-is (plain URL or CSS variable)
 					return prop;
 				}
 			},
@@ -465,6 +502,7 @@
 		cursor: pointer;
 		background-size: contain;
 		background-repeat: no-repeat;
+		background-position: center;
 		aspect-ratio: 1/1;
 	}
 

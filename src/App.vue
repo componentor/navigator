@@ -22,6 +22,7 @@
 		:cstyleModal="cstyleModal"
 		:cstyleToggle="cstyleToggle"
 		:cstyleDropArea="cstyleDropArea"
+		:cstyleItem="cstyleItem"
 	>
 		<slot>
 			<Placeholder />
@@ -177,6 +178,10 @@
 				default: ''
 			},
 			cstyleDropArea: {
+				type: [String, Object, Array],
+				default: ''
+			},
+			cstyleItem: {
 				type: [String, Object, Array],
 				default: ''
 			}
