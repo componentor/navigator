@@ -1,0 +1,22 @@
+{
+  "homepage": "https://vueplay.com",
+  "name": "@componentor/navigator",
+  "version": "2.0.0",
+  "type": "module",
+  "main": "src/App.vue",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "@componentor/breakpoint": "^1.4.1",
+    "vue": "^3.5.25",
+    "vue-router": "^4.6.4",
+    "@vueplayio/box": "https://manager.vueplay.io/box@^1.0.6"
+  },
+  "devDependencies": {
+    "@rollup/plugin-data-uri": "^1.0.3",
+    "@vitejs/plugin-vue": "^6.0.3",
+    "vite": "^7.2.7"
+  }
+}
