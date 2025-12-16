@@ -15,6 +15,8 @@
 		:center="centerDropdown"
 		:drop="drop"
 		:breakpointCap="breakpointCap"
+		:breakpointStrategy="breakpointStrategy"
+		:themeStrategy="themeStrategy"
 		:forceOpen="forceOpen"
 		:verticalLeftIndent="verticalLeftIndent"
 		:verticalRightIndent="verticalRightIndent"
@@ -162,6 +164,16 @@
 				control: 'slider',
 				unit: '',
 				default: 767
+			},
+			breakpointStrategy: {
+				type: String,
+				default: 'mobile-first',
+				validator: v => ['exact', 'mobile-first', 'desktop-first'].includes(v)
+			},
+			themeStrategy: {
+				type: String,
+				default: 'fallback',
+				validator: v => ['strict', 'fallback'].includes(v)
 			},
 			forceOpen: {
 				type: Boolean,

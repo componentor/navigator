@@ -209,6 +209,16 @@
 				type: Number,
 				default: 767
 			},
+			breakpointStrategy: {
+				type: String,
+				default: 'mobile-first',
+				validator: v => ['exact', 'mobile-first', 'desktop-first'].includes(v)
+			},
+			themeStrategy: {
+				type: String,
+				default: 'fallback',
+				validator: v => ['strict', 'fallback'].includes(v)
+			},
 			forceOpen: {
 				type: Boolean,
 				default: false
@@ -317,8 +327,8 @@
 						theme: this.themeComputed,
 						breakpoint: this.bpoint,
 						states: this.stateArray,
-						breakpointStrategy: 'mobile-first',
-						themeStrategy: 'fallback'
+						breakpointStrategy: this.breakpointStrategy,
+						themeStrategy: this.themeStrategy
 					});
 					Object.assign(baseStyle, this.parseStyleString(style));
 				}
@@ -335,8 +345,8 @@
 						theme: this.themeComputed,
 						breakpoint: this.bpoint,
 						states: this.stateArray,
-						breakpointStrategy: 'mobile-first',
-						themeStrategy: 'fallback'
+						breakpointStrategy: this.breakpointStrategy,
+						themeStrategy: this.themeStrategy
 					});
 					Object.assign(baseStyle, this.parseStyleString(style));
 				}
@@ -358,8 +368,8 @@
 						theme: this.themeComputed,
 						breakpoint: this.bpoint,
 						states: this.toggleStateArray,
-						breakpointStrategy: 'mobile-first',
-						themeStrategy: 'fallback'
+						breakpointStrategy: this.breakpointStrategy,
+						themeStrategy: this.themeStrategy
 					});
 					Object.assign(style, this.parseStyleString(computedToggle));
 				}
@@ -373,8 +383,8 @@
 						theme: this.themeComputed,
 						breakpoint: this.bpoint,
 						states: this.toggleStateArray,
-						breakpointStrategy: 'mobile-first',
-						themeStrategy: 'fallback'
+						breakpointStrategy: this.breakpointStrategy,
+						themeStrategy: this.themeStrategy
 					});
 					Object.assign(style, this.parseStyleString(computedToggle));
 				}
