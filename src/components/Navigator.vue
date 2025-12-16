@@ -116,11 +116,21 @@
 				order: computed(() => 'odd'),
 				reverseIcon: computed(() => this.iconsReverse),
 				childrenIconSizeProvider: computed(() => this.childrenIconSize),
-				childrenCaretProvider: computed(() => this.parsedCaretIcon),
+				childrenCaretProvider: computed(() => this.caretIcon),
 				childrenCaretSizeProvider: computed(() => this.caretSize),
-				childrenCstyleProvider: computed(() => this.cstyleItem),
+				childrenCstyleProvider: computed(() => this.childrenCstyleItem),
 				childrenCstyleModalProvider: computed(() => this.cstyleItemModal),
 				wrapperCstyleProvider: computed(() => this.cstyleDropArea),
+				iconWrapperCstyleProvider: computed(() => this.cstyleIconWrapper),
+				iconCstyleProvider: computed(() => this.cstyleIcon),
+				linkCstyleProvider: computed(() => this.cstyleLink),
+				caretWrapperCstyleProvider: computed(() => this.cstyleCaretWrapper),
+				caretCstyleProvider: computed(() => this.cstyleCaret),
+				childrenCstyleIconWrapperProvider: computed(() => this.childrenCstyleIconWrapper),
+				childrenCstyleIconProvider: computed(() => this.childrenCstyleIcon),
+				childrenCstyleLinkProvider: computed(() => this.childrenCstyleLink),
+				childrenCstyleCaretWrapperProvider: computed(() => this.childrenCstyleCaretWrapper),
+				childrenCstyleCaretProvider: computed(() => this.childrenCstyleCaret),
 				model: computed(() => this.model),
 				theme: computed(() => {
 					if (this.theme) return this.theme;
@@ -181,14 +191,6 @@
 				type: String,
 				default: ''
 			},
-			gap: {
-				type: String,
-				default: ''
-			},
-			childrenGap: {
-				type: String,
-				default: ''
-			},
 			orientation: {
 				type: String,
 				default: 'Row'
@@ -233,11 +235,11 @@
 			},
 			cstyle: {
 				type: [String, Object, Array],
-				default: ''
+				default: 'display:flex; gap:4px; background-color:#ffffff; dark:background-color:#1a1a1a; padding:8px'
 			},
 			cstyleModal: {
 				type: [String, Object, Array],
-				default: ''
+				default: 'background-color:rgba(255,255,255,0.98); dark:background-color:rgba(0,0,0,0.95); padding:20px'
 			},
 			cstyleToggle: {
 				type: [String, Object, Array],
@@ -245,9 +247,53 @@
 			},
 			cstyleDropArea: {
 				type: [String, Object, Array],
+				default: 'background-color:#ffffff; dark:background-color:#2a2a2a; box-shadow:0 2px 8px rgba(0,0,0,0.1); dark:box-shadow:0 2px 8px rgba(0,0,0,0.3); border-radius:4px; padding:4px'
+			},
+			cstyleIconWrapper: {
+				type: [String, Object, Array],
+				default: ''
+			},
+			cstyleIcon: {
+				type: [String, Object, Array],
+				default: ''
+			},
+			cstyleLink: {
+				type: [String, Object, Array],
+				default: ''
+			},
+			cstyleCaret: {
+				type: [String, Object, Array],
+				default: ''
+			},
+			cstyleCaretWrapper: {
+				type: [String, Object, Array],
 				default: ''
 			},
 			cstyleItem: {
+				type: [String, Object, Array],
+				default: 'padding:12px 16px; border-radius:4px; hover:background-color:rgba(0,0,0,0.05); dark:hover:background-color:rgba(255,255,255,0.1); current:font-weight:600; current:color:#0066cc; dark:current:color:#66b3ff'
+			},
+			childrenCstyleItem: {
+				type: [String, Object, Array],
+				default: 'padding:10px 16px; border-radius:4px; hover:background-color:rgba(0,0,0,0.05); dark:hover:background-color:rgba(255,255,255,0.1); current:font-weight:600; current:color:#0066cc; dark:current:color:#66b3ff'
+			},
+			childrenCstyleIconWrapper: {
+				type: [String, Object, Array],
+				default: ''
+			},
+			childrenCstyleIcon: {
+				type: [String, Object, Array],
+				default: ''
+			},
+			childrenCstyleLink: {
+				type: [String, Object, Array],
+				default: ''
+			},
+			childrenCstyleCaret: {
+				type: [String, Object, Array],
+				default: ''
+			},
+			childrenCstyleCaretWrapper: {
 				type: [String, Object, Array],
 				default: ''
 			},
@@ -257,7 +303,7 @@
 			},
 			cstyleItemModal: {
 				type: [String, Object, Array],
-				default: ''
+				default: 'padding:14px 20px; border-radius:4px; hover:background-color:rgba(0,0,0,0.05); dark:hover:background-color:rgba(255,255,255,0.1); current:font-weight:600; current:color:#0066cc; dark:current:color:#66b3ff; font-size:16px'
 			}
 		},
 		components: {
@@ -273,7 +319,8 @@
 			transition: false,
 			path: '',
 			pathId: '',
-			isMounted: false
+			isMounted: false,
+			resizeTimeout: null
 		}),
 		computed: {
 			themeComputed() {
@@ -320,100 +367,46 @@
 				return this.normalizeCstyle(this.cstyleItemModal);
 			},
 			computedStyle() {
-				const baseStyle = {};
-				if (this.cstyleString) {
-					const parsed = parse(this.cstyleString);
-					const style = getStyle(parsed, {
-						theme: this.themeComputed,
-						breakpoint: this.bpoint,
-						states: this.stateArray,
-						breakpointStrategy: this.breakpointStrategy,
-						themeStrategy: this.themeStrategy
-					});
-					Object.assign(baseStyle, this.parseStyleString(style));
-				}
-				if (!this.small && this.gap) {
-					baseStyle.gap = this.gap;
-				}
-				return baseStyle;
+				return this.computeCstyleToStyleObject(this.cstyleString);
 			},
 			computedModalStyle() {
-				const baseStyle = {};
-				if (this.cstyleModalString) {
-					const parsed = parse(this.cstyleModalString);
-					const style = getStyle(parsed, {
-						theme: this.themeComputed,
-						breakpoint: this.bpoint,
-						states: this.stateArray,
-						breakpointStrategy: this.breakpointStrategy,
-						themeStrategy: this.themeStrategy
-					});
-					Object.assign(baseStyle, this.parseStyleString(style));
-				}
-				if (!this.small && this.gap) {
-					baseStyle.gap = this.gap;
-				}
-				return baseStyle;
+				return this.computeCstyleToStyleObject(this.cstyleModalString);
 			},
 			toggleStyle() {
 				const isOpen = this.open || this.forceOpen;
-				const style = {
+				const baseStyle = {
 					backgroundImage: isOpen ? this.$closeIcon : this.$toggleIcon,
 					width: this.toggleSize,
 					zIndex: isOpen ? 10 : null
 				};
-				if (this.cstyleToggleString) {
-					const parsed = parse(this.cstyleToggleString);
-					const computedToggle = getStyle(parsed, {
-						theme: this.themeComputed,
-						breakpoint: this.bpoint,
-						states: this.toggleStateArray,
-						breakpointStrategy: this.breakpointStrategy,
-						themeStrategy: this.themeStrategy
-					});
-					Object.assign(style, this.parseStyleString(computedToggle));
-				}
-				return style;
+				const cstyleObject = this.computeToggleCstyleToStyleObject(this.cstyleToggleString);
+				return { ...baseStyle, ...cstyleObject };
 			},
 			toggleStyleModal() {
-				const style = { ...this.toggleStyle };
-				if (this.cstyleToggleModalString) {
-					const parsed = parse(this.cstyleToggleModalString);
-					const computedToggle = getStyle(parsed, {
-						theme: this.themeComputed,
-						breakpoint: this.bpoint,
-						states: this.toggleStateArray,
-						breakpointStrategy: this.breakpointStrategy,
-						themeStrategy: this.themeStrategy
-					});
-					Object.assign(style, this.parseStyleString(computedToggle));
-				}
-				return style;
+				const baseStyle = { ...this.toggleStyle };
+				const cstyleObject = this.computeToggleCstyleToStyleObject(this.cstyleToggleModalString);
+				return { ...baseStyle, ...cstyleObject };
 			},
 			$toggleIcon() {
-				const icon = this.getThemedIcon(this.toggleIcon);
-				if (!icon) return 'var(--menu-svg)';
+				const icon = this.toggleIcon;
+				if (!icon) return this.theme === 'dark' ? 'var(--menu-svg-light)' : 'var(--menu-svg)';
 				if (icon.startsWith('--')) {
 					return `var(${icon})`;
 				}
 				return `url(${icon})`;
 			},
 			$closeIcon() {
-				const icon = this.getThemedIcon(this.closeIcon);
-				if (!icon) return 'var(--close-svg)';
+				const icon = this.closeIcon;
+				if (!icon) return this.theme === 'dark' ? 'var(--close-svg-light)' : 'var(--close-svg)';
 				if (icon.startsWith('--')) {
 					return `var(${icon})`;
 				}
 				return `url(${icon})`;
 			},
-			parsedCaretIcon() {
-				return this.getThemedIcon(this.caretIcon);
-			},
 			model() {
 				return {
 					verticalLeftIndent: this.verticalLeftIndent,
-					verticalRightIndent: this.verticalRightIndent,
-					gap: this.childrenGap
+					verticalRightIndent: this.verticalRightIndent
 				};
 			}
 		},
@@ -428,6 +421,7 @@
 			window.addEventListener('resize', this.handleResize);
 		},
 		beforeUnmount() {
+			if (this.resizeTimeout) clearTimeout(this.resizeTimeout);
 			this.colorSchemeMediaQuery.removeEventListener('change', this.handleColorSchemeChange);
 			document.removeEventListener('click', this.handleClickOutside);
 			window.removeEventListener('resize', this.handleResize);
@@ -448,6 +442,30 @@
 					.map(([key, value]) => `${key}:${value}`)
 					.join('; ');
 			},
+			computeCstyleToStyleObject(cstyleString) {
+				if (!cstyleString) return {};
+				const parsed = parse(cstyleString);
+				const style = getStyle(parsed, {
+					theme: this.themeComputed,
+					breakpoint: this.bpoint,
+					states: this.stateArray,
+					breakpointStrategy: this.breakpointStrategy,
+					themeStrategy: this.themeStrategy
+				});
+				return this.parseStyleString(style);
+			},
+			computeToggleCstyleToStyleObject(cstyleString) {
+				if (!cstyleString) return {};
+				const parsed = parse(cstyleString);
+				const style = getStyle(parsed, {
+					theme: this.themeComputed,
+					breakpoint: this.bpoint,
+					states: this.toggleStateArray,
+					breakpointStrategy: this.breakpointStrategy,
+					themeStrategy: this.themeStrategy
+				});
+				return this.parseStyleString(style);
+			},
 			parseStyleString(styleStr) {
 				if (!styleStr || typeof styleStr !== 'string') return {};
 				const result = {};
@@ -464,33 +482,6 @@
 				});
 				return result;
 			},
-			getThemedIcon(prop) {
-				if (!prop) return '';
-				// Try parsing as JSON structure with theme/breakpoint support
-				try {
-					const parsed = JSON.parse(prop.replaceAll('`', '"'));
-					const themes = [this.themeComputed, 'light', 'dark'].filter(Boolean);
-					const breakpoints = ['xs', 'sm', 'md', 'lg', 'xl', '2xl'];
-					const groups = ['default', 'hover'];
-					const limit = this.bpoint || 'xs';
-
-					// Try to find a value matching current state
-					for (const group of groups) {
-						for (let i = 0; i < breakpoints.length; i++) {
-							const breakpoint = breakpoints[i];
-							for (const theme of themes) {
-								const value = parsed?.[group]?.[breakpoint]?.[theme];
-								if (value) return value;
-							}
-							if (breakpoint === limit) break;
-						}
-					}
-					return '';
-				} catch (e) {
-					// Not JSON, return as-is (plain URL or CSS variable)
-					return prop;
-				}
-			},
 			toggleOpen() {
 				this.open = !this.open;
 			},
@@ -498,8 +489,11 @@
 				this.darkmode = event.matches;
 			},
 			handleResize() {
-				this.windowWidth = window.innerWidth;
-				this.open = false;
+				if (this.resizeTimeout) clearTimeout(this.resizeTimeout);
+				this.resizeTimeout = setTimeout(() => {
+					this.windowWidth = window.innerWidth;
+					this.open = false;
+				}, 150);
 			},
 			handleClickOutside(event) {
 				if (this.open && this.$refs.nav && !this.$refs.nav.contains(event.target)) {
@@ -514,6 +508,8 @@
 	* {
 		--menu-svg: url(../assets/menu.svg);
 		--close-svg: url(../assets/close.svg);
+		--menu-svg-light: url(../assets/light/menu.svg);
+		--close-svg-light: url(../assets/light/close.svg);
 	}
 
 	.vp-navigator {

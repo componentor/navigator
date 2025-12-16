@@ -8,8 +8,6 @@
 		:toggleSize="toggleSize"
 		:iconsReverse="iconsReverse"
 		:childrenIconSize="childrenIconSize"
-		:gap="gap"
-		:childrenGap="childrenGap"
 		:orientation="orientation"
 		:direction="direction"
 		:center="centerDropdown"
@@ -24,7 +22,18 @@
 		:cstyleModal="cstyleModal"
 		:cstyleToggle="cstyleToggle"
 		:cstyleDropArea="cstyleDropArea"
+		:cstyleIconWrapper="cstyleIconWrapper"
+		:cstyleIcon="cstyleIcon"
+		:cstyleLink="cstyleLink"
+		:cstyleCaret="cstyleCaret"
+		:cstyleCaretWrapper="cstyleCaretWrapper"
 		:cstyleItem="cstyleItem"
+		:childrenCstyleItem="childrenCstyleItem"
+		:childrenCstyleIconWrapper="childrenCstyleIconWrapper"
+		:childrenCstyleIcon="childrenCstyleIcon"
+		:childrenCstyleLink="childrenCstyleLink"
+		:childrenCstyleCaret="childrenCstyleCaret"
+		:childrenCstyleCaretWrapper="childrenCstyleCaretWrapper"
 		:cstyleToggleModal="cstyleToggleModal"
 		:cstyleItemModal="cstyleItemModal"
 	>
@@ -44,24 +53,15 @@
 		props: {
 			toggleIcon: {
 				type: String,
-				control: 'media',
-				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
-				themes: ['light', 'dark'],
-				groups: ['default', 'hover', 'current', 'active', 'focus']
+				control: 'media'
 			},
 			closeIcon: {
 				type: String,
-				control: 'media',
-				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
-				themes: ['light', 'dark'],
-				groups: ['default', 'hover', 'current', 'active', 'focus']
+				control: 'media'
 			},
 			caretIcon: {
 				type: String,
-				control: 'media',
-				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
-				themes: ['light', 'dark'],
-				groups: ['default', 'hover', 'current', 'active', 'focus']
+				control: 'media'
 			},
 			verticalLeftIndent: {
 				type: String,
@@ -96,24 +96,6 @@
 				default: '',
 				unit: 'px',
 				control: 'slider'
-			},
-			gap: {
-				type: String,
-				default: '',
-				unit: 'px',
-				control: 'slider',
-				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
-				themes: ['light', 'dark'],
-				groups: ['default', 'hover', 'current', 'active', 'focus']
-			},
-			childrenGap: {
-				type: String,
-				default: '',
-				unit: 'px',
-				control: 'slider',
-				breakpoints: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
-				themes: ['light', 'dark'],
-				groups: ['default', 'hover', 'current', 'active', 'focus']
 			},
 			orientation: {
 				type: String,
@@ -195,7 +177,51 @@
 				type: [String, Object, Array],
 				default: ''
 			},
+			cstyleIconWrapper: {
+				type: [String, Object, Array],
+				default: ''
+			},
+			cstyleIcon: {
+				type: [String, Object, Array],
+				default: ''
+			},
+			cstyleLink: {
+				type: [String, Object, Array],
+				default: ''
+			},
+			cstyleCaret: {
+				type: [String, Object, Array],
+				default: ''
+			},
+			cstyleCaretWrapper: {
+				type: [String, Object, Array],
+				default: ''
+			},
 			cstyleItem: {
+				type: [String, Object, Array],
+				default: ''
+			},
+			childrenCstyleItem: {
+				type: [String, Object, Array],
+				default: ''
+			},
+			childrenCstyleIconWrapper: {
+				type: [String, Object, Array],
+				default: ''
+			},
+			childrenCstyleIcon: {
+				type: [String, Object, Array],
+				default: ''
+			},
+			childrenCstyleLink: {
+				type: [String, Object, Array],
+				default: ''
+			},
+			childrenCstyleCaret: {
+				type: [String, Object, Array],
+				default: ''
+			},
+			childrenCstyleCaretWrapper: {
 				type: [String, Object, Array],
 				default: ''
 			},
