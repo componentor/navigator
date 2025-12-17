@@ -18,24 +18,24 @@
 		:forceOpen="forceOpen"
 		:verticalLeftIndent="verticalLeftIndent"
 		:verticalRightIndent="verticalRightIndent"
-		:cstyle="cstyle"
-		:cstyleModal="cstyleModal"
-		:cstyleToggle="cstyleToggle"
-		:cstyleDropArea="cstyleDropArea"
-		:cstyleIconWrapper="cstyleIconWrapper"
-		:cstyleIcon="cstyleIcon"
-		:cstyleLink="cstyleLink"
-		:cstyleCaret="cstyleCaret"
-		:cstyleCaretWrapper="cstyleCaretWrapper"
-		:cstyleItem="cstyleItem"
-		:childrenCstyleItem="childrenCstyleItem"
-		:childrenCstyleIconWrapper="childrenCstyleIconWrapper"
-		:childrenCstyleIcon="childrenCstyleIcon"
-		:childrenCstyleLink="childrenCstyleLink"
-		:childrenCstyleCaret="childrenCstyleCaret"
-		:childrenCstyleCaretWrapper="childrenCstyleCaretWrapper"
-		:cstyleToggleModal="cstyleToggleModal"
-		:cstyleItemModal="cstyleItemModal"
+		:adapt="adapt"
+		:adaptModal="adaptModal"
+		:adaptToggle="adaptToggle"
+		:adaptDropdown="adaptDropdown"
+		:adaptIconWrapper="adaptIconWrapper"
+		:adaptIcon="adaptIcon"
+		:adaptLabel="adaptLabel"
+		:adaptCaret="adaptCaret"
+		:adaptCaretWrapper="adaptCaretWrapper"
+		:adaptItem="adaptItem"
+		:childrenAdaptItem="childrenAdaptItem"
+		:childrenAdaptIconWrapper="childrenAdaptIconWrapper"
+		:childrenAdaptIcon="childrenAdaptIcon"
+		:childrenAdaptLabel="childrenAdaptLabel"
+		:childrenAdaptCaret="childrenAdaptCaret"
+		:childrenAdaptCaretWrapper="childrenAdaptCaretWrapper"
+		:adaptToggleModal="adaptToggleModal"
+		:adaptItemModal="adaptItemModal"
 	>
 		<slot>
 			<Placeholder />
@@ -161,75 +161,75 @@
 				type: Boolean,
 				default: false
 			},
-			cstyle: {
+			adapt: {
 				type: [String, Object, Array],
 				default: ''
 			},
-			cstyleModal: {
+			adaptModal: {
 				type: [String, Object, Array],
 				default: ''
 			},
-			cstyleToggle: {
+			adaptToggle: {
 				type: [String, Object, Array],
 				default: ''
 			},
-			cstyleDropArea: {
+			adaptDropdown: {
 				type: [String, Object, Array],
 				default: ''
 			},
-			cstyleIconWrapper: {
+			adaptIconWrapper: {
 				type: [String, Object, Array],
 				default: ''
 			},
-			cstyleIcon: {
+			adaptIcon: {
 				type: [String, Object, Array],
 				default: ''
 			},
-			cstyleLink: {
+			adaptLabel: {
 				type: [String, Object, Array],
 				default: ''
 			},
-			cstyleCaret: {
+			adaptCaret: {
 				type: [String, Object, Array],
 				default: ''
 			},
-			cstyleCaretWrapper: {
+			adaptCaretWrapper: {
 				type: [String, Object, Array],
 				default: ''
 			},
-			cstyleItem: {
+			adaptItem: {
 				type: [String, Object, Array],
 				default: ''
 			},
-			childrenCstyleItem: {
+			childrenAdaptItem: {
 				type: [String, Object, Array],
 				default: ''
 			},
-			childrenCstyleIconWrapper: {
+			childrenAdaptIconWrapper: {
 				type: [String, Object, Array],
 				default: ''
 			},
-			childrenCstyleIcon: {
+			childrenAdaptIcon: {
 				type: [String, Object, Array],
 				default: ''
 			},
-			childrenCstyleLink: {
+			childrenAdaptLabel: {
 				type: [String, Object, Array],
 				default: ''
 			},
-			childrenCstyleCaret: {
+			childrenAdaptCaret: {
 				type: [String, Object, Array],
 				default: ''
 			},
-			childrenCstyleCaretWrapper: {
+			childrenAdaptCaretWrapper: {
 				type: [String, Object, Array],
 				default: ''
 			},
-			cstyleToggleModal: {
+			adaptToggleModal: {
 				type: [String, Object, Array],
 				default: ''
 			},
-			cstyleItemModal: {
+			adaptItemModal: {
 				type: [String, Object, Array],
 				default: ''
 			}
