@@ -276,7 +276,7 @@
 			},
 			childrenAdaptItem: {
 				type: [String, Object, Array],
-				default: 'padding:10px 16px; border-radius:4px; hover:background-color:rgba(0,0,0,0.05); dark:hover:background-color:rgba(255,255,255,0.1); current:font-weight:600; current:color:#0066cc; dark:current:color:#66b3ff'
+				default: ''
 			},
 			childrenAdaptIconWrapper: {
 				type: [String, Object, Array],
