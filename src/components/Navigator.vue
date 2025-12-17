@@ -120,6 +120,7 @@
 				childrenCaretSizeProvider: computed(() => this.caretSize),
 				childrenCstyleProvider: computed(() => this.childrenCstyleItem),
 				childrenCstyleModalProvider: computed(() => this.cstyleItemModal),
+				cstyleProvider: computed(() => this.cstyleItem),
 				wrapperCstyleProvider: computed(() => this.cstyleDropArea),
 				iconWrapperCstyleProvider: computed(() => this.cstyleIconWrapper),
 				iconCstyleProvider: computed(() => this.cstyleIcon),
