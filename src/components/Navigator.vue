@@ -84,7 +84,7 @@
 	import {
 		parse,
 		getStyle
-	} from '@componentor/breakpoint';
+	} from '@componentor/adaptive';
 	import Placeholder from './Placeholder.vue';
 	export default {
 		inheritAttrs: false,
@@ -118,20 +118,20 @@
 				childrenIconSizeProvider: computed(() => this.childrenIconSize),
 				childrenCaretProvider: computed(() => this.caretIcon),
 				childrenCaretSizeProvider: computed(() => this.caretSize),
-				childrenCstyleProvider: computed(() => this.childrenCstyleItem),
-				childrenCstyleModalProvider: computed(() => this.cstyleItemModal),
-				cstyleProvider: computed(() => this.cstyleItem),
-				wrapperCstyleProvider: computed(() => this.cstyleDropArea),
-				iconWrapperCstyleProvider: computed(() => this.cstyleIconWrapper),
-				iconCstyleProvider: computed(() => this.cstyleIcon),
-				linkCstyleProvider: computed(() => this.cstyleLink),
-				caretWrapperCstyleProvider: computed(() => this.cstyleCaretWrapper),
-				caretCstyleProvider: computed(() => this.cstyleCaret),
-				childrenCstyleIconWrapperProvider: computed(() => this.childrenCstyleIconWrapper),
-				childrenCstyleIconProvider: computed(() => this.childrenCstyleIcon),
-				childrenCstyleLinkProvider: computed(() => this.childrenCstyleLink),
-				childrenCstyleCaretWrapperProvider: computed(() => this.childrenCstyleCaretWrapper),
-				childrenCstyleCaretProvider: computed(() => this.childrenCstyleCaret),
+				childrenAdaptProvider: computed(() => this.childrenAdaptItem),
+				modalAdaptProvider: computed(() => this.adaptItemModal),
+				adaptProvider: computed(() => this.adaptItem),
+				dropdownAdaptProvider: computed(() => this.adaptDropdown),
+				iconWrapperAdaptProvider: computed(() => this.adaptIconWrapper),
+				iconAdaptProvider: computed(() => this.adaptIcon),
+				labelAdaptProvider: computed(() => this.adaptLabel),
+				caretWrapperAdaptProvider: computed(() => this.adaptCaretWrapper),
+				caretAdaptProvider: computed(() => this.adaptCaret),
+				childrenIconWrapperAdaptProvider: computed(() => this.childrenAdaptIconWrapper),
+				childrenIconAdaptProvider: computed(() => this.childrenAdaptIcon),
+				childrenLabelAdaptProvider: computed(() => this.childrenAdaptLabel),
+				childrenCaretWrapperAdaptProvider: computed(() => this.childrenAdaptCaretWrapper),
+				childrenCaretAdaptProvider: computed(() => this.childrenAdaptCaret),
 				model: computed(() => this.model),
 				theme: computed(() => {
 					if (this.theme) return this.theme;
@@ -234,75 +234,75 @@
 				type: String,
 				default: ''
 			},
-			cstyle: {
+			adapt: {
 				type: [String, Object, Array],
 				default: 'display:flex; gap:4px; background-color:#ffffff; dark:background-color:#1a1a1a; padding:8px'
 			},
-			cstyleModal: {
+			adaptModal: {
 				type: [String, Object, Array],
 				default: 'background-color:rgba(255,255,255,0.98); dark:background-color:rgba(0,0,0,0.95); padding:20px'
 			},
-			cstyleToggle: {
+			adaptToggle: {
 				type: [String, Object, Array],
 				default: ''
 			},
-			cstyleDropArea: {
+			adaptDropdown: {
 				type: [String, Object, Array],
 				default: 'background-color:#ffffff; dark:background-color:#2a2a2a; box-shadow:0 2px 8px rgba(0,0,0,0.1); dark:box-shadow:0 2px 8px rgba(0,0,0,0.3); border-radius:4px; padding:4px'
 			},
-			cstyleIconWrapper: {
+			adaptIconWrapper: {
 				type: [String, Object, Array],
 				default: ''
 			},
-			cstyleIcon: {
+			adaptIcon: {
 				type: [String, Object, Array],
 				default: ''
 			},
-			cstyleLink: {
+			adaptLabel: {
 				type: [String, Object, Array],
 				default: ''
 			},
-			cstyleCaret: {
+			adaptCaret: {
 				type: [String, Object, Array],
 				default: ''
 			},
-			cstyleCaretWrapper: {
+			adaptCaretWrapper: {
 				type: [String, Object, Array],
 				default: ''
 			},
-			cstyleItem: {
+			adaptItem: {
 				type: [String, Object, Array],
 				default: 'padding:12px 16px; border-radius:4px; hover:background-color:rgba(0,0,0,0.05); dark:hover:background-color:rgba(255,255,255,0.1); current:font-weight:600; current:color:#0066cc; dark:current:color:#66b3ff'
 			},
-			childrenCstyleItem: {
+			childrenAdaptItem: {
 				type: [String, Object, Array],
 				default: 'padding:10px 16px; border-radius:4px; hover:background-color:rgba(0,0,0,0.05); dark:hover:background-color:rgba(255,255,255,0.1); current:font-weight:600; current:color:#0066cc; dark:current:color:#66b3ff'
 			},
-			childrenCstyleIconWrapper: {
+			childrenAdaptIconWrapper: {
 				type: [String, Object, Array],
 				default: ''
 			},
-			childrenCstyleIcon: {
+			childrenAdaptIcon: {
 				type: [String, Object, Array],
 				default: ''
 			},
-			childrenCstyleLink: {
+			childrenAdaptLabel: {
 				type: [String, Object, Array],
 				default: ''
 			},
-			childrenCstyleCaret: {
+			childrenAdaptCaret: {
 				type: [String, Object, Array],
 				default: ''
 			},
-			childrenCstyleCaretWrapper: {
+			childrenAdaptCaretWrapper: {
 				type: [String, Object, Array],
 				default: ''
 			},
-			cstyleToggleModal: {
+			adaptToggleModal: {
 				type: [String, Object, Array],
 				default: ''
 			},
-			cstyleItemModal: {
+			adaptItemModal: {
 				type: [String, Object, Array],
 				default: 'padding:14px 20px; border-radius:4px; hover:background-color:rgba(0,0,0,0.05); dark:hover:background-color:rgba(255,255,255,0.1); current:font-weight:600; current:color:#0066cc; dark:current:color:#66b3ff; font-size:16px'
 			}
@@ -352,26 +352,26 @@
 			small() {
 				return this.windowWidth <= Number(this.breakpointCap || 0);
 			},
-			cstyleString() {
-				return this.normalizeCstyle(this.cstyle);
+			adaptString() {
+				return this.normalizeAdapt(this.adapt);
 			},
-			cstyleModalString() {
-				return this.normalizeCstyle(this.cstyleModal) || this.cstyleString;
+			adaptModalString() {
+				return this.normalizeAdapt(this.adaptModal) || this.adaptString;
 			},
-			cstyleToggleString() {
-				return this.normalizeCstyle(this.cstyleToggle);
+			adaptToggleString() {
+				return this.normalizeAdapt(this.adaptToggle);
 			},
-			cstyleToggleModalString() {
-				return this.normalizeCstyle(this.cstyleToggleModal);
+			adaptToggleModalString() {
+				return this.normalizeAdapt(this.adaptToggleModal);
 			},
-			cstyleItemModalString() {
-				return this.normalizeCstyle(this.cstyleItemModal);
+			adaptItemModalString() {
+				return this.normalizeAdapt(this.adaptItemModal);
 			},
 			computedStyle() {
-				return this.computeCstyleToStyleObject(this.cstyleString);
+				return this.computeAdaptToStyleObject(this.adaptString);
 			},
 			computedModalStyle() {
-				return this.computeCstyleToStyleObject(this.cstyleModalString);
+				return this.computeAdaptToStyleObject(this.adaptModalString);
 			},
 			toggleStyle() {
 				const isOpen = this.open || this.forceOpen;
@@ -380,13 +380,13 @@
 					width: this.toggleSize,
 					zIndex: isOpen ? 10 : null
 				};
-				const cstyleObject = this.computeToggleCstyleToStyleObject(this.cstyleToggleString);
-				return { ...baseStyle, ...cstyleObject };
+				const adaptObject = this.computeToggleAdaptToStyleObject(this.adaptToggleString);
+				return { ...baseStyle, ...adaptObject };
 			},
 			toggleStyleModal() {
 				const baseStyle = { ...this.toggleStyle };
-				const cstyleObject = this.computeToggleCstyleToStyleObject(this.cstyleToggleModalString);
-				return { ...baseStyle, ...cstyleObject };
+				const adaptObject = this.computeToggleAdaptToStyleObject(this.adaptToggleModalString);
+				return { ...baseStyle, ...adaptObject };
 			},
 			$toggleIcon() {
 				const icon = this.toggleIcon;
@@ -428,24 +428,24 @@
 			window.removeEventListener('resize', this.handleResize);
 		},
 		methods: {
-			normalizeCstyle(cstyle) {
-				if (!cstyle) return '';
-				if (typeof cstyle === 'string') return cstyle;
-				if (Array.isArray(cstyle)) {
-					return cstyle.map(item => {
+			normalizeAdapt(adapt) {
+				if (!adapt) return '';
+				if (typeof adapt === 'string') return adapt;
+				if (Array.isArray(adapt)) {
+					return adapt.map(item => {
 						if (typeof item === 'string') return item;
 						return Object.entries(item)
 							.map(([key, value]) => `${key}:${value}`)
 							.join('; ');
 					}).join('; ');
 				}
-				return Object.entries(cstyle)
+				return Object.entries(adapt)
 					.map(([key, value]) => `${key}:${value}`)
 					.join('; ');
 			},
-			computeCstyleToStyleObject(cstyleString) {
-				if (!cstyleString) return {};
-				const parsed = parse(cstyleString);
+			computeAdaptToStyleObject(adaptString) {
+				if (!adaptString) return {};
+				const parsed = parse(adaptString);
 				const style = getStyle(parsed, {
 					theme: this.themeComputed,
 					breakpoint: this.bpoint,
@@ -455,9 +455,9 @@
 				});
 				return this.parseStyleString(style);
 			},
-			computeToggleCstyleToStyleObject(cstyleString) {
-				if (!cstyleString) return {};
-				const parsed = parse(cstyleString);
+			computeToggleAdaptToStyleObject(adaptString) {
+				if (!adaptString) return {};
+				const parsed = parse(adaptString);
 				const style = getStyle(parsed, {
 					theme: this.themeComputed,
 					breakpoint: this.bpoint,
