@@ -1,7 +1,7 @@
 {
   "homepage": "https://vueplay.com",
   "name": "@componentor/navigator",
-  "version": "2.1.3",
+  "version": "2.1.4",
   "type": "module",
   "main": "src/App.vue",
   "scripts": {
@@ -9,7 +9,7 @@
     "build": "vite build"
   },
   "dependencies": {
-    "@componentor/adaptive": "^1.5.1",
+    "@componentor/adaptive": "^1.5.2",
     "vue": "^3.5.25",
     "vue-router": "^4.6.4"
   },
