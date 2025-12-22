@@ -423,7 +423,7 @@
 		},
 		beforeUnmount() {
 			if (this.resizeTimeout) clearTimeout(this.resizeTimeout);
-			this.colorSchemeMediaQuery.removeEventListener('change', this.handleColorSchemeChange);
+			this.colorSchemeMediaQuery?.removeEventListener('change', this.handleColorSchemeChange);
 			document.removeEventListener('click', this.handleClickOutside);
 			window.removeEventListener('resize', this.handleResize);
 		},
